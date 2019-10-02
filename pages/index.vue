@@ -10,37 +10,32 @@
           Welcome to the Vuetify + Nuxt.js template
         </v-card-title>
         <v-card-text>
-          <p>
-            Vuetify is a progressive Material Design component framework for
-            Vue.js. It was designed to empower developers to create amazing
-            applications.
-          </p>
-          <p>
-            For more information on Vuetify, check out the
-            <a href="https://vuetifyjs.com" target="_blank"> documentation </a>.
-          </p>
-          <p>
-            If you have questions, please join the official
-            <a href="https://chat.vuetifyjs.com/" target="_blank" title="chat">
-              discord </a
-            >.
-          </p>
-          <p>
-            Find a bug? Report it on the github
-            <a
-              href="https://github.com/vuetifyjs/vuetify/issues"
-              target="_blank"
-              title="contribute"
-            >
-              issue board </a
-            >.
-          </p>
-          <p>
-            Thank you for developing with Vuetify and I look forward to bringing
-            more exciting features in the future.
-          </p>
-          <div class="text-xs-right">
-            <em><small>&mdash; John Leider</small></em>
+          <div v-for="(post, index) in posts" :key="index">
+            <h1>タイトル: {{ post.fields.title }}</h1>
+            <p>slug: {{ post.fields.slug }}</p>
+            <p>publishDate: {{ post.fields.publishDate }}</p>
+            <p>
+              tags:
+              <span v-for="(tag, tagIndex) in post.fields.tags" :key="tagIndex">
+                {{ tag }}
+              </span>
+            </p>
+            <p>author: {{ post.fields.author.fields.name }}</p>
+            <div>
+              <img
+                :src="post.fields.heroImage.fields.file.url"
+                alt=""
+                width="600"
+              />
+            </div>
+            <div>
+              <p>description: {{ post.fields.description }}</p>
+            </div>
+            <div>
+              <p>
+                {{ post.fields.body }}
+              </p>
+            </div>
           </div>
           <hr class="my-3" />
           <a href="https://nuxtjs.org/" target="_blank">
@@ -65,11 +60,28 @@
 <script>
 import Logo from '~/components/Logo.vue'
 import VuetifyLogo from '~/components/VuetifyLogo.vue'
+import { createClient } from '~/plugins/contentful.js'
+
+const client = createClient()
 
 export default {
   components: {
     Logo,
     VuetifyLogo
+  },
+
+  asyncData({ env }) {
+    return client
+      .getEntries({
+        content_type: env.CTF_BLOG_POST_TYPE_ID,
+        order: '-fields.publishDate'
+      })
+      .then((entries) => {
+        return {
+          posts: entries.items
+        }
+      })
+      .catch(console.error)
   }
 }
 </script>
