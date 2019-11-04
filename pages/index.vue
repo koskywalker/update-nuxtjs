@@ -60,28 +60,19 @@
 <script>
 import Logo from '~/components/Logo.vue'
 import VuetifyLogo from '~/components/VuetifyLogo.vue'
-import { createClient } from '~/plugins/contentful.js'
-
-const client = createClient()
 
 export default {
   components: {
     Logo,
     VuetifyLogo
   },
-
-  asyncData({ env }) {
-    return client
-      .getEntries({
-        content_type: env.CTF_BLOG_POST_TYPE_ID,
-        order: '-fields.publishDate'
-      })
-      .then((entries) => {
-        return {
-          posts: entries.items
-        }
-      })
-      .catch(console.error)
+  computed: {
+    posts() {
+      return this.$store.state.posts.posts
+    }
+  },
+  async fetch({ store, params }) {
+    await store.dispatch('posts/getPosts', params.slug)
   }
 }
 </script>
