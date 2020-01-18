@@ -6,7 +6,7 @@ const config = {
 }
 
 module.exports = {
-  createClient() {
+  createClient () {
     return contentful.createClient(config)
   }
 }

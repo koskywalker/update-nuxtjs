@@ -1,0 +1,15 @@
+// fonts
+@font-face {
+	font-family: 'Adumu';
+	src: url('../font/Adumu.woff') format('woff'),
+    url('../font/Adumu.ttf') format('truetype');
+}
+
+body {
+  background-color: white;
+  font-family: $main-font;
+}
+
+.globalNav {
+  font-family: $accent-font;
+}
