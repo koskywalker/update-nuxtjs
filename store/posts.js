@@ -7,13 +7,13 @@ export const state = () => ({
 })
 
 export const mutations = {
-  setPosts(state, payload) {
+  setPosts (state, payload) {
     state.posts = payload
   }
 }
 
 export const actions = {
-  async getPosts({ commit }) {
+  async getPosts ({ commit }) {
     const response = await client.getEntries({
       content_type: process.env.CTF_BLOG_POST_TYPE_ID
     })
