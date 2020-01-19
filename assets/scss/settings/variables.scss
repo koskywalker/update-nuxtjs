@@ -1,5 +1,5 @@
 /*
-** fonts
+** Fonts
 */
 @font-face {
 	font-family: 'Adumu';
@@ -10,7 +10,7 @@ $font_main: "Helvetica", "Arial", "Hiragino Kaku Gothic ProN", "Hiragino Sans", 
 $font_accent: 'Adumu';
 
 /*
-** colors
+** Colors
 */
 // main
 $color_navy: #4e5cc4;
@@ -21,3 +21,9 @@ $color_blue: #6bb6ff;
 $color_green: #40ce9a;
 $color_orange: #ffb36b;
 $color_pink: #ff6bf3;
+
+/*
+** Media Queries
+*/
+$mq-tablet: 768px;
+$mq-pc: 1024px;
