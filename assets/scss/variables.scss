@@ -1,9 +1,23 @@
-$main-font: "Helvetica", "Arial", "Hiragino Kaku Gothic ProN", "Hiragino Sans", YuGothic, "Yu Gothic", "メイリオ", Meiryo, sans-serif;
-$accent-font: 'Adumu';
+/*
+** fonts
+*/
+@font-face {
+	font-family: 'Adumu';
+	src: url('~assets/font/Adumu.woff') format('woff'),
+    url('~assets/font/Adumu.ttf') format('truetype');
+}
+$font_main: "Helvetica", "Arial", "Hiragino Kaku Gothic ProN", "Hiragino Sans", YuGothic, "Yu Gothic", "メイリオ", Meiryo, sans-serif;
+$font_accent: 'Adumu';
 
-// colors
-$main-color: #4e5cc4;
-$accent-color: #f28282;
-$blue-color: #6bb6ff;
-$green-color: #40ce9a;
-$orange-color: #ffb36b;
+/*
+** colors
+*/
+// main
+$color_navy: #4e5cc4;
+// accent
+$color_red: #f28282;
+// others
+$color_blue: #6bb6ff;
+$color_green: #40ce9a;
+$color_orange: #ffb36b;
+$color_pink: #ff6bf3;
