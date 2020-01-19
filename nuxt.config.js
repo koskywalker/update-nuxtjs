@@ -59,9 +59,9 @@ export default {
   */
   styleResources: {
     scss: [
-      '~/assets/scss/reset.scss',
-      '~/assets/scss/variables.scss',
-      '~/assets/scss/element-base.scss'
+      '~/assets/scss/settings/variables.scss',
+      '~/assets/scss/generic/reset.scss',
+      '~/assets/scss/base/base.scss'
     ]
   },
   /*
