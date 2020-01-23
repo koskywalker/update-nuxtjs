@@ -2,10 +2,10 @@
   <header class="header">
     <router-link class="logo" to="/">
       <h1 v-if="isTopPage" class="logo__text">
-        {{ siteName }}
+        {{ blogName }}
       </h1>
       <div v-else class="logo__text">
-        {{ siteName }}
+        {{ blogName }}
       </div>
     </router-link>
     <nav class="globalNav">
@@ -26,7 +26,7 @@
 export default {
   data () {
     return {
-      siteName: 'UPDATE',
+      blogName: this.$blogInfo.blogName,
       globalNav: [
         {
           name: 'ホーム',
