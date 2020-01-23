@@ -81,7 +81,7 @@ export default {
 }
 
 .logo {
-  color: black;
+  color: $color-black;
   font-family: $font_accent;
 }
 
@@ -90,7 +90,7 @@ export default {
   justify-content: center;
 
   &__item {
-    color: black;
+    color: $color-black;
     display: flex;
     flex-direction: column;
     margin: 0 10px;
