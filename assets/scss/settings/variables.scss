@@ -1,23 +1,31 @@
 /*
-** fonts
+** Fonts
 */
 @font-face {
 	font-family: 'Adumu';
 	src: url('~assets/font/Adumu.woff') format('woff'),
     url('~assets/font/Adumu.ttf') format('truetype');
 }
-$font_main: "Helvetica", "Arial", "Hiragino Kaku Gothic ProN", "Hiragino Sans", YuGothic, "Yu Gothic", "メイリオ", Meiryo, sans-serif;
+$font_main: -apple-system, "Segoe UI", 游ゴシック体, "Yu Gothic", YuGothic, "ヒラギノ角ゴ Pro", "ヒラギノ角ゴ W3", "Hiragino Kaku Gothic Pro", メイリオ, meiryo, sans-serif;
 $font_accent: 'Adumu';
 
 /*
-** colors
+** Colors
 */
 // main
 $color_navy: #4e5cc4;
 // accent
 $color_red: #f28282;
 // others
+$color-white: #fff;
+$color-black: #000;
 $color_blue: #6bb6ff;
 $color_green: #40ce9a;
 $color_orange: #ffb36b;
 $color_pink: #ff6bf3;
+
+/*
+** Media Queries
+*/
+$mq-tablet: 768px;
+$mq-pc: 1024px;
