@@ -24,13 +24,19 @@
           GitHub
         </a>
       </div>
-      <div v-for="(post, index) in posts" :key="index">
+      <div
+        v-for="(post, index) in posts"
+        :key="index"
+      >
         <h1>タイトル: {{ post.fields.title }}</h1>
         <p>slug: {{ post.fields.slug }}</p>
         <p>publishDate: {{ post.fields.publishDate }}</p>
         <p>
           tags:
-          <span v-for="(tag, tagIndex) in post.fields.tags" :key="tagIndex">
+          <span
+            v-for="(tag, tagIndex) in post.fields.tags"
+            :key="tagIndex"
+          >
             {{ tag }}
           </span>
         </p>

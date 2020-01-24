@@ -1,10 +1,19 @@
 <template>
   <header class="header">
-    <router-link class="logo" to="/">
-      <h1 v-if="isTopPage" class="logo__text">
+    <router-link
+      class="logo"
+      to="/"
+    >
+      <h1
+        v-if="isTopPage"
+        class="logo__text"
+      >
         {{ blogName }}
       </h1>
-      <div v-else class="logo__text">
+      <div
+        v-else
+        class="logo__text"
+      >
         {{ blogName }}
       </div>
     </router-link>
@@ -16,7 +25,10 @@
         class="globalNav__item"
       >
         <span class="globalNav__itemName">{{ item.name }}</span>
-        <span :class="item.class" class="globalNav__itemLabel">{{ item.label }}</span>
+        <span
+          :class="item.class"
+          class="globalNav__itemLabel"
+        >{{ item.label }}</span>
       </router-link>
     </nav>
   </header>
