@@ -13,6 +13,13 @@ module.exports = {
   ],
   // add your custom rules here
   rules: {
-    'no-console': 'off'
+    'no-console': 'off',
+    'vue/max-attributes-per-line': ['error', {
+      'singleline': 1,
+      'multiline': {
+      'max': 1,
+      'allowFirstLine': false
+      }
+    }]
   }
 }
