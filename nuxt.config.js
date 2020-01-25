@@ -17,9 +17,9 @@ export default {
     scss: [
       '~/assets/scss/settings/variables.scss',
       '~/assets/scss/tools/tools.scss',
+      '~/assets/scss/tools/animation.scss',
       '~/assets/scss/generic/reset.scss',
-      '~/assets/scss/base/base.scss',
-      '~/assets/scss/animation/animations.scss'
+      '~/assets/scss/base/base.scss'
     ]
   },
   /*
