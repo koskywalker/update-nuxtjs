@@ -16,10 +16,10 @@ export default {
   styleResources: {
     scss: [
       '~/assets/scss/settings/variables.scss',
-      '~/assets/scss/tools/mixins.scss',
-      '~/assets/scss/tools/functions.scss',
+      '~/assets/scss/tools/tools.scss',
       '~/assets/scss/generic/reset.scss',
-      '~/assets/scss/base/base.scss'
+      '~/assets/scss/base/base.scss',
+      '~/assets/scss/animation/animations.scss'
     ]
   },
   /*

@@ -3,7 +3,7 @@
 */
 // 基本
 html {
-  font-size: 16px;
+  font-size: $fontSize_base;
 }
 
 body {
@@ -13,15 +13,12 @@ body {
   line-height: 1.8;
   overflow-wrap: break-word;
   word-break: normal;
+  width: 100%;
 }
 
 a {
   color: $color_red;
   text-decoration: none;
-
-  &:hover {
-    text-decoration: underline;
-  }
 
   &:visited {
     color: initial;
@@ -33,11 +30,6 @@ p {
 }
 
 // 文字
-h1 {
-  font-size: 2em;
-  margin-bottom: 0.6em;
-}
-
 pre {
   margin: 0;
   white-space: pre-wrap;
@@ -52,7 +44,7 @@ samp {
 
 sub,
 sup {
-  font-size: .75rem;
+  font-size: $fontSize_s;
   line-height: 0;
   position: relative;
   vertical-align: baseline;

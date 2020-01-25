@@ -3,6 +3,7 @@
 *::before,
 *::after {
   box-sizing: border-box;
+  transition: .3s;
 }
 
 /* Remove default padding */
