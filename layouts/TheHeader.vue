@@ -93,7 +93,7 @@ export default {
 }
 
 .logo {
-  color: $color-black;
+  color: $color_black;
   font-family: $font_accent;
 }
 
@@ -102,7 +102,7 @@ export default {
   justify-content: center;
 
   &__item {
-    color: $color-black;
+    color: $color_black;
     display: flex;
     flex-direction: column;
     margin: 0 10px;

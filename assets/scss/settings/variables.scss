@@ -1,4 +1,11 @@
 /*
+** Media Queries
+*/
+$mq_tablet: 768px;
+$mq_pc: 1024px;
+
+
+/*
 ** Fonts
 */
 @font-face {
@@ -17,15 +24,9 @@ $color_navy: #4e5cc4;
 // accent
 $color_red: #f28282;
 // others
-$color-white: #fff;
-$color-black: #000;
+$color_white: #fff;
+$color_black: #000;
 $color_blue: #6bb6ff;
 $color_green: #40ce9a;
 $color_orange: #ffb36b;
 $color_pink: #ff6bf3;
-
-/*
-** Media Queries
-*/
-$mq-tablet: 768px;
-$mq-pc: 1024px;
