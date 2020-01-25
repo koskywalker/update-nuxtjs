@@ -1,0 +1,21 @@
+/*
+** extends
+*/
+%font_accent {
+  font-family: $font-accent;
+  letter-spacing: .1em;
+}
+
+/*
+** mixins
+*/
+// media queries
+@mixin mq($breakpoint) {
+  @media (min-width: $breakpoint) {
+    @content;
+  }
+}
+
+/*
+** functions
+*/
