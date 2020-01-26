@@ -26,8 +26,9 @@ export default {
   ** Plugins to load before mounting the App
   */
   plugins: [
-    '~/plugins/blog-info.js',
-    '~/plugins/my-info.js'
+    { src: '~/plugins/blog-info.js' },
+    { src: '~/plugins/my-info.js' },
+    { src: '~/plugins/vue-library.js' }
   ],
   /*
   ** Nuxt.js dev-modules

@@ -1,7 +1,7 @@
 <template>
   <div class="container">
     <div>
-      <logo />
+      <the-main-visual />
       <h1 class="title">
         update
       </h1>
@@ -62,11 +62,11 @@
 </template>
 
 <script>
-import Logo from '~/components/Logo.vue'
+import TheMainVisual from '~/layouts/TheMainVisual'
 
 export default {
   components: {
-    Logo
+    TheMainVisual
   },
   computed: {
     posts () {
