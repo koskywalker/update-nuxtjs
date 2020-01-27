@@ -44,6 +44,10 @@ export default {
   padding-bottom: 7vh;
   text-align: center;
 
+  @include mq($mq_tablet) {
+    padding-bottom: 12vh;
+  }
+
   &Inner {
     width: 100%;
 
