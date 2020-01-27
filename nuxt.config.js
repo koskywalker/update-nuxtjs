@@ -28,7 +28,8 @@ export default {
   plugins: [
     { src: '~/plugins/blog-info.js' },
     { src: '~/plugins/my-info.js' },
-    { src: '~/plugins/vue-library.js' }
+    { src: '~/plugins/vue-library.js' },
+    { src: '~/plugins/particles.js' }
   ],
   /*
   ** Nuxt.js dev-modules
