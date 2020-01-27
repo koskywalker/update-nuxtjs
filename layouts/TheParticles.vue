@@ -21,8 +21,6 @@ export default {
 </script>
 
 <style lang="scss">
-.particles {
-}
 .particles-js-canvas-el {
   height: 55vh !important;
   position: absolute;
