@@ -40,6 +40,7 @@ export default {
   align-items: center;
   display: flex;
   height: 40vh;
+  line-height: 1.5;
   padding-bottom: 2vh;
   text-align: center;
 
@@ -48,12 +49,20 @@ export default {
 
     &__text {
       font-family: $font_sub;
+
+      @include mq($mq_tablet) {
+        font-size: $fontSize_2l;
+      }
     }
 
     &__typing {
       @extend %font_accent;
-      font-size: 1.5rem;
+      font-size: $fontSize_l;
       margin: 0 auto;
+
+      @include mq($mq_tablet) {
+        font-size: $fontSize_4l;
+      }
     }
   }
 
