@@ -1,16 +1,22 @@
 <template>
   <div>
+    <the-particles />
     <the-header />
+    <the-main-visual v-if="isTopPage" />
     <nuxt />
   </div>
 </template>
 
 <script>
+import TheParticles from '~/layouts/TheParticles'
 import TheHeader from '~/layouts/TheHeader'
+import TheMainVisual from '~/layouts/TheMainVisual'
 
 export default {
   components: {
-    TheHeader
+    TheParticles,
+    TheHeader,
+    TheMainVisual
   },
   /*
   ** Headers of the page
@@ -49,6 +55,11 @@ export default {
       link: [
         { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
       ]
+    }
+  },
+  computed: {
+    isTopPage () {
+      return this.$route.path === '/'
     }
   }
 }
