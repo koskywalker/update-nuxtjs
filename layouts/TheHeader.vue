@@ -86,6 +86,7 @@ export default {
 <style lang="scss" scoped>
 // .header
 .header {
+  height: 18vh;
   text-align: center;
 }
 

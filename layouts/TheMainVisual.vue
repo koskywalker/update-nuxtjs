@@ -39,9 +39,9 @@ export default {
 .mainVisual {
   align-items: center;
   display: flex;
-  height: 40vh;
+  height: 37vh;
   line-height: 1.5;
-  padding-bottom: 2vh;
+  padding-bottom: 7vh;
   text-align: center;
 
   &Inner {
