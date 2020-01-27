@@ -16,6 +16,7 @@
     "@nuxtjs/dotenv": "^1.4.0",
     "@nuxtjs/pwa": "^3.0.0-0",
     "nuxt": "^2.0.0",
+    "particles.js": "^2.0.0",
     "vue-typed-js": "^0.1.2"
   },
   "devDependencies": {
