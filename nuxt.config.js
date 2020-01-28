@@ -28,6 +28,7 @@ export default {
   plugins: [
     { src: '~/plugins/blog-info.js' },
     { src: '~/plugins/my-info.js' },
+    { src: '~/plugins/global-menu.js' },
     { src: '~/plugins/vue-library.js' },
     { src: '~/plugins/particles.js' }
   ],
@@ -35,25 +36,20 @@ export default {
   ** Nuxt.js dev-modules
   */
   buildModules: [
-    // Doc: https://github.com/nuxt-community/eslint-module
     '@nuxtjs/eslint-module',
-    // Doc: https://github.com/nuxt-community/stylelint-module
     '@nuxtjs/stylelint-module'
   ],
   /*
   ** Nuxt.js modules
   */
   modules: [
-    // Doc: https://axios.nuxtjs.org/usage
     '@nuxtjs/axios',
     '@nuxtjs/pwa',
-    // Doc: https://github.com/nuxt-community/dotenv-module
     '@nuxtjs/dotenv',
     '@nuxtjs/style-resources'
   ],
   /*
   ** Axios module configuration
-  ** See https://axios.nuxtjs.org/options
   */
   axios: {
   },
