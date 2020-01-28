@@ -9,7 +9,7 @@
         :typeSpeed="100"
         :startDelay="1000"
         :backSpeed="20"
-        :backDelay="1000"
+        :backDelay="1500"
         :loop="true"
       >
         <p class="mainVisualInner__typing">
