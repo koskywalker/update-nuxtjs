@@ -8,7 +8,7 @@ export default {
   ** Global CSS
   */
   css: [
-    { src: '~/assets/scss/app.scss', lang: 'scss' }
+    { src: '~/assets/scss/app.scss', lang: 'scss' },
   ],
   /*
   ** Global Sub CSS
@@ -19,8 +19,8 @@ export default {
       '~/assets/scss/tools/tools.scss',
       '~/assets/scss/tools/animation.scss',
       '~/assets/scss/generic/reset.scss',
-      '~/assets/scss/base/base.scss'
-    ]
+      '~/assets/scss/base/base.scss',
+    ],
   },
   /*
   ** Plugins to load before mounting the App
@@ -30,14 +30,14 @@ export default {
     { src: '~/plugins/my-info.js' },
     { src: '~/plugins/global-menu.js' },
     { src: '~/plugins/vue-library.js' },
-    { src: '~/plugins/particles.js' }
+    { src: '~/plugins/particles.js' },
   ],
   /*
   ** Nuxt.js dev-modules
   */
   buildModules: [
     '@nuxtjs/eslint-module',
-    '@nuxtjs/stylelint-module'
+    '@nuxtjs/stylelint-module',
   ],
   /*
   ** Nuxt.js modules
@@ -46,7 +46,7 @@ export default {
     '@nuxtjs/axios',
     '@nuxtjs/pwa',
     '@nuxtjs/dotenv',
-    '@nuxtjs/style-resources'
+    '@nuxtjs/style-resources',
   ],
   /*
   ** Axios module configuration
@@ -61,12 +61,12 @@ export default {
     ** You can extend webpack config here
     */
     extend (config, ctx) {
-    }
+    },
   },
   env: {
     CTF_SPACE_ID: process.env.CTF_SPACE_ID,
     CTF_CDA_ACCESS_TOKEN: process.env.CTF_CDA_ACCESS_TOKEN,
     CTF_BLOG_POST_TYPE_ID: process.env.CTF_BLOG_POST_TYPE_ID,
-    FACEBOOK_APP_ID: process.env.FACEBOOK_APP_ID
-  }
+    FACEBOOK_APP_ID: process.env.FACEBOOK_APP_ID,
+  },
 }

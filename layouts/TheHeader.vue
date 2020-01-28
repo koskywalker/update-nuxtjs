@@ -41,14 +41,14 @@ export default {
   data () {
     return {
       blogName: this.$blogInfo.blogName,
-      globalNav: this.$globalMenu
+      globalNav: this.$globalMenu,
     }
   },
   computed: {
     isTopPage () {
       return this.$route.path === '/'
-    }
-  }
+    },
+  },
 }
 </script>
 

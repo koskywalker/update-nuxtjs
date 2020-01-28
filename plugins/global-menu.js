@@ -4,31 +4,31 @@ Vue.prototype.$globalMenu = [
   {
     name: 'ホーム',
     label: 'HOME',
-    url: '/'
+    url: '/',
   },
   {
     name: 'プログラミング',
     label: 'PROGRAMMING',
-    url: '/category/programming'
+    url: '/category/programming',
   },
   {
     name: 'ブログ',
     label: 'BLOG',
-    url: '/category/blog'
+    url: '/category/blog',
   },
   {
     name: '便利ツール',
     label: 'TOOL',
-    url: '/category/tool'
+    url: '/category/tool',
   },
   {
     name: 'ポートフォリオ',
     label: 'PORTFOLIO',
-    url: '/portfolio'
+    url: '/portfolio',
   },
   {
     name: 'お問い合わせ',
     label: 'CONTACT',
-    url: '/contact'
-  }
+    url: '/contact',
+  },
 ]

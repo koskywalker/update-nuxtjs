@@ -16,7 +16,7 @@ export default {
     } else {
       window.particlesJS('particles', particlesLarge.data)
     }
-  }
+  },
 }
 </script>
 
