@@ -4,6 +4,7 @@
     <the-header />
     <the-main-visual v-if="isTopPage" />
     <nuxt />
+    <the-footer />
   </div>
 </template>
 
@@ -11,12 +12,14 @@
 import TheParticles from '~/layouts/TheParticles'
 import TheHeader from '~/layouts/TheHeader'
 import TheMainVisual from '~/layouts/TheMainVisual'
+import TheFooter from '~/layouts/TheFooter'
 
 export default {
   components: {
     TheParticles,
     TheHeader,
     TheMainVisual,
+    TheFooter,
   },
   /*
   ** Headers of the page
