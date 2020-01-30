@@ -56,7 +56,6 @@ export default {
   &Item {
     min-height: 300px;
     padding: 1rem 0 2rem;
-    word-break: break-all;
 
     &--tags {
       background-color: $color_navy;
