@@ -24,6 +24,9 @@
         <p>{{ blogTechnology }}</p>
       </div>
     </section>
+    <div class="footerCopyright">
+      © {{ today }}
+    </div>
   </footer>
 </template>
 
@@ -35,6 +38,11 @@ export default {
       blogDescription: this.$blogInfo.baseDescription,
       blogTechnology: this.$blogInfo.aboutBlogTechnology,
     }
+  },
+  computed: {
+    today () {
+      return this.$moment().year()
+    },
   },
 }
 </script>

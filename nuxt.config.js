@@ -39,6 +39,7 @@ export default {
   buildModules: [
     '@nuxtjs/eslint-module',
     '@nuxtjs/stylelint-module',
+    ['@nuxtjs/moment', ['ja']],
   ],
   /*
   ** Nuxt.js modules
