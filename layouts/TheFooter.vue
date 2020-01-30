@@ -20,7 +20,8 @@
         About
       </h3>
       <div class="footerItem__body">
-        a
+        <p>{{ blogDescription }}</p>
+        <p>{{ blogTechnology }}</p>
       </div>
     </section>
   </footer>
@@ -31,6 +32,8 @@ export default {
   data () {
     return {
       tags: this.$tags,
+      blogDescription: this.$blogInfo.baseDescription,
+      blogTechnology: this.$blogInfo.aboutBlogTechnology,
     }
   },
 }
@@ -56,7 +59,7 @@ export default {
     &__title {
       @extend %font_accent;
       font-size: $fontSize_l;
-      margin-bottom: 1rem;
+      margin-bottom: 1.5rem;
 
       @include mq($mq_tablet) {
         font-size: $fontSize_2l;
@@ -69,6 +72,13 @@ export default {
         height: 2px;
         margin: 1rem auto;
         width: 3rem;
+      }
+    }
+
+    &__body {
+      @include mq($mq_tablet) {
+        margin: 0 auto;
+        width: 800px;
       }
     }
   }
