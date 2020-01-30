@@ -55,7 +55,8 @@ export default {
 
   &Item {
     min-height: 300px;
-    padding: 1rem;
+    padding: 1rem 0 2rem;
+    word-break: break-all;
 
     &--tags {
       background-color: $color_navy;
@@ -81,13 +82,6 @@ export default {
         height: 2px;
         margin: 1rem auto;
         width: 3rem;
-      }
-    }
-
-    &__body {
-      @include mq($mq_tablet) {
-        margin: 0 auto;
-        width: 800px;
       }
     }
   }
