@@ -6,8 +6,8 @@
       </h3>
       <div class="footerItem__body tags">
         <router-link
-          v-for="tag in tags"
-          :key="tag.slug"
+          v-for="(tag, index) in tags"
+          :key="index"
           :to="tag.slug"
           class="tags__item"
         >
@@ -25,7 +25,7 @@
       </div>
     </section>
     <div class="footerCopyright">
-      © {{ today }}
+      © {{ today }} {{ blogName }} All rights reserved.
     </div>
   </footer>
 </template>
@@ -34,6 +34,7 @@
 export default {
   data () {
     return {
+      blogName: this.$blogInfo.blogName,
       tags: this.$tags,
       blogDescription: this.$blogInfo.baseDescription,
       blogTechnology: this.$blogInfo.aboutBlogTechnology,
@@ -88,6 +89,16 @@ export default {
         margin: 0 auto;
         width: 800px;
       }
+    }
+  }
+  &Copyright {
+    background-color: $color_gray;
+    font-size: $fontSize_s;
+    padding: .8rem 0;
+
+    @include mq($mq_tablet) {
+      font-size: $fontSize_base;
+      padding: 1rem 0;
     }
   }
 }
