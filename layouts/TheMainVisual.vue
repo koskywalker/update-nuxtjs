@@ -28,10 +28,10 @@ export default {
         '<span style="color: #6bb6ff;">A Engineer</span>.',
         '<span style="color: #4e5cc4;">A Designer</span>.',
         '<span style="color: #40ce9a;">A Blogger</span>.',
-        '<span style="color: #f28282;">An SEO Expert</span>.'
-      ]
+        '<span style="color: #f28282;">An SEO Expert</span>.',
+      ],
     }
-  }
+  },
 }
 </script>
 

@@ -4,6 +4,7 @@
     <the-header />
     <the-main-visual v-if="isTopPage" />
     <nuxt />
+    <the-footer />
   </div>
 </template>
 
@@ -11,12 +12,14 @@
 import TheParticles from '~/layouts/TheParticles'
 import TheHeader from '~/layouts/TheHeader'
 import TheMainVisual from '~/layouts/TheMainVisual'
+import TheFooter from '~/layouts/TheFooter'
 
 export default {
   components: {
     TheParticles,
     TheHeader,
-    TheMainVisual
+    TheMainVisual,
+    TheFooter,
   },
   /*
   ** Headers of the page
@@ -26,7 +29,7 @@ export default {
       titleTemplate: '%s - ' + this.$blogInfo.blogName,
       title: this.$blogInfo.baseTitle,
       htmlAttrs: {
-        lang: 'ja'
+        lang: 'ja',
       },
       meta: [
         { charset: 'utf-8' },
@@ -40,27 +43,27 @@ export default {
         {
           hid: 'og:description',
           property: 'og:description',
-          content: this.$blogInfo.baseDescription
+          content: this.$blogInfo.baseDescription,
         },
         {
           hid: 'og:image',
           property: 'og:image',
-          content: this.$blogInfo.baseOgpImage
+          content: this.$blogInfo.baseOgpImage,
         },
         { name: 'twitter:card', content: 'summary_large_image' },
-        { name: 'twitter:site', content: '@kosuke_upd' }
+        { name: 'twitter:site', content: '@kosuke_upd' },
       // { property: 'article:publisher', content: 'FacebookURL' },
       // { property: 'fb:app_id', content: process.env.FACEBOOK_APP_ID }
       ],
       link: [
-        { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
-      ]
+        { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
+      ],
     }
   },
   computed: {
     isTopPage () {
       return this.$route.path === '/'
-    }
-  }
+    },
+  },
 }
 </script>

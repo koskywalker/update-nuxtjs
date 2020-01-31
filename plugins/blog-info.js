@@ -2,8 +2,9 @@ import Vue from 'vue'
 
 Vue.prototype.$blogInfo = {
   blogName: 'UPDATE',
-  baseTitle: '世界をアップデートしていくクリエイターチーム',
-  baseDescription: 'UPDATE Design (アップデート・デザイン) は、制作費無料、月額7,900円からホームページの制作・更新をおこなう Web 制作チームです。「ホームページが欲しいけどお金や時間をかけたくない」とお悩みの場合は，ぜひホームページの制作・管理を我々に丸投げしてください。',
+  baseTitle: '世界をアップデートするクリエイターこうすけのブログ',
+  baseDescription: 'UPDATE は, エンジニア x デザイナー x ブロガーとして活動するこうすけのクリエイターブログです. 主にプログラミング, デザイン, SEO, 普段の活動などについて発信しています. 世界観を言語化し, 表現しよう！',
+  aboutBlogTechnology: '当ブログは, Nuxt.js x Contentful, Netlify で構築した JAMstack ブログです.',
   baseUrl: 'http://localhost:3000/',
-  baseOgpimage: '/static/icon.png'
+  baseOgpimage: '/static/icon.png',
 }

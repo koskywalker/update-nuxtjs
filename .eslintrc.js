@@ -20,6 +20,7 @@ module.exports = {
       'max': 1,
       'allowFirstLine': false
       }
-    }]
+    }],
+    'comma-dangle': ['error', 'always-multiline'],
   }
 }
