@@ -5,6 +5,7 @@
     <the-main-visual v-if="isTopPage" />
     <nuxt class="container" />
     <the-footer />
+    <the-footer-menu-fixed />
   </div>
 </template>
 
@@ -13,6 +14,7 @@ import TheParticles from '~/layouts/TheParticles'
 import TheHeader from '~/layouts/TheHeader'
 import TheMainVisual from '~/layouts/TheMainVisual'
 import TheFooter from '~/layouts/TheFooter'
+import TheFooterMenuFixed from '~/layouts/TheFooterMenuFixed'
 
 export default {
   components: {
@@ -20,6 +22,7 @@ export default {
     TheHeader,
     TheMainVisual,
     TheFooter,
+    TheFooterMenuFixed,
   },
   /*
   ** Headers of the page
@@ -33,7 +36,7 @@ export default {
       },
       meta: [
         { charset: 'utf-8' },
-        { name: 'viewport', content: 'width=device-width, initial-scale=1' },
+        { name: 'viewport', content: 'width=device-width, initial-scale=1, viewport-fit=cover' },
         { hid: 'description', name: 'description', content: this.$blogInfo.baseDescription },
         { hid: 'og:url', property: 'og:url', content: this.$blogInfo.baseUrl },
         { hid: 'og:site_name', property: 'og:site_name', content: this.$blogInfo.baseName },
