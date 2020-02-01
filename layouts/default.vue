@@ -3,7 +3,7 @@
     <the-particles />
     <the-header />
     <the-main-visual v-if="isTopPage" />
-    <nuxt />
+    <nuxt class="container" />
     <the-footer />
   </div>
 </template>
@@ -67,3 +67,14 @@ export default {
   },
 }
 </script>
+
+<style lang="scss" scoped>
+.container {
+  margin: 0 auto 100px;
+  width: 92%;
+
+  @include mq($mq_wide) {
+    width: 1180px;
+  }
+}
+</style>
