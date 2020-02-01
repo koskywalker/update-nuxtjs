@@ -53,6 +53,7 @@ export default {
 
     &__text {
       font-family: $font_sub;
+      font-weight: bold;
 
       @include mq($mq_tablet) {
         font-size: $fontSize_2l;

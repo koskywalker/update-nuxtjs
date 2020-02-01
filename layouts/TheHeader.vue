@@ -4,26 +4,26 @@
       v-if="isTopPage"
       class="logo"
     >
-      <router-link
+      <nuxt-link
         class="logoLink"
         to="/"
       >
         {{ blogName }}
-      </router-link>
+      </nuxt-link>
     </h1>
     <div
       v-else
       class="logo"
     >
-      <router-link
+      <nuxt-link
         class="logoLink"
         to="/"
       >
         {{ blogName }}
-      </router-link>
+      </nuxt-link>
     </div>
     <nav class="globalNav">
-      <router-link
+      <nuxt-link
         v-for="(item, index) in globalNav"
         :key="index"
         :to="item.url"
@@ -31,7 +31,7 @@
       >
         <span class="globalNav__itemName">{{ item.name }}</span>
         <span class="globalNav__itemLabel">{{ item.label }}</span>
-      </router-link>
+      </nuxt-link>
     </nav>
   </header>
 </template>
@@ -55,14 +55,13 @@ export default {
 <style lang="scss" scoped>
 // .header
 .header {
-  height: 18vh;
+  min-height: 18vh;
   text-align: center;
 }
 
 // .logo
 .logo {
   @extend %font_accent;
-  color: $color_black;
   display: inline-block;
   font-size: $fontSize_3l;
 
@@ -72,6 +71,10 @@ export default {
 
   &:hover {
     transform: scale(1.1);
+  }
+
+  &Link {
+    color: $color_black;
   }
 }
 

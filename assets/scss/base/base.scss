@@ -19,10 +19,6 @@ body {
 a {
   color: $color_red;
   text-decoration: none;
-
-  &:visited {
-    color: initial;
-  }
 }
 
 p {
