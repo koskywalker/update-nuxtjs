@@ -6,6 +6,12 @@ $mq_pc: 1024px;
 $mq_wide: 1240px;
 
 /*
+** Width
+*/
+$width_base: 92%;
+$width_max: 1180px;
+
+/*
 ** Fonts
 */
 // font-family
@@ -39,7 +45,7 @@ $color_link: #4f96f6;
 // others
 $color_white: #fff;
 $color_gray: #666;
-$color_light_gray: #999;
+$color_gray_light: #eee;
 $color_black: #000;
 $color_blue: #6bb6ff;
 $color_blue_transparent: rgba(107, 182, 255, .8);

@@ -74,10 +74,7 @@ export default {
 <style lang="scss" scoped>
 .container {
   margin: 0 auto 100px;
-  width: 92%;
-
-  @include mq($mq_wide) {
-    width: 1180px;
-  }
+  width: $width_base;
+  max-width: $width_max;
 }
 </style>

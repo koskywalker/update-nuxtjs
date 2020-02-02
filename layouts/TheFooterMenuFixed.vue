@@ -1,21 +1,65 @@
 <template>
   <nav class="menu">
     <ul class="menuInner">
-      <li
-        v-for="(item, index) in menuItems"
-        :key="index"
-        class="menuInner__item"
-      >
+      <li class="menuInner__item">
         <nuxt-link
-          :to="item.url"
-          class="menuInner__itemLink"
+          to="/"
+          class="menuInner__itemLink menuInner__itemLink--home"
         >
           <font-awesome-icon
-            :icon="item.icon"
+            icon="home"
             class="menuInner__itemIcon"
           />
-          <span class="menuInner__itemName">{{ item.name }}</span>
+          <span class="menuInner__itemName">ホーム</span>
         </nuxt-link>
+      </li>
+      <li class="menuInner__item">
+        <button
+          type="button"
+          class="menuInner__itemLink menuInner__itemLink--share"
+        >
+          <font-awesome-icon
+            icon="share-alt"
+            class="menuInner__itemIcon"
+          />
+          <span class="menuInner__itemName">シェア</span>
+        </button>
+      </li>
+      <li class="menuInner__item">
+        <button
+          type="button"
+          class="menuInner__itemLink menuInner__itemLink--follow"
+        >
+          <font-awesome-icon
+            icon="user-plus"
+            class="menuInner__itemIcon"
+          />
+          <span class="menuInner__itemName">フォロー</span>
+        </button>
+      </li>
+      <li class="menuInner__item">
+        <button
+          type="button"
+          class="menuInner__itemLink menuInner__itemLink--menu"
+        >
+          <font-awesome-icon
+            icon="list"
+            class="menuInner__itemIcon"
+          />
+          <span class="menuInner__itemName">メニュー</span>
+        </button>
+      </li>
+      <li class="menuInner__item">
+        <button
+          type="button"
+          class="menuInner__itemLink menuInner__itemLink--top"
+        >
+          <font-awesome-icon
+            icon="level-up-alt"
+            class="menuInner__itemIcon"
+          />
+          <span class="menuInner__itemName">トップ</span>
+        </button>
       </li>
     </ul>
   </nav>
@@ -23,11 +67,6 @@
 
 <script>
 export default {
-  data () {
-    return {
-      menuItems: this.$footerMenuFixed,
-    }
-  },
 }
 </script>
 
@@ -36,7 +75,7 @@ export default {
   margin-bottom: 54px;
 
   &Inner {
-    background: $color_navy;
+    background-color: $color_white;
     bottom: 0;
     box-shadow: 0 -2px 3px rgba(100, 120, 130, 0.5);
     display: flex;
@@ -50,20 +89,44 @@ export default {
     width: 100%;
 
     &__item {
-      max-width: calc(1024px / 5);
+      max-width: calc(1180px / 5);
       width: 20%;
 
       &Link {
         align-items: center;
-        color: $color_white;
+        background-color: $color_white;
+        border: 0;
+        color: $color_gray;
         display: flex;
         flex-direction: column;
         height: 100%;
         justify-content: center;
+        padding: 0;
+        width: 100%;
+        transition: 0s;
 
-        &:hover,
-        &:active {
-          background-color: $color_blue;
+        &:hover {
+          background-color: $color_gray_light;
+        }
+
+        &--home:hover {
+          color: $color_black;
+        }
+
+        &--share:hover {
+          color: $color_red;
+        }
+
+        &--follow:hover {
+          color: $color_pink;
+        }
+
+        &--menu:hover {
+          color: $color_green;
+        }
+
+        &--top:hover {
+          color: $color_blue;
         }
       }
 
