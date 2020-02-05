@@ -37,18 +37,23 @@ Vue.prototype.$myInfo = {
     },
     twitter: {
       name: 'Twitter',
-      user: '@kosuke_upd',
+      user: 'kosuke_upd',
       url: 'https://twitter.com/kosuke_upd',
     },
     instagram: {
       name: 'Instagram',
-      user: '@kosuke_upd',
+      user: 'kosuke_upd',
       url: 'https://instagram.com/kosuke_upd',
     },
     github: {
       name: 'GitHub',
       user: 'koskywalker',
       url: 'https://github.com/koskywalker',
+    },
+    feedly: {
+      name: 'Feedly',
+      user: '',
+      url: 'https://feedly.com/i/subscription/feed/https://upd.world/feed',
     },
   },
 }
