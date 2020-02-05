@@ -1,92 +1,95 @@
 <template>
-  <nav class="menu">
-    <ul class="menuInner">
-      <li class="menuInner__item">
-        <nuxt-link
-          to="/"
-          class="menuInner__itemLink menuInner__itemLink--home"
+  <div>
+    <nav class="menu">
+      <ul class="menuInner">
+        <li
+          v-for="(item, index) in items"
+          :key="index"
+          class="menuInner__item"
         >
-          <font-awesome-icon
-            icon="home"
-            class="menuInner__itemIcon"
-          />
-          <span class="menuInner__itemName">ホーム</span>
-        </nuxt-link>
-      </li>
-      <li class="menuInner__item">
-        <button
-          type="button"
-          class="menuInner__itemLink menuInner__itemLink--share"
-        >
-          <font-awesome-icon
-            icon="share-alt"
-            class="menuInner__itemIcon"
-          />
-          <span class="menuInner__itemName">シェア</span>
-        </button>
-      </li>
-      <li class="menuInner__item">
-        <button
-          type="button"
-          class="menuInner__itemLink menuInner__itemLink--follow"
-        >
-          <font-awesome-icon
-            icon="user-plus"
-            class="menuInner__itemIcon"
-          />
-          <span class="menuInner__itemName">フォロー</span>
-        </button>
-      </li>
-      <li class="menuInner__item">
-        <button
-          type="button"
-          class="menuInner__itemLink menuInner__itemLink--menu"
-        >
-          <font-awesome-icon
-            icon="list"
-            class="menuInner__itemIcon"
-          />
-          <span class="menuInner__itemName">メニュー</span>
-        </button>
-      </li>
-      <li class="menuInner__item">
-        <button
-          type="button"
-          class="menuInner__itemLink menuInner__itemLink--top"
-        >
-          <font-awesome-icon
-            icon="level-up-alt"
-            class="menuInner__itemIcon"
-          />
-          <span class="menuInner__itemName">トップ</span>
-        </button>
-      </li>
-    </ul>
-  </nav>
+          <button
+            :class="item.class"
+            @click="buttonAction"
+            class="menuInner__itemLink"
+          >
+            <font-awesome-icon
+              :icon="item.icon"
+              class="menuInner__itemIcon"
+            />
+            <span class="menuInner__itemName">{{ item.name }}</span>
+          </button>
+        </li>
+      </ul>
+      <transition name="slide">
+        <share-buttons
+          v-if="show"
+          :title="title"
+          class="shareButtons"
+        />
+      </transition>
+    </nav>
+  </div>
 </template>
 
 <script>
+import ShareButtons from '~/components/ShareButtons'
+
 export default {
+  name: 'TheFooterMenuFixed',
+  components: {
+    ShareButtons,
+  },
+  data () {
+    return {
+      items: this.$footerMenuFixed,
+      title: '',
+      show: false,
+    }
+  },
+  methods: {
+    buttonAction (e) {
+      if (e.target.classList.contains('js-buttonShare')) {
+        this.clickShare()
+      }
+    },
+    clickHome () {
+
+    },
+    clickShare (e) {
+      this.show = !this.show
+    },
+    clickFollow () {
+
+    },
+    clickMenu () {
+
+    },
+    clickTop () {
+
+    },
+  },
 }
 </script>
 
 <style lang="scss" scoped>
 .menu {
-  margin-bottom: 54px;
+  background-color: $color_white;
+  bottom: 0;
+  box-shadow: 0 -2px 3px rgba(100, 120, 130, 0.5);
+  height: 54px;
+  line-height: 1;
+  margin: 0 auto;
+  padding-bottom: constant(safe-area-inset-bottom);
+  padding-bottom: env(safe-area-inset-bottom);
+  position: fixed;
+  width: 100%;
 
   &Inner {
-    background-color: $color_white;
-    bottom: 0;
-    box-shadow: 0 -2px 3px rgba(100, 120, 130, 0.5);
     display: flex;
-    height: 54px;
+    height: 100%;
     justify-content: center;
-    line-height: 1;
-    margin: 0 auto;
-    padding-bottom: constant(safe-area-inset-bottom);
-    padding-bottom: env(safe-area-inset-bottom);
-    position: fixed;
-    width: 100%;
+    position: relative;
+    z-index: 1;
 
     &__item {
       max-width: calc(1180px / 5);
@@ -132,13 +135,33 @@ export default {
 
       &Icon {
         margin-bottom: 7px;
+        pointer-events: none;
       }
 
       &Name {
         font-size: $fontSize_s;
         font-weight: bold;
+        pointer-events: none;
       }
     }
+  }
+}
+
+.shareButtons {
+  bottom: 54px;
+  position: absolute;
+}
+
+.slide {
+  &-enter-active,
+  &-leave-active {
+    transition: all .5s ease;
+  }
+
+  &-enter,
+  &-leave-to {
+    opacity: 0;
+    transform: translateY(100%);
   }
 }
 </style>
