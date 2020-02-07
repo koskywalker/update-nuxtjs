@@ -1,33 +1,33 @@
 <template>
-  <div>
-    <nav class="menu">
-      <ul class="menuInner">
+  <div class="menu">
+    <nav class="menuInner">
+      <ul class="menuList">
         <li
           v-for="(item, index) in items"
           :key="index"
-          class="menuInner__item"
+          class="menuList__item"
         >
           <button
             :class="item.class"
             @click="buttonAction"
-            class="menuInner__itemLink"
+            class="menuList__itemLink js-button"
           >
             <font-awesome-icon
               :icon="item.icon"
-              class="menuInner__itemIcon"
+              class="menuList__itemIcon"
             />
-            <span class="menuInner__itemName">{{ item.name }}</span>
+            <span class="menuList__itemName">{{ item.name }}</span>
           </button>
         </li>
       </ul>
-      <transition name="slide">
-        <share-buttons
-          v-if="show"
-          :title="title"
-          class="shareButtons"
-        />
-      </transition>
     </nav>
+    <transition name="slide">
+      <share-buttons
+        :title="title"
+        v-if="showShareButtons"
+        class="shareButtons"
+      />
+    </transition>
   </div>
 </template>
 
@@ -43,28 +43,75 @@ export default {
     return {
       items: this.$footerMenuFixed,
       title: '',
-      show: false,
+      showShareButtons: false,
     }
   },
   methods: {
+    /**
+     * フッターメニューボタン押下時のアクション処理
+     */
     buttonAction (e) {
-      if (e.target.classList.contains('js-buttonShare')) {
-        this.clickShare()
+      this.buttonActionInitialize(e)
+
+      if (e.target.classList.contains('js-buttonHome')) {
+        this.clickHome(e)
+      } else if (e.target.classList.contains('js-buttonShare')) {
+        this.clickShare(e)
+      } else if (e.target.classList.contains('js-buttonFollow')) {
+        this.clickFollow(e)
+      } else if (e.target.classList.contains('js-buttonMenu')) {
+        this.clickMenu(e)
+      } else if (e.target.classList.contains('js-buttonTop')) {
+        this.clickTop(e)
       }
     },
-    clickHome () {
+    /**
+     * フッターメニューボタン押下時の初期化処理
+     */
+    buttonActionInitialize (e) {
+      const buttonList = document.querySelectorAll('.js-button')
+
+      this.showShareButtons = false
+
+      if (e.target.classList.contains('active')) {
+        Array.from(buttonList).map(button => button.classList.remove('active'))
+      } else {
+        Array.from(buttonList).map(button => button.classList.remove('active'))
+        e.target.classList.add('active')
+      }
+    },
+    /**
+     * フッターメニュー内のホームボタン押下時の処理
+     */
+    clickHome (e) {
 
     },
+    /**
+     * フッターメニュー内のシェアボタン押下時の処理
+     */
     clickShare (e) {
-      this.show = !this.show
+      if (e.target.classList.contains('active')) {
+        this.showShareButtons = true
+      } else {
+        this.showShareButtons = false
+      }
     },
-    clickFollow () {
+    /**
+     * フッターメニュー内のフォローボタン押下時の処理
+     */
+    clickFollow (e) {
 
     },
-    clickMenu () {
+    /**
+     * フッターメニュー内のメニューボタン押下時の処理
+     */
+    clickMenu (e) {
 
     },
-    clickTop () {
+    /**
+     * フッターメニュー内のトップボタン押下時の処理
+     */
+    clickTop (e) {
 
     },
   },
@@ -85,11 +132,16 @@ export default {
   width: 100%;
 
   &Inner {
+    background-color: $color_white;
+    height: 100%;
+    position: relative;
+    z-index: 1;
+  }
+
+  &List {
     display: flex;
     height: 100%;
     justify-content: center;
-    position: relative;
-    z-index: 1;
 
     &__item {
       max-width: calc(1180px / 5);
@@ -104,31 +156,38 @@ export default {
         flex-direction: column;
         height: 100%;
         justify-content: center;
+        outline: none;
         padding: 0;
-        width: 100%;
         transition: 0s;
+        width: 100%;
 
-        &:hover {
+        @include mq($mq_pc) {
+          &:hover {
+            background-color: $color_gray_light;
+          }
+        }
+
+        &.active {
           background-color: $color_gray_light;
         }
 
-        &--home:hover {
+        &--home.active {
           color: $color_black;
         }
 
-        &--share:hover {
+        &--share.active {
           color: $color_red;
         }
 
-        &--follow:hover {
+        &--follow.active {
           color: $color_pink;
         }
 
-        &--menu:hover {
+        &--menu.active {
           color: $color_green;
         }
 
-        &--top:hover {
+        &--top.active {
           color: $color_blue;
         }
       }

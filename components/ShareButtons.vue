@@ -143,6 +143,7 @@ export default {
         display: flex;
         height: 40px;
         justify-content: center;
+        outline: none;
         padding: 0;
         width: 80%;
       }
