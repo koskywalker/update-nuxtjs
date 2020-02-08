@@ -66,7 +66,7 @@ export default {
       }
     },
     /**
-     * フッターメニューボタン押下時の初期化処理
+     * フッターメニュー内のボタン押下時の共通処理
      */
     buttonActionInitialize (e) {
       const buttonList = document.querySelectorAll('.js-button')
