@@ -84,8 +84,12 @@ export default {
      * フッターメニュー内のホームボタン押下時の処理
      */
     clickHome (e) {
-      this.$router.push('/')
-      this.clickTop(e)
+      if (this.$route.path === '/') {
+        this.clickTop(e)
+      } else {
+        this.$router.push('/')
+        e.target.classList.remove('active')
+      }
     },
     /**
      * フッターメニュー内のシェアボタン押下時の処理
