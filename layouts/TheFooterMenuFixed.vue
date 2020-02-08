@@ -84,7 +84,8 @@ export default {
      * フッターメニュー内のホームボタン押下時の処理
      */
     clickHome (e) {
-
+      this.$router.push('/')
+      this.clickTop(e)
     },
     /**
      * フッターメニュー内のシェアボタン押下時の処理
@@ -112,7 +113,30 @@ export default {
      * フッターメニュー内のトップボタン押下時の処理
      */
     clickTop (e) {
+      if (window.scrollY === 0) {
+        e.target.classList.remove('active')
+        return
+      }
 
+      scrollTo({
+        top: 0,
+        behavior: 'smooth',
+      })
+
+      let setTimeoutId = null
+
+      const removeActiveClass = () => {
+        if (setTimeoutId) {
+          clearTimeout(setTimeoutId)
+        }
+
+        setTimeoutId = setTimeout(() => {
+          e.target.classList.remove('active')
+          window.removeEventListener('scroll', removeActiveClass)
+        }, 500)
+      }
+
+      window.addEventListener('scroll', removeActiveClass)
     },
   },
 }
