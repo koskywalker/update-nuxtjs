@@ -80,6 +80,7 @@ export default {
     ** You can extend webpack config here
     */
     extend (config, ctx) {
+      config.devtool = 'inline-cheap-module-source-map'
     },
   },
   env: {
