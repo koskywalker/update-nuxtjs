@@ -95,7 +95,7 @@ export default {
   },
   methods: {
     /**
-     * シェアリングを生成して返す.
+     * シェアリンクを生成して返す.
      */
     formatByArr (msg) {
       let args = []
