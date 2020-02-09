@@ -27,23 +27,30 @@
         v-if="showShareButtons"
         class="shareButtons"
       />
+      <follow-buttons
+        v-if="showFollowButtons"
+        class="followButtons"
+      />
     </transition>
   </div>
 </template>
 
 <script>
 import ShareButtons from '~/components/ShareButtons'
+import FollowButtons from '~/components/FollowButtons'
 
 export default {
   name: 'TheFooterMenuFixed',
   components: {
     ShareButtons,
+    FollowButtons,
   },
   data () {
     return {
       items: this.$footerMenuFixed,
       title: '',
       showShareButtons: false,
+      showFollowButtons: false,
     }
   },
   methods: {
@@ -72,6 +79,7 @@ export default {
       const buttonList = document.querySelectorAll('.js-button')
 
       this.showShareButtons = false
+      this.showFollowButtons = false
 
       if (e.target.classList.contains('active')) {
         Array.from(buttonList).map(button => button.classList.remove('active'))
@@ -105,7 +113,11 @@ export default {
      * フッターメニュー内のフォローボタン押下時の処理
      */
     clickFollow (e) {
-
+      if (e.target.classList.contains('active')) {
+        this.showFollowButtons = true
+      } else {
+        this.showFollowButtons = false
+      }
     },
     /**
      * フッターメニュー内のメニューボタン押下時の処理
@@ -234,7 +246,8 @@ export default {
   }
 }
 
-.shareButtons {
+.shareButtons,
+.followButtons {
   bottom: 54px;
   position: absolute;
 }

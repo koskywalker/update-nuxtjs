@@ -28,7 +28,11 @@
           @click="windowOpen(hatebuShareUrl)"
           class="shareInner__itemLink"
         >
-          <b class="shareInner__itemIcon shareInner__itemIcon--hatebu">B!</b>
+          <b
+            class="shareInner__itemIcon shareInner__itemIcon--hatebu"
+          >
+            B!
+          </b>
         </button>
       </li>
       <li class="shareInner__item">
