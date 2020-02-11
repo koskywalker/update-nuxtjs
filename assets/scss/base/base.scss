@@ -86,7 +86,9 @@ button,
 input,
 select,
 textarea {
+  border: 0;
   margin: 0;
+  padding: 0;
 }
 
 button,
@@ -94,4 +96,11 @@ input[type="button"],
 input[type="reset"],
 input[type="submit"] {
   cursor: pointer;
+}
+
+input[type="text"],
+textarea {
+  background-color: $color_gray_light;
+  border: 0;
+  padding: .3rem;
 }

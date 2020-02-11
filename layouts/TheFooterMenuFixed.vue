@@ -1,5 +1,30 @@
 <template>
   <div class="menu">
+    <transition name="slide-bottom">
+      <share-buttons
+        :title="title"
+        v-if="showShareButtons"
+        class="shareButtons"
+      />
+      <follow-buttons
+        v-if="showFollowButtons"
+        class="followButtons"
+      />
+    </transition>
+    <transition name="fade">
+      <div
+        v-if="showDrawerMenu"
+        @click="closeDrawer"
+        class="drawerBackground"
+      />
+    </transition>
+    <transition name="slide-right">
+      <drawer-menu
+        v-if="showDrawerMenu"
+        @closeDrawer="closeDrawer"
+        class="drawerMenu"
+      />
+    </transition>
     <nav class="menuInner">
       <ul class="menuList">
         <li
@@ -21,29 +46,20 @@
         </li>
       </ul>
     </nav>
-    <transition name="slide">
-      <share-buttons
-        :title="title"
-        v-if="showShareButtons"
-        class="shareButtons"
-      />
-      <follow-buttons
-        v-if="showFollowButtons"
-        class="followButtons"
-      />
-    </transition>
   </div>
 </template>
 
 <script>
 import ShareButtons from '~/components/ShareButtons'
 import FollowButtons from '~/components/FollowButtons'
+import DrawerMenu from '~/components/DrawerMenu'
 
 export default {
   name: 'TheFooterMenuFixed',
   components: {
     ShareButtons,
     FollowButtons,
+    DrawerMenu,
   },
   data () {
     return {
@@ -51,6 +67,7 @@ export default {
       title: '',
       showShareButtons: false,
       showFollowButtons: false,
+      showDrawerMenu: false,
     }
   },
   methods: {
@@ -80,6 +97,7 @@ export default {
 
       this.showShareButtons = false
       this.showFollowButtons = false
+      this.showDrawerMenu = false
 
       if (e.target.classList.contains('active')) {
         Array.from(buttonList).map(button => button.classList.remove('active'))
@@ -123,7 +141,11 @@ export default {
      * フッターメニュー内のメニューボタン押下時の処理
      */
     clickMenu (e) {
-
+      if (e.target.classList.contains('active')) {
+        this.showDrawerMenu = true
+      } else {
+        this.showDrawerMenu = false
+      }
     },
     /**
      * フッターメニュー内のトップボタン押下時の処理
@@ -154,6 +176,13 @@ export default {
 
       window.addEventListener('scroll', removeActiveClass)
     },
+    /**
+     * ドロワーメニューを閉じる
+     */
+    closeDrawer () {
+      this.showDrawerMenu = false
+      document.querySelector('.js-buttonMenu').classList.remove('active')
+    },
   },
 }
 </script>
@@ -162,7 +191,6 @@ export default {
 .menu {
   background-color: $color_white;
   bottom: 0;
-  box-shadow: 0 -2px 3px rgba(100, 120, 130, 0.5);
   height: 54px;
   line-height: 1;
   margin: 0 auto;
@@ -173,9 +201,9 @@ export default {
 
   &Inner {
     background-color: $color_white;
+    box-shadow: 0 -2px 3px rgba(100, 120, 130, 0.5);
     height: 100%;
     position: relative;
-    z-index: 1;
   }
 
   &List {
@@ -252,7 +280,21 @@ export default {
   position: absolute;
 }
 
-.slide {
+.drawerMenu {
+  position: fixed;
+  top: 0;
+  right: 0;
+}
+
+.drawerBackground {
+  background-color: $color_gray_transparent;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  width: 100vw;
+}
+
+.slide-bottom {
   &-enter-active,
   &-leave-active {
     transition: all .5s ease;
@@ -262,6 +304,31 @@ export default {
   &-leave-to {
     opacity: 0;
     transform: translateY(100%);
+  }
+}
+
+.fade {
+  &-enter-active,
+  &-leave-active {
+    transition: opacity .5s;
+  }
+
+  &-enter,
+  &-leave-to {
+    opacity: 0;
+  }
+}
+
+.slide-right {
+  &-enter-active,
+  &-leave-active {
+    transition: all .5s ease;
+  }
+
+  &-enter,
+  &-leave-to {
+    opacity: 0;
+    transform: translateX(100%);
   }
 }
 </style>
