@@ -29,6 +29,7 @@ export default {
     { src: '~/plugins/blog-info.js' },
     { src: '~/plugins/my-info.js' },
     { src: '~/plugins/global-menu.js' },
+    { src: '~/plugins/footer-menu-fixed.js' },
     { src: '~/plugins/tags.js' },
     { src: '~/plugins/vue-library.js' },
     { src: '~/plugins/particles.js' },
@@ -49,7 +50,23 @@ export default {
     '@nuxtjs/pwa',
     '@nuxtjs/dotenv',
     '@nuxtjs/style-resources',
+    'nuxt-fontawesome',
   ],
+  /*
+  ** FontAwesome
+  */
+  fontawesome: {
+    imports: [
+      {
+        set: '@fortawesome/free-solid-svg-icons',
+        icons: ['fas'],
+      },
+      {
+        set: '@fortawesome/free-brands-svg-icons',
+        icons: ['fab'],
+      },
+    ],
+  },
   /*
   ** Axios module configuration
   */
@@ -63,6 +80,7 @@ export default {
     ** You can extend webpack config here
     */
     extend (config, ctx) {
+      config.devtool = 'inline-cheap-module-source-map'
     },
   },
   env: {

@@ -41,9 +41,8 @@
       <p>author: {{ post.fields.author.fields.name }}</p>
       <div>
         <img
-          :src="post.fields.heroImage.fields.file.url"
+          :src="post.fields.heroImage.fields.file.url + '?w=600'"
           alt=""
-          width="600"
         >
       </div>
       <div>

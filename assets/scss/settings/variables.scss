@@ -6,6 +6,12 @@ $mq_pc: 1024px;
 $mq_wide: 1240px;
 
 /*
+** Width
+*/
+$width_base: 92%;
+$width_max: 1180px;
+
+/*
 ** Fonts
 */
 // font-family
@@ -31,16 +37,30 @@ $fontSize_4l: 3rem;
 */
 // main
 $color_navy: #4e5cc4;
+$color_navy_transparent: rgba(78, 92, 196, .8);
 // accent
 $color_red: #f28282;
+// link
+$color_link: #4f96f6;
 // others
 $color_white: #fff;
 $color_gray: #666;
+$color_gray_transparent: rgba(102, 102, 102, .8);
+$color_gray_light: #eee;
 $color_black: #000;
 $color_blue: #6bb6ff;
+$color_blue_transparent: rgba(107, 182, 255, .8);
 $color_green: #40ce9a;
+$color_green_transparent: rgba(64, 206, 154, .8);
 $color_orange: #ffb36b;
 $color_pink: #ff6bf3;
+// sns
+$color_twitter: #3ab4ff;
+$color_facebook: #3b8df7;
+$color_hatebu: #45b5f7;
+$color_pocket: #ff7b7b;
+$color_line: #59d869;
+$color_feedly: #6cc655;
 
 $colors: (
   $color_black,

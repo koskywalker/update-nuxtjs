@@ -5,14 +5,14 @@
         Tags
       </h3>
       <div class="footerItem__body tags">
-        <router-link
+        <nuxt-link
           v-for="(tag, index) in tags"
           :key="index"
           :to="tag.slug"
           class="tags__item"
         >
           {{ tag.name }}
-        </router-link>
+        </nuxt-link>
       </div>
     </section>
     <section class="footerItem footerItem--about">
@@ -62,7 +62,21 @@ export default {
     }
 
     &--about {
-      background-color: $color_green;
+      background: linear-gradient(135deg, $color_green_transparent 10%, $color_navy_transparent), url(~assets/image/cover-image_1500x500.png);
+      background-position: right 20% bottom 50%;
+      background-size: cover;
+
+      @include mq($mq_tablet) {
+        background-position: right 40% bottom 50%;
+      }
+
+      @include mq($mq_pc) {
+        background-position: right 60% bottom 50%;
+      }
+
+      @include mq($mq_wide) {
+        background-position: right 60% bottom 30%;
+      }
     }
 
     &__title {
