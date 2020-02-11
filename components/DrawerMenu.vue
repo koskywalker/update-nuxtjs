@@ -40,7 +40,7 @@
             >
               <div class="postThumbnail">
                 <img
-                  :src="post.fields.heroImage.fields.file.url"
+                  :src="post.fields.heroImage.fields.file.url + '?w=150'"
                   :alt="post.fields.heroImage.fields.description"
                   class="postThumbnail__image"
                 >
