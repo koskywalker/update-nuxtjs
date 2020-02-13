@@ -1,64 +1,21 @@
 <template>
   <div class="container">
-    <h1 class="title">
-      update
-    </h1>
-    <h2 class="subtitle">
-      JAMstack Blog
-    </h2>
-    <div class="links">
-      <a
-        href="https://nuxtjs.org/"
-        target="_blank"
-        class="button--green"
-      >
-        Documentation
-      </a>
-      <a
-        href="https://github.com/nuxt/nuxt.js"
-        target="_blank"
-        class="button--grey"
-      >
-        GitHub
-      </a>
-    </div>
-    <div
-      v-for="(post, index) in posts"
-      :key="index"
-    >
-      <h1>タイトル: {{ post.fields.title }}</h1>
-      <p>slug: {{ post.fields.slug }}</p>
-      <p>publishDate: {{ post.fields.publishDate }}</p>
-      <p>
-        tags:
-        <span
-          v-for="(tag, tagIndex) in post.fields.tags"
-          :key="tagIndex"
-        >
-          {{ tag }}
-        </span>
-      </p>
-      <p>author: {{ post.fields.author.fields.name }}</p>
-      <div>
-        <img
-          :src="post.fields.heroImage.fields.file.url + '?w=600'"
-          alt=""
-        >
-      </div>
-      <div>
-        <p>description: {{ post.fields.description }}</p>
-      </div>
-      <div>
-        <p>
-          {{ post.fields.body }}
-        </p>
-      </div>
-    </div>
+    <main class="main">
+      <article-list :posts="posts" />
+    </main>
+    <the-sidebar class="sidebar" />
   </div>
 </template>
 
 <script>
+import ArticleList from '@/components/ArticleList'
+import TheSidebar from '@/layouts/TheSidebar'
+
 export default {
+  components: {
+    ArticleList,
+    TheSidebar,
+  },
   computed: {
     posts () {
       return this.$store.state.posts.posts
@@ -69,3 +26,28 @@ export default {
   },
 }
 </script>
+
+<style lang="scss" scoped>
+.container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.main {
+  width: 100%;
+
+  @include mq($mq_pc) {
+    width: 65%;
+  }
+}
+
+.sidebar {
+  background-color: $color_gray_transparent;
+  width: 100%;
+
+  @include mq($mq_pc) {
+    width: 30%;
+  }
+}
+</style>
