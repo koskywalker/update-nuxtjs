@@ -88,6 +88,7 @@ export default {
   ** markdownit configuration
   */
   markdownit: {
+    preset: 'default',
     injected: true, // $mdを利用してmarkdownをhtmlにレンダリングする
     breaks: true, // 改行コードを<br>に変換する
     html: true, // HTML タグを有効にする
