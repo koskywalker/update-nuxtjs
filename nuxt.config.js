@@ -50,6 +50,7 @@ export default {
     '@nuxtjs/pwa',
     '@nuxtjs/dotenv',
     '@nuxtjs/style-resources',
+    '@nuxtjs/markdownit',
     'nuxt-fontawesome',
   ],
   /*
@@ -82,6 +83,16 @@ export default {
     extend (config, ctx) {
       config.devtool = 'inline-cheap-module-source-map'
     },
+  },
+  /*
+  ** markdownit configuration
+  */
+  markdownit: {
+    injected: true, // $mdを利用してmarkdownをhtmlにレンダリングする
+    breaks: true, // 改行コードを<br>に変換する
+    html: true, // HTML タグを有効にする
+    linkify: true, // URLに似たテキストをリンクに自動変換する
+    typography: true, // 言語に依存しないきれいな 置換 + 引用符 を有効にします。
   },
   env: {
     CTF_SPACE_ID: process.env.CTF_SPACE_ID,
