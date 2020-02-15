@@ -19,6 +19,7 @@
     "@fortawesome/vue-fontawesome": "^0.1.9",
     "@nuxtjs/axios": "^5.3.6",
     "@nuxtjs/dotenv": "^1.4.0",
+    "@nuxtjs/markdownit": "^1.2.7",
     "@nuxtjs/pwa": "^3.0.0-0",
     "nuxt": "^2.0.0",
     "nuxt-fontawesome": "^0.4.0",
