@@ -21,6 +21,7 @@
     "@nuxtjs/dotenv": "^1.4.0",
     "@nuxtjs/markdownit": "^1.2.7",
     "@nuxtjs/pwa": "^3.0.0-0",
+    "markdown-it-table-of-contents": "^0.4.4",
     "nuxt": "^2.0.0",
     "nuxt-fontawesome": "^0.4.0",
     "particles.js": "^2.0.0",
