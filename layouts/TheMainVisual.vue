@@ -39,9 +39,9 @@ export default {
 .mainVisual {
   align-items: center;
   display: flex;
-  height: 37vh;
+  height: 40vh;
   line-height: 1.5;
-  padding-bottom: 7vh;
+  padding-bottom: 8vh;
   text-align: center;
 
   @include mq($mq_tablet) {

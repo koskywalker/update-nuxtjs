@@ -22,9 +22,13 @@ export default {
 
 <style lang="scss">
 .particles-js-canvas-el {
-  height: 55vh !important;
+  height: 60vh !important;
   position: absolute;
   top: 0;
   z-index: -1;
+
+  @include mq($mq_tablet) {
+    height: 57vh !important;
+  }
 }
 </style>
