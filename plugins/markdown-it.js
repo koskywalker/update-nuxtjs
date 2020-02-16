@@ -1,4 +1,5 @@
 import MarkdownIt from 'markdown-it'
+import container from 'markdown-it-container'
 
 export default ({ app }, inject) => {
   const md = new MarkdownIt({
@@ -12,6 +13,10 @@ export default ({ app }, inject) => {
   })
 
   md.use(require('markdown-it-table-of-contents'))
+  md.use(container, 'info')
+  md.use(container, 'success')
+  md.use(container, 'warning')
+  md.use(container, 'danger')
 
   inject('md', md)
 }
