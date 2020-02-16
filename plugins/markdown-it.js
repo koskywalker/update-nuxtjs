@@ -1,5 +1,7 @@
 import MarkdownIt from 'markdown-it'
-import container from 'markdown-it-container'
+import MarkdownItAnchor from 'markdown-it-anchor'
+import MarkdownItTableOfContents from 'markdown-it-table-of-contents'
+import MarkdownItContainer from 'markdown-it-container'
 
 export default ({ app }, inject) => {
   const md = new MarkdownIt({
@@ -12,11 +14,12 @@ export default ({ app }, inject) => {
     typography: true, // 言語に依存しないきれいな 置換 + 引用符 を有効にします。
   })
 
-  md.use(require('markdown-it-table-of-contents'))
-  md.use(container, 'info')
-  md.use(container, 'success')
-  md.use(container, 'warning')
-  md.use(container, 'danger')
+  md.use(MarkdownItAnchor)
+  md.use(MarkdownItTableOfContents)
+  md.use(MarkdownItContainer, 'info')
+  md.use(MarkdownItContainer, 'success')
+  md.use(MarkdownItContainer, 'warning')
+  md.use(MarkdownItContainer, 'danger')
 
   inject('md', md)
 }
