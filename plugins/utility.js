@@ -5,7 +5,7 @@ const fixParticlesHeight = () => {
   const header = document.querySelector('.header')
   const mainVisual = document.querySelector('.mainVisual') || null
   const postHeader = document.querySelector('.postHeader') || null
-  const particles = document.querySelector('.particlesa')
+  const particles = document.querySelector('.particlesWrap')
 
   if (mainVisual) {
     particles.style.height = header.clientHeight + mainVisual.clientHeight + 'px'
