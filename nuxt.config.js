@@ -35,6 +35,7 @@ export default {
     { src: '~/plugins/particles.js' },
     { src: '~/plugins/markdown-it.js' },
     { src: '~/plugins/prism.js' },
+    { src: '~/plugins/utility.js' },
   ],
   /*
   ** Nuxt.js dev-modules

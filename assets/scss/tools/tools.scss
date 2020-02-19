@@ -16,36 +16,6 @@
   }
 }
 
-@mixin mdItContainer_base {
-  margin: 10px 0;
-  padding: 10px 10px;
-  border-radius: 5px;
-}
-
-.success {
-  @include mdItContainer_base();
-  color: #3A6F3A;
-  background-color: #DAEDD2;
-}
-
-.info {
-  @include mdItContainer_base();
-  color: #2B6584;
-  background-color: #D3EAF6;
-}
-
-.warning {
-  @include mdItContainer_base();
-  color: #AF9C75;
-  background-color: #FCF7DF;
-}
-
-.danger {
-  @include mdItContainer_base();
-  color: #9F3B3A;
-  background-color: #F0D9D9;
-}
-
 /*
 ** functions
 */
