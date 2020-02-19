@@ -3,7 +3,11 @@
 */
 // 基本
 html {
-  font-size: $fontSize_base;
+  font-size: $fontSize_base_sp;
+
+  @include mq($mq_tablet) {
+    font-size: $fontSize_base_pc;
+  }
 }
 
 body {
