@@ -64,7 +64,6 @@ export default {
   line-height: 1;
   overflow: hidden;
   transition: all .5s ease;
-  width: 100%;
 
   &:hover {
     box-shadow: 0 15px 30px -5px rgba(0, 0, 0, 0.15), 0 0 5px rgba(0, 0, 0, 0.1);
