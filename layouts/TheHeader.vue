@@ -55,8 +55,15 @@ export default {
 <style lang="scss" scoped>
 // .header
 .header {
-  min-height: 18vh;
+  align-content: center;
+  display: flex;
+  flex-wrap: wrap;
+  height: 20vh;
   text-align: center;
+
+  @include mq($mq_tablet) {
+    height: 17vh;
+  }
 }
 
 // .logo
@@ -64,6 +71,9 @@ export default {
   @extend %font_accent;
   display: inline-block;
   font-size: $fontSize_3l;
+  line-height: 1;
+  margin-bottom: 1rem;
+  width: 100%;
 
   @include mq($mq_tablet) {
     font-size: $fontSize_4l;
@@ -85,9 +95,11 @@ export default {
   overflow-x: auto;
   padding-bottom: 5px;
   white-space: nowrap;
+  width: 100%;
 
   @include mq($mq_tablet) {
     justify-content: center;
+    margin-bottom: 1rem;
     overflow-x: inherit;
     white-space: normal;
   }

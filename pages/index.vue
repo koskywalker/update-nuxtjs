@@ -24,6 +24,9 @@ export default {
   async fetch ({ store, params }) {
     await store.dispatch('posts/getPosts', params.slug)
   },
+  mounted () {
+    this.$fixParticlesHeight()
+  },
 }
 </script>
 
@@ -32,6 +35,8 @@ export default {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
+  max-width: $width_max;
+  width: $width_base;
 }
 
 .main {

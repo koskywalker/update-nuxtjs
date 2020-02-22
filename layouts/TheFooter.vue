@@ -82,7 +82,9 @@ export default {
     &__title {
       @extend %font_accent;
       font-size: $fontSize_l;
-      margin-bottom: 1.5rem;
+      margin: 0 auto 1.5rem;
+      max-width: $width_max;
+      width: $width_base;
 
       @include mq($mq_tablet) {
         font-size: $fontSize_2l;
@@ -96,6 +98,12 @@ export default {
         margin: 1rem auto;
         width: 3rem;
       }
+    }
+
+    &__body {
+      margin: 0 auto;
+      max-width: $width_max;
+      width: $width_base;
     }
   }
   &Copyright {

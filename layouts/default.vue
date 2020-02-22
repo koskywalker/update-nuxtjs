@@ -10,11 +10,11 @@
 </template>
 
 <script>
-import TheParticles from '~/layouts/TheParticles'
-import TheHeader from '~/layouts/TheHeader'
-import TheMainVisual from '~/layouts/TheMainVisual'
-import TheFooter from '~/layouts/TheFooter'
-import TheFooterMenuFixed from '~/layouts/TheFooterMenuFixed'
+import TheParticles from '@/layouts/TheParticles'
+import TheHeader from '@/layouts/TheHeader'
+import TheMainVisual from '@/layouts/TheMainVisual'
+import TheFooter from '@/layouts/TheFooter'
+import TheFooterMenuFixed from '@/layouts/TheFooterMenuFixed'
 
 export default {
   components: {
@@ -73,8 +73,6 @@ export default {
 
 <style lang="scss" scoped>
 .container {
-  margin: 0 auto 100px;
-  width: $width_base;
-  max-width: $width_max;
+  margin: 0 auto;
 }
 </style>
