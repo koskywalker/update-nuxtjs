@@ -1,3 +1,5 @@
+const client = require('./plugins/contentful').default
+
 export default {
   mode: 'universal',
   /*
@@ -85,6 +87,21 @@ export default {
     */
     extend (config, ctx) {
       config.devtool = 'inline-cheap-module-source-map'
+    },
+  },
+  generate: {
+    routes () {
+      return Promise.add([
+        client.getEntries({
+          content_type: process.env.CTF_BLOG_POST_TYPE_ID,
+        }),
+      ]).then(([posts]) => {
+        return [
+          ...posts.items.map((post) => {
+            return { route: `posts/${post.fields.slug}`, payload: post }
+          }),
+        ]
+      })
     },
   },
   env: {
