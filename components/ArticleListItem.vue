@@ -1,7 +1,7 @@
 <template>
   <article class="article">
     <nuxt-link
-      :to="'/posts/' + post.fields.slug"
+      :to="post.fields.slug"
       class="articleMain"
     >
       <div class="articleMainImage">
