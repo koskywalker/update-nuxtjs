@@ -1,19 +1,45 @@
-/**
- * ページに合わせて Particles.js の高さを変更
- */
-const fixParticlesHeight = () => {
-  const header = document.querySelector('.header')
-  const mainVisual = document.querySelector('.mainVisual') || null
-  const postHeader = document.querySelector('.postHeader') || null
-  const particles = document.querySelector('.particlesWrap')
+import anime from 'animejs'
 
-  if (mainVisual) {
-    particles.style.height = header.clientHeight + mainVisual.clientHeight + 'px'
-  } else if (postHeader) {
-    particles.style.height = header.clientHeight + postHeader.clientHeight + 'px'
-  }
+/**
+ * ページトップへアニメーション遷移
+ */
+const scrollTopAnimation = () => {
+  anime({
+    targets: '#__nuxt',
+    scrollTop: 0,
+    easing: 'easeInOutQuart',
+    duration: 800,
+  })
+}
+
+/**
+ * 画面をフェードアウトして引数に渡した関数を実行
+ * @param callback
+ */
+const fadeoutPage = (callback) => {
+  anime({
+    targets: '.particlesWrap, .mainVisual, .container, .post',
+    opacity: [1, 0],
+    easing: 'easeInOutQuart',
+    duration: 500,
+    complete: () => callback(),
+  })
+}
+
+/**
+ * 画面をフェードイン
+ */
+const fadeinPage = () => {
+  anime({
+    targets: '.particlesWrap, .mainVisual, .container, .post',
+    opacity: [0, 1],
+    easing: 'easeInOutQuart',
+    duration: 500,
+  })
 }
 
 export default ({ app }, inject) => {
-  inject('fixParticlesHeight', fixParticlesHeight)
+  inject('scrollTopAnimation', scrollTopAnimation)
+  inject('fadeoutPage', fadeoutPage)
+  inject('fadeinPage', fadeinPage)
 }

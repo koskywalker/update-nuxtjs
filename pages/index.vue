@@ -1,18 +1,24 @@
 <template>
   <div class="container">
+    <main-visual class="mainVisual" />
     <main class="main">
-      <article-list :posts="posts" />
+      <article-list
+        ref="articleList"
+        :posts="posts"
+      />
     </main>
     <the-sidebar class="sidebar" />
   </div>
 </template>
 
 <script>
+import MainVisual from '@/components/MainVisual'
 import ArticleList from '@/components/ArticleList'
 import TheSidebar from '@/layouts/TheSidebar'
 
 export default {
   components: {
+    MainVisual,
     ArticleList,
     TheSidebar,
   },
@@ -27,6 +33,31 @@ export default {
   mounted () {
     this.$fixParticlesHeight()
   },
+  beforeRouteLeave (to, from, next) {
+    // 選択した記事の情報を取得
+    const articleList = this.$refs.articleList.$refs.articleListItems
+    const selectedArticle = this.$getSelectedArticleInfo(to, articleList)
+
+    // 遷移前の画像の情報を取得
+    const image = selectedArticle.$refs.image
+    const imageSrc = selectedArticle.post.fields.heroImage.fields.file.url
+    const imageStyleObject = this.$getImageStyleObject(image)
+
+    // ダミー画像に位置と画像のURLを渡す
+    this.$nuxt.$emit('setImageInfoToDammyImage', {
+      imageSrc,
+      imageStyleObject,
+    })
+
+    // 記事一覧から遷移していることをフラグとして持たせる
+    this.$store.dispatch('route/isFromArticleList')
+
+    // ページを上部に移動
+    this.$scrollTopAnimation()
+
+    // 画面をフェードアウトしてページ遷移
+    this.$fadeoutPage(next)
+  },
 }
 </script>
 
@@ -37,6 +68,10 @@ export default {
   justify-content: space-between;
   max-width: $width_max;
   width: $width_base;
+}
+
+.mainVisual {
+  width: 100%;
 }
 
 .main {
