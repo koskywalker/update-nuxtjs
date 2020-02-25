@@ -34,6 +34,11 @@ export default {
     this.$fixParticlesHeight()
   },
   beforeRouteLeave (to, from, next) {
+    // 遷移先ページが記事詳細以外の場合はそのまま遷移
+    if (to.name !== 'posts-slug') {
+      next()
+    }
+
     // 選択した記事の情報を取得
     const articleList = this.$refs.articleList.$refs.articleListItems
     const selectedArticle = this.$getSelectedArticleInfo(to, articleList)
