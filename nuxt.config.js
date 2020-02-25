@@ -1,4 +1,4 @@
-const client = require('./plugins/contentful').default
+import client from './plugins/contentful'
 
 export default {
   mode: 'universal',
@@ -98,7 +98,7 @@ export default {
       ]).then(([posts]) => {
         return [
           ...posts.items.map((post) => {
-            return { route: `posts/${post.fields.slug}`, payload: post }
+            return { route: '/posts/' + post.fields.slug, payload: post }
           }),
         ]
       })
