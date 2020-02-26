@@ -15,9 +15,11 @@
           <div class="headerInner__body">
             <div class="headerInner__bodyItem headerInner__bodyThumbnail">
               <img
+                ref="image"
                 :src="currentPost.fields.heroImage.fields.file.url + '?w=500'"
                 :alt="currentPost.fields.heroImage.fields.description"
-                @load="loaded"
+                @load="afterLoadedImage"
+                class="headerInner__bodyThumbnailImage"
               >
             </div>
             <h1 class="headerInner__bodyItem headerInner__bodyTitle">
@@ -81,14 +83,39 @@ export default {
     Prism.highlightAll()
   },
   methods: {
-    loaded () {
+    afterLoadedImage () {
       this.$fixParticlesHeight()
+      this.$el.style.opacity = 1
+
+      if (this.$store.state.route.fromArticleListFlug) {
+        this.setImageData()
+      }
+    },
+    setImageData () {
+      // 記事のサムネイル画像の情報を取得
+      const image = this.$refs.image
+      const imageStyleObject = this.$getImageStyleObject(image)
+
+      // 記事のサムネイル画像を非表示にする
+      image.style.opacity = 0
+
+      // ダミー画像に情報を渡す
+      this.$nuxt.$emit('moveDammyImage', {
+        image,
+        imageStyleObject,
+      })
+
+      // 画面をフェードインする
+      this.$fadeinPage()
     },
   },
 }
 </script>
 
 <style lang="scss" scoped>
+.post {
+  opacity: 0;
+}
 .header {
   background-color: $color_black_transparent;
   color: $color_white;

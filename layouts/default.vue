@@ -2,31 +2,28 @@
   <div>
     <the-particles />
     <the-header />
-    <the-main-visual v-if="isTopPage" />
     <nuxt class="container" />
     <the-footer />
     <the-footer-menu-fixed />
+    <dammy-image />
   </div>
 </template>
 
 <script>
 import TheParticles from '@/layouts/TheParticles'
 import TheHeader from '@/layouts/TheHeader'
-import TheMainVisual from '@/layouts/TheMainVisual'
 import TheFooter from '@/layouts/TheFooter'
 import TheFooterMenuFixed from '@/layouts/TheFooterMenuFixed'
+import DammyImage from '@/components/DammyImage'
 
 export default {
   components: {
     TheParticles,
     TheHeader,
-    TheMainVisual,
     TheFooter,
     TheFooterMenuFixed,
+    DammyImage,
   },
-  /*
-  ** Headers of the page
-  */
   head () {
     return {
       titleTemplate: '%s - ' + this.$blogInfo.blogName,
@@ -62,11 +59,6 @@ export default {
         { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
       ],
     }
-  },
-  computed: {
-    isTopPage () {
-      return this.$route.path === '/'
-    },
   },
 }
 </script>

@@ -1,3 +1,6 @@
+require('dotenv').config()
+const client = require('./plugins/contentful').default
+
 export default {
   mode: 'universal',
   /*
@@ -26,6 +29,7 @@ export default {
   ** Plugins to load before mounting the App
   */
   plugins: [
+    { src: '~/plugins/contentful.js' },
     { src: '~/plugins/blog-info.js' },
     { src: '~/plugins/my-info.js' },
     { src: '~/plugins/global-menu.js' },
@@ -33,9 +37,10 @@ export default {
     { src: '~/plugins/tags.js' },
     { src: '~/plugins/vue-library.js' },
     { src: '~/plugins/particles.js' },
+    { src: '~/plugins/utility.js' },
+    { src: '~/plugins/router-option.js' },
     { src: '~/plugins/markdown-it.js' },
     { src: '~/plugins/prism.js' },
-    { src: '~/plugins/utility.js' },
   ],
   /*
   ** Nuxt.js dev-modules
@@ -84,6 +89,21 @@ export default {
     */
     extend (config, ctx) {
       config.devtool = 'inline-cheap-module-source-map'
+    },
+  },
+  generate: {
+    routes () {
+      return Promise.all([
+        client.getEntries({
+          content_type: process.env.CTF_BLOG_POST_TYPE_ID,
+        }),
+      ]).then(([ posts ]) => {
+        return [
+          ...posts.items.map((post) => {
+            return { route: `posts/${post.fields.slug}`, payload: post }
+          }),
+        ]
+      })
     },
   },
   env: {

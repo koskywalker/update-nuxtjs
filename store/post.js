@@ -1,6 +1,4 @@
-import { createClient } from '@/plugins/contentful'
-
-const client = createClient()
+import client from '@/plugins/contentful'
 
 export const state = () => ({
   currentPost: {},

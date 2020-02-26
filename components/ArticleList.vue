@@ -1,6 +1,7 @@
 <template>
   <div class="articleList">
     <ArticleListItem
+      ref="articleListItems"
       v-for="(post, index) in posts"
       :key="index"
       :post="post"
