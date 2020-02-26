@@ -1,10 +1,5 @@
-import * as contentful from 'contentful'
-import config from './.contentful.json'
-
-const client = contentful.createClient({
-  space: config.CTF_SPACE_ID,
-  accessToken: config.CTF_CDA_ACCESS_TOKEN,
-})
+require('dotenv').config()
+const client = require('./plugins/contentful').default
 
 export default {
   mode: 'universal',
@@ -34,6 +29,7 @@ export default {
   ** Plugins to load before mounting the App
   */
   plugins: [
+    { src: '~/plugins/contentful.js' },
     { src: '~/plugins/blog-info.js' },
     { src: '~/plugins/my-info.js' },
     { src: '~/plugins/global-menu.js' },
@@ -97,22 +93,23 @@ export default {
   },
   generate: {
     routes () {
-      return client.getEntries({
-        'content_type': config.CTF_BLOG_POST_TYPE_ID,
-      }).then((posts) => {
-        return posts.items.map((post) => {
-          return {
-            route: `posts/${post.fields.slug}`,
-            payload: post,
-          }
-        })
+      return Promise.all([
+        client.getEntries({
+          content_type: process.env.CTF_BLOG_POST_TYPE_ID,
+        }),
+      ]).then(([ posts ]) => {
+        return [
+          ...posts.items.map((post) => {
+            return { route: `posts/${post.fields.slug}`, payload: post }
+          }),
+        ]
       })
     },
   },
   env: {
-    CTF_SPACE_ID: config.CTF_SPACE_ID,
-    CTF_CDA_ACCESS_TOKEN: config.CTF_CDA_ACCESS_TOKEN,
-    CTF_BLOG_POST_TYPE_ID: config.CTF_BLOG_POST_TYPE_ID,
+    CTF_SPACE_ID: process.env.CTF_SPACE_ID,
+    CTF_CDA_ACCESS_TOKEN: process.env.CTF_CDA_ACCESS_TOKEN,
+    CTF_BLOG_POST_TYPE_ID: process.env.CTF_BLOG_POST_TYPE_ID,
     FACEBOOK_APP_ID: process.env.FACEBOOK_APP_ID,
   },
 }
