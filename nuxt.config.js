@@ -1,4 +1,10 @@
-import client from './plugins/contentful'
+import * as contentful from 'contentful'
+import config from './.contentful.json'
+
+const client = contentful.createClient({
+  space: config.CTF_SPACE_ID,
+  accessToken: config.CTF_CDA_ACCESS_TOKEN,
+})
 
 export default {
   mode: 'universal',
@@ -91,23 +97,23 @@ export default {
   },
   generate: {
     routes () {
-      return Promise.add([
+      return Promise.all([
         client.getEntries({
           content_type: process.env.CTF_BLOG_POST_TYPE_ID,
         }),
-      ]).then(([posts]) => {
+      ]).then(([ posts ]) => {
         return [
           ...posts.items.map((post) => {
-            return { route: '/posts/' + post.fields.slug, payload: post }
+            return { route: `posts/${post.fields.slug}`, payload: post }
           }),
         ]
       })
     },
   },
   env: {
-    CTF_SPACE_ID: process.env.CTF_SPACE_ID,
-    CTF_CDA_ACCESS_TOKEN: process.env.CTF_CDA_ACCESS_TOKEN,
-    CTF_BLOG_POST_TYPE_ID: process.env.CTF_BLOG_POST_TYPE_ID,
+    CTF_SPACE_ID: config.CTF_SPACE_ID,
+    CTF_CDA_ACCESS_TOKEN: config.CTF_CDA_ACCESS_TOKEN,
+    CTF_BLOG_POST_TYPE_ID: config.CTF_BLOG_POST_TYPE_ID,
     FACEBOOK_APP_ID: process.env.FACEBOOK_APP_ID,
   },
 }
