@@ -82,6 +82,16 @@ export default {
   mounted () {
     Prism.highlightAll()
   },
+  beforeRouteLeave (to, from, next) {
+    // 遷移先ページがトップページ以外の場合はそのまま遷移
+    if (to.name !== 'index') {
+      next()
+      return
+    }
+
+    // フェードアウトして次の画面に遷移
+    this.$fadeoutPage(next)
+  },
   methods: {
     afterLoadedImage () {
       this.$fixParticlesHeight()
