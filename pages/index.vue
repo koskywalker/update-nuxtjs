@@ -31,12 +31,14 @@ export default {
     await store.dispatch('posts/getPosts', params.slug)
   },
   mounted () {
+    this.$fadeinPage()
     this.$fixParticlesHeight()
   },
   beforeRouteLeave (to, from, next) {
     // 遷移先ページが記事詳細以外の場合はそのまま遷移
     if (to.name !== 'posts-slug') {
       next()
+      return
     }
 
     // 選択した記事の情報を取得
