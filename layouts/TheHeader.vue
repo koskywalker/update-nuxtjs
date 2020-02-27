@@ -71,6 +71,7 @@ export default {
   @extend %font_accent;
   display: inline-block;
   font-size: $fontSize_3l;
+  font-weight: normal;
   line-height: 1;
   margin-bottom: 1rem;
   width: 100%;
