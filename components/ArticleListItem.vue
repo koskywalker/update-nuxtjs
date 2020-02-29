@@ -94,7 +94,7 @@ export default {
 
       &__date {
         color: $color_gray;
-        font-size: $fontSize_s;
+        font-size: $fontSize_xs;
         margin-bottom: .5rem;
 
         &Published {
@@ -110,7 +110,7 @@ export default {
   }
 
   &TagList {
-    font-size: $fontSize_s;
+    font-size: $fontSize_xs;
     margin: 0;
     padding: 0 1rem .5rem;
 

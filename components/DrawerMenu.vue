@@ -160,12 +160,12 @@ export default {
     display: flex;
     flex-wrap: wrap;
     align-content: center;
-    font-size: $fontSize_s;
+    font-size: $fontSize_xs;
     width: 65%;
 
     &__publishDate,
     &__title {
-      font-size: $fontSize_s;
+      font-size: $fontSize_xs;
       font-weight: 400;
       margin: 0 0 .3rem;
       width: 100%;
