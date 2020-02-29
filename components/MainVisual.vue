@@ -78,7 +78,7 @@ export default {
   }
 }
 .gradationArea {
-  background: linear-gradient(transparent, $color_white);
+  background: linear-gradient(transparent, $color_background_base);
   height: 4rem;
   width: 100%;
 }

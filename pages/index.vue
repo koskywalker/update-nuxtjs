@@ -73,7 +73,7 @@ export default {
 
 <style lang="scss" scoped>
 .container {
-  background-color: $color_white;
+  background-color: $color_background_base;
   padding-bottom: 3rem;
   width: 100%;
 

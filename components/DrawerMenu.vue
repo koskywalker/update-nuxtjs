@@ -152,7 +152,12 @@ export default {
   margin-bottom: 1rem;
 
   &Thumbnail {
+    @extend %shadow_base;
     width: 30%;
+
+    &:hover {
+      @extend %shadow_base_hover;
+    }
   }
 
   &Body {

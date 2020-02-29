@@ -18,7 +18,7 @@ const scrollTopAnimation = () => {
  */
 const fadeoutPage = (callback) => {
   anime({
-    targets: '.particlesWrap, .mainVisual, .container, .post',
+    targets: '.particlesWrap, .mainVisual, .gradationArea, .container, .post',
     opacity: [1, 0],
     easing: 'easeInOutQuart',
     duration: 500,
@@ -31,7 +31,7 @@ const fadeoutPage = (callback) => {
  */
 const fadeinPage = () => {
   anime({
-    targets: '.particlesWrap, .mainVisual, .container, .post',
+    targets: '.particlesWrap, .mainVisual, .gradationArea, .container, .post',
     opacity: [0, 1],
     easing: 'easeInOutQuart',
     duration: 500,
