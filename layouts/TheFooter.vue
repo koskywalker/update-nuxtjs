@@ -109,6 +109,7 @@ export default {
   &Copyright {
     background-color: $color_gray;
     font-size: $fontSize_xs;
+    margin-bottom: 54px;
     padding: .8rem 0;
 
     @include mq($mq_tablet) {
