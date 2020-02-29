@@ -60,6 +60,7 @@ export default {
 
 <style lang="scss" scoped>
 .article {
+  background-color: $color_white;
   border-radius: 3px;
   box-shadow: 0 0 3px 0 rgba(0, 0, 0, 0.2), 0 2px 3px 0 rgba(0, 0, 0, 0.2);
   line-height: 1;

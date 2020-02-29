@@ -2,7 +2,7 @@
   <div>
     <the-particles />
     <the-header />
-    <nuxt class="container" />
+    <nuxt />
     <the-footer />
     <the-footer-menu-fixed />
     <dammy-image />
@@ -62,9 +62,3 @@ export default {
   },
 }
 </script>
-
-<style lang="scss" scoped>
-.container {
-  margin: 0 auto;
-}
-</style>

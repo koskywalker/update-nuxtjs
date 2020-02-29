@@ -1,22 +1,25 @@
 <template>
-  <div class="mainVisual">
-    <div class="mainVisualInner">
-      <p class="mainVisualInner__text">
-        Hello, I am Kosuke.
-      </p>
-      <vue-typed-js
-        :strings="typedStrings"
-        :typeSpeed="100"
-        :startDelay="1000"
-        :backSpeed="20"
-        :backDelay="1500"
-        :loop="true"
-      >
-        <p class="mainVisualInner__typing">
-          I'm <span class="typing" />
+  <div>
+    <div class="mainVisual">
+      <div class="mainVisualInner">
+        <p class="mainVisualInner__text">
+          Hello, I am Kosuke.
         </p>
-      </vue-typed-js>
+        <vue-typed-js
+          :strings="typedStrings"
+          :typeSpeed="100"
+          :startDelay="1000"
+          :backSpeed="20"
+          :backDelay="1500"
+          :loop="true"
+        >
+          <p class="mainVisualInner__typing">
+            I'm <span class="typing" />
+          </p>
+        </vue-typed-js>
+      </div>
     </div>
+    <div class="gradationArea" />
   </div>
 </template>
 
@@ -41,11 +44,14 @@ export default {
   display: flex;
   height: 40vh;
   line-height: 1.5;
-  padding-bottom: 8vh;
   text-align: center;
 
   @include mq($mq_tablet) {
-    padding-bottom: 12vh;
+    padding-bottom: 4vh;
+  }
+
+  @include mq($mq_pc) {
+    padding-bottom: 6vh;
   }
 
   &Inner {
@@ -70,6 +76,10 @@ export default {
       }
     }
   }
-
+}
+.gradationArea {
+  background: linear-gradient(transparent, $color_white);
+  height: 4rem;
+  width: 100%;
 }
 </style>
