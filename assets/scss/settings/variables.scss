@@ -30,7 +30,8 @@ $font_sub: "Quicksand","Helvetica", "Arial", "Hiragino Kaku Gothic ProN", "Hirag
 $fontSize_base_sp: 15px;
 $fontSize_base_pc: 16px;
 $fontSize_base: 1rem;
-$fontSize_s: .8rem;
+$fontSize_s: .9rem;
+$fontSize_xs: .8rem;
 $fontSize_m: 1.3rem;
 $fontSize_l: 1.5rem;
 $fontSize_xl: 1.8rem;
@@ -44,7 +45,7 @@ $fontSize_4l: 3rem;
 // main
 $color_navy: #4e5cc4;
 $color_navy_transparent: rgba(78, 92, 196, .8);
-$color_background_base: #eaedf2;
+$color_background_base: #f8f9fa;
 // accent
 $color_red: #f28282;
 // link
@@ -66,10 +67,12 @@ $color_pink: #ff6bf3;
 // sns
 $color_twitter: #3ab4ff;
 $color_facebook: #3b8df7;
+$color_instagram: linear-gradient(-135deg,#1400c8,#b900b4,#f50000);
 $color_hatebu: #45b5f7;
 $color_pocket: #ff7b7b;
 $color_line: #59d869;
 $color_feedly: #6cc655;
+$color_github: #000;
 
 $colors: (
   $color_black,

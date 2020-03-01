@@ -266,7 +266,7 @@ export default {
       }
 
       &Name {
-        font-size: $fontSize_s;
+        font-size: $fontSize_xs;
         font-weight: bold;
         pointer-events: none;
       }

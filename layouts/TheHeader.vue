@@ -128,7 +128,7 @@ export default {
       border-radius: 10px;
       color: $color_white;
       display: block;
-      font-size: $fontSize_s;
+      font-size: $fontSize_xs;
       font-weight: bold;
       line-height: 1.5;
       padding: 0 5px;

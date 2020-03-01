@@ -1,7 +1,9 @@
 import Vue from 'vue'
 
 Vue.prototype.$myInfo = {
+  nickname: 'こうすけ',
   name: 'Kosuke Muraka',
+  labelMain: 'いろんなクリエイター',
   label: ['エンジニア', 'デザイナー', 'ブロガー'],
   birthday: '1991/08/29',
   skills: [
@@ -25,9 +27,10 @@ Vue.prototype.$myInfo = {
     'Web デザイン',
   ],
   introduction: {
-    history: '😆学生時にブログ開始→大学中退→SEOコンサル→独学プログラミング→エンジニア&デザイナー',
-    strongPoints: '🙆‍♂️Vue.js/Nuxt.js/SEO/WordPress/フロント全般/デザイン',
-    other: '🔥JAMstackブログ開発中. 🌏世界観を表現するのが好き. ⭐️クリエイター目線で発信します.',
+    first: '😆 フロントエンドメインの Web 系エンジニア, JAMstack エンジニア.',
+    history: '📘 青山学院大学在学中にブログ開始 → SEO コンサル → エンジニア & デザイナー.',
+    strongPoints: '✅ HTML / CSS / JavaScript / Vue.js / Nuxt.js / Java / PHP / SEO / WordPress / デザイン.',
+    other: '🌈 当ブログでは, 主にフロントエンドに関するプログラミング情報について楽しく発信します！',
   },
   sns: {
     hp: {

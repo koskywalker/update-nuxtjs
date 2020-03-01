@@ -94,7 +94,6 @@ export default {
   },
   methods: {
     afterLoadedImage () {
-      this.$fixParticlesHeight()
       this.$el.style.opacity = 1
 
       if (this.$store.state.route.fromArticleListFlug) {

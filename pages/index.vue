@@ -1,13 +1,17 @@
 <template>
-  <div class="container">
-    <main-visual class="mainVisual" />
-    <main class="main">
-      <article-list
-        ref="articleList"
-        :posts="posts"
-      />
-    </main>
-    <the-sidebar class="sidebar" />
+  <div>
+    <main-visual />
+    <div class="container">
+      <div class="containerInner">
+        <main class="main">
+          <article-list
+            ref="articleList"
+            :posts="posts"
+          />
+        </main>
+        <the-sidebar class="sidebar" />
+      </div>
+    </div>
   </div>
 </template>
 
@@ -32,7 +36,6 @@ export default {
   },
   mounted () {
     this.$fadeinPage()
-    this.$fixParticlesHeight()
   },
   beforeRouteLeave (to, from, next) {
     // 遷移先ページが記事詳細以外の場合はそのまま遷移
@@ -70,15 +73,18 @@ export default {
 
 <style lang="scss" scoped>
 .container {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  max-width: $width_max;
-  width: $width_base;
-}
-
-.mainVisual {
+  background-color: $color_background_base;
+  padding-bottom: 3rem;
   width: 100%;
+
+  &Inner {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin: 0 auto;
+    max-width: $width_max;
+    width: $width_base;
+  }
 }
 
 .main {
@@ -90,7 +96,7 @@ export default {
 }
 
 .sidebar {
-  background-color: $color_gray_transparent;
+  margin-bottom: 2rem;
   width: 100%;
 
   @include mq($mq_pc) {

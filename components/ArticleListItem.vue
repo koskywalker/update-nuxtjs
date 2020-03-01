@@ -60,15 +60,14 @@ export default {
 
 <style lang="scss" scoped>
 .article {
+  @extend %shadow_base;
+  background-color: $color_white;
   border-radius: 3px;
-  box-shadow: 0 0 3px 0 rgba(0, 0, 0, 0.2), 0 2px 3px 0 rgba(0, 0, 0, 0.2);
   line-height: 1;
   overflow: hidden;
-  transition: all .5s ease;
 
   &:hover {
-    box-shadow: 0 15px 30px -5px rgba(0, 0, 0, 0.15), 0 0 5px rgba(0, 0, 0, 0.1);
-    transform: translateY(-4px);
+    @extend %shadow_base_hover;
   }
 
   &Main {
@@ -93,7 +92,7 @@ export default {
 
       &__date {
         color: $color_gray;
-        font-size: $fontSize_s;
+        font-size: $fontSize_xs;
         margin-bottom: .5rem;
 
         &Published {
@@ -109,7 +108,7 @@ export default {
   }
 
   &TagList {
-    font-size: $fontSize_s;
+    font-size: $fontSize_xs;
     margin: 0;
     padding: 0 1rem .5rem;
 

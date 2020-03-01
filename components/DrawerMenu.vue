@@ -32,28 +32,12 @@
             RECENT POSTS
           </h4>
           <div class="item__body">
-            <nuxt-link
+            <article-card
               v-for="(post, index) in posts"
               :key="index"
-              :to="post.fields.slug"
-              class="post"
-            >
-              <div class="postThumbnail">
-                <img
-                  :src="post.fields.heroImage.fields.file.url + '?w=150'"
-                  :alt="post.fields.heroImage.fields.description"
-                  class="postThumbnail__image"
-                >
-              </div>
-              <div class="postBody">
-                <p class="postBody__publishDate">
-                  {{ (new Date(post.fields.publishDate)).toLocaleDateString() }}
-                </p>
-                <h5 class="postBody__title">
-                  {{ post.fields.title }}
-                </h5>
-              </div>
-            </nuxt-link>
+              :post="post"
+              :thumbnailSize="150"
+            />
           </div>
         </div>
       </div>
@@ -62,7 +46,12 @@
 </template>
 
 <script>
+import ArticleCard from '@/components/ArticleCard'
+
 export default {
+  components: {
+    ArticleCard,
+  },
   computed: {
     posts () {
       return this.$store.state.posts.posts.slice(0, 3)
@@ -143,33 +132,6 @@ export default {
 
   &__body {
     padding: 1rem;
-  }
-}
-
-.post {
-  display: flex;
-  justify-content: space-between;
-  margin-bottom: 1rem;
-
-  &Thumbnail {
-    width: 30%;
-  }
-
-  &Body {
-    color: $color_black;
-    display: flex;
-    flex-wrap: wrap;
-    align-content: center;
-    font-size: $fontSize_s;
-    width: 65%;
-
-    &__publishDate,
-    &__title {
-      font-size: $fontSize_s;
-      font-weight: 400;
-      margin: 0 0 .3rem;
-      width: 100%;
-    }
   }
 }
 </style>
