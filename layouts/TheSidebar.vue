@@ -189,7 +189,7 @@ export default {
 
   &Profile {
     &__image {
-
+      border-radius: 10%;
       display: block;
       margin: 0 auto 1rem;
       outline: none;
