@@ -1,19 +1,37 @@
 <template>
   <aside class="side">
     <div class="sideItem sideProfile">
-      <h3 class="sideItem__title">
+      <h3
+        ref="profileTitle"
+        class="sideItem__title"
+      >
         <font-awesome-icon
           :icon="'user'"
           class="followInner__itemIcon"
         />
         Profile
       </h3>
-      <div class="sideProfile__image">
-        <img
-          src="https://images.ctfassets.net/cehw3wy3j8jc/4CzR18vKdFrmnNI8ihxevU/380ec9d71bac06a22dd2d4bdab248d6e/profile3.jpg?h=250"
-          alt="プロフィール写真"
+      <button
+        @click="easterEggLightSaber"
+        :disabled="isDisabledLightSaber"
+        class="sideProfile__image"
+      >
+        <div
+          class="sideProfile__imageInner"
         >
-      </div>
+          <img
+            src="https://images.ctfassets.net/cehw3wy3j8jc/4CzR18vKdFrmnNI8ihxevU/380ec9d71bac06a22dd2d4bdab248d6e/profile3.jpg?h=250"
+            alt="プロフィール写真"
+          >
+        </div>
+        <transition name="fade">
+          <light-saber
+            :switch-status="switchStatus"
+            v-show="isLightSaberShow"
+            class="sideProfile__imageLightSaber"
+          />
+        </transition>
+      </button>
       <div class="sideProfile__name">
         <p class="sideProfile__nameText">
           {{ $myInfo.nickname }} ({{ $myInfo.name }})
@@ -63,10 +81,12 @@
 
 <script>
 import RecentPosts from '@/components/RecentPosts'
+import LightSaber from '@/components/LightSaber'
 
 export default {
   components: {
     RecentPosts,
+    LightSaber,
   },
   data () {
     return {
@@ -92,7 +112,54 @@ export default {
           class: 'sideProfile__snsListItem--feedly',
         },
       ],
+      isDisabledLightSaber: false,
+      isLightSaberShow: false,
+      switchStatus: false,
+      tempProfileTitleInnerElement: '',
     }
+  },
+  methods: {
+    /**
+     * 引数に指定したミリ秒処理を止める
+     * @param ms ミリ秒
+     */
+    wait (ms) {
+      return new Promise(resolve => setTimeout(resolve, ms))
+    },
+    /**
+     * イースターエッグ (ライトセーバー)
+     */
+    async easterEggLightSaber () {
+      if (this.isLightSaberShow) {
+        // ライトセーバーを出している場合, 元に戻してにしてプロフィール見出しを復元
+        this.isDisabledLightSaber = !this.isDisabledLightSaber
+        this.isLightSaberShow = false
+        this.switchStatus = false
+        await this.wait(500)
+        this.$refs.profileTitle.innerHTML = this.tempProfileTitleInnerElement
+        this.isDisabledLightSaber = !this.isDisabledLightSaber
+      } else {
+        // ライトセーバーを出していない場合,
+        // ライトセーバーを出現させてプロフィール見出しを破壊
+        this.isDisabledLightSaber = !this.isDisabledLightSaber
+        this.tempProfileTitleInnerElement = this.$refs.profileTitle.innerHTML
+        this.isLightSaberShow = !this.isLightSaberShow
+        await this.wait(1000)
+        this.switchStatus = !this.switchStatus
+        await this.wait(300)
+
+        for (let i = 0; i < 10; i++) {
+          this.$refs.profileTitle.innerHTML = '　'
+          await this.wait(100)
+          this.$refs.profileTitle.innerHTML = this.tempProfileTitleInnerElement
+          await this.wait(100)
+        }
+
+        await this.wait(500)
+        this.$refs.profileTitle.innerHTML = '　'
+        this.isDisabledLightSaber = !this.isDisabledLightSaber
+      }
+    },
   },
 }
 </script>
@@ -122,11 +189,28 @@ export default {
 
   &Profile {
     &__image {
-      @extend %shadow_base;
-      border-radius: 10%;
+
+      display: block;
       margin: 0 auto 1rem;
-      overflow: hidden;
+      outline: none;
+      position: relative;
       width: 150px;
+
+      &Inner {
+        @extend %shadow_base;
+        border-radius: 10%;
+        overflow: hidden;
+
+        &:hover {
+          @extend %shadow_base_hover;
+        }
+      }
+
+      &LightSaber {
+        left: 65%;
+        position: absolute;
+        top: 50px;
+      }
     }
 
     &__name {
@@ -190,6 +274,17 @@ export default {
         }
       }
     }
+  }
+}
+.fade {
+  &-enter-active,
+  &-leave-active {
+    transition: opacity .5s;
+  }
+
+  &-enter,
+  &-leave-to {
+    opacity: 0;
   }
 }
 </style>
