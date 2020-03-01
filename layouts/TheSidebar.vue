@@ -1,7 +1,7 @@
 <template>
   <aside class="side">
     <div class="sideItem sideProfile">
-      <h3 class="sideItemTitle">
+      <h3 class="sideItem__title">
         <font-awesome-icon
           :icon="'user'"
           class="followInner__itemIcon"
@@ -57,11 +57,17 @@
         </div>
       </div>
     </div>
+    <recent-posts class="sideItem" />
   </aside>
 </template>
 
 <script>
+import RecentPosts from '@/components/RecentPosts'
+
 export default {
+  components: {
+    RecentPosts,
+  },
   data () {
     return {
       items: [
@@ -97,10 +103,11 @@ export default {
     @extend %shadow_base;
     background-color: $color_white;
     border-radius: 3px;
+    margin-bottom: 2rem;
     overflow: hidden;
     padding: 1rem 1rem 2rem;
 
-    &Title {
+    &__title {
       @extend %font_accent;
       border-bottom: .3rem solid;
       border-image: linear-gradient(to right, $color_navy, $color_blue 50%, $color_green);
@@ -114,7 +121,6 @@ export default {
   }
 
   &Profile {
-
     &__image {
       @extend %shadow_base;
       border-radius: 10%;
