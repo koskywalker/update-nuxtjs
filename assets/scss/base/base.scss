@@ -101,10 +101,3 @@ input[type="reset"],
 input[type="submit"] {
   cursor: pointer;
 }
-
-input[type="text"],
-textarea {
-  background-color: $color_gray_light;
-  border: 0;
-  padding: .3rem;
-}
