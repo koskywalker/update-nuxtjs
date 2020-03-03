@@ -8,51 +8,53 @@
         />
         お問い合わせ
       </h1>
-      <form
-        class="contactForm"
-        name="contact"
-        method="POST"
-        netlify
-      >
-        <p>
-          <label class="contactForm__label">
-            お名前 / 会社名
-            <input
-              class="contactForm__input"
-              type="text"
-              name="name"
+      <client-only>
+        <form
+          class="contactForm"
+          name="contact"
+          method="POST"
+          netlify
+        >
+          <p>
+            <label class="contactForm__label">
+              お名前 / 会社名
+              <input
+                class="contactForm__input"
+                type="text"
+                name="name"
+              >
+            </label>
+          </p>
+          <p>
+            <label class="contactForm__label">
+              メールアドレス
+              <input
+                class="contactForm__input"
+                type="email"
+                name="email"
+              >
+            </label>
+          </p>
+          <p>
+            <label class="contactForm__label">
+              お問い合わせ内容
+              <textarea
+                class="contactForm__input"
+                name="message"
+                rows="6"
+              />
+            </label>
+          </p>
+          <p>
+            <button
+              type="submit"
+              class="contactForm__button"
             >
-          </label>
-        </p>
-        <p>
-          <label class="contactForm__label">
-            メールアドレス
-            <input
-              class="contactForm__input"
-              type="email"
-              name="email"
-            >
-          </label>
-        </p>
-        <p>
-          <label class="contactForm__label">
-            お問い合わせ内容
-            <textarea
-              class="contactForm__input"
-              name="message"
-              rows="6"
-            />
-          </label>
-        </p>
-        <p>
-          <button
-            type="submit"
-            class="contactForm__button"
-          >
-            送信
-          </button>
-        </p>
-      </form>
+              送信
+            </button>
+          </p>
+        </form>
+      </client-only>
     </div>
   </div>
 </template>
