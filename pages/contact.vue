@@ -10,6 +10,7 @@
       </h1>
       <client-only>
         <form
+          @submit="validateSubmit"
           class="contactForm"
           name="contact"
           method="POST"
@@ -17,30 +18,89 @@
         >
           <p>
             <label class="contactForm__label">
-              お名前 / 会社名
+              <font-awesome-icon
+                icon="user"
+              />
+              {{ name.label }}
+              <ul
+                v-show="name.errors"
+                class="errorList"
+              >
+                <li
+                  v-for="(error, index) in name.errors"
+                  :key="index"
+                  class="errorListItem"
+                >
+                  {{ error }}
+                </li>
+              </ul>
               <input
+                @input="validateItem(name, arguments[0])"
+                @change="validateItem(name, arguments[0])"
+                @focusout="validateItem(name, arguments[0])"
+                v-model="name.inputText"
                 class="contactForm__input"
                 type="text"
                 name="name"
+                placeholder="例) 山田太郎"
               >
             </label>
           </p>
           <p>
             <label class="contactForm__label">
-              メールアドレス
+              <font-awesome-icon
+                icon="envelope"
+              />
+              {{ email.label }}
+              <ul
+                v-show="email.errors"
+                class="errorList"
+              >
+                <li
+                  v-for="(error, index) in email.errors"
+                  :key="index"
+                  class="errorListItem"
+                >
+                  {{ error }}
+                </li>
+              </ul>
               <input
+                @input="validateItem(email, arguments[0])"
+                @change="validateItem(email, arguments[0])"
+                @focusout="validateItem(email, arguments[0])"
+                v-model="email.inputText"
                 class="contactForm__input"
                 type="email"
                 name="email"
+                placeholder="例) info@example.com"
               >
             </label>
           </p>
           <p>
             <label class="contactForm__label">
-              お問い合わせ内容
+              <font-awesome-icon
+                icon="pen"
+              />
+              {{ body.label }}
+              <ul
+                v-show="body.errors"
+                class="errorList"
+              >
+                <li
+                  v-for="(error, index) in body.errors"
+                  :key="index"
+                  class="errorListItem"
+                >
+                  {{ error }}
+                </li>
+              </ul>
               <textarea
+                @input="validateItem(body, arguments[0])"
+                @change="validateItem(body, arguments[0])"
+                @focusout="validateItem(body, arguments[0])"
+                v-model="body.inputText"
                 class="contactForm__input"
-                name="message"
+                name="body"
                 rows="6"
               />
             </label>
@@ -61,7 +121,83 @@
 
 <script>
 export default {
+  data () {
+    return {
+      name: {
+        label: 'お名前 / 会社名',
+        inputText: '',
+        errors: [],
+        errorFlg: true,
+      },
+      email: {
+        label: 'メールアドレス',
+        inputText: '',
+        errors: [],
+        errorFlg: true,
+      },
+      body: {
+        label: 'お問い合わせ内容',
+        inputText: '',
+        errors: [],
+        errorFlg: true,
+      },
+      errorMessageBase: {
+        required: 'を入力してください',
+      },
+    }
+  },
+  methods: {
+    /**
+     * エラーメッセージを非表示にする.
+     * @param item
+     */
+    clearErrorMessage (item) {
+      item.errors = []
+      item.errorFlg = false
+    },
+    /**
+     * バリデーションを実行.
+     * @param item
+     */
+    validateItem (item, e) {
+      // イベントが input でエラーメッセージが表示されているとき,
+      // またはイベントが change でエラーメッセージが非表示のとき,
+      // またはイベントが focusout でエラーメッセージが非表示のときのみ実行.
+      if (
+        (e.type === 'input' && item.errors.length) ||
+        (e.type === 'change' && !item.errors.length) ||
+        (e.type === 'focusout' && !item.errors.length)
+      ) {
+        // エラーメッセージを一旦クリアにする (エラーメッセージの重複防止)
+        this.clearErrorMessage(item)
 
+        // 必須バリデーションを実行
+        if (this.hasErrorRequired(item)) {
+          item.errors.push(item.label + this.errorMessageBase.required)
+          item.errorFlg = true
+        }
+      }
+    },
+    /**
+     * submit できるか判定する.
+     */
+    validateSubmit (e) {
+      if (
+        this.name.errorFlg ||
+        this.email.errorFlg ||
+        this.body.errorFlg
+      ) {
+        e.preventDefault()
+      }
+    },
+    /**
+     * 必須バリデーション.
+     * @param item
+     */
+    hasErrorRequired (item) {
+      return item.inputText === ''
+    },
+  },
 }
 </script>
 
@@ -122,6 +258,7 @@ $flat-70: transparentize($flat, 0.30);
       display: block;
       font-weight: bold;
       margin-bottom: 1.5rem;
+      position: relative;
       width: 100%;
     }
 
@@ -136,13 +273,13 @@ $flat-70: transparentize($flat, 0.30);
     }
 
     &__input {
-      margin-right: .5rem;
-      box-shadow:  inset 2px 2px 5px $color-shadow, inset -5px -5px 10px $color_white;
-      width: 100%;
-      box-sizing: border-box;
-      transition: all 0.2s ease-in-out;
       appearance: none;
       -webkit-appearance: none;
+      box-shadow:  inset 2px 2px 5px $color-shadow, inset -5px -5px 10px $color_white;
+      box-sizing: border-box;
+      margin-right: .5rem;
+      transition: all 0.2s ease-in-out;
+      width: 100%;
 
       &:focus {
         box-shadow:  inset 1px 1px 2px $color-shadow, inset -1px -1px 2px $color_white;
@@ -191,6 +328,20 @@ $flat-70: transparentize($flat, 0.30);
         color:$color-red;
       }
     }
+  }
+}
+
+.errorList {
+  color: $color_red;
+  font-size: $fontSize_s;
+  margin: 0;
+  padding-left: 1rem;
+  position: absolute;
+  bottom: -2rem;
+  left: 2rem;
+
+  &Item {
+    margin-bottom: .5rem;
   }
 }
 </style>
