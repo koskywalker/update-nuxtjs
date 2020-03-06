@@ -107,7 +107,6 @@
           </p>
           <p>
             <button
-              type="submit"
               class="contactForm__button"
             >
               送信
