@@ -158,6 +158,7 @@ export default {
     /**
      * バリデーションを実行.
      * @param item
+     * @param e
      */
     validateItem (item, e) {
       // イベントが input でエラーメッセージが表示されているとき,
@@ -180,6 +181,7 @@ export default {
     },
     /**
      * submit できるか判定する.
+     * @param e
      */
     validateSubmit (e) {
       if (
