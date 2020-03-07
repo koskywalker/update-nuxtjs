@@ -106,9 +106,7 @@
             </label>
           </p>
           <p>
-            <button
-              class="contactForm__button"
-            >
+            <button class="contactForm__button">
               送信
             </button>
           </p>
@@ -119,6 +117,7 @@
 </template>
 
 <script>
+import axios from '@nuxtjs/axios'
 export default {
   data () {
     return {
@@ -190,6 +189,19 @@ export default {
       ) {
         e.preventDefault()
       }
+      const params = new URLSearchParams()
+
+      params.append('form-name', 'contact') // Forms使うのに必要
+
+      params.append('name', this.name)
+      params.append('email', this.email)
+      params.append('body', this.body)
+
+      axios
+        .post('/', params)
+        .then(() => {
+          // this.isSubmit = true
+        })
     },
     /**
      * 必須バリデーション.
@@ -258,7 +270,7 @@ $flat-70: transparentize($flat, 0.30);
     &__label {
       display: block;
       font-weight: bold;
-      margin-bottom: 1.5rem;
+      margin-bottom: 2rem;
       position: relative;
       width: 100%;
     }
@@ -335,14 +347,7 @@ $flat-70: transparentize($flat, 0.30);
 .errorList {
   color: $color_red;
   font-size: $fontSize_s;
-  margin: 0;
+  margin-bottom: .5rem !important;
   padding-left: 1rem;
-  position: absolute;
-  bottom: -2rem;
-  left: 2rem;
-
-  &Item {
-    margin-bottom: .5rem;
-  }
 }
 </style>
