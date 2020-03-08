@@ -10,12 +10,12 @@
       </h1>
       <client-only>
         <form
-          @submit="validateSubmit"
+          @submit.prevent="validateSubmit"
           class="contactForm"
           name="contact"
-          action="/thanks"
           method="POST"
           netlify
+          data-netlify-recaptcha="true"
         >
           <input
             type="hidden"
@@ -80,29 +80,30 @@
           </p>
           <p>
             <label class="contactForm__label">
-              {{ body.label }}
+              {{ message.label }}
               <ul
-                v-show="body.errors"
+                v-show="message.errors"
                 class="contactForm__errorList"
               >
                 <li
-                  v-for="(error, index) in body.errors"
+                  v-for="(error, index) in message.errors"
                   :key="index"
                 >
                   {{ error }}
                 </li>
               </ul>
               <textarea
-                @input="validateItem(body, arguments[0])"
-                @change="validateItem(body, arguments[0])"
-                @focusout="validateItem(body, arguments[0])"
-                v-model="body.inputText"
+                @input="validateItem(message, arguments[0])"
+                @change="validateItem(message, arguments[0])"
+                @focusout="validateItem(message, arguments[0])"
+                v-model="message.inputText"
                 class="contactForm__input"
-                name="body"
+                name="message"
                 rows="6"
               />
             </label>
           </p>
+          <div data-netlify-recaptcha="true" />
           <p>
             <button class="contactForm__button">
               送信
@@ -130,7 +131,7 @@ export default {
         errors: [],
         errorFlg: true,
       },
-      body: {
+      message: {
         label: 'お問い合わせ内容',
         inputText: '',
         errors: [],
@@ -143,6 +144,26 @@ export default {
     }
   },
   methods: {
+    /**
+     * Ajax による Form 送信
+     *
+     * @param {Object} e イベント
+     */
+    async submitForm (e) {
+      const form = e.target
+      const body = new URLSearchParams(new FormData(form))
+      try {
+        const res = await fetch(form.action, { method: 'POST', body })
+        if (res.ok) {
+          this.$router.push({ name: 'thanks' })
+        } else {
+          throw res
+        }
+      } catch (err) {
+        console.error(err)
+      }
+    },
+
     /**
      * 必須バリデーション.
      *
@@ -227,16 +248,18 @@ export default {
       // 各項目に対するバリデーションを実行
       this.validate(this.name)
       this.validate(this.email)
-      this.validate(this.body)
+      this.validate(this.message)
 
       // エラーが一つでも存在すれば submit しない
       if (
         this.name.errorFlg ||
         this.email.errorFlg ||
-        this.body.errorFlg
+        this.message.errorFlg
       ) {
         e.preventDefault()
+        return
       }
+      this.submitForm(e)
     },
   },
 }
