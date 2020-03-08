@@ -1,38 +1,5 @@
 <template>
-  <client-only>
-    <form
-      name="contact"
-      method="POST"
-      netlify
-    >
-      <!-- <input
-        type="hidden"
-        name="form-name"
-        value="contact"
-      > -->
-      <p>
-        <label>Your Name: <input
-          type="text"
-          name="name"
-        ></label>
-      </p>
-      <p>
-        <label>Your Email: <input
-          type="email"
-          name="email"
-        ></label>
-      </p>
-      <p>
-        <label>Message: <textarea name="message" /></label>
-      </p>
-      <p>
-        <button type="submit">
-          Send
-        </button>
-      </p>
-    </form>
-  </client-only>
-  <!-- <div class="contact">
+  <div class="contact">
     <div class="contactBackground" />
     <div class="contactInner">
       <h1 class="contactTitle">
@@ -43,11 +10,18 @@
       </h1>
       <client-only>
         <form
+          @submit="validateSubmit"
           class="contactForm"
           name="contact"
           method="POST"
-          data-netlify="true"
+          action="/thanks"
+          netlify
         >
+          <input
+            type="hidden"
+            name="form-name"
+            value="contact"
+          >
           <p>
             <label class="contactForm__label">
               <font-awesome-icon
@@ -56,12 +30,12 @@
               {{ name.label }}
               <ul
                 v-show="name.errors"
-                class="errorList"
+                class="contactForm__errorList"
               >
                 <li
                   v-for="(error, index) in name.errors"
                   :key="index"
-                  class="errorListItem"
+                  class="contactForm__errorListItem"
                 >
                   {{ error }}
                 </li>
@@ -74,6 +48,7 @@
                 class="contactForm__input"
                 type="text"
                 name="name"
+                autocomplete="name"
                 placeholder="例) 山田太郎"
               >
             </label>
@@ -86,12 +61,12 @@
               {{ email.label }}
               <ul
                 v-show="email.errors"
-                class="errorList"
+                class="contactForm__errorList"
               >
                 <li
                   v-for="(error, index) in email.errors"
                   :key="index"
-                  class="errorListItem"
+                  class="contactForm__errorListItem"
                 >
                   {{ error }}
                 </li>
@@ -104,6 +79,7 @@
                 class="contactForm__input"
                 type="email"
                 name="email"
+                autocomplete="email"
                 placeholder="例) info@example.com"
               >
             </label>
@@ -116,12 +92,11 @@
               {{ body.label }}
               <ul
                 v-show="body.errors"
-                class="errorList"
+                class="contactForm__errorList"
               >
                 <li
                   v-for="(error, index) in body.errors"
                   :key="index"
-                  class="errorListItem"
                 >
                   {{ error }}
                 </li>
@@ -145,11 +120,10 @@
         </form>
       </client-only>
     </div>
-  </div> -->
+  </div>
 </template>
 
 <script>
-import axios from '@nuxtjs/axios'
 export default {
   data () {
     return {
@@ -172,23 +146,73 @@ export default {
         errorFlg: true,
       },
       errorMessageBase: {
-        required: 'を入力してください',
+        required: 'を入力してください.',
+        format: 'の形式が正しくありません.',
       },
     }
   },
   methods: {
     /**
+     * 必須バリデーション.
+     *
+     * @param {Object} item バリデーション対象オブジェクト
+     * @return {Boolean} true: エラーあり, false: エラーなし
+     */
+    hasErrorRequired (item) {
+      return item.inputText === ''
+    },
+
+    /**
+     * メールアドレスの形式バリデーション.
+     *
+     * @param {Object} item バリデーション対象オブジェクト
+     * @return {Boolean} true: エラーあり, false: エラーなし
+     */
+    hasErrorEmailFormat (item) {
+      const emailRegex = /^[A-Za-z0-9]{1}[A-Za-z0-9_.-]*@{1}[A-Za-z0-9_.-]{1,}\.[A-Za-z0-9]{1,}$/
+      return !emailRegex.test(item.inputText)
+    },
+
+    /**
      * エラーメッセージを非表示にする.
-     * @param item
+     *
+     * @param {Object} item 対象オブジェクト
      */
     clearErrorMessage (item) {
       item.errors = []
       item.errorFlg = false
     },
+
     /**
-     * バリデーションを実行.
-     * @param item
-     * @param e
+     * バリデーションの基本処理.
+     *
+     * @param {Object} item バリデーション対象オブジェクト
+     */
+    validate (item) {
+      // エラーメッセージを一旦クリアにする (エラーメッセージの重複防止)
+      this.clearErrorMessage(item)
+
+      // 必須バリデーションを実行
+      if (this.hasErrorRequired(item)) {
+        item.errors.push(item.label + this.errorMessageBase.required)
+        item.errorFlg = true
+      }
+
+      // バリデート対象が email であり, 何かしらの文字が入力されている場合,
+      // メールアドレスの形式バリデーションを実行
+      if (item === this.email && item.inputText) {
+        if (this.hasErrorEmailFormat(item)) {
+          item.errors.push(item.label + this.errorMessageBase.format)
+          item.errorFlg = true
+        }
+      }
+    },
+
+    /**
+     * 単体項目に対してバリデーションを実行.
+     *
+     * @param {Object} item バリデーション対象オブジェクト
+     * @param {Object} e イベント
      */
     validateItem (item, e) {
       // イベントが input でエラーメッセージが表示されているとき,
@@ -199,21 +223,22 @@ export default {
         (e.type === 'change' && !item.errors.length) ||
         (e.type === 'focusout' && !item.errors.length)
       ) {
-        // エラーメッセージを一旦クリアにする (エラーメッセージの重複防止)
-        this.clearErrorMessage(item)
-
-        // 必須バリデーションを実行
-        if (this.hasErrorRequired(item)) {
-          item.errors.push(item.label + this.errorMessageBase.required)
-          item.errorFlg = true
-        }
+        this.validate(item)
       }
     },
+
     /**
-     * submit できるか判定する.
-     * @param e
+     * submit 時に全項目に対してバリデーションを実行.
+     *
+     * @param {Object} e イベント
      */
     validateSubmit (e) {
+      // 各項目に対するバリデーションを実行
+      this.validate(this.name)
+      this.validate(this.email)
+      this.validate(this.body)
+
+      // エラーが一つでも存在すれば submit しない
       if (
         this.name.errorFlg ||
         this.email.errorFlg ||
@@ -221,52 +246,12 @@ export default {
       ) {
         e.preventDefault()
       }
-      const params = new URLSearchParams()
-
-      params.append('form-name', 'contact') // Forms使うのに必要
-
-      params.append('name', this.name)
-      params.append('email', this.email)
-      params.append('body', this.body)
-
-      axios
-        .post('/', params)
-        .then(() => {
-          // this.isSubmit = true
-        })
-    },
-    /**
-     * 必須バリデーション.
-     * @param item
-     */
-    hasErrorRequired (item) {
-      return item.inputText === ''
     },
   },
 }
 </script>
 
 <style lang="scss" scoped>
-$color-red: #AE1100;
-$color-bg: $color_background_base_dark;
-$color-bg: #f5f6f7;
-$color-shadow: #BABECC;
-
-$light-grey: #E7EEF7;
-
-$color: $light-grey;
-$lighter-5: lighten($color, 5%);
-$darker-5: darken($color, 5%);
-$darker-10: darken($color, 10%);
-$darker-15: darken($color, 15%);
-$darker-20: darken($color, 20%);
-$darker-25: darken($color, 25%);
-$darker-30: darken($color, 30%);
-
-$flat: rgba(white, 1);
-$flat-24: transparentize($flat, 0.76);
-$flat-70: transparentize($flat, 0.30);
-
 .contact {
   padding: 2rem 0 4rem;
   position: relative;
@@ -277,7 +262,7 @@ $flat-70: transparentize($flat, 0.30);
   }
 
   &Background {
-    background: linear-gradient(#fff , $color_bg 10%);
+    background: linear-gradient($color_white, $color_background_base_dark 10%);
     height: 100%;
     position: absolute;
     top: 0;
@@ -286,7 +271,7 @@ $flat-70: transparentize($flat, 0.30);
   }
 
   &Inner {
-    background: $color-bg;
+    background: $color_background_base_dark;
     border-radius: 20px;
     box-shadow:
       -2px -2px 5px rgba(255, 255, 255, 1),
@@ -298,7 +283,6 @@ $flat-70: transparentize($flat, 0.30);
   }
 
   &Form {
-
     &__label {
       display: block;
       font-weight: bold;
@@ -307,79 +291,53 @@ $flat-70: transparentize($flat, 0.30);
       width: 100%;
     }
 
+    &__errorList {
+      color: $color_red_dark;
+      font-size: $fontSize_s;
+      margin-bottom: .5rem !important;
+      padding-left: 1rem;
+    }
+
     &__input,
     &__button {
       border: 0;
       outline: 0;
       border-radius: 2rem;
       padding: .5rem 1.5rem;
-      background-color: $color-bg;
+      background-color: $color_background_base_dark;
       text-shadow: 1px 1px 0 $color_white;
     }
 
     &__input {
       appearance: none;
       -webkit-appearance: none;
-      box-shadow:  inset 2px 2px 5px $color-shadow, inset -5px -5px 10px $color_white;
+      box-shadow:  inset 2px 2px 5px $color_shadow_light, inset -5px -5px 10px $color_white;
       box-sizing: border-box;
       margin-right: .5rem;
       transition: all 0.2s ease-in-out;
       width: 100%;
 
       &:focus {
-        box-shadow:  inset 1px 1px 2px $color-shadow, inset -1px -1px 2px $color_white;
+        box-shadow:  inset 1px 1px 2px $color_shadow_light, inset -1px -1px 2px $color_white;
       }
     }
 
     &__button {
       display: block;
       font-weight: bold;
-      box-shadow: -4px -4px 10px $color_white,  4px 4px 10px $color-shadow;
+      box-shadow: -4px -4px 10px $color_white,  4px 4px 10px $color_shadow_light;
       margin: 0 auto;
       transition: all 0.2s ease-in-out;
       width: 100%;
 
       &:hover {
-        box-shadow: -2px -2px 5px $color_white, 2px 2px 5px $color-shadow;
+        box-shadow: -2px -2px 5px $color_white, 2px 2px 5px $color_shadow_light;
       }
 
       &:active {
-        box-shadow: inset 1px 1px 2px $color-shadow, inset -1px -1px 2px $color_white;
-      }
-
-      .icon {
-        margin-right: .5rem;
-      }
-
-      &.unit {
-        border-radius: .5rem;
-        line-height: 0;
-        width: 3rem;
-        height: 3rem;
-        display:inline-flex;
-        justify-content: center;
-        align-items:center;
-        margin: 0 .5rem;
-        font-size: 1.2rem;
-
-        .icon {
-          margin-right: 0;
-        }
-      }
-
-      &.red {
-        display: block;
-        width: 100%;
-        color:$color-red;
+        box-shadow: inset 1px 1px 2px $color_shadow_light, inset -1px -1px 2px $color_white;
       }
     }
   }
-}
-
-.errorList {
-  color: $color_red;
-  font-size: $fontSize_s;
-  margin-bottom: .5rem !important;
-  padding-left: 1rem;
 }
 </style>
