@@ -13,8 +13,8 @@
           @submit="validateSubmit"
           class="contactForm"
           name="contact"
-          method="POST"
           action="/thanks"
+          method="POST"
           netlify
         >
           <input
