@@ -80,25 +80,25 @@
           </p>
           <p>
             <label class="contactForm__label">
-              {{ body.label }}
+              {{ message.label }}
               <ul
-                v-show="body.errors"
+                v-show="message.errors"
                 class="contactForm__errorList"
               >
                 <li
-                  v-for="(error, index) in body.errors"
+                  v-for="(error, index) in message.errors"
                   :key="index"
                 >
                   {{ error }}
                 </li>
               </ul>
               <textarea
-                @input="validateItem(body, arguments[0])"
-                @change="validateItem(body, arguments[0])"
-                @focusout="validateItem(body, arguments[0])"
-                v-model="body.inputText"
+                @input="validateItem(message, arguments[0])"
+                @change="validateItem(message, arguments[0])"
+                @focusout="validateItem(message, arguments[0])"
+                v-model="message.inputText"
                 class="contactForm__input"
-                name="body"
+                name="message"
                 rows="6"
               />
             </label>
@@ -131,7 +131,7 @@ export default {
         errors: [],
         errorFlg: true,
       },
-      body: {
+      message: {
         label: 'お問い合わせ内容',
         inputText: '',
         errors: [],
@@ -242,13 +242,13 @@ export default {
       // 各項目に対するバリデーションを実行
       this.validate(this.name)
       this.validate(this.email)
-      this.validate(this.body)
+      this.validate(this.message)
 
       // エラーが一つでも存在すれば submit しない
       if (
         this.name.errorFlg ||
         this.email.errorFlg ||
-        this.body.errorFlg
+        this.message.errorFlg
       ) {
         e.preventDefault()
         return
