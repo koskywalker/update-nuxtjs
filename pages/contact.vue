@@ -1,5 +1,38 @@
 <template>
-  <div class="contact">
+  <client-only>
+    <form
+      name="contact"
+      method="POST"
+      netlify
+    >
+      <input
+        type="hidden"
+        name="form-name"
+        value="contact"
+      >
+      <p>
+        <label>Your Name: <input
+          type="text"
+          name="name"
+        ></label>
+      </p>
+      <p>
+        <label>Your Email: <input
+          type="email"
+          name="email"
+        ></label>
+      </p>
+      <p>
+        <label>Message: <textarea name="message" /></label>
+      </p>
+      <p>
+        <button type="submit">
+          Send
+        </button>
+      </p>
+    </form>
+  </client-only>
+  <!-- <div class="contact">
     <div class="contactBackground" />
     <div class="contactInner">
       <h1 class="contactTitle">
@@ -10,11 +43,10 @@
       </h1>
       <client-only>
         <form
-          @submit="validateSubmit"
           class="contactForm"
           name="contact"
           method="POST"
-          netlify
+          data-netlify="true"
         >
           <p>
             <label class="contactForm__label">
@@ -113,7 +145,7 @@
         </form>
       </client-only>
     </div>
-  </div>
+  </div> -->
 </template>
 
 <script>
