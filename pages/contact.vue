@@ -10,9 +10,9 @@
       </h1>
       <client-only>
         <form
+          @submit="validateSubmit"
           class="contactForm"
           name="contact"
-          action="/thanks"
           method="POST"
           netlify
           data-netlify-recaptcha="true"
@@ -237,7 +237,9 @@ export default {
         this.body.errorFlg
       ) {
         e.preventDefault()
+        return
       }
+      this.$router.push('/thanks')
     },
   },
 }
