@@ -10,10 +10,9 @@
       </h1>
       <client-only>
         <form
-          @submit="validateSubmit"
+          @submit.prevent="validateSubmit"
           class="contactForm"
           name="contact"
-          action="/thanks"
           method="POST"
           netlify
           data-netlify-recaptcha="true"
@@ -117,7 +116,6 @@
 </template>
 
 <script>
-import axios from '@nuxtjs/axios'
 export default {
   data () {
     return {
@@ -146,20 +144,19 @@ export default {
     }
   },
   methods: {
-    submitForm () {
-      const params = new URLSearchParams()
-
-      params.append('form-name', 'contact') // Forms使うのに必要
-
-      params.append('name', this.name)
-      params.append('email', this.email)
-      params.append('body', this.body)
-
-      axios
-        .post('/thanks', params)
-        .then((response) => {
-          this.isSubmit = true
-        })
+    async submitForm (e) {
+      const form = e.target
+      const body = new URLSearchParams(new FormData(form))
+      try {
+        const res = await fetch(form.action, { method: 'POST', body })
+        if (res.ok) {
+          this.$router.push({ name: 'thanks' })
+        } else {
+          throw res
+        }
+      } catch (err) {
+        console.error(err)
+      }
     },
     /**
      * 必須バリデーション.
