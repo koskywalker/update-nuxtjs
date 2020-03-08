@@ -13,6 +13,7 @@
           @submit="validateSubmit"
           class="contactForm"
           name="contact"
+          action="/thanks-test"
           method="POST"
           netlify
           data-netlify-recaptcha="true"
@@ -237,9 +238,7 @@ export default {
         this.body.errorFlg
       ) {
         e.preventDefault()
-        return
       }
-      this.$router.push('/thanks')
     },
   },
 }
