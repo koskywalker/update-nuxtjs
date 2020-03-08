@@ -10,7 +10,6 @@
       </h1>
       <client-only>
         <form
-          @submit="validateSubmit"
           class="contactForm"
           name="contact"
           action="/thanks"
