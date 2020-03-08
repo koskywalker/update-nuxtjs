@@ -144,6 +144,11 @@ export default {
     }
   },
   methods: {
+    /**
+     * Ajax による Form 送信
+     *
+     * @param {Object} e イベント
+     */
     async submitForm (e) {
       const form = e.target
       const body = new URLSearchParams(new FormData(form))
@@ -158,6 +163,7 @@ export default {
         console.error(err)
       }
     },
+
     /**
      * 必須バリデーション.
      *
