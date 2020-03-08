@@ -16,6 +16,7 @@
           action="/thanks"
           method="POST"
           netlify
+          data-netlify-recaptcha="true"
         >
           <input
             type="hidden"
@@ -103,6 +104,7 @@
               />
             </label>
           </p>
+          <div data-netlify-recaptcha="true" />
           <p>
             <button class="contactForm__button">
               送信
