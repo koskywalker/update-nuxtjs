@@ -31,6 +31,23 @@ p {
 }
 
 // 文字
+h1 {
+  font-size: $fontSize_l;
+
+  @include mq($mq_tablet) {
+    font-size: $fontSize_xl;
+  }
+}
+
+h2 {
+  font-size: $fontSize_l;
+}
+
+h3,
+h4 {
+  font-size: $fontSize_m;
+}
+
 pre {
   margin: 0;
   white-space: pre-wrap;

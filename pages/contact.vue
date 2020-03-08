@@ -24,9 +24,6 @@
           >
           <p>
             <label class="contactForm__label">
-              <font-awesome-icon
-                icon="user"
-              />
               {{ name.label }}
               <ul
                 v-show="name.errors"
@@ -55,9 +52,6 @@
           </p>
           <p>
             <label class="contactForm__label">
-              <font-awesome-icon
-                icon="envelope"
-              />
               {{ email.label }}
               <ul
                 v-show="email.errors"
@@ -86,9 +80,6 @@
           </p>
           <p>
             <label class="contactForm__label">
-              <font-awesome-icon
-                icon="pen"
-              />
               {{ body.label }}
               <ul
                 v-show="body.errors"
@@ -272,14 +263,18 @@ export default {
 
   &Inner {
     background: $color_background_base_dark;
-    border-radius: 20px;
+    border-radius: 2rem;
     box-shadow:
       -2px -2px 5px rgba(255, 255, 255, 1),
       3px 3px 5px rgba(0, 0, 0, 0.1);
     margin: 0 auto 0;
     max-width: $width_single_column;
-    padding: 2rem;
+    padding: 2rem 1rem;
     width: $width_base;
+
+    @include mq($mq_tablet) {
+      padding: 2rem;
+    }
   }
 
   &Form {
@@ -330,7 +325,8 @@ export default {
       transition: all 0.2s ease-in-out;
       width: 100%;
 
-      &:hover {
+      &:hover,
+      &:focus {
         box-shadow: -2px -2px 5px $color_white, 2px 2px 5px $color_shadow_light;
       }
 

@@ -10,12 +10,6 @@ export default {
   /*
   ** Global CSS
   */
-  css: [
-    { src: '~/assets/scss/app.scss', lang: 'scss' },
-  ],
-  /*
-  ** Global Sub CSS
-  */
   styleResources: {
     scss: [
       '~/assets/scss/settings/variables.scss',
@@ -23,6 +17,7 @@ export default {
       '~/assets/scss/tools/animation.scss',
       '~/assets/scss/generic/reset.scss',
       '~/assets/scss/base/base.scss',
+      '~/assets/scss/app.scss',
     ],
   },
   /*

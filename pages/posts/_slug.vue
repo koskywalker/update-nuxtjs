@@ -152,12 +152,7 @@ export default {
       }
 
       &Title {
-        font-size: $fontSize_l;
         line-height: 1.3;
-
-        @include mq($mq_tablet) {
-          font-size: $fontSize_xl;
-        }
       }
 
       &Description {
@@ -240,7 +235,6 @@ export default {
 
   h3 {
     border-bottom: 1px solid $color_gray_middle;
-    font-size: 1.2rem;
     padding-bottom: .5rem;
   }
 

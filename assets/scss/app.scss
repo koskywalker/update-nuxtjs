@@ -1,0 +1,5 @@
+.br_sp {
+  @include mq($mq_tablet) {
+    display: none;
+  }
+}
