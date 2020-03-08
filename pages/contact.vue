@@ -13,7 +13,7 @@
           @submit="validateSubmit"
           class="contactForm"
           name="contact"
-          action="/thanks-test"
+          action="/thanks"
           method="POST"
           netlify
           data-netlify-recaptcha="true"
@@ -145,6 +145,20 @@ export default {
     }
   },
   methods: {
+    async submitForm (e) {
+      const form = e.target
+      const body = new URLSearchParams(new FormData(form))
+      try {
+        const res = await fetch(form.action, { method: 'POST', body })
+        if (res.ok) {
+          this.$router.push({ name: 'thanks' })
+        } else {
+          throw res
+        }
+      } catch (err) {
+        console.error(err)
+      }
+    },
     /**
      * 必須バリデーション.
      *
@@ -238,7 +252,9 @@ export default {
         this.body.errorFlg
       ) {
         e.preventDefault()
+        return
       }
+      this.submitForm(e)
     },
   },
 }
