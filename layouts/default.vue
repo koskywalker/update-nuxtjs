@@ -56,7 +56,8 @@ export default {
       // { property: 'fb:app_id', content: process.env.FACEBOOK_APP_ID }
       ],
       link: [
-        { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
+        { rel: 'icon', type: 'image/png', href: '/favicon_16.png', sizes: '16x16' },
+        { rel: 'icon', type: 'image/png', href: '/favicon_32.png', sizes: '32x32' },
       ],
     }
   },
