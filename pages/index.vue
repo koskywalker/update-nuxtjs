@@ -16,6 +16,7 @@
 </template>
 
 <script>
+import { mapState, mapGetters } from 'vuex'
 import MainVisual from '@/components/MainVisual'
 import ArticleList from '@/components/ArticleList'
 import TheSidebar from '@/layouts/TheSidebar'
@@ -27,9 +28,8 @@ export default {
     TheSidebar,
   },
   computed: {
-    posts () {
-      return this.$store.state.posts.posts
-    },
+    ...mapState('posts', ['posts']),
+    ...mapGetters('posts', ['linkTo']),
   },
   async fetch ({ store, params }) {
     await store.dispatch('posts/getPosts', params.slug)

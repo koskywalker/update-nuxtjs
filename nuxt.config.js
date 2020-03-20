@@ -37,6 +37,14 @@ export default {
     { src: '~/plugins/markdown-it.js' },
     { src: '~/plugins/prism.js' },
   ],
+  /**
+   * Middleware
+   */
+  router: {
+    middleware: [
+      'getContentful',
+    ],
+  },
   /*
   ** Nuxt.js dev-modules
   */

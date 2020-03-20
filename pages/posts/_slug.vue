@@ -1,66 +1,59 @@
 <template>
   <div class="post">
-    <template v-if="isLoading">
-      <div>
-        Loading
-      </div>
-    </template>
-    <template v-else>
+    <div
+      class="header postHeader"
+    >
       <div
-        class="header postHeader"
+        class="headerInner"
       >
-        <div
-          class="headerInner"
-        >
-          <div class="headerInner__body">
-            <div class="headerInner__bodyItem headerInner__bodyThumbnail">
-              <img
-                ref="image"
-                :src="currentPost.fields.heroImage.fields.file.url + '?w=500'"
-                :alt="currentPost.fields.heroImage.fields.description"
-                @load="afterLoadedImage"
-                class="headerInner__bodyThumbnailImage"
-              >
-            </div>
-            <h1 class="headerInner__bodyItem headerInner__bodyTitle">
-              {{ currentPost.fields.title }}
-            </h1>
-            <p class="headerInner__item headerInner__bodyDescription">
-              {{ currentPost.fields.description }}
-            </p>
-            <p class="headerInner__bodyItem headerInner__bodyDate">
-              <span class="headerInner__bodyDatePublished">
-                投稿日: {{ (new Date(currentPost.fields.publishDate)).toLocaleDateString() }}
-              </span>
-              <span
-                v-if="currentPost.sys.updatedAt"
-                class="headerInner__bodyDateUpdated"
-              >
-                更新日: {{ (new Date(currentPost.sys.updatedAt)).toLocaleDateString() }}
-              </span>
-            </p>
-            <div class="headerInner__bodyItem headerInner__bodyTagList">
-              <nuxt-link
-                v-for="(tag, index) in currentPost.fields.tags"
-                :key="index"
-                :to="tag"
-                class="headerInner__bodyTagListItem"
-              >
-                {{ tag }}
-              </nuxt-link>
-            </div>
+        <div class="headerInner__body">
+          <div class="headerInner__bodyItem headerInner__bodyThumbnail">
+            <img
+              ref="image"
+              :src="currentPost.fields.heroImage.fields.file.url + '?w=500'"
+              :alt="currentPost.fields.heroImage.fields.description"
+              @load="afterLoadedImage"
+              class="headerInner__bodyThumbnailImage"
+            >
+          </div>
+          <h1 class="headerInner__bodyItem headerInner__bodyTitle">
+            {{ currentPost.fields.title }}
+          </h1>
+          <p class="headerInner__item headerInner__bodyDescription">
+            {{ currentPost.fields.description }}
+          </p>
+          <p class="headerInner__bodyItem headerInner__bodyDate">
+            <span class="headerInner__bodyDatePublished">
+              投稿日: {{ (new Date(currentPost.fields.publishDate)).toLocaleDateString() }}
+            </span>
+            <span
+              v-if="currentPost.sys.updatedAt"
+              class="headerInner__bodyDateUpdated"
+            >
+              更新日: {{ (new Date(currentPost.sys.updatedAt)).toLocaleDateString() }}
+            </span>
+          </p>
+          <div class="headerInner__bodyItem headerInner__bodyTagList">
+            <nuxt-link
+              v-for="(tag, index) in currentPost.fields.tags"
+              :key="index"
+              :to="tag"
+              class="headerInner__bodyTagListItem"
+            >
+              {{ tag }}
+            </nuxt-link>
           </div>
         </div>
       </div>
-      <div class="body postBody">
-        <div class="bodyInner">
-          <div
-            v-html="$md.render(currentPost.fields.body)"
-            class="bodyInnerContent line-numbers"
-          />
-        </div>
+    </div>
+    <div class="body postBody">
+      <div class="bodyInner">
+        <div
+          v-html="$md.render(currentPost.fields.body)"
+          class="bodyInnerContent line-numbers"
+        />
       </div>
-    </template>
+    </div>
   </div>
 </template>
 
@@ -68,16 +61,14 @@
 import Prism from '~/plugins/prism'
 
 export default {
-  computed: {
-    currentPost () {
-      return this.$store.state.post.currentPost
-    },
-    isLoading () {
-      return this.$store.state.post.isLoading
-    },
-  },
-  async fetch ({ store, params }) {
-    await store.dispatch('post/getPostBySlug', params.slug)
+  async asyncData ({ payload, store, params, error }) {
+    const currentPost = payload || await store.state.posts.posts.find(post => post.fields.slug === params.slug)
+
+    if (currentPost) {
+      return { currentPost }
+    } else {
+      return error({ statusCode: 404 })
+    }
   },
   mounted () {
     Prism.highlightAll()
