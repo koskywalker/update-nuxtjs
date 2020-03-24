@@ -40,7 +40,7 @@
               :to="tag"
               class="headerInner__bodyTagListItem"
             >
-              {{ tag }}
+              {{ tag.fields.name }}
             </nuxt-link>
           </div>
         </div>

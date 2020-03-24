@@ -4,7 +4,13 @@
     <div class="container">
       <div class="containerInner">
         <main class="main">
-          <h1>{{ tag.fields.name }}</h1>
+          <h1 class="tagTitle">
+            <font-awesome-icon
+              :icon="'list'"
+              class="followInner__itemIcon"
+            />
+            {{ tag.fields.name }}に関する記事一覧
+          </h1>
           <article-list
             ref="articleList"
             :posts="relatedPosts(tag)"
@@ -108,5 +114,14 @@ export default {
   @include mq($mq_pc) {
     width: 30%;
   }
+}
+
+.tagTitle {
+  border-bottom: .3rem solid;
+  border-image: linear-gradient(to right, $color_navy, $color_blue 50%, $color_green);
+  border-image-slice: 1;
+  font-size: $fontSize_l;
+  margin-bottom: 2rem;
+  padding-bottom: .3rem;
 }
 </style>
