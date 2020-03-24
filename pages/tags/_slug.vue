@@ -1,12 +1,13 @@
 <template>
-  <div class="tag">
+  <div>
     <main-visual />
     <div class="container">
       <div class="containerInner">
         <main class="main">
+          <h1>{{ tag.fields.name }}</h1>
           <article-list
             ref="articleList"
-            :posts="posts"
+            :posts="relatedPosts(tag)"
           />
         </main>
         <the-sidebar class="sidebar" />
@@ -16,6 +17,7 @@
 </template>
 
 <script>
+import { mapState, mapGetters } from 'vuex'
 import MainVisual from '@/components/MainVisual'
 import ArticleList from '@/components/ArticleList'
 import TheSidebar from '@/layouts/TheSidebar'
@@ -27,12 +29,16 @@ export default {
     TheSidebar,
   },
   computed: {
-    posts () {
-      return this.$store.state.posts.posts
-    },
+    ...mapState('posts', ['posts']),
+    ...mapGetters('posts', ['linkTo', 'relatedPosts']),
   },
-  async fetch ({ store, params }) {
-    await store.dispatch('posts/getPosts', params.slug)
+  async asyncData ({ payload, store, params, error }) {
+    const tag = payload || await store.state.posts.tags.find(tag => tag.fields.slug === params.slug)
+    if (tag) {
+      return { tag }
+    } else {
+      return error({ statusCode: 404 })
+    }
   },
   mounted () {
     this.$fadeinPage()
