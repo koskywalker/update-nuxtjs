@@ -100,10 +100,16 @@ export default {
         client.getEntries({
           content_type: process.env.CTF_BLOG_POST_TYPE_ID,
         }),
-      ]).then(([ posts ]) => {
+        client.getEntries({
+          content_type: 'tag',
+        }),
+      ]).then(([ posts, tags ]) => {
         return [
           ...posts.items.map((post) => {
             return { route: `posts/${post.fields.slug}`, payload: post }
+          }),
+          ...tags.items.map((tag) => {
+            return { route: `tags/${tag.fields.slug}`, payload: tag }
           }),
         ]
       })
