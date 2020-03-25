@@ -8,7 +8,7 @@
         <nuxt-link
           v-for="(tag, index) in tags"
           :key="index"
-          :to="tag.slug"
+          :to="'/tags/' + tag.slug"
           class="tags__item"
         >
           {{ tag.name }}

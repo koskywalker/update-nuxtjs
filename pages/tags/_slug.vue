@@ -4,9 +4,16 @@
     <div class="container">
       <div class="containerInner">
         <main class="main">
+          <h1 class="tagTitle">
+            <font-awesome-icon
+              :icon="'list'"
+              class="followInner__itemIcon"
+            />
+            {{ tag.fields.name }}に関する記事一覧
+          </h1>
           <article-list
             ref="articleList"
-            :posts="posts"
+            :posts="relatedPosts(tag)"
           />
         </main>
         <the-sidebar class="sidebar" />
@@ -29,10 +36,15 @@ export default {
   },
   computed: {
     ...mapState('posts', ['posts']),
-    ...mapGetters('posts', ['linkTo']),
+    ...mapGetters('posts', ['linkTo', 'relatedPosts']),
   },
-  async fetch ({ store, params }) {
-    await store.dispatch('posts/getPosts', params.slug)
+  async asyncData ({ payload, store, params, error }) {
+    const tag = payload || await store.state.posts.tags.find(tag => tag.fields.slug === params.slug)
+    if (tag) {
+      return { tag }
+    } else {
+      return error({ statusCode: 404 })
+    }
   },
   mounted () {
     this.$fadeinPage()
@@ -102,5 +114,14 @@ export default {
   @include mq($mq_pc) {
     width: 30%;
   }
+}
+
+.tagTitle {
+  border-bottom: .3rem solid;
+  border-image: linear-gradient(to right, $color_navy, $color_blue 50%, $color_green);
+  border-image-slice: 1;
+  font-size: $fontSize_l;
+  margin-bottom: 2rem;
+  padding-bottom: .3rem;
 }
 </style>

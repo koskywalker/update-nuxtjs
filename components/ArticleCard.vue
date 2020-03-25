@@ -1,6 +1,6 @@
 <template>
   <nuxt-link
-    :to="post.fields.slug"
+    :to="linkTo('posts', post)"
     class="articleCard"
   >
     <div class="articleCard__thumbnail">
@@ -16,6 +16,8 @@
 </template>
 
 <script>
+import { mapGetters } from 'vuex'
+
 export default {
   props: {
     post: {
@@ -33,6 +35,9 @@ export default {
     return {
       thumbnailSizeString: this.thumbnailSize.toString(),
     }
+  },
+  computed: {
+    ...mapGetters('posts', ['linkTo']),
   },
 }
 </script>

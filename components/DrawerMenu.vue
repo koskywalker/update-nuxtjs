@@ -111,6 +111,7 @@ export default {
   justify-content: center;
 
   &__input {
+    background-color: $color_gray_light;
     width: 70%;
   }
 

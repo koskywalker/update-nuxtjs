@@ -1,7 +1,7 @@
 <template>
   <article class="article">
     <nuxt-link
-      :to="'posts/' + post.fields.slug"
+      :to="linkTo('posts', post)"
       class="articleMain"
     >
       <div class="articleMainImage">
@@ -36,16 +36,18 @@
       <nuxt-link
         v-for="(tag, index) in post.fields.tags"
         :key="index"
-        :to="post.fields.slug"
+        :to="linkTo('tags', tag)"
         class="articleTagListItem"
       >
-        {{ tag }}
+        {{ tag.fields.name }}
       </nuxt-link>
     </div>
   </article>
 </template>
 
 <script>
+import { mapGetters } from 'vuex'
+
 export default {
   props: {
     post: {
@@ -54,6 +56,9 @@ export default {
         return {}
       },
     },
+  },
+  computed: {
+    ...mapGetters('posts', ['linkTo']),
   },
 }
 </script>
