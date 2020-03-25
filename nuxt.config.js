@@ -57,7 +57,6 @@ export default {
   ** Nuxt.js modules
   */
   modules: [
-    '@nuxtjs/axios',
     '@nuxtjs/pwa',
     '@nuxtjs/dotenv',
     '@nuxtjs/style-resources',
@@ -77,11 +76,6 @@ export default {
         icons: ['fab'],
       },
     ],
-  },
-  /*
-  ** Axios module configuration
-  */
-  axios: {
   },
   /*
   ** Build configuration
