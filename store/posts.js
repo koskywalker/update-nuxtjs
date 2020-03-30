@@ -12,8 +12,8 @@ export const getters = {
       params: { slug: obj.fields.slug },
     }
   },
-  relatedPosts: state => (tag) => {
-    return state.posts.filter(post => post.fields.tags.some(postTag => postTag.sys.id === tag.sys.id))
+  relatedPosts: state => (currentTag) => {
+    return state.posts.filter(post => post.fields.tags.some(postTag => postTag.sys.id === currentTag.sys.id))
   },
 }
 
@@ -21,8 +21,13 @@ export const mutations = {
   setPosts (state, payload) {
     state.posts = payload
   },
-  setTags (state, payload) {
-    state.tags = payload
+  setTags (state, entries) {
+    state.tags = []
+    entries.map((entry) => {
+      if (entry.sys.contentType.sys.id === 'tag') {
+        state.tags.push(entry)
+      }
+    })
   },
 }
 
@@ -31,16 +36,10 @@ export const actions = {
     await client.getEntries({
       content_type: process.env.CTF_BLOG_POST_TYPE_ID,
       order: '-fields.publishDate',
+      include: 1,
     }).then((response) => {
+      commit('setTags', response.includes.Entry)
       commit('setPosts', response.items)
-    }).catch(console.error)
-  },
-  async getTags ({ commit }) {
-    await client.getEntries({
-      content_type: 'tag',
-      order: 'fields.sort',
-    }).then((response) => {
-      commit('setTags', response.items)
     }).catch(console.error)
   },
 }

@@ -38,8 +38,8 @@ export default {
     ...mapState('posts', ['posts']),
     ...mapGetters('posts', ['linkTo', 'relatedPosts']),
   },
-  async asyncData ({ payload, store, params, error }) {
-    const tag = payload || await store.state.posts.tags.find(tag => tag.fields.slug === params.slug)
+  asyncData ({ payload, store, params, error }) {
+    const tag = payload || store.state.posts.tags.find(tag => tag.fields.slug === params.slug)
     if (tag) {
       return { tag }
     } else {
