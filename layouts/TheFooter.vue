@@ -8,10 +8,10 @@
         <nuxt-link
           v-for="(tag, index) in tags"
           :key="index"
-          :to="'/tags/' + tag.slug"
+          :to="linkTo('tags', tag)"
           class="tags__item"
         >
-          {{ tag.name }}
+          {{ tag.fields.name }}
         </nuxt-link>
       </div>
     </section>
@@ -31,16 +31,19 @@
 </template>
 
 <script>
+import { mapState, mapGetters } from 'vuex'
+
 export default {
   data () {
     return {
       blogName: this.$blogInfo.blogName,
-      tags: this.$tags,
       blogDescription: this.$blogInfo.baseDescription,
       blogTechnology: this.$blogInfo.aboutBlogTechnology,
     }
   },
   computed: {
+    ...mapState('posts', ['tags']),
+    ...mapGetters('posts', ['linkTo']),
     today () {
       return this.$moment().year()
     },
