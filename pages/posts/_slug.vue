@@ -37,7 +37,7 @@
             <nuxt-link
               v-for="(tag, index) in currentPost.fields.tags"
               :key="index"
-              :to="tag"
+              :to="linkTo('tags', tag)"
               class="headerInner__bodyTagListItem"
             >
               {{ tag.fields.name }}
@@ -58,9 +58,13 @@
 </template>
 
 <script>
+import { mapGetters } from 'vuex'
 import Prism from '~/plugins/prism'
 
 export default {
+  computed: {
+    ...mapGetters('posts', ['linkTo']),
+  },
   async asyncData ({ payload, store, params, error }) {
     const currentPost = payload || await store.state.posts.posts.find(post => post.fields.slug === params.slug)
 
