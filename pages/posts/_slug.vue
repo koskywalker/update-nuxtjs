@@ -173,6 +173,11 @@ export default {
           line-height: 1;
           margin-right: .4rem;
           padding: .2rem .4rem;
+
+          &:hover {
+            background-color: $color_white;
+            color: $color_black_transparent;
+          }
         }
       }
     }
