@@ -59,15 +59,10 @@ export default {
   align-content: center;
   display: flex;
   flex-wrap: wrap;
-  height: 20vh;
   text-align: center;
 
-  @include mq($mq_tablet) {
-    height: 17vh;
-  }
-
   &Logo {
-    margin: 0 auto 1rem;
+    margin: 1rem auto 1rem;
 
     &Text {
       @extend %font_accent;
