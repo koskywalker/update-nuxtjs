@@ -1,26 +1,28 @@
 <template>
   <header class="header">
-    <h1
-      v-if="isTopPage"
-      class="logo"
-    >
-      <nuxt-link
-        class="logoLink"
-        to="/"
+    <div class="headerLogo">
+      <h1
+        v-if="isTopPage"
+        class="headerLogoText"
       >
-        {{ blogName }}
-      </nuxt-link>
-    </h1>
-    <div
-      v-else
-      class="logo"
-    >
-      <nuxt-link
-        class="logoLink"
-        to="/"
+        <nuxt-link
+          class="headerLogoLink"
+          to="/"
+        >
+          {{ blogName }}
+        </nuxt-link>
+      </h1>
+      <div
+        v-else
+        class="headerLogoText"
       >
-        {{ blogName }}
-      </nuxt-link>
+        <nuxt-link
+          class="headerLogoLink"
+          to="/"
+        >
+          {{ blogName }}
+        </nuxt-link>
+      </div>
     </div>
     <nav class="globalNav">
       <nuxt-link
@@ -53,7 +55,6 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-// .header
 .header {
   align-content: center;
   display: flex;
@@ -64,32 +65,33 @@ export default {
   @include mq($mq_tablet) {
     height: 17vh;
   }
+
+  &Logo {
+    margin: 0 auto 1rem;
+
+    &Text {
+      @extend %font_accent;
+      display: inline-block;
+      font-size: $fontSize_3l;
+      font-weight: normal;
+      line-height: 1;
+      width: 100%;
+
+      @include mq($mq_tablet) {
+        font-size: $fontSize_4l;
+      }
+
+      &:hover {
+        transform: scale(1.1);
+      }
+    }
+
+    &Link {
+      color: $color_black;
+    }
+  }
 }
 
-// .logo
-.logo {
-  @extend %font_accent;
-  display: inline-block;
-  font-size: $fontSize_3l;
-  font-weight: normal;
-  line-height: 1;
-  margin-bottom: 1rem;
-  width: 100%;
-
-  @include mq($mq_tablet) {
-    font-size: $fontSize_4l;
-  }
-
-  &:hover {
-    transform: scale(1.1);
-  }
-
-  &Link {
-    color: $color_black;
-  }
-}
-
-// .globalNav
 .globalNav {
   display: flex;
   -webkit-overflow-scrolling: touch;
@@ -105,12 +107,10 @@ export default {
     white-space: normal;
   }
 
-  // .globalNav__item
   &__item {
     line-height: 1.5;
     margin: 0 5px;
 
-    // .globalNav__item:first-child
     &:first-child {
       display: none;
 
@@ -123,7 +123,6 @@ export default {
       transform: scale(1.1);
     }
 
-    // .globalNav__itemName
     &Name {
       border-radius: 10px;
       color: $color_white;
@@ -141,7 +140,6 @@ export default {
     }
 
     @for $index from 1 through length($colors) {
-      // .globalNav__item:nth-of-type($index) .globalNav__itemName
       &:nth-of-type(#{$index}) &Name {
         background-color: #{nth($colors, $index)};
 
@@ -151,7 +149,6 @@ export default {
       }
     }
 
-    // .globalNav__itemLabel
     &Label {
       @extend %font_accent;
       display: none;
@@ -163,7 +160,6 @@ export default {
     }
 
     @for $index from 1 through length($colors) {
-      // .globalNav__item:nth-of-type($index) .globalNav__itemLabel
       &:nth-of-type(#{$index}) &Label {
         color: #{nth($colors, $index)};
       }
