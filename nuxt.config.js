@@ -37,9 +37,9 @@ export default {
     { src: '~/plugins/markdown-it.js' },
     { src: '~/plugins/prism.js' },
   ],
-  /**
-   * Middleware
-   */
+  /*
+  ** Middleware
+  */
   router: {
     middleware: [
       'getContentful',
