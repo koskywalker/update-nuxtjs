@@ -61,6 +61,7 @@ export default {
     '@nuxtjs/dotenv',
     '@nuxtjs/style-resources',
     'nuxt-fontawesome',
+    '~/modules/hook',
   ],
   /*
   ** FontAwesome

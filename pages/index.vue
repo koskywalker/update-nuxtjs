@@ -16,7 +16,6 @@
 </template>
 
 <script>
-import { mapState } from 'vuex'
 import MainVisual from '@/components/MainVisual'
 import ArticleList from '@/components/ArticleList'
 import TheSidebar from '@/layouts/TheSidebar'
@@ -28,7 +27,15 @@ export default {
     TheSidebar,
   },
   computed: {
-    ...mapState('posts', ['posts']),
+    posts () {
+      const postsPerPage = 3
+      let pageNumber = 1
+      if (typeof this.$route.params.id !== 'undefined') {
+        pageNumber = this.$route.params.id
+      }
+      const postsCopy = [...this.$store.state.posts.posts]
+      return postsCopy.splice((pageNumber - 1) * postsPerPage, postsPerPage)
+    },
   },
   async fetch ({ store, params }) {
     await store.dispatch('posts/getPosts', params.slug)
