@@ -103,6 +103,9 @@ export default {
           ...posts.items.map((post) => {
             return { route: `posts/${post.fields.slug}`, payload: post }
           }),
+          ...Array(Math.ceil(posts.items.length / 3)).fill(null).map((_, i) => {
+            return `page/${i + 1}`
+          }),
           ...tags.items.map((tag) => {
             return { route: `tags/${tag.fields.slug}`, payload: tag }
           }),
