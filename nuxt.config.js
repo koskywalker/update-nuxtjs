@@ -29,7 +29,6 @@ export default {
     { src: '~/plugins/my-info.js' },
     { src: '~/plugins/global-menu.js' },
     { src: '~/plugins/footer-menu-fixed.js' },
-    { src: '~/plugins/tags.js' },
     { src: '~/plugins/vue-library.js' },
     { src: '~/plugins/particles.js' },
     { src: '~/plugins/utility.js' },
