@@ -100,7 +100,7 @@ export default {
           content_type: 'tag',
         }),
       ]).then(([ posts, tags ]) => {
-        const postsNumberPerPage = this.$postList.postsNumberPerPage
+        const postsNumberPerPage = 1
         return [
           ...posts.items.map((post) => {
             return { route: `posts/${post.fields.slug}`, payload: post }
