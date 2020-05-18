@@ -101,7 +101,9 @@ export default {
         }),
       ]).then(([ posts, tags ]) => {
         const postsNumberPerPage = 1
-        console.log(tags)
+        console.log(tags.items[3].sys.space)
+        console.log(tags.items[3].sys.environment)
+        console.log(tags.items[3].sys.contentType)
         return [
           ...posts.items.map((post) => {
             return { route: `posts/${post.fields.slug}`, payload: post }
