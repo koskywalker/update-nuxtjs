@@ -110,6 +110,9 @@ export default {
           ...tags.items.map((tag) => {
             return { route: `tags/${tag.fields.slug}`, payload: tag }
           }),
+          ...Array(Math.floor(tags.items.length / this.$postList.postsNumberPerPage)).fill(null).map((tag, i) => {
+            return `tags/${tag.fields.slug}/${i + 2}`
+          }),
         ]
       })
     },
