@@ -101,7 +101,7 @@ export default {
         }),
       ]).then(([ posts, tags ]) => {
         const postsNumberPerPage = 1
-        console.log(tags.items)
+        console.log(tags)
         return [
           ...posts.items.map((post) => {
             return { route: `posts/${post.fields.slug}`, payload: post }
@@ -115,7 +115,7 @@ export default {
           // ...tags.items.map((tag) => {
           //   Array(Math.floor(tags.items.length / postsNumberPerPage)).fill(null).map((_, i) => {
           //     return `tags/${tag.fields.slug}/${i + 2}`
-          // })
+          // }))
         ]
       })
     },
