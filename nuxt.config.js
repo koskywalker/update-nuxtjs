@@ -100,17 +100,18 @@ export default {
           content_type: 'tag',
         }),
       ]).then(([ posts, tags ]) => {
+        const postsNumberPerPage = this.$postList.postsNumberPerPage
         return [
           ...posts.items.map((post) => {
             return { route: `posts/${post.fields.slug}`, payload: post }
           }),
-          ...Array(Math.floor(posts.items.length / this.$postList.postsNumberPerPage)).fill(null).map((_, i) => {
+          ...Array(Math.floor(posts.items.length / postsNumberPerPage)).fill(null).map((_, i) => {
             return `page/${i + 2}`
           }),
           ...tags.items.map((tag) => {
             return { route: `tags/${tag.fields.slug}`, payload: tag }
           }),
-          ...Array(Math.floor(tags.items.length / this.$postList.postsNumberPerPage)).fill(null).map((tag, i) => {
+          ...Array(Math.floor(tags.items.length / postsNumberPerPage)).fill(null).map((tag, i) => {
             return `tags/${tag.fields.slug}/${i + 2}`
           }),
         ]
