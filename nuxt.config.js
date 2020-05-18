@@ -29,7 +29,9 @@ export default {
     { src: '~/plugins/my-info.js' },
     { src: '~/plugins/global-menu.js' },
     { src: '~/plugins/footer-menu-fixed.js' },
+    { src: '~/plugins/post-list.js' },
     { src: '~/plugins/vue-library.js' },
+    { src: '~/plugins/vuejs-paginate.js', mode: 'client' },
     { src: '~/plugins/particles.js' },
     { src: '~/plugins/utility.js' },
     { src: '~/plugins/router-option.js' },
@@ -102,7 +104,7 @@ export default {
           ...posts.items.map((post) => {
             return { route: `posts/${post.fields.slug}`, payload: post }
           }),
-          ...Array(Math.floor(posts.items.length / 3)).fill(null).map((_, i) => {
+          ...Array(Math.floor(posts.items.length / this.$postList.postsNumberPerPage)).fill(null).map((_, i) => {
             return `page/${i + 2}`
           }),
           ...tags.items.map((tag) => {
