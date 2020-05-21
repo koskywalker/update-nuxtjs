@@ -113,7 +113,7 @@ export default {
           // }),
           ...tags.items.map((tag) => {
             // return { route: `tags/${tag.fields.slug}`, payload: tag }
-            const tagPostsNumber = posts.fields.tags.some(postTag => postTag.sys.id === tag.sys.id).length
+            const tagPostsNumber = posts.filter(post => post.fields.tags.some(postTag => postTag.sys.id === tag.sys.id)).length
             console.log(tagPostsNumber)
             // Array(Math.floor(tags.items.length / postsNumberPerPage)).fill(null).map((_, i) => {
             //   // return `tags/${tag.fields.slug}/${i + 2}`
