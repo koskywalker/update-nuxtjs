@@ -112,10 +112,11 @@ export default {
             return { route: `tags/${tag.fields.slug}`, payload: tag }
           }),
           ...tags.items.map((tag) => {
-            Array(Math.floor(tags.items.length / postsNumberPerPage)).fill(null).map((_, i) => {
-              // return `tags/${tag.fields.slug}/${i + 2}`
-              return { route: `tags/${tag.fields.slug}`, payload: tag }
-            })
+            return { route: `tags/${tag.fields.slug}`, payload: tag }
+            // Array(Math.floor(tags.items.length / postsNumberPerPage)).fill(null).map((_, i) => {
+            //   // return `tags/${tag.fields.slug}/${i + 2}`
+            //   return { route: `tags/${tag.fields.slug}`, payload: tag }
+            // })
           }),
           // 'tags/general/1'
         ]
