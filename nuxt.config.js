@@ -106,7 +106,7 @@ export default {
             return { route: `posts/${post.fields.slug}`, payload: post }
           }),
           ...Array(Math.floor(posts.items.length / postsNumberPerPage)).fill(null).map((_, i) => {
-            return `page/${i + 2}`
+            return { route: `page/${i + 2}` }
           }),
           ...tags.items.map((tag) => {
             return { route: `tags/${tag.fields.slug}`, payload: tag }
@@ -117,9 +117,8 @@ export default {
             const tagPostsNumber = tagPosts.length
             // const tagRoutes = []
             return Array(Math.floor(tagPostsNumber / postsNumberPerPage)).fill(null).map((_, i) => {
-              return `tags/${tag.fields.slug}/${i + 2}`
               // tagRoutes.push(`tags/${tag.fields.slug}/${i + 2}`)
-              // return { route: `tags/${tag.fields.slug}/${i + 2}`, payload: tag }
+              return { route: `tags/${tag.fields.slug}/${i + 2}`, payload: tag }
             })
           }),
         ]
