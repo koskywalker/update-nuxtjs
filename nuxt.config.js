@@ -113,7 +113,7 @@ export default {
             return { route: `tags/${tag.fields.slug}`, payload: tag }
           }),
           tags.items.map((tag) => {
-            const tagPosts = posts.items.filter(post => post.fields.tags.some(postTag => postTag.sys.id === tag.sys.id))
+            const tagPosts = posts.items.filter(post => post.fields.tags.some(postTag => postTag.sys.id === tag.sys.id)) || []
             const tagPostsNumber = tagPosts.length
             Array(Math.floor(tagPostsNumber / postsNumberPerPage)).fill(null).map((_, i) => {
               tagPathList.push({ route: `tags/${tag.fields.slug}/${i + 1}`, payload: tag })
