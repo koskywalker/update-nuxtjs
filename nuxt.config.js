@@ -110,14 +110,14 @@ export default {
             return { route: `page/${i + 1}` }
           }),
           ...tags.items.map((tag) => {
-            return `tags/${tag.fields.slug}`
+            return { route: `tags/${tag.fields.slug}`, payload: tag }
           }),
           tags.items.map((tag) => {
-            const tagPosts = posts.items.filter(post => post.fields.tags.some(postTag => postTag.sys.id === tag.sys.id))
-            const tagPostsNumber = tagPosts.length
-            Array(Math.floor(tagPostsNumber / postsNumberPerPage)).fill(null).map((_, i) => {
-              tagPathList.push(`tags/${tag.fields.slug}/${i + 1}`)
-            })
+            posts.items.filter(post => post.fields.tags.some(postTag => postTag.sys.id === tag.sys.id))
+            // const tagPostsNumber = tagPosts.length
+            // Array(Math.floor(tagPostsNumber / postsNumberPerPage)).fill(null).map((_, i) => {
+            //   tagPathList.push({ route: `tags/${tag.fields.slug}/${i + 1}`, payload: tag })
+            // })
           }),
           ...tagPathList,
         ]
