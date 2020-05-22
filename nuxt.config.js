@@ -102,6 +102,8 @@ export default {
       ]).then(([ posts, tags ]) => {
         const postsNumberPerPage = 1
         const tagPathList = []
+        let tagPosts = []
+        let tagPostsNumber = 0
         return [
           ...posts.items.map((post) => {
             return { route: `posts/${post.fields.slug}`, payload: post }
@@ -113,11 +115,11 @@ export default {
             return { route: `tags/${tag.fields.slug}`, payload: tag }
           }),
           tags.items.map((tag) => {
-            posts.items.filter(post => post.fields.tags.some(postTag => postTag.sys.id === tag.sys.id))
-            // const tagPostsNumber = tagPosts.length
-            // Array(Math.floor(tagPostsNumber / postsNumberPerPage)).fill(null).map((_, i) => {
-            //   tagPathList.push({ route: `tags/${tag.fields.slug}/${i + 1}`, payload: tag })
-            // })
+            tagPosts = posts.items.filter(post => post.fields.tags.some(postTag => postTag.sys.id === tag.sys.id))
+            tagPostsNumber = tagPosts.length
+            Array(Math.floor(tagPostsNumber / postsNumberPerPage)).fill(null).map((_, i) => {
+              tagPathList.push({ route: `tags/${tag.fields.slug}/${i + 1}`, payload: tag })
+            })
           }),
           ...tagPathList,
         ]
