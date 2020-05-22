@@ -118,10 +118,7 @@ export default {
           ...tags.items.map((tag) => {
             return { route: `tags/${tag.fields.slug}`, payload: tag }
           }),
-          ...tagPathList.reduce((pre, current) => {
-            pre.push(...current)
-            return pre
-          }, []),
+          ...[].concat(...tagPathList),
         ]
       })
     },
