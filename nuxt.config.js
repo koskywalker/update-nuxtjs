@@ -100,7 +100,7 @@ export default {
           content_type: 'tag',
         }),
       ]).then(([ posts, tags ]) => {
-        const postsNumberPerPage = 1
+        const postsNumberPerPage = 10
         const tagPathList = tags.items.map((tag) => {
           const tagPosts = posts.items.filter(post => post.fields.tags.some(postTag => postTag.sys.id === tag.sys.id))
           const tagPostsNumber = tagPosts.length

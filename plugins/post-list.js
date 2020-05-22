@@ -1,5 +1,5 @@
 import Vue from 'vue'
 
 Vue.prototype.$postList = {
-  postsNumberPerPage: 1,
+  postsNumberPerPage: 10,
 }
