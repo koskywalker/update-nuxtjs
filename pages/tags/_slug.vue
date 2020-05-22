@@ -13,7 +13,12 @@
           </h1>
           <article-list
             ref="articleList"
-            :posts="relatedPosts(tag)"
+            :posts="postsThisPage"
+          />
+          <pagination
+            v-if="isPaginationShow"
+            :path="path"
+            :postsNumber="relatedPosts(tag).length"
           />
         </main>
         <the-sidebar class="sidebar" />
@@ -23,20 +28,32 @@
 </template>
 
 <script>
-import { mapState, mapGetters } from 'vuex'
+import { mapGetters } from 'vuex'
 import MainVisual from '@/components/MainVisual'
 import ArticleList from '@/components/ArticleList'
+import Pagination from '@/components/Pagination'
 import TheSidebar from '@/layouts/TheSidebar'
 
 export default {
   components: {
     MainVisual,
     ArticleList,
+    Pagination,
     TheSidebar,
   },
   computed: {
-    ...mapState('posts', ['posts']),
-    ...mapGetters('posts', ['linkTo', 'relatedPosts']),
+    ...mapGetters('posts', ['relatedPosts']),
+    postsThisPage () {
+      const pageNumber = parseInt(this.$route.params.id) || 1
+      const postsCopy = [...this.relatedPosts(this.tag)]
+      return postsCopy.splice((pageNumber - 1) * this.$postList.postsNumberPerPage, this.$postList.postsNumberPerPage)
+    },
+    path () {
+      return `/tags/${this.$route.params.slug}`
+    },
+    isPaginationShow () {
+      return this.relatedPosts(this.tag).length > this.$postList.postsNumberPerPage
+    },
   },
   asyncData ({ payload, store, params, error }) {
     const tag = payload || store.state.posts.tags.find(tag => tag.fields.slug === params.slug)

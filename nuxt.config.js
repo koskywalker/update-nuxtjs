@@ -29,17 +29,18 @@ export default {
     { src: '~/plugins/my-info.js' },
     { src: '~/plugins/global-menu.js' },
     { src: '~/plugins/footer-menu-fixed.js' },
-    { src: '~/plugins/tags.js' },
+    { src: '~/plugins/post-list.js' },
     { src: '~/plugins/vue-library.js' },
+    { src: '~/plugins/vuejs-paginate.js', mode: 'client' },
     { src: '~/plugins/particles.js' },
     { src: '~/plugins/utility.js' },
     { src: '~/plugins/router-option.js' },
     { src: '~/plugins/markdown-it.js' },
     { src: '~/plugins/prism.js' },
   ],
-  /**
-   * Middleware
-   */
+  /*
+  ** Middleware
+  */
   router: {
     middleware: [
       'getContentful',
@@ -61,6 +62,7 @@ export default {
     '@nuxtjs/dotenv',
     '@nuxtjs/style-resources',
     'nuxt-fontawesome',
+    '~/modules/hook',
   ],
   /*
   ** FontAwesome
@@ -98,13 +100,25 @@ export default {
           content_type: 'tag',
         }),
       ]).then(([ posts, tags ]) => {
+        const postsNumberPerPage = 10
+        const tagPathList = tags.items.map((tag) => {
+          const tagPosts = posts.items.filter(post => post.fields.tags.some(postTag => postTag.sys.id === tag.sys.id))
+          const tagPostsNumber = tagPosts.length
+          return Array(Math.floor(tagPostsNumber / postsNumberPerPage)).fill(null).map((_, i) => {
+            return { route: `tags/${tag.fields.slug}/${i + 1}`, payload: tag }
+          })
+        })
         return [
           ...posts.items.map((post) => {
             return { route: `posts/${post.fields.slug}`, payload: post }
           }),
+          ...Array(Math.floor(posts.items.length / postsNumberPerPage)).fill(null).map((_, i) => {
+            return { route: `page/${i + 1}` }
+          }),
           ...tags.items.map((tag) => {
             return { route: `tags/${tag.fields.slug}`, payload: tag }
           }),
+          ...[].concat(...tagPathList),
         ]
       })
     },

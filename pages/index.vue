@@ -6,7 +6,12 @@
         <main class="main">
           <article-list
             ref="articleList"
-            :posts="posts"
+            :posts="postsThisPage"
+          />
+          <pagination
+            v-if="isPaginationShow"
+            :path="'/page'"
+            :postsNumber="posts.length"
           />
         </main>
         <the-sidebar class="sidebar" />
@@ -19,16 +24,26 @@
 import { mapState } from 'vuex'
 import MainVisual from '@/components/MainVisual'
 import ArticleList from '@/components/ArticleList'
+import Pagination from '@/components/Pagination'
 import TheSidebar from '@/layouts/TheSidebar'
 
 export default {
   components: {
     MainVisual,
     ArticleList,
+    Pagination,
     TheSidebar,
   },
   computed: {
     ...mapState('posts', ['posts']),
+    postsThisPage () {
+      const pageNumber = parseInt(this.$route.params.id) || 1
+      const postsCopy = [...this.posts]
+      return postsCopy.splice((pageNumber - 1) * this.$postList.postsNumberPerPage, this.$postList.postsNumberPerPage)
+    },
+    isPaginationShow () {
+      return this.posts.length > this.$postList.postsNumberPerPage
+    },
   },
   async fetch ({ store, params }) {
     await store.dispatch('posts/getPosts', params.slug)
