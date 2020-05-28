@@ -99,14 +99,27 @@ export default {
     @include mq($mq_pc) {
       font-size: $fontSize_4l;
     }
-
-    &:hover {
-      transform: scale(1.1);
-    }
   }
 
   &Link {
     color: $color_black;
+    display: block;
+    position: relative;
+
+    &::after {
+      position: absolute;
+      bottom: -8px;
+      left: 50%;
+      content: '';
+      width: 0;
+      border-bottom: solid 3px $color_gray;
+      transition: 0.5s;
+      transform: translateX(-50%);
+    }
+
+    &:hover::after {
+      width: 100%;
+    }
   }
 }
 
@@ -142,14 +155,6 @@ export default {
       }
     }
 
-    &:hover {
-      &::after,
-      &::before {
-        width: 100%;
-        left: 0;
-      }
-    }
-
     &::after,
     &::before {
       background-color: $color_gray;
@@ -167,6 +172,14 @@ export default {
 
     &::after {
       transition: .2s cubic-bezier(0.29, 0.18, 0.26, 0.83);
+    }
+
+    &:hover {
+      &::after,
+      &::before {
+        width: 100%;
+        left: 0;
+      }
     }
 
     &Name {
