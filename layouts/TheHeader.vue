@@ -1,40 +1,42 @@
 <template>
   <header class="header">
-    <div class="headerLogo">
-      <h1
-        v-if="isTopPage"
-        class="headerLogoText"
-      >
-        <nuxt-link
-          class="headerLogoLink"
-          to="/"
+    <div class="headerInner">
+      <div class="logo">
+        <h1
+          v-if="isTopPage"
+          class="logoText"
         >
-          {{ blogName }}
-        </nuxt-link>
-      </h1>
-      <div
-        v-else
-        class="headerLogoText"
-      >
-        <nuxt-link
-          class="headerLogoLink"
-          to="/"
+          <nuxt-link
+            class="logoLink"
+            to="/"
+          >
+            {{ blogName }}
+          </nuxt-link>
+        </h1>
+        <div
+          v-else
+          class="logoText"
         >
-          {{ blogName }}
-        </nuxt-link>
+          <nuxt-link
+            class="logoLink"
+            to="/"
+          >
+            {{ blogName }}
+          </nuxt-link>
+        </div>
       </div>
+      <nav class="globalNav">
+        <nuxt-link
+          v-for="(item, index) in globalNav"
+          :key="index"
+          :to="item.url"
+          class="globalNav__item"
+        >
+          <span class="globalNav__itemName">{{ item.name }}</span>
+          <span class="globalNav__itemLabel">{{ item.label }}</span>
+        </nuxt-link>
+      </nav>
     </div>
-    <nav class="globalNav">
-      <nuxt-link
-        v-for="(item, index) in globalNav"
-        :key="index"
-        :to="item.url"
-        class="globalNav__item"
-      >
-        <span class="globalNav__itemName">{{ item.name }}</span>
-        <span class="globalNav__itemLabel">{{ item.label }}</span>
-      </nuxt-link>
-    </nav>
   </header>
 </template>
 
@@ -56,55 +58,94 @@ export default {
 
 <style lang="scss" scoped>
 .header {
-  align-content: center;
-  display: flex;
-  flex-wrap: wrap;
-  text-align: center;
+  padding: 1rem 0;
 
-  &Logo {
-    margin: 1rem auto 1rem;
+  @include mq($mq_pc) {
+    padding: 2rem 0;
+  }
 
-    &Text {
-      @extend %font_accent;
-      display: inline-block;
-      font-size: $fontSize_3l;
-      font-weight: normal;
-      line-height: 1;
-      width: 100%;
+  &Inner {
+    align-content: center;
+    display: flex;
+    flex-wrap: wrap;
+    text-align: center;
 
-      @include mq($mq_tablet) {
-        font-size: $fontSize_4l;
-      }
+    @include mq($mq_pc) {
+      justify-content: space-between;
+      margin: 0 auto;
+      max-width: 1180px;
+      width: 92%;
+    }
+  }
+}
 
-      &:hover {
-        transform: scale(1.1);
-      }
+.logo {
+  margin: 0 auto;
+  padding: .5rem 0;
+
+  @include mq($mq_pc) {
+    margin: 0;
+    padding: 0 1rem;
+  }
+
+  &Text {
+    @extend %font_accent;
+    display: inline-block;
+    font-size: $fontSize_3l;
+    font-weight: normal;
+    line-height: 1;
+    width: 100%;
+
+    @include mq($mq_pc) {
+      font-size: $fontSize_4l;
+    }
+  }
+
+  &Link {
+    color: $color_black;
+    display: block;
+    position: relative;
+
+    &::after {
+      position: absolute;
+      bottom: -8px;
+      left: 50%;
+      content: '';
+      width: 0;
+      border-bottom: solid 3px $color_gray;
+      transition: 0.5s;
+      transform: translateX(-50%);
     }
 
-    &Link {
-      color: $color_black;
+    &:hover::after {
+      width: 100%;
     }
   }
 }
 
 .globalNav {
+  align-items: center;
   display: flex;
   -webkit-overflow-scrolling: touch;
   overflow-x: auto;
-  padding-bottom: 5px;
+  padding-bottom: 7px;
   white-space: nowrap;
   width: 100%;
 
   @include mq($mq_tablet) {
     justify-content: center;
-    margin-bottom: 1rem;
     overflow-x: inherit;
     white-space: normal;
+  }
+
+  @include mq($mq_pc) {
+    width: auto;
   }
 
   &__item {
     line-height: 1.5;
     margin: 0 5px;
+    position: relative;
 
     &:first-child {
       display: none;
@@ -114,8 +155,31 @@ export default {
       }
     }
 
+    &::after,
+    &::before {
+      background-color: $color_gray;
+      content: '';
+      height: 3px;
+      position: absolute;
+      right: 0;
+      top: calc(100% + 8px);
+      width: 0;
+    }
+
+    &::before {
+      transition: .4s cubic-bezier(0.51, 0.18, 0, 0.88) .1s;
+    }
+
+    &::after {
+      transition: .2s cubic-bezier(0.29, 0.18, 0.26, 0.83);
+    }
+
     &:hover {
-      transform: scale(1.1);
+      &::after,
+      &::before {
+        width: 100%;
+        left: 0;
+      }
     }
 
     &Name {
