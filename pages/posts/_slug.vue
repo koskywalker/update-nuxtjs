@@ -1,44 +1,44 @@
 <template>
   <div class="post">
     <div
-      class="header postHeader"
+      class="postHeader"
     >
       <div
-        class="headerInner"
+        class="postHeaderInner"
       >
-        <div class="headerInner__body">
-          <div class="headerInner__bodyItem headerInner__bodyThumbnail">
+        <div class="postHeaderInner__body">
+          <div class="postHeaderInner__bodyItem postHeaderInner__bodyThumbnail">
             <img
               ref="image"
               :src="currentPost.fields.heroImage.fields.file.url + '?w=500'"
               :alt="currentPost.fields.heroImage.fields.description"
               @load="afterLoadedImage"
-              class="headerInner__bodyThumbnailImage"
+              class="postHeaderInner__bodyThumbnailImage"
             >
           </div>
-          <h1 class="headerInner__bodyItem headerInner__bodyTitle">
+          <h1 class="postHeaderInner__bodyItem postHeaderInner__bodyTitle">
             {{ currentPost.fields.title }}
           </h1>
-          <p class="headerInner__item headerInner__bodyDescription">
+          <p class="postHeaderInner__item postHeaderInner__bodyDescription">
             {{ currentPost.fields.description }}
           </p>
-          <p class="headerInner__bodyItem headerInner__bodyDate">
-            <span class="headerInner__bodyDatePublished">
+          <p class="postHeaderInner__bodyItem postHeaderInner__bodyDate">
+            <span class="postHeaderInner__bodyDatePublished">
               投稿日: {{ (new Date(currentPost.fields.publishDate)).toLocaleDateString() }}
             </span>
             <span
               v-if="currentPost.sys.updatedAt"
-              class="headerInner__bodyDateUpdated"
+              class="postHeaderInner__bodyDateUpdated"
             >
               更新日: {{ (new Date(currentPost.sys.updatedAt)).toLocaleDateString() }}
             </span>
           </p>
-          <div class="headerInner__bodyItem headerInner__bodyTagList">
+          <div class="postHeaderInner__bodyItem postHeaderInner__bodyTagList">
             <nuxt-link
               v-for="(tag, index) in currentPost.fields.tags"
               :key="index"
               :to="tag"
-              class="headerInner__bodyTagListItem"
+              class="postHeaderInner__bodyTagListItem"
             >
               {{ tag.fields.name }}
             </nuxt-link>
@@ -46,12 +46,17 @@
         </div>
       </div>
     </div>
-    <div class="body postBody">
-      <div class="bodyInner">
+    <div class="postBody">
+      <div class="postBodyInner">
         <div
           v-html="$md.render(currentPost.fields.body)"
-          class="bodyInnerContent line-numbers"
+          class="postBodyInnerContent line-numbers"
         />
+      </div>
+    </div>
+    <div class="postFooter">
+      <div class="postFooterInner">
+        <related-posts />
       </div>
     </div>
   </div>
@@ -59,8 +64,12 @@
 
 <script>
 import Prism from '~/plugins/prism'
+import RelatedPosts from '@/components/RelatedPosts'
 
 export default {
+  components: {
+    RelatedPosts,
+  },
   async asyncData ({ payload, store, params, error }) {
     const currentPost = payload || await store.state.posts.posts.find(post => post.fields.slug === params.slug)
 
@@ -115,91 +124,102 @@ export default {
 <style lang="scss" scoped>
 .post {
   opacity: 0;
-}
-.header {
-  background-color: $color_black_transparent;
-  color: $color_white;
 
-  &Inner {
-    align-content: center;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    margin: 0 auto;
-    max-width: $width_single_column;
-    padding: 2rem 0;
+  &Header {
+    background-color: $color_black_transparent;
+    color: $color_white;
 
-    &__body {
+    &Inner {
+      align-content: center;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
       margin: 0 auto;
-      width: $width_base;
+      max-width: $width_single_column;
+      padding: 2rem 0;
 
-      &Item {
-        margin-bottom: 1rem;
-      }
-
-      &Thumbnail {
-        margin: 0 auto 1.5rem;
-        max-width: 500px;
-      }
-
-      &Title {
-        line-height: 1.3;
-      }
-
-      &Description {
-        font-size: $fontSize_base;
-        line-height: 1.5;
-      }
-
-      &Date {
-        font-size: $fontSize_base;
-        line-height: 1.5;
-
-        &Updated {
-          margin-left: .5rem;
-        }
-      }
-
-      &TagList {
-        line-height: 1;
-        margin: 0;
+      &__body {
+        margin: 0 auto;
+        width: $width_base;
 
         &Item {
-          border: 1px solid $color_white;
-          border-radius: .8rem;
-          color: $color_white;
-          display: inline-block;
-          font-size: $fontSize_base;
-          line-height: 1;
-          margin-right: .4rem;
-          padding: .2rem .4rem;
+          margin-bottom: 1rem;
+        }
 
-          &:hover {
-            background-color: $color_white;
-            color: $color_black_transparent;
+        &Thumbnail {
+          margin: 0 auto 1.5rem;
+          max-width: 500px;
+        }
+
+        &Title {
+          line-height: 1.3;
+        }
+
+        &Description {
+          font-size: $fontSize_base;
+          line-height: 1.5;
+        }
+
+        &Date {
+          font-size: $fontSize_base;
+          line-height: 1.5;
+
+          &Updated {
+            margin-left: .5rem;
+          }
+        }
+
+        &TagList {
+          line-height: 1;
+          margin: 0;
+
+          &Item {
+            border: 1px solid $color_white;
+            border-radius: .8rem;
+            color: $color_white;
+            display: inline-block;
+            font-size: $fontSize_base;
+            line-height: 1;
+            margin-right: .4rem;
+            padding: .2rem .4rem;
+
+            &:hover {
+              background-color: $color_white;
+              color: $color_black_transparent;
+            }
           }
         }
       }
     }
   }
-}
-.body {
-  background-color: $color_background_base;
+  &Body {
+    background-color: $color_background_base;
 
-  &Inner {
-    background-color: $color_white;
-    margin: 0 auto;
-    max-width: $width_single_column;
+    &Inner {
+      background-color: $color_white;
+      margin: 0 auto;
+      max-width: $width_single_column;
 
-    &Content {
-      padding: 2rem 0;
+      &Content {
+        padding: 2rem 0;
+      }
+    }
+  }
+  &Footer {
+    background-color: $color_background_base;
+
+    &Inner {
+      background-color: $color_white;
+      margin: 0 auto;
+      max-width: $width_single_column;
+      padding-bottom: 3rem;
     }
   }
 }
 </style>
 
 <style lang="scss">
-.postBody {
+.post {
   h1,
   h2,
   h3,
