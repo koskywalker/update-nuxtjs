@@ -140,7 +140,6 @@ export default {
 
       &__body {
         margin: 0 auto;
-        width: $width_base;
 
         &Item {
           margin-bottom: 1rem;
@@ -171,7 +170,8 @@ export default {
 
         &TagList {
           line-height: 1;
-          margin: 0;
+          margin: 0 auto;
+          width: $width_base;
 
           &Item {
             border: 1px solid $color_white;
