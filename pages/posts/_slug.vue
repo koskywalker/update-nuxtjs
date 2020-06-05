@@ -56,7 +56,9 @@
     </div>
     <div class="postFooter">
       <div class="postFooterInner">
-        <related-posts />
+        <related-posts
+          :currentPost="currentPost"
+        />
       </div>
     </div>
   </div>
@@ -213,6 +215,11 @@ export default {
       margin: 0 auto;
       max-width: $width_single_column;
       padding-bottom: 3rem;
+    }
+
+    &__item {
+      margin: 0 auto;
+      width: $width_base;
     }
   }
 }
