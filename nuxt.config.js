@@ -12,12 +12,9 @@ export default {
   */
   styleResources: {
     scss: [
-      '~/assets/scss/generic/reset.scss',
       '~/assets/scss/settings/variables.scss',
       '~/assets/scss/tools/tools.scss',
       '~/assets/scss/tools/animation.scss',
-      '~/assets/scss/base/base.scss',
-      '~/assets/scss/app.scss',
     ],
   },
   /*

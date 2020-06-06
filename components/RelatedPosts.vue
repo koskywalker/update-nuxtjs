@@ -65,6 +65,7 @@ export default {
   &__postList {
     display: flex;
     flex-wrap: wrap;
+    list-style-type: none;
     margin: 0 auto !important;
     width: $width_base;
   }
