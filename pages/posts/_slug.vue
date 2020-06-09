@@ -61,6 +61,7 @@
         />
         <div class="postFooter__comment">
           <h2>コメントしてね！</h2>
+          {{ process.env.BASE_URL }}
           <vue-disqus
             :identifier="currentPost.fields.slug"
             :url="`${baseUrl}/posts/${currentPost.fields.slug}`"
