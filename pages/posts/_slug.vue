@@ -61,7 +61,6 @@
         />
         <div class="postFooter__comment">
           <h2>コメントしてね！</h2>
-          {{ baseUrl }}
           <vue-disqus
             :identifier="currentPost.fields.slug"
             :url="`${baseUrl}/posts/${currentPost.fields.slug}`"
@@ -84,7 +83,7 @@ export default {
   },
   data () {
     return {
-      baseUrl: process.env.BASE_URL,
+      baseUrl: '',
       disqusShortName: process.env.DISQUS_SHORTNAME,
     }
   },
@@ -99,6 +98,7 @@ export default {
   },
   mounted () {
     Prism.highlightAll()
+    this.baseUrl = location.origin
   },
   beforeRouteLeave (to, from, next) {
     // 遷移先ページがトップページ以外の場合はそのまま遷移
