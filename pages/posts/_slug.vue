@@ -63,8 +63,8 @@
           <h2>コメントしてね！</h2>
           <vue-disqus
             :identifier="currentPost.fields.slug"
-            :url="`https://deploy-preview-96--focused-jepsen-bda902.netlify.app/posts/${currentPost.fields.slug}`"
-            shortname="upd-world"
+            :url="`${baseUrl}/posts/${currentPost.fields.slug}`"
+            :shortname="disqusShortName"
             class="postFooter__item"
           />
         </div>
