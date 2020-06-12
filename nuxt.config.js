@@ -12,12 +12,9 @@ export default {
   */
   styleResources: {
     scss: [
-      '~/assets/scss/generic/reset.scss',
       '~/assets/scss/settings/variables.scss',
       '~/assets/scss/tools/tools.scss',
       '~/assets/scss/tools/animation.scss',
-      '~/assets/scss/base/base.scss',
-      '~/assets/scss/app.scss',
     ],
   },
   /*
@@ -30,13 +27,14 @@ export default {
     { src: '~/plugins/global-menu.js' },
     { src: '~/plugins/footer-menu-fixed.js' },
     { src: '~/plugins/post-list.js' },
-    { src: '~/plugins/vue-library.js' },
+    { src: '~/plugins/vue-typed-js.js' },
     { src: '~/plugins/vuejs-paginate.js', mode: 'client' },
     { src: '~/plugins/particles.js' },
     { src: '~/plugins/utility.js' },
     { src: '~/plugins/router-option.js' },
     { src: '~/plugins/markdown-it.js' },
     { src: '~/plugins/prism.js' },
+    { src: '~/plugins/vue-disqus.js' },
   ],
   /*
   ** Middleware
@@ -124,9 +122,11 @@ export default {
     },
   },
   env: {
+    BASE_URL: process.env.BASE_URL,
     CTF_SPACE_ID: process.env.CTF_SPACE_ID,
     CTF_CDA_ACCESS_TOKEN: process.env.CTF_CDA_ACCESS_TOKEN,
     CTF_BLOG_POST_TYPE_ID: process.env.CTF_BLOG_POST_TYPE_ID,
     FACEBOOK_APP_ID: process.env.FACEBOOK_APP_ID,
+    DISQUS_SHORTNAME: process.env.DISQUS_SHORTNAME,
   },
 }

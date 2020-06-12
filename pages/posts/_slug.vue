@@ -59,6 +59,15 @@
         <related-posts
           :currentPost="currentPost"
         />
+        <div class="postFooter__comment">
+          <h2>コメントしてね！</h2>
+          <vue-disqus
+            :identifier="currentPost.fields.slug"
+            :url="`${baseUrl}/posts/${currentPost.fields.slug}`"
+            :shortname="disqusShortName"
+            class="postFooter__item"
+          />
+        </div>
       </div>
     </div>
   </div>
@@ -71,6 +80,12 @@ import RelatedPosts from '@/components/RelatedPosts'
 export default {
   components: {
     RelatedPosts,
+  },
+  data () {
+    return {
+      baseUrl: process.env.BASE_URL,
+      disqusShortName: process.env.DISQUS_SHORTNAME,
+    }
   },
   async asyncData ({ payload, store, params, error }) {
     const currentPost = payload || await store.state.posts.posts.find(post => post.fields.slug === params.slug)
@@ -220,6 +235,10 @@ export default {
     &__item {
       margin: 0 auto;
       width: $width_base;
+    }
+
+    &__comment {
+      overflow: hidden;
     }
   }
 }
