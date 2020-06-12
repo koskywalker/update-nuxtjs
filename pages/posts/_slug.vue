@@ -63,8 +63,8 @@
           <h2>コメントしてね！</h2>
           <vue-disqus
             :identifier="currentPost.fields.slug"
-            :url="`${baseUrl}/posts/${currentPost.fields.slug}`"
-            :shortname="disqusShortName"
+            :url="`https://deploy-preview-96--focused-jepsen-bda902.netlify.app/posts/${currentPost.fields.slug}`"
+            shortname="upd-world"
             class="postFooter__item"
           />
         </div>
@@ -83,7 +83,7 @@ export default {
   },
   data () {
     return {
-      baseUrl: '',
+      baseUrl: process.env.BASE_URL,
       disqusShortName: process.env.DISQUS_SHORTNAME,
     }
   },
@@ -98,7 +98,6 @@ export default {
   },
   mounted () {
     Prism.highlightAll()
-    this.baseUrl = location.origin
   },
   beforeRouteLeave (to, from, next) {
     // 遷移先ページがトップページ以外の場合はそのまま遷移
