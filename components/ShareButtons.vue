@@ -72,7 +72,7 @@ export default {
   },
   data () {
     return {
-      url: '',
+      url: process.env.DEPLOY_PRIME_URL,
       twitterUrl: 'https://twitter.com/intent/tweet?url={0}&text={1}&related={2}&via={3}&lang=ja',
       facebookUrl: 'https://www.facebook.com/sharer/sharer.php?u={0}',
       hatebuUrl: 'https://b.hatena.ne.jp/add?mode=confirm&amp;url={0}&amp;title={1}',
@@ -96,9 +96,6 @@ export default {
     lineShareUrl () {
       return this.formatByArr(this.lineUrl, this.url)
     },
-  },
-  mounted () {
-    this.url = location.origin + this.$route.path
   },
   methods: {
     /**
