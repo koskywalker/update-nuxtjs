@@ -1,5 +1,0 @@
-[context.production.environment]
-  BASE_URL="https://focused-jepsen-bda902.netlify.app"
-
-[context.deploy-preview.environment]
-  BASE_URL="DEPLOY_URL"

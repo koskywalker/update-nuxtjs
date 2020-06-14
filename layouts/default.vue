@@ -35,7 +35,7 @@ export default {
         { charset: 'utf-8' },
         { name: 'viewport', content: 'width=device-width, initial-scale=1, viewport-fit=cover' },
         { hid: 'description', name: 'description', content: this.$blogInfo.baseDescription },
-        { hid: 'og:url', property: 'og:url', content: process.env.DEPLOY_URL },
+        { hid: 'og:url', property: 'og:url', content: process.env.DEPLOY_PRIME_URL },
         { hid: 'og:site_name', property: 'og:site_name', content: this.$blogInfo.baseName },
         { hid: 'og:title', property: 'og:title', content: this.$blogInfo.baseName },
         { hid: 'og:locale', property: 'og:locale', content: 'ja_JP' },
