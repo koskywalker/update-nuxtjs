@@ -6,4 +6,4 @@ publish = "dist"
 command = "BASE_URL=$URL nuxt generate"
 
 [context.deploy-preview]
-command = "BASE_URL=$DEPLOY_URL nuxt generate"
+command = "BASE_URL=$DEPLOY_PRIME_URL nuxt generate"
