@@ -25,13 +25,6 @@ export default {
       },
     },
   },
-  fetch ({ params }) {
-    let pageNumber = 1
-    if (typeof params.id !== 'undefined') {
-      pageNumber = parseInt(params.id)
-    }
-    console.log(pageNumber)
-  },
 }
 </script>
 
