@@ -83,7 +83,7 @@ export default {
   },
   data () {
     return {
-      baseUrl: process.env.DEPLOY_PRIME_URL,
+      baseUrl: process.env.BASE_URL,
       disqusShortName: process.env.DISQUS_SHORTNAME,
     }
   },
