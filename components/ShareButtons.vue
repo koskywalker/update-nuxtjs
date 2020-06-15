@@ -72,7 +72,6 @@ export default {
   },
   data () {
     return {
-      url: process.env.BASE_URL,
       twitterUrl: 'https://twitter.com/intent/tweet?url={0}&text={1}&related={2}&via={3}&lang=ja',
       facebookUrl: 'https://www.facebook.com/sharer/sharer.php?u={0}',
       hatebuUrl: 'https://b.hatena.ne.jp/add?mode=confirm&amp;url={0}&amp;title={1}',
@@ -81,6 +80,9 @@ export default {
     }
   },
   computed: {
+    url () {
+      return process.env.BASE_URL + this.$route.path
+    },
     twitterShareUrl () {
       return this.formatByArr(this.twitterUrl, this.url, this.title, this.$myInfo.sns.twitter.user, this.$myInfo.sns.twitter.user)
     },
