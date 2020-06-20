@@ -28,7 +28,7 @@
           </span>
         </p>
         <h3 class="articleMainBody__title">
-          {{ post.fields.title }} てすとテストです. タイトルはこれですね.
+          {{ post.fields.title }}
         </h3>
       </div>
     </nuxt-link>
