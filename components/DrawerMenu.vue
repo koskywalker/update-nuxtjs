@@ -33,7 +33,7 @@
           </h4>
           <div class="item__body">
             <article-card
-              v-for="(post, index) in posts"
+              v-for="(post, index) in displayPosts"
               :key="index"
               :post="post"
               :thumbnailSize="150"
@@ -46,6 +46,7 @@
 </template>
 
 <script>
+import { mapState } from 'vuex'
 import ArticleCard from '@/components/ArticleCard'
 
 export default {
@@ -53,8 +54,9 @@ export default {
     ArticleCard,
   },
   computed: {
-    posts () {
-      return this.$store.state.posts.posts.slice(0, 3)
+    ...mapState('posts', ['posts']),
+    displayPosts () {
+      return this.posts.slice(0, 3)
     },
   },
   async fetch ({ store, params }) {
