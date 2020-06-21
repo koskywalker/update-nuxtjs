@@ -100,7 +100,7 @@ export default {
         })
         return [
           ...posts.items.map((post) => {
-            return { route: `posts/${post.fields.slug}`, payload: post }
+            return { route: post.fields.slug, payload: post }
           }),
           ...Array(Math.floor(posts.items.length / postsNumberPerPage)).fill(null).map((_, i) => {
             return { route: `page/${i + 1}` }
