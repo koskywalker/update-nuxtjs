@@ -7,9 +7,16 @@ export const state = () => ({
 
 export const getters = {
   linkTo: () => (name, obj) => {
-    return {
-      name: `${name}-slug`,
-      params: { slug: obj.fields.slug },
+    if (name) {
+      return {
+        name: `${name}-slug`,
+        params: { slug: obj.fields.slug },
+      }
+    } else {
+      return {
+        name: 'slug',
+        params: { slug: obj.fields.slug },
+      }
     }
   },
   relatedPosts: state => (currentTag) => {

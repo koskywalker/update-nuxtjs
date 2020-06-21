@@ -13,7 +13,7 @@
         class="relatedPosts__postItem"
       >
         <nuxt-link
-          :to="linkTo('posts', post)"
+          :to="linkTo('', post)"
           class="relatedPosts__postLink"
         >
           <img

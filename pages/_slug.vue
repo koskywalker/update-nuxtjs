@@ -63,7 +63,7 @@
           <h2>コメントしてね！</h2>
           <vue-disqus
             :identifier="currentPost.fields.slug"
-            :url="`${baseUrl}/posts/${currentPost.fields.slug}`"
+            :url="`${baseUrl}/${currentPost.fields.slug}`"
             :shortname="disqusShortName"
             class="postFooter__item"
           />

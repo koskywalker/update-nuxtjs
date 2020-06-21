@@ -53,7 +53,7 @@ export default {
   },
   beforeRouteLeave (to, from, next) {
     // 遷移先ページが記事詳細以外の場合はそのまま遷移
-    if (to.name !== 'posts-slug') {
+    if (to.name !== 'slug') {
       next()
       return
     }

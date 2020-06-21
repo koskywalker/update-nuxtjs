@@ -1,6 +1,6 @@
 <template>
   <nuxt-link
-    :to="linkTo('posts', post)"
+    :to="linkTo('', post)"
     class="articleCard"
   >
     <div class="articleCard__thumbnail">
