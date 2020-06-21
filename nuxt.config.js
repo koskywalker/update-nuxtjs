@@ -100,16 +100,13 @@ export default {
         })
         return [
           ...posts.items.map((post) => {
-            // return { route: post.fields.slug, payload: post }
-            return post.fields.slug
+            return { route: post.fields.slug, payload: post }
           }),
           ...Array(Math.floor(posts.items.length / postsNumberPerPage)).fill(null).map((_, i) => {
-            // return { route: `page/${i + 1}` }
-            return `page/${i + 1}`
+            return { route: `page/${i + 1}` }
           }),
           ...tags.items.map((tag) => {
-            // return { route: `tags/${tag.fields.slug}`, payload: tag }
-            return `tags/${tag.fields.slug}`
+            return { route: `tags/${tag.fields.slug}`, payload: tag }
           }),
           ...[].concat(...tagPathList),
         ]
