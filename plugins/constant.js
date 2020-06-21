@@ -13,22 +13,22 @@ Vue.prototype.$constant = {
     {
       name: 'プログラミング',
       label: 'PROGRAMMING',
-      url: '/category/programming',
+      url: '#',
     },
     {
       name: 'ブログ',
       label: 'BLOG',
-      url: '/category/blog',
+      url: '#',
     },
     {
       name: '便利ツール',
       label: 'TOOL',
-      url: '/category/tool',
+      url: '#',
     },
     {
       name: 'ポートフォリオ',
       label: 'PORTFOLIO',
-      url: '/portfolio',
+      url: '#',
     },
     {
       name: 'お問い合わせ',
