@@ -39,10 +39,10 @@ export default {
     postsThisPage () {
       const pageNumber = parseInt(this.$route.params.id) || 1
       const postsCopy = [...this.posts]
-      return postsCopy.splice((pageNumber - 1) * this.$postList.postsNumberPerPage, this.$postList.postsNumberPerPage)
+      return postsCopy.splice((pageNumber - 1) * this.$constant.baseSettings.postsNumberPerPage, this.$constant.baseSettings.postsNumberPerPage)
     },
     isPaginationShow () {
-      return this.posts.length > this.$postList.postsNumberPerPage
+      return this.posts.length > this.$constant.baseSettings.postsNumberPerPage
     },
   },
   async fetch ({ store, params }) {

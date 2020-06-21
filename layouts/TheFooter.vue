@@ -36,9 +36,9 @@ import { mapState, mapGetters } from 'vuex'
 export default {
   data () {
     return {
-      blogName: this.$blogInfo.blogName,
-      blogDescription: this.$blogInfo.baseDescription,
-      blogTechnology: this.$blogInfo.aboutBlogTechnology,
+      blogName: this.$constant.blogInfo.blogName,
+      blogDescription: this.$constant.blogInfo.baseDescription,
+      blogTechnology: this.$constant.blogInfo.aboutBlogTechnology,
     }
   },
   computed: {

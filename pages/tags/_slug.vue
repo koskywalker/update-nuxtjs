@@ -46,13 +46,13 @@ export default {
     postsThisPage () {
       const pageNumber = parseInt(this.$route.params.id) || 1
       const postsCopy = [...this.relatedPosts(this.tag)]
-      return postsCopy.splice((pageNumber - 1) * this.$postList.postsNumberPerPage, this.$postList.postsNumberPerPage)
+      return postsCopy.splice((pageNumber - 1) * this.$constant.baseSettings.postsNumberPerPage, this.$constant.baseSettings.postsNumberPerPage)
     },
     path () {
       return `/tags/${this.$route.params.slug}`
     },
     isPaginationShow () {
-      return this.relatedPosts(this.tag).length > this.$postList.postsNumberPerPage
+      return this.relatedPosts(this.tag).length > this.$constant.baseSettings.postsNumberPerPage
     },
   },
   asyncData ({ payload, store, params, error }) {

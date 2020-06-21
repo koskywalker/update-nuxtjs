@@ -84,7 +84,7 @@ export default {
       return process.env.BASE_URL + this.$route.path
     },
     twitterShareUrl () {
-      return this.formatByArr(this.twitterUrl, this.url, this.title, this.$myInfo.sns.twitter.user, this.$myInfo.sns.twitter.user)
+      return this.formatByArr(this.twitterUrl, this.url, this.title, this.$constant.myInfo.sns.twitter.user, this.$constant.myInfo.sns.twitter.user)
     },
     facebookShareUrl () {
       return this.formatByArr(this.facebookUrl, this.url)

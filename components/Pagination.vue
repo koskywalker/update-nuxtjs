@@ -49,7 +49,7 @@ export default {
   },
   computed: {
     pageCount () {
-      return Math.ceil(this.postsNumber / this.$postList.postsNumberPerPage)
+      return Math.ceil(this.postsNumber / this.$constant.baseSettings.postsNumberPerPage)
     },
   },
   methods: {

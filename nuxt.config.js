@@ -21,12 +21,8 @@ export default {
   ** Plugins to load before mounting the App
   */
   plugins: [
+    { src: '~/plugins/constant.js' },
     { src: '~/plugins/contentful.js' },
-    { src: '~/plugins/blog-info.js' },
-    { src: '~/plugins/my-info.js' },
-    { src: '~/plugins/global-menu.js' },
-    { src: '~/plugins/footer-menu-fixed.js' },
-    { src: '~/plugins/post-list.js' },
     { src: '~/plugins/vue-typed-js.js' },
     { src: '~/plugins/vuejs-paginate.js', mode: 'client' },
     { src: '~/plugins/particles.js' },
