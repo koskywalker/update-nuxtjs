@@ -60,7 +60,7 @@
           :currentPost="currentPost"
         />
         <div class="postFooter__comment">
-          <h2>コメントしてね！</h2>
+          <h2>この記事にコメントする</h2>
           <vue-disqus
             :identifier="currentPost.fields.slug"
             :url="`${baseUrl}/${currentPost.fields.slug}`"
