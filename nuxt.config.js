@@ -4,10 +4,6 @@ const client = require('./plugins/contentful').default
 export default {
   mode: 'universal',
   /*
-  ** Customize the progress-bar color
-  */
-  loading: { color: '#fff' },
-  /*
   ** Global CSS
   */
   styleResources: {
