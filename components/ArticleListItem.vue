@@ -10,6 +10,8 @@
           :src="post.fields.heroImage.fields.file.url + '?w=480'"
           :alt="post.fields.heroImage.fields.description"
           class="articleMainImage__image"
+          height="270"
+          width="480"
           loading="lazy"
         >
       </div>
