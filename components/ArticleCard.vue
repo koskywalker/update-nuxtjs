@@ -7,6 +7,8 @@
       <img
         :src="post.fields.heroImage.fields.file.url + '?w=' + thumbnailSizeString"
         :alt="post.fields.heroImage.fields.description"
+        height="169"
+        width="300"
         loading="lazy"
       >
     </div>

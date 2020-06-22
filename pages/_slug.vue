@@ -14,6 +14,8 @@
               :alt="currentPost.fields.heroImage.fields.description"
               @load="afterLoadedImage"
               class="postHeaderInner__bodyThumbnailImage"
+              height="270"
+              width="480"
               loading="lazy"
             >
           </div>
