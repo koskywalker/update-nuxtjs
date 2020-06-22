@@ -77,8 +77,8 @@
 </template>
 
 <script>
-import Prism from '~/plugins/prism'
 import RelatedPosts from '@/components/RelatedPosts'
+import Prism from '~/plugins/prism'
 
 export default {
   components: {
