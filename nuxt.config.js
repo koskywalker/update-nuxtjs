@@ -4,10 +4,6 @@ const client = require('./plugins/contentful').default
 export default {
   mode: 'universal',
   /*
-  ** Customize the progress-bar color
-  */
-  loading: { color: '#fff' },
-  /*
   ** Global CSS
   */
   styleResources: {
@@ -21,12 +17,8 @@ export default {
   ** Plugins to load before mounting the App
   */
   plugins: [
+    { src: '~/plugins/constant.js' },
     { src: '~/plugins/contentful.js' },
-    { src: '~/plugins/blog-info.js' },
-    { src: '~/plugins/my-info.js' },
-    { src: '~/plugins/global-menu.js' },
-    { src: '~/plugins/footer-menu-fixed.js' },
-    { src: '~/plugins/post-list.js' },
     { src: '~/plugins/vue-typed-js.js' },
     { src: '~/plugins/vuejs-paginate.js', mode: 'client' },
     { src: '~/plugins/particles.js' },
@@ -108,7 +100,7 @@ export default {
         })
         return [
           ...posts.items.map((post) => {
-            return { route: `posts/${post.fields.slug}`, payload: post }
+            return { route: post.fields.slug, payload: post }
           }),
           ...Array(Math.floor(posts.items.length / postsNumberPerPage)).fill(null).map((_, i) => {
             return { route: `page/${i + 1}` }

@@ -39,10 +39,10 @@ export default {
     postsThisPage () {
       const pageNumber = parseInt(this.$route.params.id) || 1
       const postsCopy = [...this.posts]
-      return postsCopy.splice((pageNumber - 1) * this.$postList.postsNumberPerPage, this.$postList.postsNumberPerPage)
+      return postsCopy.splice((pageNumber - 1) * this.$constant.baseSettings.postsNumberPerPage, this.$constant.baseSettings.postsNumberPerPage)
     },
     isPaginationShow () {
-      return this.posts.length > this.$postList.postsNumberPerPage
+      return this.posts.length > this.$constant.baseSettings.postsNumberPerPage
     },
   },
   async fetch ({ store, params }) {
@@ -53,7 +53,7 @@ export default {
   },
   beforeRouteLeave (to, from, next) {
     // 遷移先ページが記事詳細以外の場合はそのまま遷移
-    if (to.name !== 'posts-slug') {
+    if (to.name !== 'slug') {
       next()
       return
     }

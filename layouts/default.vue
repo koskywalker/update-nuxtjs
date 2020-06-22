@@ -26,29 +26,29 @@ export default {
   },
   head () {
     return {
-      titleTemplate: '%s - ' + this.$blogInfo.blogName,
-      title: this.$blogInfo.baseTitle,
+      titleTemplate: '%s - ' + this.$constant.blogInfo.blogName,
+      title: this.$constant.blogInfo.baseTitle,
       htmlAttrs: {
         lang: 'ja',
       },
       meta: [
         { charset: 'utf-8' },
         { name: 'viewport', content: 'width=device-width, initial-scale=1, viewport-fit=cover' },
-        { hid: 'description', name: 'description', content: this.$blogInfo.baseDescription },
+        { hid: 'description', name: 'description', content: this.$constant.blogInfo.baseDescription },
         { hid: 'og:url', property: 'og:url', content: process.env.BASE_URL },
-        { hid: 'og:site_name', property: 'og:site_name', content: this.$blogInfo.blogName },
-        { hid: 'og:title', property: 'og:title', content: this.$blogInfo.blogName },
+        { hid: 'og:site_name', property: 'og:site_name', content: this.$constant.blogInfo.blogName },
+        { hid: 'og:title', property: 'og:title', content: this.$constant.blogInfo.blogName },
         { hid: 'og:locale', property: 'og:locale', content: 'ja_JP' },
         { hid: 'og:type', property: 'og:type', content: 'website' },
         {
           hid: 'og:description',
           property: 'og:description',
-          content: this.$blogInfo.baseDescription,
+          content: this.$constant.blogInfo.baseDescription,
         },
         {
           hid: 'og:image',
           property: 'og:image',
-          content: this.$blogInfo.baseOgpImage,
+          content: this.$constant.blogInfo.baseOgpImage,
         },
         { name: 'twitter:card', content: 'summary_large_image' },
         { name: 'twitter:site', content: '@kosuke_upd' },

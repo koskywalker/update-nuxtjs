@@ -9,7 +9,7 @@
     </h3>
     <div class="recentPosts__list">
       <article-card
-        v-for="(post, index) in posts"
+        v-for="(post, index) in displayPosts"
         :key="index"
         :post="post"
         :thumbnailSize="300"
@@ -19,6 +19,7 @@
 </template>
 
 <script>
+import { mapState } from 'vuex'
 import ArticleCard from '@/components/ArticleCard'
 
 export default {
@@ -26,8 +27,9 @@ export default {
     ArticleCard,
   },
   computed: {
-    posts () {
-      return this.$store.state.posts.posts.slice(0, 5)
+    ...mapState('posts', ['posts']),
+    displayPosts () {
+      return this.posts.slice(0, 5)
     },
   },
   async fetch ({ store, params }) {

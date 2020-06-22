@@ -14,6 +14,9 @@
               :alt="currentPost.fields.heroImage.fields.description"
               @load="afterLoadedImage"
               class="postHeaderInner__bodyThumbnailImage"
+              height="282"
+              width="500"
+              loading="lazy"
             >
           </div>
           <h1 class="postHeaderInner__bodyItem postHeaderInner__bodyTitle">
@@ -60,10 +63,10 @@
           :currentPost="currentPost"
         />
         <div class="postFooter__comment">
-          <h2>コメントしてね！</h2>
+          <h2>この記事にコメントする</h2>
           <vue-disqus
             :identifier="currentPost.fields.slug"
-            :url="`${baseUrl}/posts/${currentPost.fields.slug}`"
+            :url="`${baseUrl}/${currentPost.fields.slug}`"
             :shortname="disqusShortName"
             class="postFooter__item"
           />
@@ -74,8 +77,8 @@
 </template>
 
 <script>
-import Prism from '~/plugins/prism'
 import RelatedPosts from '@/components/RelatedPosts'
+import Prism from '~/plugins/prism'
 
 export default {
   components: {

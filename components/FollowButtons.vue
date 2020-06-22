@@ -29,20 +29,20 @@ export default {
     return {
       items: [
         {
-          name: this.$myInfo.sns.twitter.name,
-          url: this.$myInfo.sns.twitter.url,
+          name: this.$constant.myInfo.sns.twitter.name,
+          url: this.$constant.myInfo.sns.twitter.url,
           icon: ['fab', 'twitter'],
           class: 'followInner__itemLink--twitter',
         },
         {
-          name: this.$myInfo.sns.github.name,
-          url: this.$myInfo.sns.github.url,
+          name: this.$constant.myInfo.sns.github.name,
+          url: this.$constant.myInfo.sns.github.url,
           icon: ['fab', 'github'],
           class: 'followInner__itemLink--github',
         },
         {
-          name: this.$myInfo.sns.feedly.name,
-          url: this.$myInfo.sns.feedly.url,
+          name: this.$constant.myInfo.sns.feedly.name,
+          url: this.$constant.myInfo.sns.feedly.url,
           icon: ['fas', 'rss'],
           class: 'followInner__itemLink--feedly',
         },

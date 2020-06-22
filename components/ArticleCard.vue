@@ -1,12 +1,15 @@
 <template>
   <nuxt-link
-    :to="linkTo('posts', post)"
+    :to="linkTo('', post)"
     class="articleCard"
   >
     <div class="articleCard__thumbnail">
       <img
         :src="post.fields.heroImage.fields.file.url + '?w=' + thumbnailSizeString"
         :alt="post.fields.heroImage.fields.description"
+        height="169"
+        width="300"
+        loading="lazy"
       >
     </div>
     <p class="articleCard__title">

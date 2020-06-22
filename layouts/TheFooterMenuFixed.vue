@@ -63,7 +63,7 @@ export default {
   },
   data () {
     return {
-      items: this.$footerMenuFixed,
+      items: this.$constant.footerMenuFixed,
       title: '',
       showShareButtons: false,
       showFollowButtons: false,

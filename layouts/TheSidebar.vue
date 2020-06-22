@@ -22,6 +22,9 @@
           <img
             src="https://images.ctfassets.net/cehw3wy3j8jc/4CzR18vKdFrmnNI8ihxevU/380ec9d71bac06a22dd2d4bdab248d6e/profile3.jpg?h=250"
             alt="プロフィール写真"
+            height="250"
+            width="250"
+            loading="lazy"
           >
         </div>
         <transition name="fade">
@@ -34,24 +37,24 @@
       </button>
       <div class="sideProfile__name">
         <p class="sideProfile__nameText">
-          {{ $myInfo.nickname }} ({{ $myInfo.name }})
+          {{ $constant.myInfo.nickname }} ({{ $constant.myInfo.name }})
         </p>
         <p class="sideProfile__nameLabel">
-          {{ $myInfo.labelMain }}
+          {{ $constant.myInfo.labelMain }}
         </p>
       </div>
       <div class="sideProfile__text">
         <p class="sideProfile__textSentence">
-          {{ $myInfo.introduction.first }}
+          {{ $constant.myInfo.introduction.first }}
         </p>
         <p class="sideProfile__textSentence">
-          {{ $myInfo.introduction.history }}
+          {{ $constant.myInfo.introduction.history }}
         </p>
         <p class="sideProfile__textSentence">
-          {{ $myInfo.introduction.strongPoints }}
+          {{ $constant.myInfo.introduction.strongPoints }}
         </p>
         <p class="sideProfile__textSentence">
-          {{ $myInfo.introduction.other }}
+          {{ $constant.myInfo.introduction.other }}
         </p>
       </div>
       <div class="sideProfile__sns">
@@ -92,22 +95,22 @@ export default {
     return {
       items: [
         {
-          url: this.$myInfo.sns.twitter.url,
+          url: this.$constant.myInfo.sns.twitter.url,
           icon: ['fab', 'twitter'],
           class: 'sideProfile__snsListItem--twitter',
         },
         {
-          url: this.$myInfo.sns.instagram.url,
+          url: this.$constant.myInfo.sns.instagram.url,
           icon: ['fab', 'instagram'],
           class: 'sideProfile__snsListItem--instagram',
         },
         {
-          url: this.$myInfo.sns.github.url,
+          url: this.$constant.myInfo.sns.github.url,
           icon: ['fab', 'github'],
           class: 'sideProfile__snsListItem--github',
         },
         {
-          url: this.$myInfo.sns.feedly.url,
+          url: this.$constant.myInfo.sns.feedly.url,
           icon: ['fas', 'rss'],
           class: 'sideProfile__snsListItem--feedly',
         },

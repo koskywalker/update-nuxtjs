@@ -13,13 +13,16 @@
         class="relatedPosts__postItem"
       >
         <nuxt-link
-          :to="linkTo('posts', post)"
+          :to="linkTo('', post)"
           class="relatedPosts__postLink"
         >
           <img
             :src="post.fields.heroImage.fields.file.url + '?w=500'"
             :alt="post.fields.heroImage.fields.description"
             class="relatedPosts__postImage"
+            height="282"
+            width="500"
+            loading="lazy"
           >
           <p class="relatedPosts__postTitle">
             {{ post.fields.title }}

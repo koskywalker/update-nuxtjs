@@ -1,7 +1,7 @@
 <template>
   <article class="article">
     <nuxt-link
-      :to="linkTo('posts', post)"
+      :to="linkTo('', post)"
       class="articleMain"
     >
       <div class="articleMainImage">
@@ -10,6 +10,9 @@
           :src="post.fields.heroImage.fields.file.url + '?w=480'"
           :alt="post.fields.heroImage.fields.description"
           class="articleMainImage__image"
+          height="270"
+          width="480"
+          loading="lazy"
         >
       </div>
       <div class="articleMainBody">
@@ -28,7 +31,7 @@
           </span>
         </p>
         <h3 class="articleMainBody__title">
-          {{ post.fields.title }} てすとテストです. タイトルはこれですね.
+          {{ post.fields.title }}
         </h3>
       </div>
     </nuxt-link>

@@ -44,8 +44,8 @@
 export default {
   data () {
     return {
-      blogName: this.$blogInfo.blogName,
-      globalNav: this.$globalMenu,
+      blogName: this.$constant.blogInfo.blogName,
+      globalNav: this.$constant.headerMenu,
     }
   },
   computed: {
