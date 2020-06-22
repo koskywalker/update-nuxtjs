@@ -10,7 +10,7 @@
           <div class="postHeaderInner__bodyItem postHeaderInner__bodyThumbnail">
             <img
               ref="image"
-              :src="'https:' + currentPost.fields.heroImage.fields.file.url + '?w=500'"
+              :src="currentPost.fields.heroImage.fields.file.url + '?w=500'"
               :alt="currentPost.fields.heroImage.fields.description"
               @load="afterLoadedImage"
               class="postHeaderInner__bodyThumbnailImage"
