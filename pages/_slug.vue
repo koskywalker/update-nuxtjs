@@ -14,6 +14,7 @@
               :alt="currentPost.fields.heroImage.fields.description"
               @load="afterLoadedImage"
               class="postHeaderInner__bodyThumbnailImage"
+              loading="lazy"
             >
           </div>
           <h1 class="postHeaderInner__bodyItem postHeaderInner__bodyTitle">

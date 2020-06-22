@@ -20,6 +20,7 @@
             :src="post.fields.heroImage.fields.file.url + '?w=500'"
             :alt="post.fields.heroImage.fields.description"
             class="relatedPosts__postImage"
+            loading="lazy"
           >
           <p class="relatedPosts__postTitle">
             {{ post.fields.title }}

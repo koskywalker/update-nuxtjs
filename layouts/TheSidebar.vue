@@ -22,6 +22,7 @@
           <img
             src="https://images.ctfassets.net/cehw3wy3j8jc/4CzR18vKdFrmnNI8ihxevU/380ec9d71bac06a22dd2d4bdab248d6e/profile3.jpg?h=250"
             alt="プロフィール写真"
+            loading="lazy"
           >
         </div>
         <transition name="fade">

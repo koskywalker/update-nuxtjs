@@ -7,6 +7,7 @@
       <img
         :src="post.fields.heroImage.fields.file.url + '?w=' + thumbnailSizeString"
         :alt="post.fields.heroImage.fields.description"
+        loading="lazy"
       >
     </div>
     <p class="articleCard__title">

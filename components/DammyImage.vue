@@ -6,6 +6,7 @@
     @load="loaded"
     class="dammyImage"
     alt=""
+    loading="lazy"
   >
 </template>
 

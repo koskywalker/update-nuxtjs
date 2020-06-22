@@ -10,6 +10,7 @@
           :src="post.fields.heroImage.fields.file.url + '?w=480'"
           :alt="post.fields.heroImage.fields.description"
           class="articleMainImage__image"
+          loading="lazy"
         >
       </div>
       <div class="articleMainBody">
