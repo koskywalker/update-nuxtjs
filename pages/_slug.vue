@@ -40,7 +40,7 @@
             <nuxt-link
               v-for="(tag, index) in currentPost.fields.tags"
               :key="index"
-              :to="tag"
+              :to="linkTo('tags', tag)"
               class="postHeaderInner__bodyTagListItem"
             >
               {{ tag.fields.name }}
@@ -77,7 +77,7 @@
 </template>
 
 <script>
-import { mapState } from 'vuex'
+import { mapState, mapGetters } from 'vuex'
 import RelatedPosts from '@/components/RelatedPosts'
 import Prism from '~/plugins/prism'
 
@@ -93,6 +93,7 @@ export default {
   },
   computed: {
     ...mapState('posts', ['currentPost']),
+    ...mapGetters('posts', ['linkTo']),
   },
   async asyncData ({ payload, store, params, error }) {
     await store.commit('posts/setCurrentPost', params.slug)
