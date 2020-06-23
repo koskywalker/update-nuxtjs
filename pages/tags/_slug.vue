@@ -9,7 +9,7 @@
               :icon="'list'"
               class="followInner__itemIcon"
             />
-            {{ tag.fields.name }}に関する記事一覧
+            {{ currentTag.fields.name }}に関する記事一覧
           </h1>
           <article-list
             ref="articleList"
@@ -18,7 +18,7 @@
           <pagination
             v-if="isPaginationShow"
             :path="path"
-            :postsNumber="relatedPosts(tag).length"
+            :postsNumber="relatedPosts(currentTag).length"
           />
         </main>
         <the-sidebar class="sidebar" />
@@ -28,7 +28,7 @@
 </template>
 
 <script>
-import { mapGetters } from 'vuex'
+import { mapState, mapGetters } from 'vuex'
 import MainVisual from '@/components/MainVisual'
 import ArticleList from '@/components/ArticleList'
 import Pagination from '@/components/Pagination'
@@ -42,26 +42,22 @@ export default {
     TheSidebar,
   },
   computed: {
+    ...mapState('posts', ['currentTag']),
     ...mapGetters('posts', ['relatedPosts']),
     postsThisPage () {
       const pageNumber = parseInt(this.$route.params.id) || 1
-      const postsCopy = [...this.relatedPosts(this.tag)]
+      const postsCopy = [...this.relatedPosts(this.currentTag)]
       return postsCopy.splice((pageNumber - 1) * this.$constant.baseSettings.postsNumberPerPage, this.$constant.baseSettings.postsNumberPerPage)
     },
     path () {
       return `/tags/${this.$route.params.slug}`
     },
     isPaginationShow () {
-      return this.relatedPosts(this.tag).length > this.$constant.baseSettings.postsNumberPerPage
+      return this.relatedPosts(this.currentTag).length > this.$constant.baseSettings.postsNumberPerPage
     },
   },
-  asyncData ({ payload, store, params, error }) {
-    const tag = payload || store.state.posts.tags.find(tag => tag.fields.slug === params.slug)
-    if (tag) {
-      return { tag }
-    } else {
-      return error({ statusCode: 404 })
-    }
+  async asyncData ({ payload, store, params, error }) {
+    await store.commit('posts/setCurrentTag', params.slug)
   },
   mounted () {
     this.$fadeinPage()
