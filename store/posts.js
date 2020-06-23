@@ -3,6 +3,8 @@ import client from '@/plugins/contentful'
 export const state = () => ({
   posts: [],
   tags: [],
+  currentPost: {},
+  currentTag: {},
 })
 
 export const getters = {
@@ -35,6 +37,12 @@ export const mutations = {
         state.tags.push(entry)
       }
     })
+  },
+  setCurrentPost (state, slug) {
+    state.currentPost = state.posts.find(post => post.fields.slug === slug)
+  },
+  setCurrentTag (state, slug) {
+    state.currentTag = state.tags.find(tag => tag.fields.slug === slug)
   },
 }
 

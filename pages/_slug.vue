@@ -40,7 +40,7 @@
             <nuxt-link
               v-for="(tag, index) in currentPost.fields.tags"
               :key="index"
-              :to="tag"
+              :to="linkTo('tags', tag)"
               class="postHeaderInner__bodyTagListItem"
             >
               {{ tag.fields.name }}
@@ -77,6 +77,7 @@
 </template>
 
 <script>
+import { mapState, mapGetters } from 'vuex'
 import RelatedPosts from '@/components/RelatedPosts'
 import Prism from '~/plugins/prism'
 
@@ -90,14 +91,12 @@ export default {
       disqusShortName: process.env.DISQUS_SHORTNAME,
     }
   },
+  computed: {
+    ...mapState('posts', ['currentPost']),
+    ...mapGetters('posts', ['linkTo']),
+  },
   async asyncData ({ payload, store, params, error }) {
-    const currentPost = payload || await store.state.posts.posts.find(post => post.fields.slug === params.slug)
-
-    if (currentPost) {
-      return { currentPost }
-    } else {
-      return error({ statusCode: 404 })
-    }
+    await store.commit('posts/setCurrentPost', params.slug)
   },
   mounted () {
     Prism.highlightAll()
