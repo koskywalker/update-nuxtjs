@@ -95,7 +95,7 @@ export default {
     ...mapState('posts', ['currentPost']),
     ...mapGetters('posts', ['linkTo']),
   },
-  async asyncData ({ payload, store, params, error }) {
+  async featch ({ payload, store, params, error }) {
     await store.commit('posts/setCurrentPost', params.slug)
   },
   mounted () {

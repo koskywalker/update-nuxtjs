@@ -56,7 +56,7 @@ export default {
       return this.relatedPosts(this.currentTag).length > this.$constant.baseSettings.postsNumberPerPage
     },
   },
-  async asyncData ({ payload, store, params, error }) {
+  async fetch ({ payload, store, params, error }) {
     await store.commit('posts/setCurrentTag', params.slug)
   },
   mounted () {
