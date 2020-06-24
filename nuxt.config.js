@@ -61,6 +61,7 @@ export default {
   basic: {
     name: 'admin',
     pass: 'password',
+    enabled: true,
   },
   /*
   ** FontAwesome
