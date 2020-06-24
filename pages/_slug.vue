@@ -77,7 +77,7 @@
 </template>
 
 <script>
-import { mapState, mapGetters } from 'vuex'
+import { mapGetters } from 'vuex'
 import RelatedPosts from '@/components/RelatedPosts'
 import Prism from '~/plugins/prism'
 
@@ -92,8 +92,11 @@ export default {
     }
   },
   computed: {
-    ...mapState('posts', ['currentPost']),
+    // ...mapState('posts', ['currentPost']),
     ...mapGetters('posts', ['linkTo']),
+    currentPost () {
+      return this.$store.state.posts.currentPost
+    },
   },
   async asyncData ({ payload, store, params, error }) {
     await store.commit('posts/setCurrentPost', params.slug)

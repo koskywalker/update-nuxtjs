@@ -28,7 +28,7 @@
 </template>
 
 <script>
-import { mapState, mapGetters } from 'vuex'
+import { mapGetters } from 'vuex'
 import MainVisual from '@/components/MainVisual'
 import ArticleList from '@/components/ArticleList'
 import Pagination from '@/components/Pagination'
@@ -42,8 +42,11 @@ export default {
     TheSidebar,
   },
   computed: {
-    ...mapState('posts', ['currentTag']),
+    // ...mapState('posts', ['currentTag']),
     ...mapGetters('posts', ['relatedPosts']),
+    currentTag () {
+      return this.$store.state.posts.currentTag
+    },
     postsThisPage () {
       const pageNumber = parseInt(this.$route.params.id) || 1
       const postsCopy = [...this.relatedPosts(this.currentTag)]
