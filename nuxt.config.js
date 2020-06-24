@@ -52,17 +52,8 @@ export default {
     '@nuxtjs/dotenv',
     '@nuxtjs/style-resources',
     'nuxt-fontawesome',
-    'nuxt-basic-auth-module',
     '~/modules/hook',
   ],
-  /*
-  ** Basic Auth
-  */
-  basic: {
-    name: 'admin',
-    pass: 'password',
-    enabled: true,
-  },
   /*
   ** FontAwesome
   */
