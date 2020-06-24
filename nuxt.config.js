@@ -59,8 +59,8 @@ export default {
   ** Basic Auth
   */
   basic: {
-    name: process.env.BASIC_AUTH_USER_ID,
-    pass: process.env.BASIC_AUTH_PASSWORD,
+    name: 'admin',
+    pass: 'password',
   },
   /*
   ** FontAwesome
