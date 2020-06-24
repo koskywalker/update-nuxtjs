@@ -45,7 +45,7 @@ export default {
     // ...mapState('posts', ['currentTag']),
     ...mapGetters('posts', ['relatedPosts']),
     currentTag () {
-      return this.$store.state.posts.currentTag
+      return this.$store.state.posts.tags.find(tag => tag.fields.slug === this.$route.params.slug)
     },
     postsThisPage () {
       const pageNumber = parseInt(this.$route.params.id) || 1
@@ -59,9 +59,15 @@ export default {
       return this.relatedPosts(this.currentTag).length > this.$constant.baseSettings.postsNumberPerPage
     },
   },
-  async asyncData ({ payload, store, params, error }) {
-    await store.commit('posts/setCurrentTag', params.slug)
-  },
+  // async asyncData ({ payload, store, params, error }) {
+  //   const currentTag = payload || await store.state.posts.tags.find(tag => tag.fields.slug === params.slug)
+
+  //   if (currentTag) {
+  //     return { currentTag }
+  //   } else {
+  //     return error({ statusCode: 404 })
+  //   }
+  // },
   mounted () {
     this.$fadeinPage()
   },

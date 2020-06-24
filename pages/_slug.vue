@@ -95,12 +95,18 @@ export default {
     // ...mapState('posts', ['currentPost']),
     ...mapGetters('posts', ['linkTo']),
     currentPost () {
-      return this.$store.state.posts.currentPost
+      return this.$store.state.posts.posts.find(post => post.fields.slug === this.$route.params.slug)
     },
   },
-  async asyncData ({ payload, store, params, error }) {
-    await store.commit('posts/setCurrentPost', params.slug)
-  },
+  // async asyncData ({ payload, store, params, error }) {
+  //   const currentPost = payload || await store.state.posts.posts.find(post => post.fields.slug === params.slug)
+
+  //   if (currentPost) {
+  //     return { currentPost }
+  //   } else {
+  //     return error({ statusCode: 404 })
+  //   }
+  // },
   mounted () {
     Prism.highlightAll()
   },
