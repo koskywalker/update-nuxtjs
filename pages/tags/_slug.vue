@@ -12,7 +12,6 @@
             {{ currentTag.fields.name }}に関する記事一覧
           </h1>
           <article-list
-            ref="articleList"
             :posts="postsThisPage"
           />
           <pagination
@@ -63,40 +62,6 @@ export default {
     } else {
       return error({ statusCode: 404 })
     }
-  },
-  mounted () {
-    this.$fadeinPage()
-  },
-  beforeRouteLeave (to, from, next) {
-    // 遷移先ページが記事詳細以外の場合はそのまま遷移
-    if (to.name !== 'slug') {
-      next()
-      return
-    }
-
-    // 選択した記事の情報を取得
-    const articleList = this.$refs.articleList.$refs.articleListItems
-    const selectedArticle = this.$getSelectedArticleInfo(to, articleList)
-
-    // 遷移前の画像の情報を取得
-    const image = selectedArticle.$refs.image
-    const imageSrc = selectedArticle.post.fields.heroImage.fields.file.url
-    const imageStyleObject = this.$getImageStyleObject(image)
-
-    // ダミー画像に位置と画像のURLを渡す
-    this.$nuxt.$emit('setImageInfoToDammyImage', {
-      imageSrc,
-      imageStyleObject,
-    })
-
-    // 記事一覧から遷移していることをフラグとして持たせる
-    this.$store.dispatch('route/isFromArticleList')
-
-    // ページを上部に移動
-    this.$scrollTopAnimation()
-
-    // 画面をフェードアウトしてページ遷移
-    this.$fadeoutPage(next)
   },
 }
 </script>

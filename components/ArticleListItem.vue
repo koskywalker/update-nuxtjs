@@ -6,7 +6,6 @@
     >
       <div class="articleMainImage">
         <img
-          ref="image"
           :src="post.fields.heroImage.fields.file.url + '?w=480'"
           :alt="post.fields.heroImage.fields.description"
           class="articleMainImage__image"
