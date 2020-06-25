@@ -120,5 +120,7 @@ export default {
     CTF_BLOG_POST_TYPE_ID: process.env.CTF_BLOG_POST_TYPE_ID,
     FACEBOOK_APP_ID: process.env.FACEBOOK_APP_ID,
     DISQUS_SHORTNAME: process.env.DISQUS_SHORTNAME,
+    BASIC_AUTH_USER_ID: process.env.BASIC_AUTH_USER_ID,
+    BASIC_AUTH_PASSWORD: process.env.BASIC_AUTH_PASSWORD,
   },
 }

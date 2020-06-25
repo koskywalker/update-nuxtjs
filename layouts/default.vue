@@ -35,6 +35,7 @@ export default {
         { charset: 'utf-8' },
         { name: 'viewport', content: 'width=device-width, initial-scale=1, viewport-fit=cover' },
         { hid: 'description', name: 'description', content: this.$constant.blogInfo.baseDescription },
+        { hid: 'robots', name: 'robots', content: 'noindex' },
         { hid: 'og:url', property: 'og:url', content: process.env.BASE_URL },
         { hid: 'og:site_name', property: 'og:site_name', content: this.$constant.blogInfo.blogName },
         { hid: 'og:title', property: 'og:title', content: this.$constant.blogInfo.blogName },

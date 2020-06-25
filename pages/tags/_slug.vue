@@ -28,7 +28,7 @@
 </template>
 
 <script>
-import { mapState, mapGetters } from 'vuex'
+import { mapGetters } from 'vuex'
 import MainVisual from '@/components/MainVisual'
 import ArticleList from '@/components/ArticleList'
 import Pagination from '@/components/Pagination'
@@ -42,7 +42,6 @@ export default {
     TheSidebar,
   },
   computed: {
-    ...mapState('posts', ['currentTag']),
     ...mapGetters('posts', ['relatedPosts']),
     postsThisPage () {
       const pageNumber = parseInt(this.$route.params.id) || 1
@@ -57,7 +56,13 @@ export default {
     },
   },
   async asyncData ({ payload, store, params, error }) {
-    await store.commit('posts/setCurrentTag', params.slug)
+    const currentTag = payload || await store.state.posts.tags.find(tag => tag.fields.slug === params.slug)
+
+    if (currentTag) {
+      return { currentTag }
+    } else {
+      return error({ statusCode: 404 })
+    }
   },
   mounted () {
     this.$fadeinPage()
