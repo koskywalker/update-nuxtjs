@@ -1,7 +1,6 @@
 <template>
   <div class="post">
-    {{ currentPost.fields.title }}
-    <!-- <div
+    <div
       class="postHeader"
     >
       <div
@@ -73,18 +72,18 @@
           />
         </div>
       </div>
-    </div> -->
+    </div>
   </div>
 </template>
 
 <script>
 import { mapGetters } from 'vuex'
-// import RelatedPosts from '@/components/RelatedPosts'
+import RelatedPosts from '@/components/RelatedPosts'
 import Prism from '~/plugins/prism'
 
 export default {
   components: {
-    // RelatedPosts,
+    RelatedPosts,
   },
   data () {
     return {
