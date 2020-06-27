@@ -5,7 +5,6 @@
     <nuxt />
     <the-footer />
     <the-footer-menu-fixed />
-    <dammy-image />
   </div>
 </template>
 
@@ -14,7 +13,6 @@ import TheParticles from '@/layouts/TheParticles'
 import TheHeader from '@/layouts/TheHeader'
 import TheFooter from '@/layouts/TheFooter'
 import TheFooterMenuFixed from '@/layouts/TheFooterMenuFixed'
-import DammyImage from '@/components/DammyImage'
 
 export default {
   components: {
@@ -22,7 +20,6 @@ export default {
     TheHeader,
     TheFooter,
     TheFooterMenuFixed,
-    DammyImage,
   },
   head () {
     return {

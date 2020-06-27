@@ -9,10 +9,8 @@
         <div class="postHeaderInner__body">
           <div class="postHeaderInner__bodyItem postHeaderInner__bodyThumbnail">
             <img
-              ref="image"
               :src="currentPost.fields.heroImage.fields.file.url + '?w=500'"
               :alt="currentPost.fields.heroImage.fields.description"
-              @load="afterLoadedImage"
               class="postHeaderInner__bodyThumbnailImage"
               height="282"
               width="500"
@@ -106,48 +104,11 @@ export default {
   mounted () {
     Prism.highlightAll()
   },
-  beforeRouteLeave (to, from, next) {
-    // 遷移先ページがトップページ以外の場合はそのまま遷移
-    if (to.name !== 'index') {
-      next()
-      return
-    }
-
-    // フェードアウトして次の画面に遷移
-    this.$fadeoutPage(next)
-  },
-  methods: {
-    afterLoadedImage () {
-      this.$el.style.opacity = 1
-
-      if (this.$store.state.route.fromArticleListFlug) {
-        this.setImageData()
-      }
-    },
-    setImageData () {
-      // 記事のサムネイル画像の情報を取得
-      const image = this.$refs.image
-      const imageStyleObject = this.$getImageStyleObject(image)
-
-      // 記事のサムネイル画像を非表示にする
-      image.style.opacity = 0
-
-      // ダミー画像に情報を渡す
-      this.$nuxt.$emit('moveDammyImage', {
-        image,
-        imageStyleObject,
-      })
-
-      // 画面をフェードインする
-      this.$fadeinPage()
-    },
-  },
 }
 </script>
 
 <style lang="scss" scoped>
 .post {
-  opacity: 0;
 
   &Header {
     background-color: $color_black_transparent;
