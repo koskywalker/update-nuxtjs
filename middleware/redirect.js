@@ -1,5 +1,5 @@
 export default ({ params, route, redirect }) => {
-  if (route.path === '/page/1') {
+  if (route.path === '/page/1' || route.path === '/page/1/') {
     redirect(301, '/')
   }
 
