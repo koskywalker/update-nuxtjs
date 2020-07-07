@@ -17,16 +17,17 @@ export default {
   ** Plugins to load before mounting the App
   */
   plugins: [
-    { src: '~/plugins/constant.js' },
-    { src: '~/plugins/contentful.js' },
-    { src: '~/plugins/vue-typed-js.js' },
-    { src: '~/plugins/vuejs-paginate.js', mode: 'client' },
-    { src: '~/plugins/particles.js' },
-    { src: '~/plugins/utility.js' },
-    { src: '~/plugins/router-option.js' },
-    { src: '~/plugins/markdown-it.js' },
-    { src: '~/plugins/prism.js' },
-    { src: '~/plugins/vue-disqus.js' },
+    { src: '~plugins/constant.js' },
+    { src: '~plugins/ga.js', mode: 'client' },
+    { src: '~plugins/contentful.js' },
+    { src: '~plugins/vue-typed-js.js' },
+    { src: '~plugins/vuejs-paginate.js', mode: 'client' },
+    { src: '~plugins/particles.js' },
+    { src: '~plugins/utility.js' },
+    { src: '~plugins/router-option.js' },
+    { src: '~plugins/markdown-it.js' },
+    { src: '~plugins/prism.js' },
+    { src: '~plugins/vue-disqus.js' },
   ],
   /*
   ** Middleware
@@ -51,6 +52,7 @@ export default {
     '@nuxtjs/pwa',
     '@nuxtjs/dotenv',
     '@nuxtjs/style-resources',
+    ['@nuxtjs/google-tag-manager', { id: 'GTM-5Q8M5KF' }],
     'nuxt-fontawesome',
     '~/modules/hook',
   ],
