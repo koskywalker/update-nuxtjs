@@ -1,5 +1,6 @@
 export default ({ params, route, redirect }) => {
-  if (route.path === '/page/1' || route.path === '/page/1/') {
+  console.log(route)
+  if (route.name === 'blog-page-id' && params.id === '1') {
     redirect(301, '/')
   }
 
