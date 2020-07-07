@@ -1,4 +1,4 @@
 # 一覧ページの1ページ目の URL はページ番号のない URL にリダイレクト
-/page/1    /             301!
-/tags/*/1  /tags/:splat  301!
-/vscode-shell-launcher  /  301!
+/page/1                 /             301!
+/tags/*/1               /tags/:splat  301!
+/vscode-shell-launcher  /             301!
