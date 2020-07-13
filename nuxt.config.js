@@ -81,7 +81,7 @@ export default {
     */
     extend (config, ctx) {
       if (ctx.isDev) {
-        config.devtool = 'inline-cheap-module-source-map'
+        config.devtool = ctx.isClient ? 'source-map' : 'inline-source-map'
       }
     },
   },
