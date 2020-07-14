@@ -22,7 +22,6 @@ export default {
     { src: '~plugins/contentful.js' },
     { src: '~plugins/vue-typed-js.js' },
     { src: '~plugins/vuejs-paginate.js', mode: 'client' },
-    { src: '~plugins/particles.js' },
     { src: '~plugins/utility.js' },
     { src: '~plugins/router-option.js' },
     { src: '~plugins/markdown-it.js' },

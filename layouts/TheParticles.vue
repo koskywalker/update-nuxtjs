@@ -8,15 +8,16 @@
 </template>
 
 <script>
-import particlesSmall from '~/assets/js/particles-small'
-import particlesLarge from '~/assets/js/particles-large'
+import particlesMobile from '~/assets/js/particles-mobile'
+import particlesPc from '~/assets/js/particles-pc'
 
 export default {
   mounted () {
+    require('particles.js')
     if (matchMedia('(max-width: 768px)').matches) {
-      window.particlesJS('particles', particlesSmall.data)
+      window.particlesJS('particles', particlesMobile.data)
     } else {
-      window.particlesJS('particles', particlesLarge.data)
+      window.particlesJS('particles', particlesPc.data)
     }
   },
 }
