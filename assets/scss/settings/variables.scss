@@ -19,7 +19,8 @@ $width_single_column: 680px;
 // font-family
 @font-face {
 	font-family: 'Adumu';
-	src: url('~assets/font/Adumu.woff') format('woff'),
+	src: url('~assets/font/Adumu.woff2') format('woff2'),
+    url('~assets/font/Adumu.woff') format('woff'),
     url('~assets/font/Adumu.ttf') format('truetype');
 }
 $font_main: -apple-system, "Segoe UI", 游ゴシック体, "Yu Gothic", YuGothic, "ヒラギノ角ゴ Pro", "ヒラギノ角ゴ W3", "Hiragino Kaku Gothic Pro", メイリオ, meiryo, sans-serif;
