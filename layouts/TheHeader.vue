@@ -104,22 +104,6 @@ export default {
   &Link {
     color: $color_black;
     display: block;
-    position: relative;
-
-    &::after {
-      position: absolute;
-      bottom: -8px;
-      left: 50%;
-      content: '';
-      width: 0;
-      border-bottom: solid 3px $color_gray;
-      transition: 0.5s;
-      transform: translateX(-50%);
-    }
-
-    &:hover::after {
-      width: 100%;
-    }
   }
 }
 
