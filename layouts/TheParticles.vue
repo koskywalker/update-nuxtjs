@@ -1,10 +1,8 @@
 <template>
-  <div class="particlesWrap">
-    <div
-      id="particles"
-      class="particles"
-    />
-  </div>
+  <div
+    id="particles"
+    class="particles"
+  />
 </template>
 
 <script>
@@ -24,14 +22,12 @@ export default {
 </script>
 
 <style lang="scss">
-.particlesWrap {
+.particles {
   overflow: hidden;
   position: absolute;
   top: 0;
   z-index: -1;
-}
-.particles-js-canvas-el {
-  height: 100vh !important;
-  width: 100vw !important;
+  height: 100vh;
+  width: 100vw;
 }
 </style>
