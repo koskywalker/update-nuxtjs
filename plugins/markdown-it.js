@@ -15,7 +15,9 @@ export default ({ app }, inject) => {
   })
 
   md.use(MarkdownItAnchor)
-  md.use(MarkdownItTableOfContents)
+  md.use(MarkdownItTableOfContents, {
+    includeLevel: [2, 3],
+  })
   md.use(MarkdownItContainer, 'info')
   md.use(MarkdownItContainer, 'success')
   md.use(MarkdownItContainer, 'warning')
