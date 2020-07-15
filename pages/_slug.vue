@@ -285,6 +285,10 @@ export default {
     li:last-of-type {
       margin-bottom: 0;
     }
+
+    ul ul {
+      margin: .5rem 0 0 0;
+    }
   }
 
   @mixin mdItContainer_base {
