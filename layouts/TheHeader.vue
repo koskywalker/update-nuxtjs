@@ -139,31 +139,21 @@ export default {
       }
     }
 
-    &::after,
     &::before {
       background-color: $color_gray;
+      bottom: -8px;
       content: '';
+      display: block;
       height: 3px;
+      left: 0;
       position: absolute;
       right: 0;
-      top: calc(100% + 8px);
-      width: 0;
+      transform: scaleX(0);
+      transition: .3s;
     }
 
-    &::before {
-      transition: .4s cubic-bezier(0.51, 0.18, 0, 0.88) .1s;
-    }
-
-    &::after {
-      transition: .2s cubic-bezier(0.29, 0.18, 0.26, 0.83);
-    }
-
-    &:hover {
-      &::after,
-      &::before {
-        width: 100%;
-        left: 0;
-      }
+    &:hover::before {
+      transform: scaleX(1);
     }
 
     &Name {
