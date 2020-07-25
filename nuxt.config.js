@@ -3,6 +3,34 @@ const client = require('./plugins/contentful').default
 
 export default {
   mode: 'universal',
+  /*
+  ** Global CSS
+  */
+  styleResources: {
+    scss: [
+      '@/assets/scss/reset.scss',
+      '@/assets/scss/variables.scss',
+      '@/assets/scss/tools.scss',
+      '@/assets/scss/base.scss',
+      '@/assets/scss/animation.scss',
+      '@/assets/scss/util.scss',
+    ],
+  },
+  /*
+  ** Plugins to load before mounting the App
+  */
+  plugins: [
+    { src: '~plugins/constant.js' },
+    { src: '~plugins/ga.js', mode: 'client' },
+    { src: '~plugins/contentful.js' },
+    { src: '~plugins/vue-typed-js.js' },
+    { src: '~plugins/vuejs-paginate.js', mode: 'client' },
+    { src: '~plugins/utility.js' },
+    { src: '~plugins/router-option.js' },
+    { src: '~plugins/markdown-it.js' },
+    { src: '~plugins/prism.js' },
+    { src: '~plugins/vue-disqus.js' },
+  ],
   head () {
     return {
       titleTemplate: '%s - ' + this.$constant.blogInfo.blogName,
@@ -32,34 +60,6 @@ export default {
       ],
     }
   },
-  /*
-  ** Global CSS
-  */
-  styleResources: {
-    scss: [
-      '@/assets/scss/reset.scss',
-      '@/assets/scss/variables.scss',
-      '@/assets/scss/tools.scss',
-      '@/assets/scss/base.scss',
-      '@/assets/scss/animation.scss',
-      '@/assets/scss/util.scss',
-    ],
-  },
-  /*
-  ** Plugins to load before mounting the App
-  */
-  plugins: [
-    { src: '~plugins/constant.js' },
-    { src: '~plugins/ga.js', mode: 'client' },
-    { src: '~plugins/contentful.js' },
-    { src: '~plugins/vue-typed-js.js' },
-    { src: '~plugins/vuejs-paginate.js', mode: 'client' },
-    { src: '~plugins/utility.js' },
-    { src: '~plugins/router-option.js' },
-    { src: '~plugins/markdown-it.js' },
-    { src: '~plugins/prism.js' },
-    { src: '~plugins/vue-disqus.js' },
-  ],
   /*
   ** Middleware
   */
