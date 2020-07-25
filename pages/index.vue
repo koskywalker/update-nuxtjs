@@ -1,37 +1,27 @@
 <template>
   <div>
-    <main-visual />
-    <div class="container">
-      <div class="containerInner">
-        <main class="main">
-          <article-list
-            :posts="postsThisPage"
-          />
-          <pagination
-            v-if="isPaginationShow"
-            :path="'/page'"
-            :postsNumber="posts.length"
-          />
-        </main>
-        <the-sidebar class="sidebar" />
-      </div>
-    </div>
+    <main class="main">
+      <article-list
+        :posts="postsThisPage"
+      />
+      <pagination
+        v-if="isPaginationShow"
+        :path="'/page'"
+        :postsNumber="posts.length"
+      />
+    </main>
   </div>
 </template>
 
 <script>
 import { mapState } from 'vuex'
-import MainVisual from '@/components/MainVisual'
 import ArticleList from '@/components/ArticleList'
 import Pagination from '@/components/Pagination'
-import TheSidebar from '@/layouts/TheSidebar'
 
 export default {
   components: {
-    MainVisual,
     ArticleList,
     Pagination,
-    TheSidebar,
   },
   computed: {
     ...mapState('posts', ['posts']),
@@ -49,37 +39,3 @@ export default {
   },
 }
 </script>
-
-<style lang="scss" scoped>
-.container {
-  background-color: $color_background_base;
-  padding-bottom: 3rem;
-  width: 100%;
-
-  &Inner {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    margin: 0 auto;
-    max-width: $width_max;
-    width: $width_base;
-  }
-}
-
-.main {
-  width: 100%;
-
-  @include mq($mq_pc) {
-    width: 65%;
-  }
-}
-
-.sidebar {
-  margin-bottom: 2rem;
-  width: 100%;
-
-  @include mq($mq_pc) {
-    width: 30%;
-  }
-}
-</style>

@@ -1,0 +1,10 @@
+/*
+** util
+** 汎用的なスタイル
+*/
+
+.br_sp {
+  @include mq($mq_tablet) {
+    display: none;
+  }
+}
