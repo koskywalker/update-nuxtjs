@@ -1,15 +1,13 @@
 <template>
   <div>
-    <main class="main">
-      <article-list
-        :posts="postsThisPage"
-      />
-      <pagination
-        v-if="isPaginationShow"
-        :path="'/page'"
-        :postsNumber="posts.length"
-      />
-    </main>
+    <article-list
+      :posts="postsThisPage"
+    />
+    <pagination
+      v-if="isPaginationShow"
+      :path="'/page'"
+      :postsNumber="posts.length"
+    />
   </div>
 </template>
 

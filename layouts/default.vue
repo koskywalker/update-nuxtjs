@@ -5,7 +5,9 @@
     <main-visual />
     <div class="container">
       <div class="containerInner">
-        <nuxt class="main" />
+        <main class="main">
+          <nuxt />
+        </main>
         <the-sidebar class="sidebar" />
       </div>
     </div>
