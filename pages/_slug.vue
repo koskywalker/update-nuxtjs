@@ -1,60 +1,52 @@
 <template>
   <div class="post">
-    <div
-      class="postHeader"
-    >
+    <article>
       <div
-        class="postHeaderInner"
+        class="postHeader"
       >
-        <div class="postHeaderInner__body">
-          <div class="postHeaderInner__bodyItem postHeaderInner__bodyThumbnail">
-            <img
-              :src="currentPost.fields.heroImage.fields.file.url + '?w=500'"
-              :alt="currentPost.fields.heroImage.fields.description"
-              class="postHeaderInner__bodyThumbnailImage"
-              height="282"
-              width="500"
-              loading="lazy"
-            >
-          </div>
-          <h1 class="postHeaderInner__bodyItem postHeaderInner__bodyTitle">
-            {{ currentPost.fields.title }}
-          </h1>
-          <p class="postHeaderInner__item postHeaderInner__bodyDescription">
-            {{ currentPost.fields.description }}
-          </p>
-          <p class="postHeaderInner__bodyItem postHeaderInner__bodyDate">
-            <span class="postHeaderInner__bodyDatePublished">
-              投稿日: {{ (new Date(currentPost.fields.publishDate)).toLocaleDateString() }}
-            </span>
-            <span
-              v-if="currentPost.sys.updatedAt"
-              class="postHeaderInner__bodyDateUpdated"
-            >
-              更新日: {{ (new Date(currentPost.sys.updatedAt)).toLocaleDateString() }}
-            </span>
-          </p>
-          <div class="postHeaderInner__bodyItem postHeaderInner__bodyTagList">
-            <nuxt-link
-              v-for="(tag, index) in currentPost.fields.tags"
-              :key="index"
-              :to="linkTo('tags', tag)"
-              class="postHeaderInner__bodyTagListItem"
-            >
-              {{ tag.fields.name }}
-            </nuxt-link>
-          </div>
+        <h1 class="postHeader__title">
+          {{ currentPost.fields.title }}
+        </h1>
+        <p class="postHeader__date">
+          <span class="postHeader__datePublished">
+            投稿日: {{ (new Date(currentPost.fields.publishDate)).toLocaleDateString() }}
+          </span>
+          <span
+            v-if="currentPost.sys.updatedAt"
+            class="postHeader__dateUpdated"
+          >
+            更新日: {{ (new Date(currentPost.sys.updatedAt)).toLocaleDateString() }}
+          </span>
+        </p>
+        <div class="postHeader__tagList">
+          <nuxt-link
+            v-for="(tag, index) in currentPost.fields.tags"
+            :key="index"
+            :to="linkTo('tags', tag)"
+            class="postHeader__tagListItem"
+          >
+            {{ tag.fields.name }}
+          </nuxt-link>
+        </div>
+        <p class="postHeader__thumbnail">
+          <img
+            :src="currentPost.fields.heroImage.fields.file.url + '?w=800'"
+            :alt="currentPost.fields.heroImage.fields.description"
+            class="postHeader__thumbnailImage"
+            width="800"
+            loading="lazy"
+          >
+        </p>
+      </div>
+      <div class="postBody">
+        <div class="postBodyInner">
+          <div
+            v-html="$md.render(currentPost.fields.body)"
+            class="postBodyInnerContent line-numbers"
+          />
         </div>
       </div>
-    </div>
-    <div class="postBody">
-      <div class="postBodyInner">
-        <div
-          v-html="$md.render(currentPost.fields.body)"
-          class="postBodyInnerContent line-numbers"
-        />
-      </div>
-    </div>
+    </article>
     <div class="postFooter">
       <div class="postFooterInner">
         <related-posts
@@ -109,94 +101,72 @@ export default {
 
 <style lang="scss" scoped>
 .post {
+  background-color: $color_white;
+  box-shadow:
+    0 1px 4px 0 rgba(0, 0, 0, 0),
+    0 6px 10px 0 rgba(0, 0, 0, 0.3),
+    0 2px 2px 0 rgba(0, 0, 0, 0.2);
+  transition: all .5s ease;
 
   &Header {
-    background-color: $color_black_transparent;
-    color: $color_white;
+    padding: 2rem 0 0;
 
-    &Inner {
-      align-content: center;
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: space-between;
-      margin: 0 auto;
-      max-width: $width_single_column;
-      padding: 2rem 0;
+    &__title {
+      line-height: 1.3;
+      margin: 0 auto 1rem;
+    }
 
-      &__body {
-        margin: 0 auto;
+    &__date {
+      font-size: $fontSize_base;
+      line-height: 1.5;
+      margin-bottom: 1rem;
 
-        &Item {
-          margin-bottom: 1rem;
-        }
-
-        &Thumbnail {
-          margin: 0 auto 1.5rem;
-          max-width: 500px;
-        }
-
-        &Title {
-          line-height: 1.3;
-        }
-
-        &Description {
-          font-size: $fontSize_base;
-          line-height: 1.5;
-        }
-
-        &Date {
-          font-size: $fontSize_base;
-          line-height: 1.5;
-
-          &Updated {
-            margin-left: .5rem;
-          }
-        }
-
-        &TagList {
-          line-height: 1;
-          margin: 0 auto;
-          width: $width_base;
-
-          &Item {
-            border: 1px solid $color_white;
-            border-radius: .8rem;
-            color: $color_white;
-            display: inline-block;
-            font-size: $fontSize_base;
-            line-height: 1;
-            margin-right: .4rem;
-            padding: .2rem .4rem;
-
-            &:hover {
-              background-color: $color_white;
-              color: $color_black_transparent;
-            }
-          }
-        }
+      &Updated {
+        margin-left: .5rem;
       }
     }
+
+    &__tagList {
+      display: flex;
+      flex-wrap: wrap;
+      margin: 0 auto 1rem;
+      width: $width_base;
+
+      &Item {
+        background-color: $color_navy;
+        color: $color_white;
+        font-size: $fontSize_s;
+        line-height: 1;
+        margin: 0 .4rem .5rem 0;
+        padding: .3rem .4rem;
+      }
+    }
+
+    &__thumbnail {
+      margin: 1rem auto;
+      width: $width_base;
+    }
   }
+
   &Body {
     background-color: $color_background_base;
 
     &Inner {
       background-color: $color_white;
       margin: 0 auto;
-      max-width: $width_single_column;
 
       &Content {
-        padding: 2rem 0;
+        padding: 2rem 0 0;
       }
     }
   }
+
   &Footer {
     background-color: $color_background_base;
 
     &Inner {
       background-color: $color_white;
       margin: 0 auto;
-      max-width: $width_single_column;
       padding-bottom: 3rem;
     }
 

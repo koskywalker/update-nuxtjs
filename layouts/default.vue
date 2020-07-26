@@ -48,7 +48,10 @@ export default {
     justify-content: space-between;
     margin: 0 auto;
     max-width: $width_max;
-    width: $width_base;
+
+    @include mq($mq_tablet) {
+      width: $width_base;
+    }
   }
 }
 
