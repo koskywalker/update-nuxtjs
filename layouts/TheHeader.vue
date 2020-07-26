@@ -29,11 +29,11 @@
         <nuxt-link
           v-for="(item, index) in globalNav"
           :key="index"
-          :to="item.url"
+          :to="item.URL"
           class="globalNav__item"
         >
-          <span class="globalNav__itemName">{{ item.name }}</span>
-          <span class="globalNav__itemLabel">{{ item.label }}</span>
+          <span class="globalNav__itemName">{{ item.NAME }}</span>
+          <span class="globalNav__itemLabel">{{ item.LABEL }}</span>
         </nuxt-link>
       </nav>
     </div>
@@ -41,11 +41,13 @@
 </template>
 
 <script>
+import { CONSTANTS } from '@/assets/js/constants'
+
 export default {
   data () {
     return {
-      blogName: this.$constant.blogInfo.blogName,
-      globalNav: this.$constant.headerMenu,
+      blogName: CONSTANTS.BLOG_INFO.BLOG_NAME,
+      globalNav: CONSTANTS.HEADER_MENU,
     }
   },
   computed: {

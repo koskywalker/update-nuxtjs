@@ -27,6 +27,8 @@
 </template>
 
 <script>
+import { CONSTANTS } from '@/assets/js/constants'
+
 export default {
   props: {
     path: {
@@ -49,7 +51,7 @@ export default {
   },
   computed: {
     pageCount () {
-      return Math.ceil(this.postsNumber / this.$constant.baseSettings.postsNumberPerPage)
+      return Math.ceil(this.postsNumber / CONSTANTS.BASE_SETTINGS.POSTS_NUMBER_PER_PAGE)
     },
   },
   methods: {

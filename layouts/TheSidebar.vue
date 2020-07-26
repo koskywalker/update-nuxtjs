@@ -37,24 +37,24 @@
       </button>
       <div class="sideProfile__name">
         <p class="sideProfile__nameText">
-          {{ $constant.myInfo.nickname }} ({{ $constant.myInfo.name }})
+          {{ myInfo.NICKNAME }} ({{ myInfo.NAME }})
         </p>
         <p class="sideProfile__nameLabel">
-          {{ $constant.myInfo.labelMain }}
+          {{ myInfo.LABEL_MAIN }}
         </p>
       </div>
       <div class="sideProfile__text">
         <p class="sideProfile__textSentence">
-          {{ $constant.myInfo.introduction.first }}
+          {{ myInfo.INTRODUCTION.FIRST }}
         </p>
         <p class="sideProfile__textSentence">
-          {{ $constant.myInfo.introduction.history }}
+          {{ myInfo.INTRODUCTION.HISTORY }}
         </p>
         <p class="sideProfile__textSentence">
-          {{ $constant.myInfo.introduction.strongPoints }}
+          {{ myInfo.INTRODUCTION.STRONG_POINTS }}
         </p>
         <p class="sideProfile__textSentence">
-          {{ $constant.myInfo.introduction.other }}
+          {{ myInfo.INTRODUCTION.OTHER }}
         </p>
       </div>
       <div class="sideProfile__sns">
@@ -83,6 +83,7 @@
 </template>
 
 <script>
+import { CONSTANTS } from '@/assets/js/constants'
 import RecentPosts from '@/components/RecentPosts'
 import LightSaber from '@/components/LightSaber'
 
@@ -93,24 +94,25 @@ export default {
   },
   data () {
     return {
+      myInfo: CONSTANTS.MY_INFO,
       items: [
         {
-          url: this.$constant.myInfo.sns.twitter.url,
+          url: CONSTANTS.MY_INFO.SNS.TWITTER.URL,
           icon: ['fab', 'twitter'],
           class: 'sideProfile__snsListItem--twitter',
         },
         {
-          url: this.$constant.myInfo.sns.instagram.url,
+          url: CONSTANTS.MY_INFO.SNS.INSTAGRAM.URL,
           icon: ['fab', 'instagram'],
           class: 'sideProfile__snsListItem--instagram',
         },
         {
-          url: this.$constant.myInfo.sns.github.url,
+          url: CONSTANTS.MY_INFO.SNS.GITHUB.URL,
           icon: ['fab', 'github'],
           class: 'sideProfile__snsListItem--github',
         },
         {
-          url: this.$constant.myInfo.sns.feedly.url,
+          url: CONSTANTS.MY_INFO.SNS.FEEDLY.URL,
           icon: ['fas', 'rss'],
           class: 'sideProfile__snsListItem--feedly',
         },

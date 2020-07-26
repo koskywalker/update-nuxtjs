@@ -31,14 +31,15 @@
 </template>
 
 <script>
+import { CONSTANTS } from '@/assets/js/constants'
 import { mapState, mapGetters } from 'vuex'
 
 export default {
   data () {
     return {
-      blogName: this.$constant.blogInfo.blogName,
-      blogDescription: this.$constant.blogInfo.baseDescription,
-      blogTechnology: this.$constant.blogInfo.aboutBlogTechnology,
+      blogName: CONSTANTS.BLOG_INFO.BLOG_NAME,
+      blogDescription: CONSTANTS.BLOG_INFO.BASE_DESCRIPTION,
+      blogTechnology: CONSTANTS.BLOG_INFO.ABOUT_BLOG_TECHNOLOGY,
     }
   },
   computed: {

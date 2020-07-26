@@ -27,6 +27,7 @@
 </template>
 
 <script>
+import { CONSTANTS } from '@/assets/js/constants'
 import { mapGetters } from 'vuex'
 import MainVisual from '@/components/MainVisual'
 import ArticleList from '@/components/ArticleList'
@@ -40,18 +41,23 @@ export default {
     Pagination,
     TheSidebar,
   },
+  data () {
+    return {
+      postsNumberPerPage: CONSTANTS.BASE_SETTINGS.POSTS_NUMBER_PER_PAGE,
+    }
+  },
   computed: {
     ...mapGetters('posts', ['relatedPosts']),
     postsThisPage () {
       const pageNumber = parseInt(this.$route.params.id) || 1
       const postsCopy = [...this.relatedPosts(this.currentTag)]
-      return postsCopy.splice((pageNumber - 1) * this.$constant.baseSettings.postsNumberPerPage, this.$constant.baseSettings.postsNumberPerPage)
+      return postsCopy.splice((pageNumber - 1) * this.postsNumberPerPage, this.postsNumberPerPage)
     },
     path () {
       return `/tags/${this.$route.params.slug}`
     },
     isPaginationShow () {
-      return this.relatedPosts(this.currentTag).length > this.$constant.baseSettings.postsNumberPerPage
+      return this.relatedPosts(this.currentTag).length > this.postsNumberPerPage
     },
   },
   async asyncData ({ payload, store, params, error }) {

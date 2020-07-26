@@ -1,8 +1,39 @@
+import { CONSTANTS } from './assets/js/constants'
 require('dotenv').config()
 const client = require('./plugins/contentful').default
 
 export default {
   mode: 'universal',
+  /*
+  ** Headers of the page
+  */
+  head: {
+    titleTemplate: '%s - ' + CONSTANTS.BLOG_INFO.BLOG_NAME,
+    title: CONSTANTS.BLOG_INFO.BASE_TITLE,
+    htmlAttrs: {
+      lang: 'ja',
+    },
+    meta: [
+      { charset: 'utf-8' },
+      { name: 'viewport', content: 'width=device-width, initial-scale=1, viewport-fit=cover' },
+      { hid: 'description', name: 'description', content: CONSTANTS.BLOG_INFO.BASE_DESCRIPTION },
+      { hid: 'robots', name: 'robots', content: 'noindex' },
+      { hid: 'og:url', property: 'og:url', content: process.env.BASE_URL },
+      { hid: 'og:site_name', property: 'og:site_name', content: CONSTANTS.BLOG_INFO.BLOG_NAME },
+      { hid: 'og:title', property: 'og:title', content: CONSTANTS.BLOG_INFO.BLOG_NAME },
+      { hid: 'og:locale', property: 'og:locale', content: 'ja_JP' },
+      { hid: 'og:type', property: 'og:type', content: 'website' },
+      { hid: 'og:description', property: 'og:description', content: CONSTANTS.BLOG_INFO.BASE_DESCRIPTION },
+      { hid: 'og:image', property: 'og:image', content: CONSTANTS.BLOG_INFO.BASE_OGP_IMAGE },
+      { name: 'twitter:card', content: 'summary_large_image' },
+      { name: 'twitter:site', content: '@kosuke_upd' },
+      { property: 'article:publisher', content: 'FacebookURL' },
+      { property: 'fb:app_id', content: process.env.FACEBOOK_APP_ID },
+    ],
+    link: [
+      { rel: 'icon', type: 'image/svg+xml', href: '/favicon.svg' },
+    ],
+  },
   /*
   ** Global CSS
   */
@@ -20,7 +51,6 @@ export default {
   ** Plugins to load before mounting the App
   */
   plugins: [
-    { src: '~plugins/constant.js' },
     { src: '~plugins/ga.js', mode: 'client' },
     { src: '~plugins/contentful.js' },
     { src: '~plugins/vue-typed-js.js' },
@@ -31,35 +61,6 @@ export default {
     { src: '~plugins/prism.js' },
     { src: '~plugins/vue-disqus.js' },
   ],
-  head () {
-    return {
-      titleTemplate: '%s - ' + this.$constant.blogInfo.blogName,
-      title: this.$constant.blogInfo.baseTitle,
-      htmlAttrs: {
-        lang: 'ja',
-      },
-      meta: [
-        { charset: 'utf-8' },
-        { name: 'viewport', content: 'width=device-width, initial-scale=1, viewport-fit=cover' },
-        { hid: 'description', name: 'description', content: this.$constant.blogInfo.baseDescription },
-        { hid: 'robots', name: 'robots', content: 'noindex' },
-        { hid: 'og:url', property: 'og:url', content: process.env.BASE_URL },
-        { hid: 'og:site_name', property: 'og:site_name', content: this.$constant.blogInfo.blogName },
-        { hid: 'og:title', property: 'og:title', content: this.$constant.blogInfo.blogName },
-        { hid: 'og:locale', property: 'og:locale', content: 'ja_JP' },
-        { hid: 'og:type', property: 'og:type', content: 'website' },
-        { hid: 'og:description', property: 'og:description', content: this.$constant.blogInfo.baseDescription },
-        { hid: 'og:image', property: 'og:image', content: this.$constant.blogInfo.baseOgpImage },
-        { name: 'twitter:card', content: 'summary_large_image' },
-        { name: 'twitter:site', content: '@kosuke_upd' },
-      // { property: 'article:publisher', content: 'FacebookURL' },
-      // { property: 'fb:app_id', content: process.env.FACEBOOK_APP_ID }
-      ],
-      link: [
-        { rel: 'icon', type: 'image/svg+xml', href: '/favicon.svg' },
-      ],
-    }
-  },
   /*
   ** Middleware
   */

@@ -33,15 +33,15 @@
           class="menuList__item"
         >
           <button
-            :class="item.class"
+            :class="item.CLASS"
             @click="buttonAction"
             class="menuList__itemLink js-button"
           >
             <font-awesome-icon
-              :icon="item.icon"
+              :icon="item.ICON"
               class="menuList__itemIcon"
             />
-            <span class="menuList__itemName">{{ item.name }}</span>
+            <span class="menuList__itemName">{{ item.NAME }}</span>
           </button>
         </li>
       </ul>
@@ -50,6 +50,7 @@
 </template>
 
 <script>
+import { CONSTANTS } from '@/assets/js/constants'
 import ShareButtons from '~/components/ShareButtons'
 import FollowButtons from '~/components/FollowButtons'
 import DrawerMenu from '~/components/DrawerMenu'
@@ -63,7 +64,7 @@ export default {
   },
   data () {
     return {
-      items: this.$constant.footerMenuFixed,
+      items: CONSTANTS.FOOTER_MENU_FIXED,
       title: '',
       showShareButtons: false,
       showFollowButtons: false,

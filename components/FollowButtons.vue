@@ -24,25 +24,27 @@
 </template>
 
 <script>
+import { CONSTANTS } from '@/assets/js/constants'
+
 export default {
   data () {
     return {
       items: [
         {
-          name: this.$constant.myInfo.sns.twitter.name,
-          url: this.$constant.myInfo.sns.twitter.url,
+          name: CONSTANTS.MY_INFO.SNS.TWITTER.NAME,
+          url: CONSTANTS.MY_INFO.SNS.TWITTER.URL,
           icon: ['fab', 'twitter'],
           class: 'followInner__itemLink--twitter',
         },
         {
-          name: this.$constant.myInfo.sns.github.name,
-          url: this.$constant.myInfo.sns.github.url,
+          name: CONSTANTS.MY_INFO.SNS.GITHUB.NAME,
+          url: CONSTANTS.MY_INFO.SNS.GITHUB.URL,
           icon: ['fab', 'github'],
           class: 'followInner__itemLink--github',
         },
         {
-          name: this.$constant.myInfo.sns.feedly.name,
-          url: this.$constant.myInfo.sns.feedly.url,
+          name: CONSTANTS.MY_INFO.SNS.FEEDLY.NAME,
+          url: CONSTANTS.MY_INFO.SNS.FEEDLY.URL,
           icon: ['fas', 'rss'],
           class: 'followInner__itemLink--feedly',
         },
