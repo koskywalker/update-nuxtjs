@@ -48,9 +48,6 @@
           {{ myInfo.INTRODUCTION.FIRST }}
         </p>
         <p class="sideProfile__textSentence">
-          {{ myInfo.INTRODUCTION.HISTORY }}
-        </p>
-        <p class="sideProfile__textSentence">
           {{ myInfo.INTRODUCTION.STRONG_POINTS }}
         </p>
         <p class="sideProfile__textSentence">
@@ -194,7 +191,7 @@ export default {
 
   &Profile {
     &__image {
-      border-radius: 10%;
+      border-radius: 10px;
       display: block;
       margin: 0 auto 1rem;
       outline: none;
@@ -203,7 +200,7 @@ export default {
 
       &Inner {
         @extend %shadow_base;
-        border-radius: 10%;
+        border-radius: 10px;
         overflow: hidden;
 
         &:hover {

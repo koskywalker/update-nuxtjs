@@ -71,7 +71,7 @@ export const CONSTANTS = {
   MY_INFO: {
     NICKNAME: 'こうすけ',
     NAME: 'Kosuke Muraka',
-    LABEL_MAIN: 'いろんなクリエイター',
+    LABEL_MAIN: 'クリエイター',
     LABEL: ['エンジニア', 'デザイナー', 'ブロガー'],
     BIRTHDAY: '1991/08/29',
     SKILLS: [
@@ -95,10 +95,10 @@ export const CONSTANTS = {
       'Web デザイン',
     ],
     INTRODUCTION: {
-      FIRST: '😆 フロントエンドメインの Web 系エンジニア, JAMstack エンジニア.',
-      HISTORY: '📘 青山学院大学在学中にブログ開始 → SEO コンサル → エンジニア & デザイナー.',
-      STRONG_POINTS: '✅ HTML / CSS / JavaScript / Vue.js / Nuxt.js / Java / PHP / SEO / WordPress / デザイン.',
-      OTHER: '🌈 当ブログでは, 主にフロントエンドに関するプログラミング情報について楽しく発信します！',
+      FIRST: 'フリーランスのフロントエンドエンジニア. バックエンドも少々.',
+      HISTORY: '',
+      STRONG_POINTS: 'マークアップ / JavaScript / TypeScript / React / Angular / Vue.js / Nuxt.js / WordPress / SEO が得意. UI / UX / Web デザイン / WebGL 習得中. ',
+      OTHER: '当ブログでは, 主にフロントエンドに関するプログラミング情報について楽しく発信します！',
     },
     SNS: {
       HP: {
