@@ -49,16 +49,30 @@ h4 {
   font-size: $fontSize_m;
 }
 
-pre {
-  margin: 0;
-  white-space: pre-wrap;
-}
-
 code,
 kbd,
 pre,
 samp {
-  font-family: "Menlo", "Consolas", "monaco", "monospace", "ＭＳ ゴシック", sans-serif;
+  font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
+}
+
+code {
+  padding: .2em .3em;
+  margin: 0 .1em;
+  border-radius: 5px;
+  background: $color_gray_light;
+  font-size: .9rem;
+}
+
+pre {
+  margin: 0;
+  white-space: pre-wrap;
+
+  code {
+    border-radius: 0;
+    margin: 0;
+    padding: 0;
+  }
 }
 
 sub,

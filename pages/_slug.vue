@@ -184,15 +184,8 @@ export default {
 
 <style lang="scss">
 .post {
-  h1,
-  h2,
-  h3,
-  h4,
-  h5,
-  h6,
-  p,
-  ul {
-    line-height: 1.3;
+  p {
+    line-height: 1.8;
     margin: 0 auto 1.5rem;
     width: $width_base;
   }
@@ -203,7 +196,9 @@ export default {
   h4,
   h5,
   h6 {
+    line-height: 1.3;
     margin: 3rem auto 2rem;
+    width: $width_base;
   }
 
   h2 {
@@ -219,7 +214,10 @@ export default {
   }
 
   ul {
+    line-height: 1.3;
     list-style-type: disc;
+    margin: 0 auto 1.5rem;
+    width: $width_base;
   }
 
   li {
@@ -234,6 +232,13 @@ export default {
     code {
       font-size: .9rem;
     }
+  }
+
+  hr {
+    border: dotted 2px $color_gray_middle;
+    border-width: 2px 0 0 0;
+    margin: 2rem auto;
+    width: $width_base;
   }
 
   .table-of-contents {
@@ -269,7 +274,6 @@ export default {
   .success {
     @include mdItContainer_base();
     background-color: #DAEDD2;
-    color: #3A6F3A;
 
     p:last-of-type {
       margin-bottom: 0;
@@ -279,7 +283,6 @@ export default {
   .info {
     @include mdItContainer_base();
     background-color: #D3EAF6;
-    color: #2B6584;
 
     p:last-of-type {
       margin-bottom: 0;
@@ -289,7 +292,6 @@ export default {
   .warning {
     @include mdItContainer_base();
     background-color: #FCF7DF;
-    color: #AF9C75;
 
     p:last-of-type {
       margin-bottom: 0;
@@ -299,7 +301,6 @@ export default {
   .danger {
     @include mdItContainer_base();
     background-color: #F0D9D9;
-    color: #9F3B3A;
 
     p:last-of-type {
       margin-bottom: 0;
