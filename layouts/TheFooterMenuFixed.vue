@@ -283,8 +283,8 @@ export default {
 
 .drawerMenu {
   position: fixed;
-  top: 0;
   right: 0;
+  top: 0;
 }
 
 .drawerBackground {
@@ -298,7 +298,7 @@ export default {
 .slide-bottom {
   &-enter-active,
   &-leave-active {
-    transition: all .5s ease;
+    transition: all 0.5s ease;
   }
 
   &-enter,
@@ -311,7 +311,7 @@ export default {
 .fade {
   &-enter-active,
   &-leave-active {
-    transition: opacity .5s;
+    transition: opacity 0.5s;
   }
 
   &-enter,
@@ -323,7 +323,7 @@ export default {
 .slide-right {
   &-enter-active,
   &-leave-active {
-    transition: all .5s ease;
+    transition: all 0.5s ease;
   }
 
   &-enter,

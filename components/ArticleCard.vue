@@ -57,6 +57,7 @@ export default {
 
   &__thumbnail {
     @extend %shadow_base;
+
     height: 100%;
     width: 30%;
 

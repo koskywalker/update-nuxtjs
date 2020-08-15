@@ -107,7 +107,7 @@ export default {
     0 1px 4px 0 rgba(0, 0, 0, 0),
     0 6px 10px 0 rgba(0, 0, 0, 0.3),
     0 2px 2px 0 rgba(0, 0, 0, 0.2);
-  transition: all .5s ease;
+  transition: all 0.5s ease;
 
   &Header {
     padding: 2rem 0 0;
@@ -123,7 +123,7 @@ export default {
       margin-bottom: 1rem;
 
       &Updated {
-        margin-left: .5rem;
+        margin-left: 0.5rem;
       }
     }
 
@@ -138,8 +138,8 @@ export default {
         color: $color_white;
         font-size: $fontSize_s;
         line-height: 1;
-        margin: 0 .4rem .5rem 0;
-        padding: .3rem .4rem;
+        margin: 0 0.4rem 0.5rem 0;
+        padding: 0.3rem 0.4rem;
       }
     }
 
@@ -203,15 +203,15 @@ export default {
   }
 
   h2 {
-    border-bottom: .3rem solid;
+    border-bottom: 0.3rem solid;
     border-image: linear-gradient(to right, $color_navy, $color_blue 50%, $color_green);
     border-image-slice: 1;
-    padding-bottom: .5rem;
+    padding-bottom: 0.5rem;
   }
 
   h3 {
     border-bottom: 1px solid $color_gray_middle;
-    padding-bottom: .5rem;
+    padding-bottom: 0.5rem;
   }
 
   ul {
@@ -222,7 +222,7 @@ export default {
   }
 
   li {
-    margin: 0 0 .5rem 1.5rem;
+    margin: 0 0 0.5rem 1.5rem;
   }
 
   pre {
@@ -231,7 +231,7 @@ export default {
     padding: 1rem 4%;
 
     code {
-      font-size: .9rem;
+      font-size: 0.9rem;
     }
   }
 
@@ -257,14 +257,14 @@ export default {
   th {
     background-color: $color_gray_light;
     border: 2px solid $color_gray_middle;
-    font-size: .9rem;
+    font-size: 0.9rem;
     font-weight: 700;
-    padding: .8rem;
+    padding: 0.8rem;
   }
 
   td {
     border: 2px solid $color_gray_middle;
-    padding: .8rem;
+    padding: 0.8rem;
   }
 
   .postBody img {
@@ -292,7 +292,7 @@ export default {
     }
 
     ul ul {
-      margin: .5rem 0 0 0;
+      margin: 0.5rem 0 0 0;
     }
   }
 
@@ -317,7 +317,7 @@ export default {
   .appreach {
     border: solid 3px $color_gray_middle;
     margin: 0 auto 1.5rem;
-    padding: .5rem;
+    padding: 0.5rem;
     width: $width_base;
 
     @include mq($mq_tablet) {
@@ -360,7 +360,7 @@ export default {
 
   .appreach__name {
     line-height: 1.3;
-    margin-bottom: .5rem;
+    margin-bottom: 0.5rem;
 
     @include mq($mq_tablet) {
       font-size: 1.2rem;
@@ -368,17 +368,17 @@ export default {
   }
 
   .appreach__info {
-    font-size: .8rem;
-    margin-bottom: .5rem;
+    font-size: 0.8rem;
+    margin-bottom: 0.5rem;
 
     @include mq($mq_tablet) {
-      font-size: .9rem;
+      font-size: 0.9rem;
     }
   }
 
   .appreach__developper,
   .appreach__price {
-    margin-right: .5em;
+    margin-right: 0.5em;
   }
 
   .appreach__links {
@@ -409,7 +409,8 @@ export default {
 
   .success {
     @include mdItContainer_base();
-    background-color: #DAEDD2;
+
+    background-color: #daedd2;
 
     p:last-of-type {
       margin-bottom: 0;
@@ -418,7 +419,8 @@ export default {
 
   .info {
     @include mdItContainer_base();
-    background-color: #D3EAF6;
+
+    background-color: #d3eaf6;
 
     p:last-of-type {
       margin-bottom: 0;
@@ -427,7 +429,8 @@ export default {
 
   .warning {
     @include mdItContainer_base();
-    background-color: #FCF7DF;
+
+    background-color: #fcf7df;
 
     p:last-of-type {
       margin-bottom: 0;
@@ -436,7 +439,8 @@ export default {
 
   .danger {
     @include mdItContainer_base();
-    background-color: #F0D9D9;
+
+    background-color: #f0d9d9;
 
     p:last-of-type {
       margin-bottom: 0;

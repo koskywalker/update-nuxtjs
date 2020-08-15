@@ -83,7 +83,7 @@ export default {
 
 .logo {
   margin: 0 auto;
-  padding: .5rem 0;
+  padding: 0.5rem 0;
 
   @include mq($mq_pc) {
     margin: 0;
@@ -92,6 +92,7 @@ export default {
 
   &Text {
     @extend %font_accent;
+
     display: inline-block;
     font-size: $fontSize_3l;
     font-weight: normal;
@@ -151,7 +152,7 @@ export default {
       position: absolute;
       right: 0;
       transform: scaleX(0);
-      transition: .3s;
+      transition: 0.3s;
     }
 
     &:hover::before {
@@ -186,6 +187,7 @@ export default {
 
     &Label {
       @extend %font_accent;
+
       display: none;
       line-height: 1;
 

@@ -9,9 +9,10 @@
   box-sizing: border-box;
 }
 
-/* Remove default padding */
+/* Remove default styles on ul, ol elements with a class attribute */
 ul[class],
 ol[class] {
+  list-style: none;
   padding: 0;
 }
 
@@ -35,16 +36,10 @@ dd {
 
 /* Set core body defaults */
 body {
+  line-height: 1.5;
   min-height: 100vh;
   scroll-behavior: smooth;
   text-rendering: optimizeSpeed;
-  line-height: 1.5;
-}
-
-/* Remove list styles on ul, ol elements with a class attribute */
-ul[class],
-ol[class] {
-  list-style: none;
 }
 
 /* A elements that don't have a class get default styles */
@@ -54,8 +49,8 @@ a:not([class]) {
 
 /* Make images easier to work with */
 img {
-  max-width: 100%;
   display: block;
+  max-width: 100%;
 }
 
 /* Natural flow and rhythm in articles by default */
@@ -76,7 +71,7 @@ select {
   * {
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
-    transition-duration: 0.01ms !important;
     scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
   }
 }

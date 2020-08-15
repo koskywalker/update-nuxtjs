@@ -95,22 +95,22 @@ export default {
     }
   }
 
-  &__postLink {
-    display: block;
-
-    &:hover .relatedPosts__postImage {
-      @extend %shadow_base_hover;
-    }
-  }
-
   &__postImage {
     @extend %shadow_base;
   }
 
   &__postTitle {
     color: $color_black;
-    margin: .8rem 0 0;
+    margin: 0.8rem 0 0;
     width: 100%;
+  }
+
+  &__postLink {
+    display: block;
+
+    &:hover .relatedPosts__postImage {
+      @extend %shadow_base_hover;
+    }
   }
 }
 </style>

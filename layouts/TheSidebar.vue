@@ -170,6 +170,7 @@ export default {
 .side {
   &Item {
     @extend %shadow_base;
+
     background-color: $color_white;
     border-radius: 3px;
     margin-bottom: 2rem;
@@ -178,13 +179,14 @@ export default {
 
     &__title {
       @extend %font_accent;
-      border-bottom: .3rem solid;
+
+      border-bottom: 0.3rem solid;
       border-image: linear-gradient(to right, $color_navy, $color_blue 50%, $color_green);
       border-image-slice: 1;
       font-size: $fontSize_l;
-      letter-spacing: .1rem;
+      letter-spacing: 0.1rem;
       margin-bottom: 2rem;
-      padding-bottom: .3rem;
+      padding-bottom: 0.3rem;
       text-align: center;
     }
   }
@@ -200,6 +202,7 @@ export default {
 
       &Inner {
         @extend %shadow_base;
+
         border-radius: 10px;
         overflow: hidden;
 
@@ -238,7 +241,8 @@ export default {
 
       &Title {
         @extend %font_accent;
-        margin-bottom: .5rem;
+
+        margin-bottom: 0.5rem;
       }
 
       &List {
@@ -247,12 +251,13 @@ export default {
 
         &Item {
           @extend %shadow_base;
+
           border-radius: 15%;
           color: $color_white;
           font-size: $fontSize_l;
           line-height: 1;
-          margin: 0 .5rem;
-          padding: .5rem;
+          margin: 0 0.5rem;
+          padding: 0.5rem;
 
           &:hover {
             @extend %shadow_base_hover;
@@ -278,10 +283,11 @@ export default {
     }
   }
 }
+
 .fade {
   &-enter-active,
   &-leave-active {
-    transition: opacity .5s;
+    transition: opacity 0.5s;
   }
 
   &-enter,

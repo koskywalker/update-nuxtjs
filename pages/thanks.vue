@@ -67,13 +67,13 @@ export default {
   &Button {
     background-color: $color_background_base_dark;
     border-radius: 2rem;
-    box-shadow: -4px -4px 10px $color_white,  4px 4px 10px $color_shadow_light;
+    box-shadow: -4px -4px 10px $color_white, 4px 4px 10px $color_shadow_light;
     color: $color_black;
     display: block;
     font-weight: bold;
     margin: 0 auto;
-    padding: .5rem 1.5rem;
     outline: 0;
+    padding: 0.5rem 1.5rem;
     text-align: center;
     text-shadow: 1px 1px 0 $color_white;
     transition: all 0.2s ease-in-out;

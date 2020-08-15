@@ -23,11 +23,11 @@ export default {
 
 <style lang="scss">
 .particles {
+  height: 100vh;
   overflow: hidden;
   position: absolute;
   top: 0;
-  z-index: -1;
-  height: 100vh;
   width: 100vw;
+  z-index: -1;
 }
 </style>

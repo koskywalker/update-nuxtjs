@@ -43,7 +43,6 @@ export default {
       '@/assets/scss/variables.scss',
       '@/assets/scss/tools.scss',
       '@/assets/scss/base.scss',
-      '@/assets/scss/animation.scss',
       '@/assets/scss/util.scss',
     ],
   },

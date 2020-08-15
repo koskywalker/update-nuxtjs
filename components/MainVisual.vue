@@ -68,6 +68,7 @@ export default {
 
     &__typing {
       @extend %font_accent;
+
       font-size: $fontSize_l;
       margin: 0 auto;
 
@@ -77,6 +78,7 @@ export default {
     }
   }
 }
+
 .gradationArea {
   background: linear-gradient(transparent, $color_background_base);
   height: 4rem;

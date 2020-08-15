@@ -62,11 +62,11 @@ export default {
 
 <style lang="scss" scoped>
 .tagTitle {
-  border-bottom: .3rem solid;
+  border-bottom: 0.3rem solid;
   border-image: linear-gradient(to right, $color_navy, $color_blue 50%, $color_green);
   border-image-slice: 1;
   font-size: $fontSize_l;
   margin-bottom: 2rem;
-  padding-bottom: .3rem;
+  padding-bottom: 0.3rem;
 }
 </style>

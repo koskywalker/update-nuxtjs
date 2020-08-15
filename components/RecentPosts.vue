@@ -42,13 +42,14 @@ export default {
 .recentPosts {
   &__title {
     @extend %font_accent;
-    border-bottom: .3rem solid;
+
+    border-bottom: 0.3rem solid;
     border-image: linear-gradient(to right, $color_navy, $color_blue 50%, $color_green);
     border-image-slice: 1;
     font-size: $fontSize_l;
-    letter-spacing: .1rem;
+    letter-spacing: 0.1rem;
     margin-bottom: 2rem;
-    padding-bottom: .3rem;
+    padding-bottom: 0.3rem;
     text-align: center;
   }
 }

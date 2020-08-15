@@ -17,8 +17,8 @@ body {
   font-family: $font_main;
   line-height: 1.8;
   overflow-wrap: break-word;
-  word-break: normal;
   width: 100%;
+  word-break: normal;
 }
 
 a {
@@ -57,11 +57,11 @@ samp {
 }
 
 code {
-  padding: .2em .3em;
-  margin: 0 .1em;
-  border-radius: 5px;
   background: $color_gray_light;
-  font-size: .9rem;
+  border-radius: 5px;
+  font-size: 0.9rem;
+  margin: 0 0.1em;
+  padding: 0.2em 0.3em;
 }
 
 pre {
@@ -114,7 +114,7 @@ img {
 }
 
 iframe {
-  max-width: 100%
+  max-width: 100%;
 }
 
 // フォーム

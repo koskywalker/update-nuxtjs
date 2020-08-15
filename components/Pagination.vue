@@ -73,7 +73,17 @@ export default {
     justify-content: center;
 
     &Item {
-      margin: 0 .3rem;
+      margin: 0 0.3rem;
+
+      &Link {
+        border-radius: 50%;
+        color: $color_navy;
+        display: block;
+        height: 2rem;
+        line-height: 2rem;
+        text-align: center;
+        width: 2rem;
+      }
 
       &--breakView {
         margin: 0;
@@ -91,16 +101,6 @@ export default {
 
       &:not(.paginationListItem--active):not(.paginationListItem--disabled) .paginationListItemLink:hover {
         background-color: $color_gray_middle;
-      }
-
-      &Link {
-        border-radius: 50%;
-        color: $color_navy;
-        display: block;
-        height: 2rem;
-        line-height: 2rem;
-        text-align: center;
-        width: 2rem;
       }
     }
   }

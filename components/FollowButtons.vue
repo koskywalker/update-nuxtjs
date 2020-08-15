@@ -94,6 +94,7 @@ export default {
 
       &Name {
         @extend %font_accent;
+
         margin-left: 5px;
       }
     }
