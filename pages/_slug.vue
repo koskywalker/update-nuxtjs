@@ -235,10 +235,39 @@ export default {
   }
 
   hr {
-    border: dotted 2px $color_gray_middle;
+    border: 2px dotted $color_gray_middle;
     border-width: 2px 0 0 0;
     margin: 2rem auto;
     width: $width_base;
+  }
+
+  table {
+    border: 2px solid $color_gray_middle;
+    border-collapse: collapse;
+    border-spacing: 0;
+    margin: 0 auto 1.5rem;
+    width: $width_base;
+  }
+
+  tr {
+    border: 2px solid $color_gray_middle;
+  }
+
+  th {
+    background-color: $color_gray_light;
+    border: 2px solid $color_gray_middle;
+    font-size: .9rem;
+    font-weight: 700;
+    padding: .8rem;
+  }
+
+  td {
+    border: 2px solid $color_gray_middle;
+    padding: .8rem;
+  }
+
+  .postBody img {
+    border: 2px solid $color_gray_middle;
   }
 
   .table-of-contents {
@@ -266,8 +295,26 @@ export default {
     }
   }
 
+  .screenshot-mobile-single {
+    width: 70%;
+
+    @include mq($mq_tablet) {
+      width: 50%;
+    }
+  }
+
+  .screenshot-mobile-double {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+
+    img {
+      width: 48%;
+    }
+  }
+
   .appreach {
-    border: solid 3px $color_gray_light;
+    border: solid 3px $color_gray_middle;
     margin: 0 auto 1.5rem;
     padding: .5rem;
     width: $width_base;
@@ -275,6 +322,10 @@ export default {
     @include mq($mq_tablet) {
       padding: 1rem;
     }
+  }
+
+  .appreach img {
+    border: 0;
   }
 
   .appreach::after {
