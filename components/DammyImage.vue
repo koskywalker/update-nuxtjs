@@ -5,6 +5,8 @@
     v-if="imageStyleObject.width"
     @load="loaded"
     class="dammyImage"
+    width="800"
+    height="450"
     alt=""
   >
 </template>
