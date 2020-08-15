@@ -266,6 +266,90 @@ export default {
     }
   }
 
+  .appreach {
+    border: solid 3px $color_gray_light;
+    margin: 0 auto 1.5rem;
+    padding: .5rem;
+    width: $width_base;
+
+    @include mq($mq_tablet) {
+      padding: 1rem;
+    }
+  }
+
+  .appreach::after {
+    clear: both;
+    content: '';
+    display: block;
+  }
+
+  .appreach__icon {
+    border-radius: 10%;
+    float: left;
+    height: auto;
+    width: 25%;
+
+    @include mq($mq_tablet) {
+      width: 20%;
+    }
+  }
+
+  .appreach__detail {
+    display: inline-block;
+    margin-left: 3%;
+    width: 72%;
+  }
+
+  .appreach__detail::after {
+    clear: both;
+    content: '';
+    display: block;
+  }
+
+  .appreach__name {
+    line-height: 1.3;
+    margin-bottom: .5rem;
+
+    @include mq($mq_tablet) {
+      font-size: 1.2rem;
+    }
+  }
+
+  .appreach__info {
+    font-size: .8rem;
+    margin-bottom: .5rem;
+
+    @include mq($mq_tablet) {
+      font-size: .9rem;
+    }
+  }
+
+  .appreach__developper,
+  .appreach__price {
+    margin-right: .5em;
+  }
+
+  .appreach__links {
+    display: inline-block;
+    width: 100%;
+
+    @include mq($mq_tablet) {
+      margin-left: 3%;
+      width: 72%;
+    }
+  }
+
+  .appreach__aslink {
+    display: inline-block;
+    margin-right: 5px;
+    width: 134px;
+  }
+
+  .appreach__gplink {
+    display: inline-block;
+    width: 134px;
+  }
+
   @mixin mdItContainer_base {
     margin-bottom: 1.5rem;
     padding: 1.5rem 0;
