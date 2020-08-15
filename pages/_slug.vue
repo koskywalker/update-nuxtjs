@@ -34,6 +34,7 @@
             :alt="currentPost.fields.heroImage.fields.description"
             class="postHeader__thumbnailImage"
             width="800"
+            height="450"
             loading="lazy"
           >
         </p>
