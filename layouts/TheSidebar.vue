@@ -11,9 +11,7 @@
         />
         Profile
       </h3>
-      <button
-        @click="easterEggLightSaber"
-        :disabled="isDisabledLightSaber"
+      <div
         class="sideProfile__image"
       >
         <div
@@ -34,7 +32,7 @@
             class="sideProfile__imageLightSaber"
           />
         </transition>
-      </button>
+      </div>
       <div class="sideProfile__name">
         <p class="sideProfile__nameText">
           {{ myInfo.NICKNAME }} ({{ myInfo.NAME }})
@@ -43,6 +41,11 @@
           {{ myInfo.LABEL_MAIN }}
         </p>
       </div>
+      <button-colorful
+        @clickButtonColorful="easterEggLightSaber"
+        :disabled="isDisabledLightSaber"
+        class="sideProfile__button"
+      />
       <div class="sideProfile__text">
         <p class="sideProfile__textSentence">
           {{ myInfo.INTRODUCTION.FIRST }}
@@ -83,11 +86,13 @@
 import { CONSTANTS } from '@/assets/js/constants'
 import RecentPosts from '@/components/RecentPosts'
 import LightSaber from '@/components/LightSaber'
+import ButtonColorful from '@/components/ButtonColorful'
 
 export default {
   components: {
     RecentPosts,
     LightSaber,
+    ButtonColorful,
   },
   data () {
     return {
@@ -194,9 +199,7 @@ export default {
   &Profile {
     &__image {
       border-radius: 10px;
-      display: block;
       margin: 0 auto 1rem;
-      outline: none;
       position: relative;
       width: 150px;
 
@@ -205,10 +208,6 @@ export default {
 
         border-radius: 10px;
         overflow: hidden;
-
-        &:hover {
-          @extend %shadow_base_hover;
-        }
       }
 
       &LightSaber {
@@ -229,6 +228,10 @@ export default {
       &Label {
         color: $color_gray;
       }
+    }
+
+    &__button {
+      margin-bottom: 2rem;
     }
 
     &__textSentence {
