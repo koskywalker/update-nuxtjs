@@ -71,6 +71,9 @@ export default {
       showDrawerMenu: false,
     }
   },
+  mounted () {
+    this.closeActiveContents()
+  },
   methods: {
     /**
      * フッターメニューボタン押下時のアクション処理
@@ -184,6 +187,18 @@ export default {
       this.showDrawerMenu = false
       document.querySelector('.js-buttonMenu').classList.remove('active')
     },
+    /**
+     * シェアボタンエリア, フォローボタンエリア, ドロワーメニューを閉じる
+     */
+    closeActiveContents () {
+      document.onkeydown = (e) => {
+        if (e.keyCode === 27) {
+          this.showShareButtons = false
+          this.showFollowButtons = false
+          this.closeDrawer()
+        }
+      }
+    },
   },
 }
 </script>
@@ -192,7 +207,7 @@ export default {
 .menu {
   background-color: $color_white;
   bottom: 0;
-  height: 54px;
+  height: 64px;
   line-height: 1;
   margin: 0 auto;
   padding-bottom: constant(safe-area-inset-bottom);
@@ -277,7 +292,7 @@ export default {
 
 .shareButtons,
 .followButtons {
-  bottom: 54px;
+  bottom: 64px;
   position: absolute;
 }
 
