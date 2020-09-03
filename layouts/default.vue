@@ -2,7 +2,7 @@
   <div>
     <the-particles />
     <the-header />
-    <main-visual />
+    <main-visual v-if="$route.path === '/'" />
     <div class="container">
       <div class="containerInner">
         <main class="main">
@@ -38,7 +38,6 @@ export default {
 
 <style lang="scss" scoped>
 .container {
-  background-color: $color_background_base;
   padding-bottom: 3rem;
   width: 100%;
 

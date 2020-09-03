@@ -24,8 +24,9 @@ export default {
 <style lang="scss">
 .particles {
   height: 100vh;
+  left: 0;
   overflow: hidden;
-  position: absolute;
+  position: fixed;
   top: 0;
   width: 100vw;
   z-index: -1;
