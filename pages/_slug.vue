@@ -265,6 +265,13 @@ export default {
     padding: 0.8rem;
   }
 
+  iframe {
+    border: 2px solid $color_gray_middle;
+    display: block;
+    margin: 0 auto 1.5rem;
+    width: $width_base;
+  }
+
   .postBody img {
     border: 2px solid $color_gray_middle;
   }
@@ -310,6 +317,51 @@ export default {
     img {
       width: 48%;
     }
+  }
+
+  .cardInternalLink {
+    margin: 0 auto 2rem;
+    width: $width_base;
+  }
+
+  .warning p:last-of-type + .cardInternalLink {
+    margin-top: 1.5rem;
+  }
+
+  .cardInternalLinkInner {
+    @extend %shadow_base;
+
+    background-color: $color_white;
+    color: $color_black;
+    display: flex;
+    flex-wrap: wrap;
+    font-weight: 700;
+    max-width: 550px;
+    padding: 8px;
+    width: 100%;
+
+    &:hover {
+      @extend %shadow_base_hover;
+    }
+  }
+
+  .cardInternalLinkImage {
+    height: 80px;
+    width: 80px;
+
+    @include mq($mq_tablet) {
+      height: 100px;
+      width: 100px;
+    }
+  }
+
+  .cardInternalLinkTitle {
+    align-items: center;
+    display: flex;
+    flex-wrap: wrap;
+    line-height: 1.3;
+    padding-left: 8px;
+    width: calc(100% - 100px);
   }
 
   .cardReference {
