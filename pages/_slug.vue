@@ -102,11 +102,9 @@ export default {
 
 <style lang="scss" scoped>
 .post {
+  @extend %shadow_base;
+
   background-color: $color_white;
-  box-shadow:
-    0 1px 4px 0 rgba(0, 0, 0, 0),
-    0 6px 10px 0 rgba(0, 0, 0, 0.3),
-    0 2px 2px 0 rgba(0, 0, 0, 0.2);
   transition: all 0.5s ease;
 
   &Header {
@@ -312,6 +310,53 @@ export default {
     img {
       width: 48%;
     }
+  }
+
+  .cardReference {
+    margin: 0 auto 2rem;
+    width: $width_base;
+  }
+
+  .cardReferenceInner {
+    @extend %shadow_base;
+
+    background-color: $color_gray_light;
+    color: $color_black;
+    display: flex;
+    flex-wrap: wrap;
+    font-weight: 700;
+    max-width: 450px;
+    padding: 8px 8px 8px 0;
+    width: 100%;
+
+    &:hover {
+      @extend %shadow_base_hover;
+    }
+  }
+
+  .cardReferenceIcon {
+    text-align: center;
+    width: 70px;
+
+    &::before {
+      background-image: url(~assets/icon/bookmark.svg);
+      background-size: contain;
+      content: '';
+      display: block;
+      height: 32px;
+      margin: 4px auto 0;
+      width: 32px;
+    }
+  }
+
+  .cardReferenceTitle {
+    align-items: center;
+    border-left: 2px solid $color_gray_middle;
+    display: flex;
+    flex-wrap: wrap;
+    line-height: 1.3;
+    padding-left: 8px;
+    width: calc(100% - 70px);
   }
 
   .appreach {
