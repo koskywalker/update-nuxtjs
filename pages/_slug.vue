@@ -212,6 +212,20 @@ export default {
     padding-bottom: 0.5rem;
   }
 
+  h4 {
+    &::before {
+      background-image: url(~assets/icon/star.svg);
+      background-size: contain;
+      content: '';
+      display: inline-block;
+      height: 24px;
+      margin-right: 3px;
+      position: relative;
+      top: 3px;
+      width: 24px;
+    }
+  }
+
   ul {
     line-height: 1.3;
     list-style-type: disc;
@@ -221,6 +235,23 @@ export default {
 
   li {
     margin: 0 0 0.5rem 1.5rem;
+  }
+
+  dl {
+    margin: 0 auto 1.5rem;
+    width: $width_base;
+  }
+
+  dt {
+    font-weight: 700;
+  }
+
+  dd {
+    margin: 0 0 1.5rem 1.5rem;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
   }
 
   pre {
@@ -324,10 +355,6 @@ export default {
     width: $width_base;
   }
 
-  .warning p:last-of-type + .cardInternalLink {
-    margin-top: 1.5rem;
-  }
-
   .cardInternalLinkInner {
     @extend %shadow_base;
 
@@ -409,6 +436,11 @@ export default {
     line-height: 1.3;
     padding-left: 8px;
     width: calc(100% - 70px);
+  }
+
+  .warning p:last-of-type + .cardInternalLink,
+  .warning p:last-of-type + .cardReference {
+    margin: 1.5rem auto 0.5rem;
   }
 
   .appreach {
