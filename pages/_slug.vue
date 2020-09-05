@@ -350,6 +350,56 @@ export default {
     }
   }
 
+  .button {
+    align-items: center;
+    background-color: $color_gray_middle;
+    box-shadow: 0 5px 0 $color_gray, 0 10px 0 rgba(0, 0, 0, 0.2);
+    color: $color_white;
+    display: flex;
+    font-weight: 700;
+    justify-content: center;
+    margin-bottom: 2rem;
+    padding: 0.5rem 1rem;
+    position: relative;
+    transition: 0.1s;
+    width: 300px;
+
+    &:hover {
+      box-shadow: 0 3px 0 $color_gray, 0 6px 0 rgba(0, 0, 0, 0.2);
+      transform: translateY(3px);
+    }
+
+    &:active {
+      box-shadow: none;
+      transform: translateY(5px);
+    }
+
+    &::after {
+      background-image: url(~assets/icon/arrow-right.svg);
+      background-size: contain;
+      content: '';
+      display: inline-block;
+      height: 1rem;
+      margin-left: 5px;
+      position: absolute;
+      right: 1rem;
+      width: 1rem;
+    }
+  }
+
+  .button--accent {
+    background-color: $color_red;
+    box-shadow: 0 5px 0 $color_red_dark, 0 10px 0 rgba(0, 0, 0, 0.2);
+
+    &:hover {
+      box-shadow: 0 3px 0 $color_red_dark, 0 6px 0 rgba(0, 0, 0, 0.2);
+    }
+
+    &:active {
+      box-shadow: none;
+    }
+  }
+
   .cardInternalLink {
     margin: 0 auto 2rem;
     width: $width_base;
