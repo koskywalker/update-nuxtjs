@@ -164,6 +164,10 @@ export default {
     list-style-type: disc;
   }
 
+  ol {
+    list-style-type: decimal;
+  }
+
   li {
     margin: 0 0 0.5rem 1.5rem;
   }
