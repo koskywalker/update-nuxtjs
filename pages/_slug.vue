@@ -330,6 +330,10 @@ export default {
       right: 1rem;
       width: 1rem;
     }
+
+    img {
+      border: 0;
+    }
   }
 
   .button--accent {
