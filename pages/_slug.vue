@@ -359,6 +359,7 @@ export default {
     display: flex;
     flex-wrap: wrap;
     font-weight: 700;
+    margin-bottom: 2rem;
     max-width: 550px;
     padding: 8px;
     width: 100%;
