@@ -1,66 +1,68 @@
 <template>
   <div class="post">
-    <article>
-      <div
-        class="postHeader"
-      >
-        <h1 class="postHeader__title">
-          {{ currentPost.fields.title }}
-        </h1>
-        <p class="postHeader__date">
-          <span class="postHeader__datePublished">
-            投稿日: {{ (new Date(currentPost.fields.publishDate)).toLocaleDateString() }}
-          </span>
-          <span
-            v-if="currentPost.sys.updatedAt"
-            class="postHeader__dateUpdated"
-          >
-            更新日: {{ (new Date(currentPost.sys.updatedAt)).toLocaleDateString() }}
-          </span>
-        </p>
-        <div class="postHeader__tagList">
-          <nuxt-link
-            v-for="(tag, index) in currentPost.fields.tags"
-            :key="index"
-            :to="linkTo('tags', tag)"
-            class="postHeader__tagListItem"
-          >
-            {{ tag.fields.name }}
-          </nuxt-link>
+    <div class="postInner">
+      <article>
+        <div
+          class="postHeader"
+        >
+          <h1 class="postHeader__title">
+            {{ currentPost.fields.title }}
+          </h1>
+          <p class="postHeader__date">
+            <span class="postHeader__datePublished">
+              投稿日: {{ (new Date(currentPost.fields.publishDate)).toLocaleDateString() }}
+            </span>
+            <span
+              v-if="currentPost.sys.updatedAt"
+              class="postHeader__dateUpdated"
+            >
+              更新日: {{ (new Date(currentPost.sys.updatedAt)).toLocaleDateString() }}
+            </span>
+          </p>
+          <div class="postHeader__tagList">
+            <nuxt-link
+              v-for="(tag, index) in currentPost.fields.tags"
+              :key="index"
+              :to="linkTo('tags', tag)"
+              class="postHeader__tagListItem"
+            >
+              {{ tag.fields.name }}
+            </nuxt-link>
+          </div>
+          <p class="postHeader__thumbnail">
+            <img
+              :src="currentPost.fields.heroImage.fields.file.url + '?w=800'"
+              :alt="currentPost.fields.heroImage.fields.description"
+              class="postHeader__thumbnailImage"
+              width="800"
+              height="450"
+              loading="lazy"
+            >
+          </p>
         </div>
-        <p class="postHeader__thumbnail">
-          <img
-            :src="currentPost.fields.heroImage.fields.file.url + '?w=800'"
-            :alt="currentPost.fields.heroImage.fields.description"
-            class="postHeader__thumbnailImage"
-            width="800"
-            height="450"
-            loading="lazy"
-          >
-        </p>
-      </div>
-      <div class="postBody">
-        <div class="postBodyInner">
-          <div
-            v-html="$md.render(currentPost.fields.body)"
-            class="postBodyInnerContent line-numbers"
-          />
+        <div class="postBody">
+          <div class="postBodyInner">
+            <div
+              v-html="$md.render(currentPost.fields.body)"
+              class="postBodyInnerContent line-numbers"
+            />
+          </div>
         </div>
-      </div>
-    </article>
-    <div class="postFooter">
-      <div class="postFooterInner">
-        <related-posts
-          :currentPost="currentPost"
-        />
-        <div class="postFooter__comment">
-          <h2>この記事にコメントする</h2>
-          <vue-disqus
-            :identifier="currentPost.fields.slug"
-            :url="`${baseUrl}/${currentPost.fields.slug}`"
-            :shortname="disqusShortName"
-            class="postFooter__item"
+      </article>
+      <div class="postFooter">
+        <div class="postFooterInner">
+          <related-posts
+            :currentPost="currentPost"
           />
+          <div class="postFooter__comment">
+            <h2>この記事にコメントする</h2>
+            <vue-disqus
+              :identifier="currentPost.fields.slug"
+              :url="`${baseUrl}/${currentPost.fields.slug}`"
+              :shortname="disqusShortName"
+              class="postFooter__item"
+            />
+          </div>
         </div>
       </div>
     </div>
@@ -100,93 +102,25 @@ export default {
 }
 </script>
 
-<style lang="scss" scoped>
-.post {
-  @extend %shadow_base;
+<style lang="scss">
+@mixin fullWith {
+  margin-left: -1rem;
+  margin-right: -1rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
 
-  background-color: $color_white;
-  transition: all 0.5s ease;
-
-  &Header {
-    padding: 2rem 0 0;
-
-    &__title {
-      line-height: 1.3;
-      margin: 0 auto 1rem;
-    }
-
-    &__date {
-      font-size: $fontSize_base;
-      line-height: 1.5;
-      margin-bottom: 1rem;
-
-      &Updated {
-        margin-left: 0.5rem;
-      }
-    }
-
-    &__tagList {
-      display: flex;
-      flex-wrap: wrap;
-      margin: 0 auto 1rem;
-      width: $width_base;
-
-      &Item {
-        background-color: $color_navy;
-        color: $color_white;
-        font-size: $fontSize_s;
-        line-height: 1;
-        margin: 0 0.4rem 0.5rem 0;
-        padding: 0.3rem 0.4rem;
-      }
-    }
-
-    &__thumbnail {
-      margin: 1rem auto;
-      width: $width_base;
-    }
-  }
-
-  &Body {
-    background-color: $color_background_base;
-
-    &Inner {
-      background-color: $color_white;
-      margin: 0 auto;
-
-      &Content {
-        padding: 2rem 0 0;
-      }
-    }
-  }
-
-  &Footer {
-    background-color: $color_background_base;
-
-    &Inner {
-      background-color: $color_white;
-      margin: 0 auto;
-      padding-bottom: 3rem;
-    }
-
-    &__item {
-      margin: 0 auto;
-      width: $width_base;
-    }
-
-    &__comment {
-      overflow: hidden;
-    }
+  @include mq($mq_tablet) {
+    margin-left: -2rem;
+    margin-right: -2rem;
+    padding-left: 2rem;
+    padding-right: 2rem;
   }
 }
-</style>
 
-<style lang="scss">
 .post {
   p {
     line-height: 1.8;
-    margin: 0 auto 1.5rem;
-    width: $width_base;
+    margin-bottom: 1.5rem;
   }
 
   h1,
@@ -196,8 +130,7 @@ export default {
   h5,
   h6 {
     line-height: 1.3;
-    margin: 3rem auto 2rem;
-    width: $width_base;
+    margin: 3rem 0 2rem;
   }
 
   h2 {
@@ -229,8 +162,6 @@ export default {
   ul {
     line-height: 1.3;
     list-style-type: disc;
-    margin: 0 auto 1.5rem;
-    width: $width_base;
   }
 
   li {
@@ -255,9 +186,12 @@ export default {
   }
 
   pre {
+    @include fullWith();
+
     border-radius: 0;
-    margin: 0 auto 1.5rem;
-    padding: 1rem 4%;
+    margin-bottom: 1.5rem;
+    padding-bottom: 1rem;
+    padding-top: 1rem;
 
     code {
       font-size: 0.9rem;
@@ -267,16 +201,16 @@ export default {
   hr {
     border: 2px dotted $color_gray_middle;
     border-width: 2px 0 0 0;
-    margin: 2rem auto;
-    width: $width_base;
+    margin-bottom: 2rem;
+    margin-top: 2rem;
   }
 
   table {
     border: 2px solid $color_gray_middle;
     border-collapse: collapse;
     border-spacing: 0;
-    margin: 0 auto 1.5rem;
-    width: $width_base;
+    margin-bottom: 1.5rem;
+    width: 100%;
   }
 
   tr {
@@ -297,10 +231,9 @@ export default {
   }
 
   iframe {
-    border: 2px solid $color_gray_middle;
     display: block;
-    margin: 0 auto 1.5rem;
-    width: $width_base;
+    margin: 1.5rem 0;
+    width: 100%;
   }
 
   .postBody img {
@@ -308,9 +241,13 @@ export default {
   }
 
   .table-of-contents {
+    @include fullWith();
+
     background-color: #d6e0f0;
-    margin: 3rem 0;
-    padding: 2rem 0;
+    margin-bottom: 3rem;
+    margin-top: 3rem;
+    padding-bottom: 2rem;
+    padding-top: 2rem;
 
     &::before {
       content: '目次';
@@ -318,8 +255,7 @@ export default {
       font-size: 1.3rem;
       font-weight: bold;
       line-height: 1;
-      margin: 0 auto 1rem;
-      width: $width_base;
+      margin-bottom: 1rem;
     }
 
     ul,
@@ -333,6 +269,7 @@ export default {
   }
 
   .screenshot-mobile-single {
+    margin: 0 auto 1.5rem;
     width: 70%;
 
     @include mq($mq_tablet) {
@@ -362,7 +299,11 @@ export default {
     padding: 0.5rem 1rem;
     position: relative;
     transition: 0.1s;
-    width: 300px;
+    width: 100%;
+
+    @include mq($mq_tablet) {
+      width: 70%;
+    }
 
     &:hover {
       box-shadow: 0 3px 0 $color_gray, 0 6px 0 rgba(0, 0, 0, 0.2);
@@ -400,12 +341,17 @@ export default {
     }
   }
 
-  .cardInternalLink {
-    margin: 0 auto 2rem;
-    width: $width_base;
+  .buttonDouble {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+
+    .button {
+      width: 48%;
+    }
   }
 
-  .cardInternalLinkInner {
+  .cardReferenceInternal {
     @extend %shadow_base;
 
     background-color: $color_white;
@@ -422,7 +368,7 @@ export default {
     }
   }
 
-  .cardInternalLinkImage {
+  .cardReferenceInternal__image {
     height: 80px;
     width: 80px;
 
@@ -432,21 +378,17 @@ export default {
     }
   }
 
-  .cardInternalLinkTitle {
+  .cardReferenceInternal__title {
     align-items: center;
     display: flex;
     flex-wrap: wrap;
     line-height: 1.3;
+    margin: 0;
     padding-left: 8px;
     width: calc(100% - 100px);
   }
 
-  .cardReference {
-    margin: 0 auto 2rem;
-    width: $width_base;
-  }
-
-  .cardReferenceInner {
+  .cardReferenceExternal {
     @extend %shadow_base;
 
     background-color: $color_gray_light;
@@ -454,6 +396,7 @@ export default {
     display: flex;
     flex-wrap: wrap;
     font-weight: 700;
+    margin-bottom: 2rem;
     max-width: 450px;
     padding: 8px 8px 8px 0;
     width: 100%;
@@ -463,7 +406,7 @@ export default {
     }
   }
 
-  .cardReferenceIcon {
+  .cardReferenceExternal__icon {
     text-align: center;
     width: 70px;
 
@@ -478,7 +421,7 @@ export default {
     }
   }
 
-  .cardReferenceTitle {
+  .cardReferenceExternal__title {
     align-items: center;
     border-left: 2px solid $color_gray_middle;
     display: flex;
@@ -488,16 +431,17 @@ export default {
     width: calc(100% - 70px);
   }
 
-  .warning p:last-of-type + .cardInternalLink,
-  .warning p:last-of-type + .cardReference {
-    margin: 1.5rem auto 0.5rem;
+  .info > p:last-of-type + .cardReferenceInternal,
+  .info > p:last-of-type + .cardReferenceExternal,
+  .warning > p:last-of-type + .cardReferenceInternal,
+  .warning > p:last-of-type + .cardReferenceExternal {
+    margin: 1.5rem 0 0.5rem;
   }
 
   .appreach {
     border: solid 3px $color_gray_middle;
-    margin: 0 auto 1.5rem;
-    padding: 0.5rem;
-    width: $width_base;
+    margin-bottom: 1.5rem;
+    padding: 0.4rem;
 
     @include mq($mq_tablet) {
       padding: 1rem;
@@ -572,7 +516,7 @@ export default {
 
   .appreach__aslink {
     display: inline-block;
-    margin-right: 5px;
+    margin-right: 4px;
     width: 134px;
   }
 
@@ -581,49 +525,124 @@ export default {
     width: 134px;
   }
 
-  @mixin mdItContainer_base {
-    margin-bottom: 1.5rem;
-    padding: 1.5rem 0;
+  .success,
+  .info,
+  .warning,
+  .danger {
+    @include fullWith();
+
+    margin-bottom: 2rem;
+    padding-bottom: 1.5rem;
+    padding-top: 1.5rem;
   }
 
   .success {
-    @include mdItContainer_base();
-
     background-color: #daedd2;
 
-    p:last-of-type {
+    > p:last-of-type {
       margin-bottom: 0;
     }
   }
 
   .info {
-    @include mdItContainer_base();
-
     background-color: #d3eaf6;
 
-    p:last-of-type {
+    > p:last-of-type {
       margin-bottom: 0;
     }
   }
 
   .warning {
-    @include mdItContainer_base();
-
     background-color: #fcf7df;
 
-    p:last-of-type {
+    > p:last-of-type {
       margin-bottom: 0;
     }
   }
 
   .danger {
-    @include mdItContainer_base();
-
     background-color: #f0d9d9;
 
-    p:last-of-type {
+    > p:last-of-type {
       margin-bottom: 0;
     }
+  }
+}
+</style>
+
+<style lang="scss" scoped>
+.post {
+  @extend %shadow_base;
+
+  background-color: $color_white;
+  padding: 2rem 0;
+}
+
+.postInner {
+  margin: 0 1rem;
+
+  @include mq($mq_tablet) {
+    margin: 0 2rem;
+  }
+}
+
+.postHeader {
+  &__title {
+    line-height: 1.3;
+    margin-bottom: 1rem;
+  }
+
+  &__date {
+    font-size: $fontSize_base;
+    line-height: 1.5;
+    margin-bottom: 1rem;
+
+    &Updated {
+      margin-left: 0.5rem;
+    }
+  }
+
+  &__tagList {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0 auto 1rem;
+
+    &Item {
+      background-color: $color_navy;
+      color: $color_white;
+      font-size: $fontSize_s;
+      line-height: 1;
+      margin: 0 0.4rem 0.5rem 0;
+      padding: 0.3rem 0.4rem;
+    }
+  }
+}
+
+.postBody {
+  background-color: $color_background_base;
+
+  &Inner {
+    background-color: $color_white;
+
+    &Content {
+      padding: 2rem 0 0;
+    }
+  }
+}
+
+.postFooter {
+  background-color: $color_background_base;
+
+  &Inner {
+    background-color: $color_white;
+  }
+
+  &__item {
+    margin: 0 auto;
+  }
+
+  &__comment {
+    overflow: hidden;
   }
 }
 </style>

@@ -63,14 +63,13 @@ export default {
 
 <style lang="scss" scoped>
 .relatedPosts {
+  margin-bottom: 1.5rem;
   overflow: hidden;
 
   &__postList {
     display: flex;
     flex-wrap: wrap;
     list-style-type: none;
-    margin: 0 auto !important;
-    width: $width_base;
   }
 
   &__postItem {
