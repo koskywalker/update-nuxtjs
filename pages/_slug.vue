@@ -440,13 +440,6 @@ export default {
     width: calc(100% - 70px);
   }
 
-  .info > p:last-of-type + .cardReferenceInternal,
-  .info > p:last-of-type + .cardReferenceExternal,
-  .warning > p:last-of-type + .cardReferenceInternal,
-  .warning > p:last-of-type + .cardReferenceExternal {
-    margin: 1.5rem 0 0.5rem;
-  }
-
   .appreach {
     border: solid 3px $color_gray_middle;
     margin-bottom: 1.5rem;
@@ -575,6 +568,25 @@ export default {
     > p:last-of-type {
       margin-bottom: 0;
     }
+  }
+
+  .info > p:last-of-type + .cardReferenceInternal,
+  .info > p:last-of-type + .cardReferenceExternal,
+  .success > p:last-of-type + .cardReferenceInternal,
+  .success > p:last-of-type + .cardReferenceInternal,
+  .warning > p:last-of-type + .cardReferenceInternal,
+  .warning > p:last-of-type + .cardReferenceExternal,
+  .danger > p:last-of-type + .cardReferenceExternal,
+  .danger > p:last-of-type + .cardReferenceExternal {
+    margin: 1.5rem 0 0.5rem;
+  }
+
+  .info > p:last-of-type + pre,
+  .success > p:last-of-type + pre,
+  .warning > p:last-of-type + pre,
+  .danger > p:last-of-type + pre {
+    margin-bottom: 0.5rem;
+    margin-top: 1.5rem;
   }
 }
 </style>
