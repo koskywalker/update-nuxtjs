@@ -18,20 +18,22 @@ $width_single_column: 680px;
 */
 // font-family
 @font-face {
-	font-family: 'Adumu';
-	src: url('~assets/font/Adumu.woff') format('woff'),
+  font-family: 'Adumu';
+  src:
+    url('~assets/font/Adumu.woff2') format('woff2'),
+    url('~assets/font/Adumu.woff') format('woff'),
     url('~assets/font/Adumu.ttf') format('truetype');
 }
-$font_main: -apple-system, "Segoe UI", 游ゴシック体, "Yu Gothic", YuGothic, "ヒラギノ角ゴ Pro", "ヒラギノ角ゴ W3", "Hiragino Kaku Gothic Pro", メイリオ, meiryo, sans-serif;
+$font_main: -apple-system, "Segoe UI", 游ゴシック体, "Yu Gothic", yugothic, "ヒラギノ角ゴ Pro", "ヒラギノ角ゴ W3", "Hiragino Kaku Gothic Pro", メイリオ, meiryo, sans-serif;
 $font_accent: 'Adumu';
-$font_sub: "Quicksand","Helvetica", "Arial", "Hiragino Kaku Gothic ProN", "Hiragino Sans", YuGothic, "Yu Gothic", "メイリオ", Meiryo, sans-serif;
+$font_sub: "Quicksand","Helvetica", "Arial", "Hiragino Kaku Gothic ProN", "Hiragino Sans", yugothic, "Yu Gothic", "メイリオ", meiryo, sans-serif;
 
 // font-size
 $fontSize_base_sp: 15px;
 $fontSize_base_pc: 16px;
 $fontSize_base: 1rem;
-$fontSize_s: .9rem;
-$fontSize_xs: .8rem;
+$fontSize_s: 0.9rem;
+$fontSize_xs: 0.8rem;
 $fontSize_m: 1.3rem;
 $fontSize_l: 1.5rem;
 $fontSize_xl: 1.8rem;
@@ -44,33 +46,33 @@ $fontSize_4l: 3rem;
 */
 // main
 $color_navy: #4e5cc4;
-$color_navy_transparent: rgba(78, 92, 196, .8);
+$color_navy_transparent: rgba(78, 92, 196, 0.8);
 $color_background_base: #f8f9fa;
 $color_background_base_dark: #f5f6f7;
 $color_shadow_light: #babecc;
 // accent
 $color_red: #f28282;
-$color_red_dark: #AE1100;
+$color_red_dark: #ae1100;
 // link
 $color_link: #4f96f6;
 // others
 $color_white: #fff;
 $color_gray: #666;
-$color_gray_transparent: rgba(102, 102, 102, .8);
+$color_gray_transparent: rgba(102, 102, 102, 0.8);
 $color_gray_middle: #ccc;
 $color_gray_light: #eee;
 $color_black: #000;
-$color_black_transparent: rgba(0, 0, 0, .7);
+$color_black_transparent: rgba(0, 0, 0, 0.7);
 $color_blue: #6bb6ff;
-$color_blue_transparent: rgba(107, 182, 255, .8);
+$color_blue_transparent: rgba(107, 182, 255, 0.8);
 $color_green: #40ce9a;
-$color_green_transparent: rgba(64, 206, 154, .8);
+$color_green_transparent: rgba(64, 206, 154, 0.8);
 $color_orange: #ffb36b;
 $color_pink: #ff6bf3;
 // sns
 $color_twitter: #3ab4ff;
 $color_facebook: #3b8df7;
-$color_instagram: linear-gradient(-135deg,#1400c8,#b900b4,#f50000);
+$color_instagram: linear-gradient(-135deg, #1400c8, #b900b4, #f50000);
 $color_hatebu: #45b5f7;
 $color_pocket: #ff7b7b;
 $color_line: #59d869;

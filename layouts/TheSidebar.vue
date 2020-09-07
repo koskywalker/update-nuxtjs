@@ -11,9 +11,7 @@
         />
         Profile
       </h3>
-      <button
-        @click="easterEggLightSaber"
-        :disabled="isDisabledLightSaber"
+      <div
         class="sideProfile__image"
       >
         <div
@@ -34,27 +32,29 @@
             class="sideProfile__imageLightSaber"
           />
         </transition>
-      </button>
+      </div>
       <div class="sideProfile__name">
         <p class="sideProfile__nameText">
-          {{ $constant.myInfo.nickname }} ({{ $constant.myInfo.name }})
+          {{ myInfo.NICKNAME }} ({{ myInfo.NAME }})
         </p>
         <p class="sideProfile__nameLabel">
-          {{ $constant.myInfo.labelMain }}
+          {{ myInfo.LABEL_MAIN }}
         </p>
       </div>
+      <button-colorful
+        @clickButtonColorful="easterEggLightSaber"
+        :disabled="isDisabledLightSaber"
+        class="sideProfile__button"
+      />
       <div class="sideProfile__text">
         <p class="sideProfile__textSentence">
-          {{ $constant.myInfo.introduction.first }}
+          {{ myInfo.INTRODUCTION.FIRST }}
         </p>
         <p class="sideProfile__textSentence">
-          {{ $constant.myInfo.introduction.history }}
+          {{ myInfo.INTRODUCTION.STRONG_POINTS }}
         </p>
         <p class="sideProfile__textSentence">
-          {{ $constant.myInfo.introduction.strongPoints }}
-        </p>
-        <p class="sideProfile__textSentence">
-          {{ $constant.myInfo.introduction.other }}
+          {{ myInfo.INTRODUCTION.OTHER }}
         </p>
       </div>
       <div class="sideProfile__sns">
@@ -83,34 +83,38 @@
 </template>
 
 <script>
+import { CONSTANTS } from '@/assets/js/constants'
 import RecentPosts from '@/components/RecentPosts'
 import LightSaber from '@/components/LightSaber'
+import ButtonColorful from '@/components/ButtonColorful'
 
 export default {
   components: {
     RecentPosts,
     LightSaber,
+    ButtonColorful,
   },
   data () {
     return {
+      myInfo: CONSTANTS.MY_INFO,
       items: [
         {
-          url: this.$constant.myInfo.sns.twitter.url,
+          url: CONSTANTS.MY_INFO.SNS.TWITTER.URL,
           icon: ['fab', 'twitter'],
           class: 'sideProfile__snsListItem--twitter',
         },
         {
-          url: this.$constant.myInfo.sns.instagram.url,
+          url: CONSTANTS.MY_INFO.SNS.INSTAGRAM.URL,
           icon: ['fab', 'instagram'],
           class: 'sideProfile__snsListItem--instagram',
         },
         {
-          url: this.$constant.myInfo.sns.github.url,
+          url: CONSTANTS.MY_INFO.SNS.GITHUB.URL,
           icon: ['fab', 'github'],
           class: 'sideProfile__snsListItem--github',
         },
         {
-          url: this.$constant.myInfo.sns.feedly.url,
+          url: CONSTANTS.MY_INFO.SNS.FEEDLY.URL,
           icon: ['fas', 'rss'],
           class: 'sideProfile__snsListItem--feedly',
         },
@@ -171,6 +175,7 @@ export default {
 .side {
   &Item {
     @extend %shadow_base;
+
     background-color: $color_white;
     border-radius: 3px;
     margin-bottom: 2rem;
@@ -179,34 +184,30 @@ export default {
 
     &__title {
       @extend %font_accent;
-      border-bottom: .3rem solid;
+
+      border-bottom: 0.3rem solid;
       border-image: linear-gradient(to right, $color_navy, $color_blue 50%, $color_green);
       border-image-slice: 1;
       font-size: $fontSize_l;
-      letter-spacing: .1rem;
+      letter-spacing: 0.1rem;
       margin-bottom: 2rem;
-      padding-bottom: .3rem;
+      padding-bottom: 0.3rem;
       text-align: center;
     }
   }
 
   &Profile {
     &__image {
-      border-radius: 10%;
-      display: block;
+      border-radius: 10px;
       margin: 0 auto 1rem;
-      outline: none;
       position: relative;
       width: 150px;
 
       &Inner {
         @extend %shadow_base;
-        border-radius: 10%;
-        overflow: hidden;
 
-        &:hover {
-          @extend %shadow_base_hover;
-        }
+        border-radius: 10px;
+        overflow: hidden;
       }
 
       &LightSaber {
@@ -229,6 +230,10 @@ export default {
       }
     }
 
+    &__button {
+      margin-bottom: 2rem;
+    }
+
     &__textSentence {
       font-size: $fontSize_s;
     }
@@ -239,7 +244,8 @@ export default {
 
       &Title {
         @extend %font_accent;
-        margin-bottom: .5rem;
+
+        margin-bottom: 0.5rem;
       }
 
       &List {
@@ -248,12 +254,13 @@ export default {
 
         &Item {
           @extend %shadow_base;
+
           border-radius: 15%;
           color: $color_white;
           font-size: $fontSize_l;
           line-height: 1;
-          margin: 0 .5rem;
-          padding: .5rem;
+          margin: 0 0.5rem;
+          padding: 0.5rem;
 
           &:hover {
             @extend %shadow_base_hover;
@@ -279,10 +286,11 @@ export default {
     }
   }
 }
+
 .fade {
   &-enter-active,
   &-leave-active {
-    transition: opacity .5s;
+    transition: opacity 0.5s;
   }
 
   &-enter,

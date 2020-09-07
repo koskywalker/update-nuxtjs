@@ -72,7 +72,6 @@ export default {
 
 <style lang="scss" scoped>
 .drawer {
-
   &Inner {
     background-color: $color_white;
     height: 100vh;
@@ -82,6 +81,7 @@ export default {
 
     &__title {
       @extend %font_accent;
+
       background-color: $color_navy;
       color: $color_white;
       line-height: 2.5rem;
@@ -127,6 +127,7 @@ export default {
 .item {
   &__title {
     @extend %font_accent;
+
     background-color: $color_blue;
     color: $color_white;
     line-height: 2rem;

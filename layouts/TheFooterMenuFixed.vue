@@ -33,15 +33,15 @@
           class="menuList__item"
         >
           <button
-            :class="item.class"
+            :class="item.CLASS"
             @click="buttonAction"
             class="menuList__itemLink js-button"
           >
             <font-awesome-icon
-              :icon="item.icon"
+              :icon="item.ICON"
               class="menuList__itemIcon"
             />
-            <span class="menuList__itemName">{{ item.name }}</span>
+            <span class="menuList__itemName">{{ item.NAME }}</span>
           </button>
         </li>
       </ul>
@@ -50,6 +50,7 @@
 </template>
 
 <script>
+import { CONSTANTS } from '@/assets/js/constants'
 import ShareButtons from '~/components/ShareButtons'
 import FollowButtons from '~/components/FollowButtons'
 import DrawerMenu from '~/components/DrawerMenu'
@@ -63,12 +64,15 @@ export default {
   },
   data () {
     return {
-      items: this.$constant.footerMenuFixed,
+      items: CONSTANTS.FOOTER_MENU_FIXED,
       title: '',
       showShareButtons: false,
       showFollowButtons: false,
       showDrawerMenu: false,
     }
+  },
+  mounted () {
+    this.closeActiveContents()
   },
   methods: {
     /**
@@ -183,6 +187,18 @@ export default {
       this.showDrawerMenu = false
       document.querySelector('.js-buttonMenu').classList.remove('active')
     },
+    /**
+     * シェアボタンエリア, フォローボタンエリア, ドロワーメニューを閉じる
+     */
+    closeActiveContents () {
+      document.onkeydown = (e) => {
+        if (e.keyCode === 27) {
+          this.showShareButtons = false
+          this.showFollowButtons = false
+          this.closeDrawer()
+        }
+      }
+    },
   },
 }
 </script>
@@ -191,7 +207,7 @@ export default {
 .menu {
   background-color: $color_white;
   bottom: 0;
-  height: 54px;
+  height: 64px;
   line-height: 1;
   margin: 0 auto;
   padding-bottom: constant(safe-area-inset-bottom);
@@ -276,14 +292,14 @@ export default {
 
 .shareButtons,
 .followButtons {
-  bottom: 54px;
+  bottom: 64px;
   position: absolute;
 }
 
 .drawerMenu {
   position: fixed;
-  top: 0;
   right: 0;
+  top: 0;
 }
 
 .drawerBackground {
@@ -297,7 +313,7 @@ export default {
 .slide-bottom {
   &-enter-active,
   &-leave-active {
-    transition: all .5s ease;
+    transition: all 0.5s ease;
   }
 
   &-enter,
@@ -310,7 +326,7 @@ export default {
 .fade {
   &-enter-active,
   &-leave-active {
-    transition: opacity .5s;
+    transition: opacity 0.5s;
   }
 
   &-enter,
@@ -322,7 +338,7 @@ export default {
 .slide-right {
   &-enter-active,
   &-leave-active {
-    transition: all .5s ease;
+    transition: all 0.5s ease;
   }
 
   &-enter,

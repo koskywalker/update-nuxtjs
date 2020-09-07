@@ -68,6 +68,7 @@ export default {
 <style lang="scss" scoped>
 .article {
   @extend %shadow_base;
+
   background-color: $color_white;
   border-radius: 3px;
   line-height: 1;
@@ -95,15 +96,15 @@ export default {
 
     &Body {
       color: $color_black;
-      padding: 1rem 1rem .8rem;
+      padding: 1rem 1rem 0.8rem;
 
       &__date {
         color: $color_gray;
         font-size: $fontSize_xs;
-        margin-bottom: .5rem;
+        margin-bottom: 0.5rem;
 
         &Published {
-          margin-right: .5rem;
+          margin-right: 0.5rem;
         }
       }
 
@@ -117,7 +118,7 @@ export default {
   &TagList {
     font-size: $fontSize_xs;
     margin: 0;
-    padding: 0 1rem .5rem;
+    padding: 0 1rem 0.5rem;
 
     &Item {
       background-color: $color_navy;
@@ -125,7 +126,7 @@ export default {
       color: $color_white;
       display: inline-block;
       margin: 0 5px 8px 0;
-      padding: .3rem .5rem;
+      padding: 0.3rem 0.5rem;
     }
   }
 }

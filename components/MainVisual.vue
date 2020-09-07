@@ -19,7 +19,6 @@
         </vue-typed-js>
       </div>
     </div>
-    <div class="gradationArea" />
   </div>
 </template>
 
@@ -44,14 +43,11 @@ export default {
   display: flex;
   height: 40vh;
   line-height: 1.5;
+  padding-bottom: 8vh;
   text-align: center;
 
-  @include mq($mq_tablet) {
-    padding-bottom: 4vh;
-  }
-
   @include mq($mq_pc) {
-    padding-bottom: 6vh;
+    padding-bottom: 10vh;
   }
 
   &Inner {
@@ -68,6 +64,7 @@ export default {
 
     &__typing {
       @extend %font_accent;
+
       font-size: $fontSize_l;
       margin: 0 auto;
 
@@ -76,10 +73,5 @@ export default {
       }
     }
   }
-}
-.gradationArea {
-  background: linear-gradient(transparent, $color_background_base);
-  height: 4rem;
-  width: 100%;
 }
 </style>

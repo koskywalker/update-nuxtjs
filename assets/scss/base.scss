@@ -1,0 +1,135 @@
+/*
+** base
+*/
+
+// 基本
+html {
+  font-size: $fontSize_base_sp;
+
+  @include mq($mq_tablet) {
+    font-size: $fontSize_base_pc;
+  }
+}
+
+body {
+  background-color: $color_white;
+  color: $color_black;
+  font-family: $font_main;
+  line-height: 1.8;
+  overflow-wrap: break-word;
+  width: 100%;
+  word-break: normal;
+}
+
+a {
+  color: $color_link;
+  text-decoration: none;
+}
+
+p {
+  margin-bottom: 1rem;
+  word-wrap: break-word;
+}
+
+// 文字
+h1 {
+  font-size: $fontSize_l;
+
+  @include mq($mq_tablet) {
+    font-size: $fontSize_xl;
+  }
+}
+
+h2 {
+  font-size: $fontSize_l;
+}
+
+h3,
+h4 {
+  font-size: $fontSize_m;
+}
+
+code,
+kbd,
+pre,
+samp {
+  font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
+}
+
+code {
+  background: $color_gray_light;
+  border-radius: 5px;
+  font-size: 0.9rem;
+  margin: 0 0.1em;
+  padding: 0.2em 0.3em;
+}
+
+pre {
+  margin: 0;
+  white-space: pre-wrap;
+
+  code {
+    border-radius: 0;
+    margin: 0;
+    padding: 0;
+  }
+}
+
+sub,
+sup {
+  font-size: $fontSize_xs;
+  line-height: 0;
+  position: relative;
+  vertical-align: baseline;
+}
+
+sub {
+  bottom: -0.25rem;
+}
+
+sup {
+  top: -0.5rem;
+}
+
+// リスト
+dl,
+ol,
+ul {
+  margin: 1rem 0;
+}
+
+dd {
+  margin: 0;
+}
+
+ol,
+ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+img {
+  height: auto;
+  vertical-align: middle;
+}
+
+iframe {
+  max-width: 100%;
+}
+
+// フォーム
+button,
+input,
+select,
+textarea {
+  border: 0;
+  margin: 0;
+  padding: 0;
+}
+
+button,
+input[type="button"],
+input[type="reset"],
+input[type="submit"] {
+  cursor: pointer;
+}

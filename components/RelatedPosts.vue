@@ -63,14 +63,13 @@ export default {
 
 <style lang="scss" scoped>
 .relatedPosts {
+  margin-bottom: 1.5rem;
   overflow: hidden;
 
   &__postList {
     display: flex;
     flex-wrap: wrap;
     list-style-type: none;
-    margin: 0 auto !important;
-    width: $width_base;
   }
 
   &__postItem {
@@ -95,22 +94,22 @@ export default {
     }
   }
 
-  &__postLink {
-    display: block;
-
-    &:hover .relatedPosts__postImage {
-      @extend %shadow_base_hover;
-    }
-  }
-
   &__postImage {
     @extend %shadow_base;
   }
 
   &__postTitle {
     color: $color_black;
-    margin: .8rem 0 0;
+    margin: 0.8rem 0 0;
     width: 100%;
+  }
+
+  &__postLink {
+    display: block;
+
+    &:hover .relatedPosts__postImage {
+      @extend %shadow_base_hover;
+    }
   }
 }
 </style>

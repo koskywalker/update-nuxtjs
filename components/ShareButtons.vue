@@ -62,6 +62,8 @@
 </template>
 
 <script>
+import { CONSTANTS } from '@/assets/js/constants'
+
 export default {
   name: 'ShareButtons',
   props: {
@@ -84,7 +86,7 @@ export default {
       return process.env.BASE_URL + this.$route.path
     },
     twitterShareUrl () {
-      return this.formatByArr(this.twitterUrl, this.url, this.title, this.$constant.myInfo.sns.twitter.user, this.$constant.myInfo.sns.twitter.user)
+      return this.formatByArr(this.twitterUrl, this.url, this.title, CONSTANTS.MY_INFO.SNS.TWITTER.USER, CONSTANTS.MY_INFO.SNS.TWITTER.USER)
     },
     facebookShareUrl () {
       return this.formatByArr(this.facebookUrl, this.url)

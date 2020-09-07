@@ -1,0 +1,31 @@
+/*
+** extends
+*/
+%font_accent {
+  font-family: $font-accent;
+  letter-spacing: 0.1em;
+}
+
+%shadow_base {
+  box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0), 0 6px 10px 0 rgba(0, 0, 0, 0.3), 0 2px 2px 0 rgba(0, 0, 0, 0.2);
+  transition: all 0.5s ease;
+}
+
+%shadow_base_hover {
+  box-shadow: 0 6px 9px 0 rgba(0, 0, 0, 0), 0 11px 15px 0 rgba(0, 0, 0, 0.3), 0 7px 7px 0 rgba(0, 0, 0, 0.2);
+  transform: translateY(-4px);
+}
+
+/*
+** mixins
+*/
+// media queries
+@mixin mq($breakpoint) {
+  @media (min-width: $breakpoint) {
+    @content;
+  }
+}
+
+/*
+** functions
+*/

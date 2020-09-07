@@ -1,35 +1,36 @@
 {
-  // IntelliSense を使用して利用可能な属性を学べます。
-  // 既存の属性の説明をホバーして表示します。
-  // 詳細情報は次を確認してください: https://go.microsoft.com/fwlink/?linkid=830387
   "version": "0.2.0",
   "configurations": [
     {
       "type": "chrome",
       "request": "launch",
-      "name": "Launch Chrome",
+      "name": "client: chrome",
       "url": "http://localhost:3000",
       "webRoot": "${workspaceFolder}",
-      "runtimeArgs": [
-        "--remote-debugging-port=9222"
-      ]
+      "sourceMapPathOverrides": {
+        "webpack:///*.vue": "${workspaceFolder}/*.vue"
+      }
     },
     {
       "type": "node",
       "request": "launch",
-      "name": "Launch via NPM",
-      "runtimeExecutable": "npm",
-      "runtimeArgs": [
-        "run-script",
-        "debug"
-      ],
-      "port": 9229
+      "name": "server: nuxt",
+      "args": ["dev"],
+      "osx": {
+        "program": "${workspaceFolder}/node_modules/.bin/nuxt"
+      },
+      "linux": {
+        "program": "${workspaceFolder}/node_modules/.bin/nuxt"
+      },
+      "windows": {
+        "program": "${workspaceFolder}/node_modules/nuxt/bin/nuxt.js"
+      }
     }
   ],
   "compounds": [
     {
-      "name": "Full-stack",
-      "configurations": ["Launch via NPM", "Launch Chrome"]
+      "name": "fullstack: nuxt",
+      "configurations": ["server: nuxt", "client: chrome"]
     }
   ]
 }

@@ -1,28 +1,59 @@
+import { CONSTANTS } from './assets/js/constants'
 require('dotenv').config()
 const client = require('./plugins/contentful').default
 
 export default {
   mode: 'universal',
   /*
+  ** Headers of the page
+  */
+  head: {
+    titleTemplate: '%s - ' + CONSTANTS.BLOG_INFO.BLOG_NAME,
+    title: CONSTANTS.BLOG_INFO.BASE_TITLE,
+    htmlAttrs: {
+      lang: 'ja',
+    },
+    meta: [
+      { charset: 'utf-8' },
+      { name: 'viewport', content: 'width=device-width, initial-scale=1, viewport-fit=cover' },
+      { hid: 'description', name: 'description', content: CONSTANTS.BLOG_INFO.BASE_DESCRIPTION },
+      { hid: 'robots', name: 'robots', content: 'noindex' },
+      { hid: 'og:url', property: 'og:url', content: process.env.BASE_URL },
+      { hid: 'og:site_name', property: 'og:site_name', content: CONSTANTS.BLOG_INFO.BLOG_NAME },
+      { hid: 'og:title', property: 'og:title', content: CONSTANTS.BLOG_INFO.BLOG_NAME },
+      { hid: 'og:locale', property: 'og:locale', content: 'ja_JP' },
+      { hid: 'og:type', property: 'og:type', content: 'website' },
+      { hid: 'og:description', property: 'og:description', content: CONSTANTS.BLOG_INFO.BASE_DESCRIPTION },
+      { hid: 'og:image', property: 'og:image', content: CONSTANTS.BLOG_INFO.BASE_OGP_IMAGE },
+      { name: 'twitter:card', content: 'summary_large_image' },
+      { name: 'twitter:site', content: '@kosuke_upd' },
+      // { property: 'article:publisher', content: 'FacebookURL' },
+      // { property: 'fb:app_id', content: process.env.FACEBOOK_APP_ID },
+    ],
+    link: [
+      { rel: 'icon', type: 'image/svg+xml', href: '/favicon.svg' },
+    ],
+  },
+  /*
   ** Global CSS
   */
   styleResources: {
     scss: [
-      '~/assets/scss/settings/variables.scss',
-      '~/assets/scss/tools/tools.scss',
-      '~/assets/scss/tools/animation.scss',
+      '@/assets/scss/reset.scss',
+      '@/assets/scss/variables.scss',
+      '@/assets/scss/tools.scss',
+      '@/assets/scss/base.scss',
+      '@/assets/scss/util.scss',
     ],
   },
   /*
   ** Plugins to load before mounting the App
   */
   plugins: [
-    { src: '~plugins/constant.js' },
     { src: '~plugins/ga.js', mode: 'client' },
     { src: '~plugins/contentful.js' },
     { src: '~plugins/vue-typed-js.js' },
     { src: '~plugins/vuejs-paginate.js', mode: 'client' },
-    { src: '~plugins/particles.js' },
     { src: '~plugins/utility.js' },
     { src: '~plugins/router-option.js' },
     { src: '~plugins/markdown-it.js' },
@@ -80,7 +111,9 @@ export default {
     ** You can extend webpack config here
     */
     extend (config, ctx) {
-      config.devtool = 'inline-cheap-module-source-map'
+      if (ctx.isDev) {
+        config.devtool = ctx.isClient ? 'source-map' : 'inline-source-map'
+      }
     },
   },
   generate: {

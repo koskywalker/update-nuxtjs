@@ -29,11 +29,11 @@
         <nuxt-link
           v-for="(item, index) in globalNav"
           :key="index"
-          :to="item.url"
+          :to="item.URL"
           class="globalNav__item"
         >
-          <span class="globalNav__itemName">{{ item.name }}</span>
-          <span class="globalNav__itemLabel">{{ item.label }}</span>
+          <span class="globalNav__itemName">{{ item.NAME }}</span>
+          <span class="globalNav__itemLabel">{{ item.LABEL }}</span>
         </nuxt-link>
       </nav>
     </div>
@@ -41,11 +41,13 @@
 </template>
 
 <script>
+import { CONSTANTS } from '@/assets/js/constants'
+
 export default {
   data () {
     return {
-      blogName: this.$constant.blogInfo.blogName,
-      globalNav: this.$constant.headerMenu,
+      blogName: CONSTANTS.BLOG_INFO.BLOG_NAME,
+      globalNav: CONSTANTS.HEADER_MENU,
     }
   },
   computed: {
@@ -81,7 +83,7 @@ export default {
 
 .logo {
   margin: 0 auto;
-  padding: .5rem 0;
+  padding: 0.5rem 0;
 
   @include mq($mq_pc) {
     margin: 0;
@@ -90,6 +92,7 @@ export default {
 
   &Text {
     @extend %font_accent;
+
     display: inline-block;
     font-size: $fontSize_3l;
     font-weight: normal;
@@ -104,22 +107,6 @@ export default {
   &Link {
     color: $color_black;
     display: block;
-    position: relative;
-
-    &::after {
-      position: absolute;
-      bottom: -8px;
-      left: 50%;
-      content: '';
-      width: 0;
-      border-bottom: solid 3px $color_gray;
-      transition: 0.5s;
-      transform: translateX(-50%);
-    }
-
-    &:hover::after {
-      width: 100%;
-    }
   }
 }
 
@@ -155,31 +142,21 @@ export default {
       }
     }
 
-    &::after,
     &::before {
       background-color: $color_gray;
+      bottom: -8px;
       content: '';
+      display: block;
       height: 3px;
+      left: 0;
       position: absolute;
       right: 0;
-      top: calc(100% + 8px);
-      width: 0;
+      transform: scaleX(0);
+      transition: 0.3s;
     }
 
-    &::before {
-      transition: .4s cubic-bezier(0.51, 0.18, 0, 0.88) .1s;
-    }
-
-    &::after {
-      transition: .2s cubic-bezier(0.29, 0.18, 0.26, 0.83);
-    }
-
-    &:hover {
-      &::after,
-      &::before {
-        width: 100%;
-        left: 0;
-      }
+    &:hover::before {
+      transform: scaleX(1);
     }
 
     &Name {
@@ -210,6 +187,7 @@ export default {
 
     &Label {
       @extend %font_accent;
+
       display: none;
       line-height: 1;
 

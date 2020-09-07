@@ -31,14 +31,15 @@
 </template>
 
 <script>
+import { CONSTANTS } from '@/assets/js/constants'
 import { mapState, mapGetters } from 'vuex'
 
 export default {
   data () {
     return {
-      blogName: this.$constant.blogInfo.blogName,
-      blogDescription: this.$constant.blogInfo.baseDescription,
-      blogTechnology: this.$constant.blogInfo.aboutBlogTechnology,
+      blogName: CONSTANTS.BLOG_INFO.BLOG_NAME,
+      blogDescription: CONSTANTS.BLOG_INFO.BASE_DESCRIPTION,
+      blogTechnology: CONSTANTS.BLOG_INFO.ABOUT_BLOG_TECHNOLOGY,
     }
   },
   computed: {
@@ -84,6 +85,7 @@ export default {
 
     &__title {
       @extend %font_accent;
+
       font-size: $fontSize_l;
       margin: 0 auto 1.5rem;
       max-width: $width_max;
@@ -94,7 +96,7 @@ export default {
       }
 
       &::after {
-        background-color: rgba(255, 255, 255, .5);
+        background-color: rgba(255, 255, 255, 0.5);
         content: "";
         display: block;
         height: 2px;
@@ -109,11 +111,12 @@ export default {
       width: $width_base;
     }
   }
+
   &Copyright {
     background-color: $color_gray;
     font-size: $fontSize_xs;
     margin-bottom: 54px;
-    padding: .8rem 0;
+    padding: 0.8rem 0;
 
     @include mq($mq_tablet) {
       font-size: $fontSize_base;
@@ -132,8 +135,8 @@ export default {
     border: 1px solid $color_white;
     color: $color_white;
     font-size: $fontSize_xs;
-    margin: .3rem;
-    padding: .1rem .2rem;
+    margin: 0.3rem;
+    padding: 0.1rem 0.2rem;
 
     @include mq($mq_tablet) {
       font-size: $fontSize_base;

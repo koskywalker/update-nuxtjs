@@ -312,38 +312,38 @@ export default {
     &__errorList {
       color: $color_red_dark;
       font-size: $fontSize_s;
-      margin-bottom: .5rem !important;
+      margin-bottom: 0.5rem !important;
       padding-left: 1rem;
     }
 
     &__input,
     &__button {
-      border: 0;
-      outline: 0;
-      border-radius: 2rem;
-      padding: .5rem 1.5rem;
       background-color: $color_background_base_dark;
+      border: 0;
+      border-radius: 2rem;
+      outline: 0;
+      padding: 0.5rem 1.5rem;
       text-shadow: 1px 1px 0 $color_white;
     }
 
     &__input {
-      appearance: none;
       -webkit-appearance: none;
-      box-shadow:  inset 2px 2px 5px $color_shadow_light, inset -5px -5px 10px $color_white;
+      appearance: none;
+      box-shadow: inset 2px 2px 5px $color_shadow_light, inset -5px -5px 10px $color_white;
       box-sizing: border-box;
-      margin-right: .5rem;
+      margin-right: 0.5rem;
       transition: all 0.2s ease-in-out;
       width: 100%;
 
       &:focus {
-        box-shadow:  inset 1px 1px 2px $color_shadow_light, inset -1px -1px 2px $color_white;
+        box-shadow: inset 1px 1px 2px $color_shadow_light, inset -1px -1px 2px $color_white;
       }
     }
 
     &__button {
+      box-shadow: -4px -4px 10px $color_white, 4px 4px 10px $color_shadow_light;
       display: block;
       font-weight: bold;
-      box-shadow: -4px -4px 10px $color_white,  4px 4px 10px $color_shadow_light;
       margin: 0 auto;
       transition: all 0.2s ease-in-out;
       width: 100%;
