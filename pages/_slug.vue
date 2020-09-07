@@ -582,9 +582,13 @@ export default {
   }
 
   .info > p:last-of-type + pre,
+  .info > p:last-of-type + .buttonDouble,
   .success > p:last-of-type + pre,
+  .success > p:last-of-type + .buttonDouble,
   .warning > p:last-of-type + pre,
-  .danger > p:last-of-type + pre {
+  .warning > p:last-of-type + .buttonDouble,
+  .danger > p:last-of-type + pre,
+  .danger > p:last-of-type + .buttonDouble {
     margin-bottom: 0.5rem;
     margin-top: 1.5rem;
   }
