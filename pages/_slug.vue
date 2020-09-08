@@ -84,6 +84,19 @@ export default {
       disqusShortName: process.env.DISQUS_SHORTNAME,
     }
   },
+  head () {
+    return {
+      title: this.currentPost.fields.title,
+      meta: [
+        { hid: 'description', name: 'description', content: this.currentPost.fields.description },
+        { hid: 'og:url', property: 'og:url', content: process.env.BASE_URL + this.$route.path },
+        { hid: 'og:title', property: 'og:title', content: this.currentPost.fields.title },
+        { hid: 'og:type', property: 'og:type', content: 'article' },
+        { hid: 'og:description', property: 'og:description', content: this.currentPost.fields.description },
+        { hid: 'og:image', property: 'og:image', content: this.currentPost.fields.heroImage.fields.file.url },
+      ],
+    }
+  },
   computed: {
     ...mapGetters('posts', ['linkTo']),
   },
@@ -98,6 +111,7 @@ export default {
   },
   mounted () {
     Prism.highlightAll()
+    console.log(this.currentPost)
   },
 }
 </script>
