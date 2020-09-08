@@ -54,15 +54,6 @@
           <related-posts
             :currentPost="currentPost"
           />
-          <div class="postFooter__comment">
-            <h2>この記事にコメントする</h2>
-            <vue-disqus
-              :identifier="currentPost.fields.slug"
-              :url="`${baseUrl}/${currentPost.fields.slug}`"
-              :shortname="disqusShortName"
-              class="postFooter__item"
-            />
-          </div>
         </div>
       </div>
     </div>
@@ -78,10 +69,17 @@ export default {
   components: {
     RelatedPosts,
   },
-  data () {
+  head () {
     return {
-      baseUrl: process.env.BASE_URL,
-      disqusShortName: process.env.DISQUS_SHORTNAME,
+      title: this.currentPost.fields.title,
+      meta: [
+        { hid: 'description', name: 'description', content: this.currentPost.fields.description },
+        { hid: 'og:url', property: 'og:url', content: process.env.BASE_URL + this.$route.path },
+        { hid: 'og:title', property: 'og:title', content: this.currentPost.fields.title },
+        { hid: 'og:type', property: 'og:type', content: 'article' },
+        { hid: 'og:description', property: 'og:description', content: this.currentPost.fields.description },
+        { hid: 'og:image', property: 'og:image', content: this.currentPost.fields.heroImage.fields.file.url },
+      ],
     }
   },
   computed: {
@@ -660,14 +658,6 @@ export default {
 
   &Inner {
     background-color: $color_white;
-  }
-
-  &__item {
-    margin: 0 auto;
-  }
-
-  &__comment {
-    overflow: hidden;
   }
 }
 </style>

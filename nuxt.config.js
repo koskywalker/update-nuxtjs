@@ -1,3 +1,5 @@
+import path from 'path'
+import fs from 'fs'
 import { CONSTANTS } from './assets/js/constants'
 require('dotenv').config()
 const client = require('./plugins/contentful').default
@@ -27,8 +29,7 @@ export default {
       { hid: 'og:image', property: 'og:image', content: CONSTANTS.BLOG_INFO.BASE_OGP_IMAGE },
       { name: 'twitter:card', content: 'summary_large_image' },
       { name: 'twitter:site', content: '@kosuke_upd' },
-      // { property: 'article:publisher', content: 'FacebookURL' },
-      // { property: 'fb:app_id', content: process.env.FACEBOOK_APP_ID },
+      { property: 'fb:app_id', content: process.env.FACEBOOK_APP_ID },
     ],
     link: [
       { rel: 'icon', type: 'image/svg+xml', href: '/favicon.svg' },
@@ -58,7 +59,6 @@ export default {
     { src: '~plugins/router-option.js' },
     { src: '~plugins/markdown-it.js' },
     { src: '~plugins/prism.js' },
-    { src: '~plugins/vue-disqus.js' },
   ],
   /*
   ** Middleware
@@ -149,12 +149,19 @@ export default {
       })
     },
   },
+  server: {
+    port: 3000,
+    host: 'localhost',
+    https: process.env.NODE_ENV === 'production' ? {} : {
+      key: fs.readFileSync(path.resolve(__dirname, 'localhost-key.pem')),
+      cert: fs.readFileSync(path.resolve(__dirname, 'localhost.pem')),
+    },
+  },
   env: {
     BASE_URL: process.env.BASE_URL,
     CTF_SPACE_ID: process.env.CTF_SPACE_ID,
     CTF_CDA_ACCESS_TOKEN: process.env.CTF_CDA_ACCESS_TOKEN,
     CTF_BLOG_POST_TYPE_ID: process.env.CTF_BLOG_POST_TYPE_ID,
     FACEBOOK_APP_ID: process.env.FACEBOOK_APP_ID,
-    DISQUS_SHORTNAME: process.env.DISQUS_SHORTNAME,
   },
 }

@@ -6,7 +6,7 @@
         <font-awesome-icon
           icon="paper-plane"
         />
-        お問い合わせ
+        {{ title }}
       </h1>
       <client-only>
         <form
@@ -119,6 +119,7 @@
 export default {
   data () {
     return {
+      title: 'お問い合わせ',
       name: {
         label: 'お名前 / 会社名',
         inputText: '',
@@ -141,6 +142,16 @@ export default {
         required: 'を入力してください.',
         format: 'の形式が正しくありません.',
       },
+    }
+  },
+  head () {
+    return {
+      title: this.title,
+      meta: [
+        { hid: 'og:url', property: 'og:url', content: process.env.BASE_URL + this.$route.path },
+        { hid: 'og:title', property: 'og:title', content: this.title },
+        { hid: 'og:type', property: 'og:type', content: 'article' },
+      ],
     }
   },
   methods: {

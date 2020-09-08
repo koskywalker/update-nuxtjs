@@ -91,3 +91,7 @@ sw.*
 
 # Contentful
 .contentful.json
+
+# localhost での証明書
+localhost-key.pem
+localhost.pem
