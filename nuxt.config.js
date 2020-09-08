@@ -29,8 +29,7 @@ export default {
       { hid: 'og:image', property: 'og:image', content: CONSTANTS.BLOG_INFO.BASE_OGP_IMAGE },
       { name: 'twitter:card', content: 'summary_large_image' },
       { name: 'twitter:site', content: '@kosuke_upd' },
-      // { property: 'article:publisher', content: 'FacebookURL' },
-      // { property: 'fb:app_id', content: process.env.FACEBOOK_APP_ID },
+      { property: 'fb:app_id', content: process.env.FACEBOOK_APP_ID },
     ],
     link: [
       { rel: 'icon', type: 'image/svg+xml', href: '/favicon.svg' },
