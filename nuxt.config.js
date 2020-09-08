@@ -1,3 +1,5 @@
+import path from 'path'
+import fs from 'fs'
 import { CONSTANTS } from './assets/js/constants'
 require('dotenv').config()
 const client = require('./plugins/contentful').default
@@ -147,6 +149,14 @@ export default {
           ...[].concat(...tagPathList),
         ]
       })
+    },
+  },
+  server: {
+    port: 3000,
+    host: 'localhost',
+    https: process.env.NODE_ENV === 'production' ? {} : {
+      key: fs.readFileSync(path.resolve(__dirname, 'localhost-key.pem')),
+      cert: fs.readFileSync(path.resolve(__dirname, 'localhost.pem')),
     },
   },
   env: {
