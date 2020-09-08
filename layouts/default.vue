@@ -1,6 +1,6 @@
 <template>
   <div>
-    <the-particles />
+    <!-- <the-particles /> -->
     <the-header />
     <main-visual v-if="$route.path === '/'" />
     <div class="container">
@@ -17,7 +17,7 @@
 </template>
 
 <script>
-import TheParticles from '@/layouts/TheParticles'
+// import TheParticles from '@/layouts/TheParticles'
 import TheHeader from '@/layouts/TheHeader'
 import MainVisual from '@/components/MainVisual'
 import TheSidebar from '@/layouts/TheSidebar'
@@ -26,7 +26,7 @@ import TheFooterMenuFixed from '@/layouts/TheFooterMenuFixed'
 
 export default {
   components: {
-    TheParticles,
+    // TheParticles,
     TheHeader,
     MainVisual,
     TheSidebar,
