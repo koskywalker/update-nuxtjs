@@ -54,15 +54,6 @@
           <related-posts
             :currentPost="currentPost"
           />
-          <div class="postFooter__comment">
-            <h2>この記事にコメントする</h2>
-            <vue-disqus
-              :identifier="currentPost.fields.slug"
-              :url="`${baseUrl}/${currentPost.fields.slug}`"
-              :shortname="disqusShortName"
-              class="postFooter__item"
-            />
-          </div>
         </div>
       </div>
     </div>
@@ -77,12 +68,6 @@ import Prism from '~/plugins/prism'
 export default {
   components: {
     RelatedPosts,
-  },
-  data () {
-    return {
-      baseUrl: process.env.BASE_URL,
-      disqusShortName: process.env.DISQUS_SHORTNAME,
-    }
   },
   head () {
     return {
@@ -111,7 +96,6 @@ export default {
   },
   mounted () {
     Prism.highlightAll()
-    console.log(this.currentPost)
   },
 }
 </script>
@@ -674,14 +658,6 @@ export default {
 
   &Inner {
     background-color: $color_white;
-  }
-
-  &__item {
-    margin: 0 auto;
-  }
-
-  &__comment {
-    overflow: hidden;
   }
 }
 </style>

@@ -59,7 +59,6 @@ export default {
     { src: '~plugins/router-option.js' },
     { src: '~plugins/markdown-it.js' },
     { src: '~plugins/prism.js' },
-    { src: '~plugins/vue-disqus.js' },
   ],
   /*
   ** Middleware
@@ -164,6 +163,5 @@ export default {
     CTF_CDA_ACCESS_TOKEN: process.env.CTF_CDA_ACCESS_TOKEN,
     CTF_BLOG_POST_TYPE_ID: process.env.CTF_BLOG_POST_TYPE_ID,
     FACEBOOK_APP_ID: process.env.FACEBOOK_APP_ID,
-    DISQUS_SHORTNAME: process.env.DISQUS_SHORTNAME,
   },
 }
