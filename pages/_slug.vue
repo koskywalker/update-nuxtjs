@@ -571,10 +571,10 @@ export default {
   .info > p:last-of-type + .cardReferenceInternal,
   .info > p:last-of-type + .cardReferenceExternal,
   .success > p:last-of-type + .cardReferenceInternal,
-  .success > p:last-of-type + .cardReferenceInternal,
+  .success > p:last-of-type + .cardReferenceExternal,
   .warning > p:last-of-type + .cardReferenceInternal,
   .warning > p:last-of-type + .cardReferenceExternal,
-  .danger > p:last-of-type + .cardReferenceExternal,
+  .danger > p:last-of-type + .cardReferenceInternal,
   .danger > p:last-of-type + .cardReferenceExternal {
     margin: 1.5rem 0 0.5rem;
   }
