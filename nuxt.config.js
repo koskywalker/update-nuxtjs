@@ -60,6 +60,7 @@ export default {
     { src: '~plugins/markdown-it.js' },
     { src: '~plugins/prism.js' },
   ],
+  components: true,
   /*
   ** Middleware
   */
@@ -88,6 +89,7 @@ export default {
     'nuxt-fontawesome',
     '~/modules/hook',
   ],
+  publicRuntimeConfig: {},
   /*
   ** FontAwesome
   */

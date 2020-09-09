@@ -6,12 +6,12 @@
   "private": true,
   "scripts": {
     "dev": "nuxt",
-    "debug": "node --inspect-brk=9229 node_modules/nuxt/bin/nuxt",
     "build": "nuxt build",
     "start": "nuxt start",
-    "generate": "nuxt build && nuxt export",
-    "lint": "eslint --ext .js,.vue --ignore-path .gitignore .",
-    "lintfix": "eslint --fix --ext .js,.vue --ignore-path .gitignore .",
+    "export": "nuxt export",
+    "serve": "nuxt serve",
+    "lint:js": "eslint --ext .js,.vue --ignore-path .gitignore .",
+    "lint": "yarn lint:js",
     "stylelint": "stylelint '**/*.{vue,scss,css}' --ignore-path .gitignore"
   },
   "dependencies": {
