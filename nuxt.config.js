@@ -86,7 +86,6 @@ export default {
     '@nuxtjs/style-resources',
     ['@nuxtjs/google-tag-manager', { id: 'GTM-5Q8M5KF' }],
     'nuxt-fontawesome',
-    '~/modules/hook',
   ],
   /*
   ** FontAwesome
