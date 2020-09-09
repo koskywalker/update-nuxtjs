@@ -1,9 +1,9 @@
 [build]
-command = "nuxt export"
+command = "nuxt build && nuxt expor"
 publish = "dist"
 
 [context.production]
-command = "BASE_URL=$URL nuxt export"
+command = "BASE_URL=$URL nuxt build && nuxt expor"
 
 [context.deploy-preview]
-command = "BASE_URL=$DEPLOY_PRIME_URL nuxt export"
+command = "BASE_URL=$DEPLOY_PRIME_URL nuxt build && nuxt expor"
