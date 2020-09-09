@@ -86,7 +86,7 @@ export default {
     '@nuxtjs/style-resources',
     ['@nuxtjs/google-tag-manager', { id: 'GTM-5Q8M5KF' }],
     'nuxt-fontawesome',
-    '~/modules/hook',
+    // '~/modules/hook',
   ],
   /*
   ** FontAwesome
@@ -117,37 +117,37 @@ export default {
     },
   },
   generate: {
-    routes () {
-      return Promise.all([
-        client.getEntries({
-          content_type: process.env.CTF_BLOG_POST_TYPE_ID,
-        }),
-        client.getEntries({
-          content_type: 'tag',
-        }),
-      ]).then(([ posts, tags ]) => {
-        const postsNumberPerPage = 10
-        const tagPathList = tags.items.map((tag) => {
-          const tagPosts = posts.items.filter(post => post.fields.tags.some(postTag => postTag.sys.id === tag.sys.id))
-          const tagPostsNumber = tagPosts.length
-          return Array(Math.floor(tagPostsNumber / postsNumberPerPage)).fill(null).map((_, i) => {
-            return { route: `tags/${tag.fields.slug}/${i + 1}`, payload: tag }
-          })
-        })
-        return [
-          ...posts.items.map((post) => {
-            return { route: post.fields.slug, payload: post }
-          }),
-          ...Array(Math.floor(posts.items.length / postsNumberPerPage)).fill(null).map((_, i) => {
-            return { route: `page/${i + 1}` }
-          }),
-          ...tags.items.map((tag) => {
-            return { route: `tags/${tag.fields.slug}`, payload: tag }
-          }),
-          ...[].concat(...tagPathList),
-        ]
-      })
-    },
+    // routes () {
+    //   return Promise.all([
+    //     client.getEntries({
+    //       content_type: process.env.CTF_BLOG_POST_TYPE_ID,
+    //     }),
+    //     client.getEntries({
+    //       content_type: 'tag',
+    //     }),
+    //   ]).then(([ posts, tags ]) => {
+    //     const postsNumberPerPage = 10
+    //     const tagPathList = tags.items.map((tag) => {
+    //       const tagPosts = posts.items.filter(post => post.fields.tags.some(postTag => postTag.sys.id === tag.sys.id))
+    //       const tagPostsNumber = tagPosts.length
+    //       return Array(Math.floor(tagPostsNumber / postsNumberPerPage)).fill(null).map((_, i) => {
+    //         return { route: `tags/${tag.fields.slug}/${i + 1}`, payload: tag }
+    //       })
+    //     })
+    //     return [
+    //       ...posts.items.map((post) => {
+    //         return { route: post.fields.slug, payload: post }
+    //       }),
+    //       ...Array(Math.floor(posts.items.length / postsNumberPerPage)).fill(null).map((_, i) => {
+    //         return { route: `page/${i + 1}` }
+    //       }),
+    //       ...tags.items.map((tag) => {
+    //         return { route: `tags/${tag.fields.slug}`, payload: tag }
+    //       }),
+    //       ...[].concat(...tagPathList),
+    //     ]
+    //   })
+    // },
   },
   server: {
     port: 3000,
