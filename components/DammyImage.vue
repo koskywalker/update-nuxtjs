@@ -1,13 +1,13 @@
 <template>
   <img
+    v-if="imageStyleObject.width"
     :src="imageSrc"
     :style="imageStyleObject"
-    v-if="imageStyleObject.width"
-    @load="loaded"
     class="dammyImage"
     width="800"
     height="450"
     alt=""
+    @load="loaded"
   >
 </template>
 

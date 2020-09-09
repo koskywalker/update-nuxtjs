@@ -52,7 +52,7 @@
       <div class="postFooter">
         <div class="postFooterInner">
           <related-posts
-            :currentPost="currentPost"
+            :current-post="currentPost"
           />
         </div>
       </div>

@@ -2,8 +2,8 @@
   <div class="menu">
     <transition name="slide-bottom">
       <share-buttons
-        :title="title"
         v-if="showShareButtons"
+        :title="title"
         class="shareButtons"
       />
       <follow-buttons
@@ -14,15 +14,15 @@
     <transition name="fade">
       <div
         v-if="showDrawerMenu"
-        @click="closeDrawer"
         class="drawerBackground"
+        @click="closeDrawer"
       />
     </transition>
     <transition name="slide-right">
       <drawer-menu
         v-if="showDrawerMenu"
-        @closeDrawer="closeDrawer"
         class="drawerMenu"
+        @closeDrawer="closeDrawer"
       />
     </transition>
     <nav class="menuInner">
@@ -34,8 +34,8 @@
         >
           <button
             :class="item.CLASS"
-            @click="buttonAction"
             class="menuList__itemLink js-button"
+            @click="buttonAction"
           >
             <font-awesome-icon
               :icon="item.ICON"

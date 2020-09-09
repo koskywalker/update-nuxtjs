@@ -7,10 +7,10 @@
         </p>
         <vue-typed-js
           :strings="typedStrings"
-          :typeSpeed="100"
-          :startDelay="1000"
-          :backSpeed="20"
-          :backDelay="1500"
+          :type-speed="100"
+          :start-delay="1000"
+          :back-speed="20"
+          :back-delay="1500"
           :loop="true"
         >
           <p class="mainVisualInner__typing">

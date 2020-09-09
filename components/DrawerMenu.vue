@@ -4,8 +4,8 @@
       <h3 class="drawerInner__title">
         MENU
         <button
-          @click="closeDrawer()"
           class="drawerInner__titleClose"
+          @click="closeDrawer()"
         >
           <font-awesome-icon
             :icon="['fas', 'times']"
@@ -36,7 +36,7 @@
               v-for="(post, index) in displayPosts"
               :key="index"
               :post="post"
-              :thumbnailSize="150"
+              :thumbnail-size="150"
             />
           </div>
         </div>

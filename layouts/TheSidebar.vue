@@ -27,8 +27,8 @@
         </div>
         <transition name="fade">
           <light-saber
-            :switch-status="switchStatus"
             v-show="isLightSaberShow"
+            :switch-status="switchStatus"
             class="sideProfile__imageLightSaber"
           />
         </transition>
@@ -42,9 +42,9 @@
         </p>
       </div>
       <button-colorful
-        @clickButtonColorful="easterEggLightSaber"
         :disabled="isDisabledLightSaber"
         class="sideProfile__button"
+        @clickButtonColorful="easterEggLightSaber"
       />
       <div class="sideProfile__text">
         <p class="sideProfile__textSentence">

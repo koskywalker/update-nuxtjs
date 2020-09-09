@@ -2,9 +2,9 @@
   <div class="button-colorful">
     <div class="button-colorful__inner">
       <button
-        @click="click"
         type="button"
         class="button-colorful__button"
+        @click="click"
       >
         <span class="button-colorful__button-text">？？？</span>
       </button>

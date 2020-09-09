@@ -3,8 +3,8 @@
     <ul class="shareInner">
       <li class="shareInner__item">
         <button
-          @click="windowOpen(twitterShareUrl)"
           class="shareInner__itemLink"
+          @click="windowOpen(twitterShareUrl)"
         >
           <font-awesome-icon
             :icon="['fab', 'twitter']"
@@ -14,8 +14,8 @@
       </li>
       <li class="shareInner__item">
         <button
-          @click="windowOpen(facebookShareUrl)"
           class="shareInner__itemLink"
+          @click="windowOpen(facebookShareUrl)"
         >
           <font-awesome-icon
             :icon="['fab', 'facebook-f']"
@@ -25,8 +25,8 @@
       </li>
       <li class="shareInner__item">
         <button
-          @click="windowOpen(hatebuShareUrl)"
           class="shareInner__itemLink"
+          @click="windowOpen(hatebuShareUrl)"
         >
           <b
             class="shareInner__itemIcon shareInner__itemIcon--hatebu"
@@ -37,8 +37,8 @@
       </li>
       <li class="shareInner__item">
         <button
-          @click="windowOpen(pocketShareUrl)"
           class="shareInner__itemLink"
+          @click="windowOpen(pocketShareUrl)"
         >
           <font-awesome-icon
             :icon="['fab', 'get-pocket']"
@@ -48,8 +48,8 @@
       </li>
       <li class="shareInner__item">
         <button
-          @click="windowOpen(lineShareUrl)"
           class="shareInner__itemLink"
+          @click="windowOpen(lineShareUrl)"
         >
           <font-awesome-icon
             :icon="['fab', 'line']"

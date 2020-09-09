@@ -12,6 +12,7 @@
     "generate": "nuxt generate",
     "export": "nuxt build && nuxt export",
     "lint": "eslint --ext .js,.vue --ignore-path .gitignore .",
+    "lintfix": "eslint --fix --ext .js,.vue --ignore-path .gitignore .",
     "stylelint": "stylelint '**/*.{vue,scss,css}' --ignore-path .gitignore"
   },
   "dependencies": {

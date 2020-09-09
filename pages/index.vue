@@ -6,7 +6,7 @@
     <pagination
       v-if="isPaginationShow"
       :path="'/page'"
-      :postsNumber="posts.length"
+      :posts-number="posts.length"
     />
   </div>
 </template>

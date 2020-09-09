@@ -13,7 +13,7 @@
     <pagination
       v-if="isPaginationShow"
       :path="path"
-      :postsNumber="relatedPosts(currentTag).length"
+      :posts-number="relatedPosts(currentTag).length"
     />
   </div>
 </template>
@@ -32,16 +32,6 @@ export default {
   data () {
     return {
       postsNumberPerPage: CONSTANTS.BASE_SETTINGS.POSTS_NUMBER_PER_PAGE,
-    }
-  },
-  head () {
-    return {
-      title: this.title,
-      meta: [
-        { hid: 'og:url', property: 'og:url', content: process.env.BASE_URL + this.$route.path },
-        { hid: 'og:title', property: 'og:title', content: this.title },
-        { hid: 'og:type', property: 'og:type', content: 'article' },
-      ],
     }
   },
   computed: {
@@ -68,6 +58,16 @@ export default {
       return { currentTag }
     } else {
       return error({ statusCode: 404 })
+    }
+  },
+  head () {
+    return {
+      title: this.title,
+      meta: [
+        { hid: 'og:url', property: 'og:url', content: process.env.BASE_URL + this.$route.path },
+        { hid: 'og:title', property: 'og:title', content: this.title },
+        { hid: 'og:type', property: 'og:type', content: 'article' },
+      ],
     }
   },
 }

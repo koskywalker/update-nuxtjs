@@ -12,7 +12,7 @@
         v-for="(post, index) in displayPosts"
         :key="index"
         :post="post"
-        :thumbnailSize="300"
+        :thumbnail-size="300"
       />
     </div>
   </div>
