@@ -85,8 +85,9 @@ export default {
   computed: {
     ...mapGetters('posts', ['linkTo']),
   },
-  async asyncData ({ payload, store, params, error }) {
-    const currentPost = payload || await store.state.posts.posts.find(post => post.fields.slug === params.slug)
+  async asyncData ({ store, params, error }) {
+    const posts = await store.state.posts.posts
+    const currentPost = posts.find(post => post.fields.slug === params.slug)
 
     if (currentPost) {
       return { currentPost }
