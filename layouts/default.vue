@@ -19,7 +19,6 @@
 <script>
 import TheParticles from '@/layouts/TheParticles'
 import TheHeader from '@/layouts/TheHeader'
-import MainVisual from '@/components/MainVisual'
 import TheSidebar from '@/layouts/TheSidebar'
 import TheFooter from '@/layouts/TheFooter'
 import TheFooterMenuFixed from '@/layouts/TheFooterMenuFixed'
@@ -28,7 +27,6 @@ export default {
   components: {
     TheParticles,
     TheHeader,
-    MainVisual,
     TheSidebar,
     TheFooter,
     TheFooterMenuFixed,

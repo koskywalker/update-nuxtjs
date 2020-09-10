@@ -21,14 +21,8 @@
 <script>
 import { CONSTANTS } from '@/assets/js/constants'
 import { mapGetters } from 'vuex'
-import ArticleList from '@/components/ArticleList'
-import Pagination from '@/components/Pagination'
 
 export default {
-  components: {
-    ArticleList,
-    Pagination,
-  },
   data () {
     return {
       postsNumberPerPage: CONSTANTS.BASE_SETTINGS.POSTS_NUMBER_PER_PAGE,

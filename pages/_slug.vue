@@ -62,13 +62,9 @@
 
 <script>
 import { mapGetters } from 'vuex'
-import RelatedPosts from '@/components/RelatedPosts'
 import Prism from '~/plugins/prism'
 
 export default {
-  components: {
-    RelatedPosts,
-  },
   head () {
     return {
       title: this.currentPost.fields.title,

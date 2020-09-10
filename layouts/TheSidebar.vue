@@ -43,8 +43,8 @@
       </div>
       <button-colorful
         :disabled="isDisabledLightSaber"
-        class="sideProfile__button"
         @clickButtonColorful="easterEggLightSaber"
+        class="sideProfile__button"
       />
       <div class="sideProfile__text">
         <p class="sideProfile__textSentence">
@@ -84,16 +84,8 @@
 
 <script>
 import { CONSTANTS } from '@/assets/js/constants'
-import RecentPosts from '@/components/RecentPosts'
-import LightSaber from '@/components/LightSaber'
-import ButtonColorful from '@/components/ButtonColorful'
 
 export default {
-  components: {
-    RecentPosts,
-    LightSaber,
-    ButtonColorful,
-  },
   data () {
     return {
       myInfo: CONSTANTS.MY_INFO,

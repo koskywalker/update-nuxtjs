@@ -20,20 +20,13 @@
 
 <script>
 import { mapState } from 'vuex'
-import ArticleCard from '@/components/ArticleCard'
 
 export default {
-  components: {
-    ArticleCard,
-  },
   computed: {
     ...mapState('posts', ['posts']),
     displayPosts () {
       return this.posts.slice(0, 5)
     },
-  },
-  async fetch ({ store, params }) {
-    await store.dispatch('posts/getPosts', params.slug)
   },
 }
 </script>

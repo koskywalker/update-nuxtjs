@@ -14,15 +14,15 @@
     <transition name="fade">
       <div
         v-if="showDrawerMenu"
-        class="drawerBackground"
         @click="closeDrawer"
+        class="drawerBackground"
       />
     </transition>
     <transition name="slide-right">
       <drawer-menu
         v-if="showDrawerMenu"
-        class="drawerMenu"
         @closeDrawer="closeDrawer"
+        class="drawerMenu"
       />
     </transition>
     <nav class="menuInner">
@@ -34,8 +34,8 @@
         >
           <button
             :class="item.CLASS"
-            class="menuList__itemLink js-button"
             @click="buttonAction"
+            class="menuList__itemLink js-button"
           >
             <font-awesome-icon
               :icon="item.ICON"
@@ -51,17 +51,9 @@
 
 <script>
 import { CONSTANTS } from '@/assets/js/constants'
-import ShareButtons from '~/components/ShareButtons'
-import FollowButtons from '~/components/FollowButtons'
-import DrawerMenu from '~/components/DrawerMenu'
 
 export default {
   name: 'TheFooterMenuFixed',
-  components: {
-    ShareButtons,
-    FollowButtons,
-    DrawerMenu,
-  },
   data () {
     return {
       items: CONSTANTS.FOOTER_MENU_FIXED,
