@@ -52,7 +52,8 @@ export default {
     },
   },
   async asyncData ({ payload, store, params, error }) {
-    const currentTag = payload || await store.state.posts.tags.find(tag => tag.fields.slug === params.slug)
+    const tags = await store.state.posts.tags
+    const currentTag = tags.find(tag => tag.fields.slug === params.slug)
 
     if (currentTag) {
       return { currentTag }
