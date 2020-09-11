@@ -62,7 +62,8 @@
 
 <script>
 import { mapGetters } from 'vuex'
-import Prism from '~/plugins/prism'
+import Prism from 'prismjs'
+import 'prismjs/themes/prism-okaidia.css'
 
 export default {
   async asyncData ({ store, params, error }) {
