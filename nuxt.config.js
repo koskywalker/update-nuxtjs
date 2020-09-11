@@ -52,7 +52,6 @@ export default {
   */
   plugins: [
     { src: '~plugins/ga.js', mode: 'client' },
-    { src: '~plugins/utility.js' },
     { src: '~plugins/router-option.js' },
     { src: '~plugins/markdown-it.js' },
   ],
