@@ -37,7 +37,7 @@
             class="menuList__itemLink js-button"
             @click="buttonAction"
           >
-            <font-awesome-icon
+            <fa
               :icon="item.ICON"
               class="menuList__itemIcon"
             />
@@ -50,13 +50,39 @@
 </template>
 
 <script>
-import { CONSTANTS } from '@/assets/js/constants'
+import { faHome, faShareAlt, faUserPlus, faList, faLevelUpAlt } from '@fortawesome/free-solid-svg-icons'
 
 export default {
   name: 'TheFooterMenuFixed',
   data () {
     return {
-      items: CONSTANTS.FOOTER_MENU_FIXED,
+      items: [
+        {
+          NAME: 'ホーム',
+          ICON: faHome,
+          CLASS: 'menuList__itemLink--home js-buttonHome',
+        },
+        {
+          NAME: 'シェア',
+          ICON: faShareAlt,
+          CLASS: 'menuList__itemLink--share js-buttonShare',
+        },
+        {
+          NAME: 'フォロー',
+          ICON: faUserPlus,
+          CLASS: 'menuList__itemLink--follow js-buttonFollow',
+        },
+        {
+          NAME: 'メニュー',
+          ICON: faList,
+          CLASS: 'menuList__itemLink--menu js-buttonMenu',
+        },
+        {
+          NAME: 'トップ',
+          ICON: faLevelUpAlt,
+          CLASS: 'menuList__itemLink--top js-buttonTop',
+        },
+      ],
       title: '',
       showShareButtons: false,
       showFollowButtons: false,

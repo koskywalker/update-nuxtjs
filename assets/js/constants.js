@@ -34,33 +34,6 @@ export const CONSTANTS = {
       URL: '/contact',
     },
   ],
-  FOOTER_MENU_FIXED: [
-    {
-      NAME: 'ホーム',
-      ICON: 'home',
-      CLASS: 'menuList__itemLink--home js-buttonHome',
-    },
-    {
-      NAME: 'シェア',
-      ICON: 'share-alt',
-      CLASS: 'menuList__itemLink--share js-buttonShare',
-    },
-    {
-      NAME: 'フォロー',
-      ICON: 'user-plus',
-      CLASS: 'menuList__itemLink--follow js-buttonFollow',
-    },
-    {
-      NAME: 'メニュー',
-      ICON: 'list',
-      CLASS: 'menuList__itemLink--menu js-buttonMenu',
-    },
-    {
-      NAME: 'トップ',
-      ICON: 'level-up-alt',
-      CLASS: 'menuList__itemLink--top js-buttonTop',
-    },
-  ],
   BLOG_INFO: {
     BLOG_NAME: 'UPDATE',
     BASE_TITLE: '世界をアップデートするクリエイターこうすけのブログ',

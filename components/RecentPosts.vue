@@ -1,8 +1,8 @@
 <template>
   <div class="recentPosts">
     <h3 class="recentPosts__title">
-      <font-awesome-icon
-        :icon="'list'"
+      <fa
+        :icon="faList"
         class="followInner__itemIcon"
       />
       Recent Posts
@@ -20,8 +20,14 @@
 
 <script>
 import { mapState } from 'vuex'
+import { faList } from '@fortawesome/free-solid-svg-icons'
 
 export default {
+  data () {
+    return {
+      faList,
+    }
+  },
   computed: {
     ...mapState('posts', ['posts']),
     displayPosts () {

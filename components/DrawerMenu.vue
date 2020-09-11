@@ -7,8 +7,8 @@
           class="drawerInner__titleClose"
           @click="closeDrawer()"
         >
-          <font-awesome-icon
-            :icon="['fas', 'times']"
+          <fa
+            :icon="faTimes"
             class="drawerInner__titleCloseIcon"
           />
         </button>
@@ -20,9 +20,7 @@
             class="search__input"
           >
           <button class="search__button">
-            <font-awesome-icon
-              :icon="['fas', 'search']"
-            />
+            <fa :icon="faSearch" />
           </button>
         </div>
       </div>
@@ -47,8 +45,15 @@
 
 <script>
 import { mapState } from 'vuex'
+import { faTimes, faSearch } from '@fortawesome/free-solid-svg-icons'
 
 export default {
+  data () {
+    return {
+      faTimes,
+      faSearch,
+    }
+  },
   computed: {
     ...mapState('posts', ['posts']),
     displayPosts () {
