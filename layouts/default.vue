@@ -2,7 +2,7 @@
   <div>
     <!-- <the-particles /> -->
     <the-header />
-    <main-visual v-if="$route.path === '/'" />
+    <!-- <main-visual v-if="$route.path === '/'" /> -->
     <div class="container">
       <div class="containerInner">
         <main class="main">
