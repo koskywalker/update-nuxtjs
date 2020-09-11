@@ -31,9 +31,9 @@ export default {
       { name: 'twitter:site', content: '@kosuke_upd' },
       { property: 'fb:app_id', content: process.env.FACEBOOK_APP_ID },
     ],
-    link: [
-      { rel: 'icon', type: 'image/svg+xml', href: '/favicon.svg' },
-    ],
+    // link: [
+    //   { rel: 'icon', type: 'image/svg+xml', href: '/favicon.svg' },
+    // ],
   },
   /*
   ** Global CSS
