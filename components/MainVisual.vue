@@ -23,6 +23,8 @@
 </template>
 
 <script>
+import '@/plugins/vue-typed-js.js'
+
 export default {
   data () {
     return {
