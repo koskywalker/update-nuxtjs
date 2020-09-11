@@ -5,7 +5,6 @@ import { CONSTANTS } from './assets/js/constants'
 require('dotenv').config()
 
 export default {
-  mode: 'universal',
   target: 'static',
   /*
   ** Headers of the page
@@ -54,7 +53,6 @@ export default {
   plugins: [
     { src: '~plugins/ga.js', mode: 'client' },
     { src: '~plugins/vue-typed-js.js' },
-    { src: '~plugins/vuejs-paginate.js', mode: 'client' },
     { src: '~plugins/utility.js' },
     { src: '~plugins/router-option.js' },
     { src: '~plugins/markdown-it.js' },
