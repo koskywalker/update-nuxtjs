@@ -1,6 +1,7 @@
 import path from 'path'
 import fs from 'fs'
 import { CONSTANTS } from './assets/js/constants'
+
 require('dotenv').config()
 
 export default {
@@ -117,6 +118,7 @@ export default {
         config.devtool = ctx.isClient ? 'source-map' : 'inline-source-map'
       }
     },
+    analyze: true,
   },
   server: {
     port: 3000,
