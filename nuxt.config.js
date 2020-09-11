@@ -53,7 +53,6 @@ export default {
   */
   plugins: [
     { src: '~plugins/ga.js', mode: 'client' },
-    { src: '~plugins/contentful.js' },
     { src: '~plugins/vue-typed-js.js' },
     { src: '~plugins/vuejs-paginate.js', mode: 'client' },
     { src: '~plugins/utility.js' },
@@ -118,7 +117,7 @@ export default {
         config.devtool = ctx.isClient ? 'source-map' : 'inline-source-map'
       }
     },
-    analyze: true,
+    analyze: false,
   },
   server: {
     port: 3000,

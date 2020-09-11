@@ -23,6 +23,16 @@ import { CONSTANTS } from '@/assets/js/constants'
 import { mapGetters } from 'vuex'
 
 export default {
+  async asyncData ({ payload, store, params, error }) {
+    const tags = await store.state.posts.tags
+    const currentTag = tags.find(tag => tag.fields.slug === params.slug)
+
+    if (currentTag) {
+      return { currentTag }
+    } else {
+      return error({ statusCode: 404 })
+    }
+  },
   data () {
     return {
       postsNumberPerPage: CONSTANTS.BASE_SETTINGS.POSTS_NUMBER_PER_PAGE,
@@ -44,16 +54,6 @@ export default {
     isPaginationShow () {
       return this.relatedPosts(this.currentTag).length > this.postsNumberPerPage
     },
-  },
-  async asyncData ({ payload, store, params, error }) {
-    const tags = await store.state.posts.tags
-    const currentTag = tags.find(tag => tag.fields.slug === params.slug)
-
-    if (currentTag) {
-      return { currentTag }
-    } else {
-      return error({ statusCode: 404 })
-    }
   },
   head () {
     return {

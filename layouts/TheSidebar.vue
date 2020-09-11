@@ -43,8 +43,8 @@
       </div>
       <button-colorful
         :disabled="isDisabledLightSaber"
-        @clickButtonColorful="easterEggLightSaber"
         class="sideProfile__button"
+        @clickButtonColorful="easterEggLightSaber"
       />
       <div class="sideProfile__text">
         <p class="sideProfile__textSentence">

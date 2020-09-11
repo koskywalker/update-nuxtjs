@@ -4,8 +4,8 @@
       <h3 class="drawerInner__title">
         MENU
         <button
-          @click="closeDrawer()"
           class="drawerInner__titleClose"
+          @click="closeDrawer()"
         >
           <font-awesome-icon
             :icon="['fas', 'times']"

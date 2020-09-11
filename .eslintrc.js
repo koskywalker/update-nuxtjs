@@ -23,6 +23,7 @@ module.exports = {
         allowFirstLine: false,
       },
     }],
+    'vue/no-v-html': 'off',
     'comma-dangle': ['error', 'always-multiline'],
   },
 }

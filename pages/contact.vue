@@ -10,12 +10,12 @@
       </h1>
       <client-only>
         <form
-          @submit.prevent="validateSubmit"
           class="contactForm"
           name="contact"
           method="POST"
           netlify
           data-netlify-recaptcha="true"
+          @submit.prevent="validateSubmit"
         >
           <input
             type="hidden"
@@ -39,14 +39,14 @@
               </ul>
               <input
                 v-model="name.inputText"
-                @input="validateItem(name, arguments[0])"
-                @change="validateItem(name, arguments[0])"
-                @focusout="validateItem(name, arguments[0])"
                 class="contactForm__input"
                 type="text"
                 name="name"
                 autocomplete="name"
                 placeholder="例) 山田太郎"
+                @input="validateItem(name, arguments[0])"
+                @change="validateItem(name, arguments[0])"
+                @focusout="validateItem(name, arguments[0])"
               >
             </label>
           </p>
@@ -67,14 +67,14 @@
               </ul>
               <input
                 v-model="email.inputText"
-                @input="validateItem(email, arguments[0])"
-                @change="validateItem(email, arguments[0])"
-                @focusout="validateItem(email, arguments[0])"
                 class="contactForm__input"
                 type="email"
                 name="email"
                 autocomplete="email"
                 placeholder="例) info@example.com"
+                @input="validateItem(email, arguments[0])"
+                @change="validateItem(email, arguments[0])"
+                @focusout="validateItem(email, arguments[0])"
               >
             </label>
           </p>
@@ -94,12 +94,12 @@
               </ul>
               <textarea
                 v-model="message.inputText"
-                @input="validateItem(message, arguments[0])"
-                @change="validateItem(message, arguments[0])"
-                @focusout="validateItem(message, arguments[0])"
                 class="contactForm__input"
                 name="message"
                 rows="6"
+                @input="validateItem(message, arguments[0])"
+                @change="validateItem(message, arguments[0])"
+                @focusout="validateItem(message, arguments[0])"
               />
             </label>
           </p>

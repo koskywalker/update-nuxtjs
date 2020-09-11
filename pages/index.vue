@@ -16,6 +16,9 @@ import { CONSTANTS } from '@/assets/js/constants'
 import { mapState } from 'vuex'
 
 export default {
+  async fetch ({ store, params }) {
+    await store.dispatch('posts/getPosts', params.slug)
+  },
   data () {
     return {
       postsNumberPerPage: CONSTANTS.BASE_SETTINGS.POSTS_NUMBER_PER_PAGE,
@@ -31,9 +34,6 @@ export default {
     isPaginationShow () {
       return this.posts.length > this.postsNumberPerPage
     },
-  },
-  async fetch ({ store, params }) {
-    await store.dispatch('posts/getPosts', params.slug)
   },
 }
 </script>
