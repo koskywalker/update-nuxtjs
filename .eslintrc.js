@@ -2,14 +2,14 @@ module.exports = {
   root: true,
   env: {
     browser: true,
-    node: true
+    node: true,
   },
   parserOptions: {
-    parser: 'babel-eslint'
+    parser: 'babel-eslint',
   },
   extends: [
     '@nuxtjs',
-    'plugin:nuxt/recommended'
+    'plugin:nuxt/recommended',
   ],
   // add your custom rules here
   rules: {
@@ -17,12 +17,13 @@ module.exports = {
     'no-new': 'off',
     'no-useless-return': 'off',
     'vue/max-attributes-per-line': ['error', {
-      'singleline': 1,
-      'multiline': {
-      'max': 1,
-      'allowFirstLine': false
-      }
+      singleline: 1,
+      multiline: {
+        max: 1,
+        allowFirstLine: false,
+      },
     }],
+    'vue/no-v-html': 'off',
     'comma-dangle': ['error', 'always-multiline'],
-  }
+  },
 }

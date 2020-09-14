@@ -24,9 +24,6 @@
         <p>{{ blogTechnology }}</p>
       </div>
     </section>
-    <div class="footerCopyright">
-      © {{ today }} {{ blogName }} All rights reserved.
-    </div>
   </footer>
 </template>
 
@@ -45,9 +42,6 @@ export default {
   computed: {
     ...mapState('posts', ['tags']),
     ...mapGetters('posts', ['linkTo']),
-    today () {
-      return this.$moment().year()
-    },
   },
 }
 </script>
@@ -55,6 +49,7 @@ export default {
 <style lang="scss" scoped>
 .footer {
   color: $color_white;
+  margin-bottom: 64px;
   text-align: center;
 
   &Item {
@@ -109,18 +104,6 @@ export default {
       margin: 0 auto;
       max-width: $width_max;
       width: $width_base;
-    }
-  }
-
-  &Copyright {
-    background-color: $color_gray;
-    font-size: $fontSize_xs;
-    margin-bottom: 54px;
-    padding: 0.8rem 0;
-
-    @include mq($mq_tablet) {
-      font-size: $fontSize_base;
-      padding: 1rem 0;
     }
   }
 }

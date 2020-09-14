@@ -28,6 +28,9 @@
 
 <script>
 import { CONSTANTS } from '@/assets/js/constants'
+if (process.client) {
+  require('@/plugins/vuejs-paginate.js')
+}
 
 export default {
   props: {

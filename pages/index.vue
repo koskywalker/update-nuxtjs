@@ -6,7 +6,7 @@
     <pagination
       v-if="isPaginationShow"
       :path="'/page'"
-      :postsNumber="posts.length"
+      :posts-number="posts.length"
     />
   </div>
 </template>
@@ -14,13 +14,10 @@
 <script>
 import { CONSTANTS } from '@/assets/js/constants'
 import { mapState } from 'vuex'
-import ArticleList from '@/components/ArticleList'
-import Pagination from '@/components/Pagination'
 
 export default {
-  components: {
-    ArticleList,
-    Pagination,
+  async fetch ({ store, params }) {
+    await store.dispatch('posts/getPosts', params.slug)
   },
   data () {
     return {
@@ -37,9 +34,6 @@ export default {
     isPaginationShow () {
       return this.posts.length > this.postsNumberPerPage
     },
-  },
-  async fetch ({ store, params }) {
-    await store.dispatch('posts/getPosts', params.slug)
   },
 }
 </script>

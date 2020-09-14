@@ -3,30 +3,30 @@
     <ul class="shareInner">
       <li class="shareInner__item">
         <button
-          @click="windowOpen(twitterShareUrl)"
           class="shareInner__itemLink"
+          @click="windowOpen(twitterShareUrl)"
         >
-          <font-awesome-icon
-            :icon="['fab', 'twitter']"
+          <fa
+            :icon="faTwitter"
             class="shareInner__itemIcon shareInner__itemIcon--twitter"
           />
         </button>
       </li>
       <li class="shareInner__item">
         <button
-          @click="windowOpen(facebookShareUrl)"
           class="shareInner__itemLink"
+          @click="windowOpen(facebookShareUrl)"
         >
-          <font-awesome-icon
-            :icon="['fab', 'facebook-f']"
+          <fa
+            :icon="faFacebookF"
             class="shareInner__itemIcon shareInner__itemIcon--facebook"
           />
         </button>
       </li>
       <li class="shareInner__item">
         <button
-          @click="windowOpen(hatebuShareUrl)"
           class="shareInner__itemLink"
+          @click="windowOpen(hatebuShareUrl)"
         >
           <b
             class="shareInner__itemIcon shareInner__itemIcon--hatebu"
@@ -37,22 +37,22 @@
       </li>
       <li class="shareInner__item">
         <button
-          @click="windowOpen(pocketShareUrl)"
           class="shareInner__itemLink"
+          @click="windowOpen(pocketShareUrl)"
         >
-          <font-awesome-icon
-            :icon="['fab', 'get-pocket']"
+          <fa
+            :icon="faGetPocket"
             class="shareInner__itemIcon shareInner__itemIcon--pocket"
           />
         </button>
       </li>
       <li class="shareInner__item">
         <button
-          @click="windowOpen(lineShareUrl)"
           class="shareInner__itemLink"
+          @click="windowOpen(lineShareUrl)"
         >
-          <font-awesome-icon
-            :icon="['fab', 'line']"
+          <fa
+            :icon="faLine"
             class="shareInner__itemIcon shareInner__itemIcon--line"
           />
         </button>
@@ -63,6 +63,7 @@
 
 <script>
 import { CONSTANTS } from '@/assets/js/constants'
+import { faTwitter, faFacebookF, faGetPocket, faLine } from '@fortawesome/free-brands-svg-icons'
 
 export default {
   name: 'ShareButtons',
@@ -79,6 +80,10 @@ export default {
       hatebuUrl: 'https://b.hatena.ne.jp/add?mode=confirm&amp;url={0}&amp;title={1}',
       pocketUrl: 'https://getpocket.com/edit?url={0}',
       lineUrl: 'https://timeline.line.me/social-plugin/share?url={0}',
+      faTwitter,
+      faFacebookF,
+      faGetPocket,
+      faLine,
     }
   },
   computed: {

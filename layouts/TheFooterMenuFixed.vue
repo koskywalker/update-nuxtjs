@@ -2,8 +2,8 @@
   <div class="menu">
     <transition name="slide-bottom">
       <share-buttons
-        :title="title"
         v-if="showShareButtons"
+        :title="title"
         class="shareButtons"
       />
       <follow-buttons
@@ -14,15 +14,15 @@
     <transition name="fade">
       <div
         v-if="showDrawerMenu"
-        @click="closeDrawer"
         class="drawerBackground"
+        @click="closeDrawer"
       />
     </transition>
     <transition name="slide-right">
       <drawer-menu
         v-if="showDrawerMenu"
-        @closeDrawer="closeDrawer"
         class="drawerMenu"
+        @closeDrawer="closeDrawer"
       />
     </transition>
     <nav class="menuInner">
@@ -34,10 +34,10 @@
         >
           <button
             :class="item.CLASS"
-            @click="buttonAction"
             class="menuList__itemLink js-button"
+            @click="buttonAction"
           >
-            <font-awesome-icon
+            <fa
               :icon="item.ICON"
               class="menuList__itemIcon"
             />
@@ -50,21 +50,39 @@
 </template>
 
 <script>
-import { CONSTANTS } from '@/assets/js/constants'
-import ShareButtons from '~/components/ShareButtons'
-import FollowButtons from '~/components/FollowButtons'
-import DrawerMenu from '~/components/DrawerMenu'
+import { faHome, faShareAlt, faUserPlus, faList, faLevelUpAlt } from '@fortawesome/free-solid-svg-icons'
 
 export default {
   name: 'TheFooterMenuFixed',
-  components: {
-    ShareButtons,
-    FollowButtons,
-    DrawerMenu,
-  },
   data () {
     return {
-      items: CONSTANTS.FOOTER_MENU_FIXED,
+      items: [
+        {
+          NAME: 'ホーム',
+          ICON: faHome,
+          CLASS: 'menuList__itemLink--home js-buttonHome',
+        },
+        {
+          NAME: 'シェア',
+          ICON: faShareAlt,
+          CLASS: 'menuList__itemLink--share js-buttonShare',
+        },
+        {
+          NAME: 'フォロー',
+          ICON: faUserPlus,
+          CLASS: 'menuList__itemLink--follow js-buttonFollow',
+        },
+        {
+          NAME: 'メニュー',
+          ICON: faList,
+          CLASS: 'menuList__itemLink--menu js-buttonMenu',
+        },
+        {
+          NAME: 'トップ',
+          ICON: faLevelUpAlt,
+          CLASS: 'menuList__itemLink--top js-buttonTop',
+        },
+      ],
       title: '',
       showShareButtons: false,
       showFollowButtons: false,

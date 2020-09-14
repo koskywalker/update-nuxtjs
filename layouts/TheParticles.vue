@@ -29,6 +29,7 @@ export default {
   position: fixed;
   top: 0;
   width: 100vw;
+  will-change: transform;
   z-index: -1;
 }
 </style>

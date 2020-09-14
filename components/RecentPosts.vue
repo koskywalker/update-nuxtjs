@@ -1,8 +1,8 @@
 <template>
   <div class="recentPosts">
     <h3 class="recentPosts__title">
-      <font-awesome-icon
-        :icon="'list'"
+      <fa
+        :icon="faList"
         class="followInner__itemIcon"
       />
       Recent Posts
@@ -12,7 +12,7 @@
         v-for="(post, index) in displayPosts"
         :key="index"
         :post="post"
-        :thumbnailSize="300"
+        :thumbnail-size="300"
       />
     </div>
   </div>
@@ -20,20 +20,19 @@
 
 <script>
 import { mapState } from 'vuex'
-import ArticleCard from '@/components/ArticleCard'
+import { faList } from '@fortawesome/free-solid-svg-icons'
 
 export default {
-  components: {
-    ArticleCard,
+  data () {
+    return {
+      faList,
+    }
   },
   computed: {
     ...mapState('posts', ['posts']),
     displayPosts () {
       return this.posts.slice(0, 5)
     },
-  },
-  async fetch ({ store, params }) {
-    await store.dispatch('posts/getPosts', params.slug)
   },
 }
 </script>

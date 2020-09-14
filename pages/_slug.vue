@@ -43,16 +43,17 @@
         <div class="postBody">
           <div class="postBodyInner">
             <div
-              v-html="$md.render(currentPost.fields.body)"
               class="postBodyInnerContent line-numbers"
+              v-html="$md.render(currentPost.fields.body)"
             />
           </div>
         </div>
+        <share-buttons-article />
       </article>
       <div class="postFooter">
         <div class="postFooterInner">
           <related-posts
-            :currentPost="currentPost"
+            :current-post="currentPost"
           />
         </div>
       </div>
@@ -62,12 +63,25 @@
 
 <script>
 import { mapGetters } from 'vuex'
-import RelatedPosts from '@/components/RelatedPosts'
-import Prism from '~/plugins/prism'
+import Prism from 'prismjs'
+import 'prismjs/themes/prism-okaidia.css'
 
 export default {
-  components: {
-    RelatedPosts,
+  async asyncData ({ store, params, error }) {
+    const posts = await store.state.posts.posts
+    const currentPost = posts.find(post => post.fields.slug === params.slug)
+
+    if (currentPost) {
+      return { currentPost }
+    } else {
+      return error({ statusCode: 404 })
+    }
+  },
+  computed: {
+    ...mapGetters('posts', ['linkTo']),
+  },
+  mounted () {
+    Prism.highlightAll()
   },
   head () {
     return {
@@ -81,21 +95,6 @@ export default {
         { hid: 'og:image', property: 'og:image', content: this.currentPost.fields.heroImage.fields.file.url },
       ],
     }
-  },
-  computed: {
-    ...mapGetters('posts', ['linkTo']),
-  },
-  async asyncData ({ payload, store, params, error }) {
-    const currentPost = payload || await store.state.posts.posts.find(post => post.fields.slug === params.slug)
-
-    if (currentPost) {
-      return { currentPost }
-    } else {
-      return error({ statusCode: 404 })
-    }
-  },
-  mounted () {
-    Prism.highlightAll()
   },
 }
 </script>
@@ -571,10 +570,10 @@ export default {
   .info > p:last-of-type + .cardReferenceInternal,
   .info > p:last-of-type + .cardReferenceExternal,
   .success > p:last-of-type + .cardReferenceInternal,
-  .success > p:last-of-type + .cardReferenceInternal,
+  .success > p:last-of-type + .cardReferenceExternal,
   .warning > p:last-of-type + .cardReferenceInternal,
   .warning > p:last-of-type + .cardReferenceExternal,
-  .danger > p:last-of-type + .cardReferenceExternal,
+  .danger > p:last-of-type + .cardReferenceInternal,
   .danger > p:last-of-type + .cardReferenceExternal {
     margin: 1.5rem 0 0.5rem;
   }

@@ -10,9 +10,10 @@
           :href="item.url"
           :class="item.class"
           target="_blank"
+          rel="noopener"
           class="followInner__itemLink"
         >
-          <font-awesome-icon
+          <fa
             :icon="item.icon"
             class="followInner__itemIcon"
           />
@@ -25,6 +26,8 @@
 
 <script>
 import { CONSTANTS } from '@/assets/js/constants'
+import { faRss } from '@fortawesome/free-solid-svg-icons'
+import { faTwitter, faGithub } from '@fortawesome/free-brands-svg-icons'
 
 export default {
   data () {
@@ -33,25 +36,24 @@ export default {
         {
           name: CONSTANTS.MY_INFO.SNS.TWITTER.NAME,
           url: CONSTANTS.MY_INFO.SNS.TWITTER.URL,
-          icon: ['fab', 'twitter'],
+          icon: faTwitter,
           class: 'followInner__itemLink--twitter',
         },
         {
           name: CONSTANTS.MY_INFO.SNS.GITHUB.NAME,
           url: CONSTANTS.MY_INFO.SNS.GITHUB.URL,
-          icon: ['fab', 'github'],
+          icon: faGithub,
           class: 'followInner__itemLink--github',
         },
         {
           name: CONSTANTS.MY_INFO.SNS.FEEDLY.NAME,
           url: CONSTANTS.MY_INFO.SNS.FEEDLY.URL,
-          icon: ['fas', 'rss'],
+          icon: faRss,
           class: 'followInner__itemLink--feedly',
         },
       ],
     }
   },
-
 }
 </script>
 

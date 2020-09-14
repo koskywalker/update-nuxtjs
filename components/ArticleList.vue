@@ -10,12 +10,7 @@
 </template>
 
 <script>
-import ArticleListItem from '@/components/ArticleListItem'
-
 export default {
-  components: {
-    ArticleListItem,
-  },
   props: {
     posts: {
       type: Array,

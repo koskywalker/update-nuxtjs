@@ -5,8 +5,8 @@
         ref="profileTitle"
         class="sideItem__title"
       >
-        <font-awesome-icon
-          :icon="'user'"
+        <fa
+          :icon="faUser"
           class="followInner__itemIcon"
         />
         Profile
@@ -27,8 +27,8 @@
         </div>
         <transition name="fade">
           <light-saber
-            :switch-status="switchStatus"
             v-show="isLightSaberShow"
+            :switch-status="switchStatus"
             class="sideProfile__imageLightSaber"
           />
         </transition>
@@ -42,9 +42,9 @@
         </p>
       </div>
       <button-colorful
-        @clickButtonColorful="easterEggLightSaber"
         :disabled="isDisabledLightSaber"
         class="sideProfile__button"
+        @clickButtonColorful="easterEggLightSaber"
       />
       <div class="sideProfile__text">
         <p class="sideProfile__textSentence">
@@ -68,9 +68,10 @@
             :href="item.url"
             :class="item.class"
             target="_blank"
+            rel="noopener"
             class="sideProfile__snsListItem"
           >
-            <font-awesome-icon
+            <fa
               :icon="item.icon"
             />
           </a>
@@ -84,38 +85,33 @@
 
 <script>
 import { CONSTANTS } from '@/assets/js/constants'
-import RecentPosts from '@/components/RecentPosts'
-import LightSaber from '@/components/LightSaber'
-import ButtonColorful from '@/components/ButtonColorful'
+import { faUser, faRss } from '@fortawesome/free-solid-svg-icons'
+import { faTwitter, faInstagram, faGithub } from '@fortawesome/free-brands-svg-icons'
 
 export default {
-  components: {
-    RecentPosts,
-    LightSaber,
-    ButtonColorful,
-  },
   data () {
     return {
+      faUser,
       myInfo: CONSTANTS.MY_INFO,
       items: [
         {
           url: CONSTANTS.MY_INFO.SNS.TWITTER.URL,
-          icon: ['fab', 'twitter'],
+          icon: faTwitter,
           class: 'sideProfile__snsListItem--twitter',
         },
         {
           url: CONSTANTS.MY_INFO.SNS.INSTAGRAM.URL,
-          icon: ['fab', 'instagram'],
+          icon: faInstagram,
           class: 'sideProfile__snsListItem--instagram',
         },
         {
           url: CONSTANTS.MY_INFO.SNS.GITHUB.URL,
-          icon: ['fab', 'github'],
+          icon: faGithub,
           class: 'sideProfile__snsListItem--github',
         },
         {
           url: CONSTANTS.MY_INFO.SNS.FEEDLY.URL,
-          icon: ['fas', 'rss'],
+          icon: faRss,
           class: 'sideProfile__snsListItem--feedly',
         },
       ],

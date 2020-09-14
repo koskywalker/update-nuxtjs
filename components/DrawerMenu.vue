@@ -4,11 +4,11 @@
       <h3 class="drawerInner__title">
         MENU
         <button
-          @click="closeDrawer()"
           class="drawerInner__titleClose"
+          @click="closeDrawer()"
         >
-          <font-awesome-icon
-            :icon="['fas', 'times']"
+          <fa
+            :icon="faTimes"
             class="drawerInner__titleCloseIcon"
           />
         </button>
@@ -20,9 +20,7 @@
             class="search__input"
           >
           <button class="search__button">
-            <font-awesome-icon
-              :icon="['fas', 'search']"
-            />
+            <fa :icon="faSearch" />
           </button>
         </div>
       </div>
@@ -36,7 +34,7 @@
               v-for="(post, index) in displayPosts"
               :key="index"
               :post="post"
-              :thumbnailSize="150"
+              :thumbnail-size="150"
             />
           </div>
         </div>
@@ -47,20 +45,20 @@
 
 <script>
 import { mapState } from 'vuex'
-import ArticleCard from '@/components/ArticleCard'
+import { faTimes, faSearch } from '@fortawesome/free-solid-svg-icons'
 
 export default {
-  components: {
-    ArticleCard,
+  data () {
+    return {
+      faTimes,
+      faSearch,
+    }
   },
   computed: {
     ...mapState('posts', ['posts']),
     displayPosts () {
       return this.posts.slice(0, 3)
     },
-  },
-  async fetch ({ store, params }) {
-    await store.dispatch('posts/getPosts', params.slug)
   },
   methods: {
     closeDrawer () {

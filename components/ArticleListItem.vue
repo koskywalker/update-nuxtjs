@@ -17,15 +17,11 @@
       <div class="articleMainBody">
         <p class="articleMainBody__date">
           <span class="articleMainBody__datePublished">
-            <font-awesome-icon
-              :icon="['fas', 'clock']"
-            />
+            <fa :icon="faClock" />
             {{ (new Date(post.fields.publishDate)).toLocaleDateString() }}
           </span>
           <span class="articleMainBody__dateUpdated">
-            <font-awesome-icon
-              :icon="['fas', 'redo']"
-            />
+            <fa :icon="faRedo" />
             {{ (new Date(post.sys.updatedAt)).toLocaleDateString() }}
           </span>
         </p>
@@ -49,6 +45,7 @@
 
 <script>
 import { mapGetters } from 'vuex'
+import { faClock, faRedo } from '@fortawesome/free-solid-svg-icons'
 
 export default {
   props: {
@@ -58,6 +55,12 @@ export default {
         return {}
       },
     },
+  },
+  data () {
+    return {
+      faClock,
+      faRedo,
+    }
   },
   computed: {
     ...mapGetters('posts', ['linkTo']),
@@ -122,11 +125,10 @@ export default {
 
     &Item {
       background-color: $color_navy;
-      border-radius: 10px;
       color: $color_white;
       display: inline-block;
       margin: 0 5px 8px 0;
-      padding: 0.3rem 0.5rem;
+      padding: 0.4rem 0.5rem;
     }
   }
 }
