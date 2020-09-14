@@ -70,11 +70,13 @@ export default {
 
 <style lang="scss" scoped>
 .tagTitle {
-  border-bottom: 0.3rem solid;
-  border-image: linear-gradient(to right, $color_navy, $color_blue 50%, $color_green);
-  border-image-slice: 1;
   font-size: $fontSize_l;
-  margin-bottom: 2rem;
-  padding-bottom: 0.3rem;
+  line-height: 1.5;
+  margin: 1rem auto 1.5rem;
+  width: $width_base;
+
+  @include mq($mq_tablet) {
+    width: 100%;
+  }
 }
 </style>

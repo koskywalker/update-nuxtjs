@@ -181,14 +181,24 @@ export default {
     &__title {
       @extend %font_accent;
 
-      border-bottom: 0.3rem solid;
-      border-image: linear-gradient(to right, $color_navy, $color_blue 50%, $color_green);
-      border-image-slice: 1;
       font-size: $fontSize_l;
       letter-spacing: 0.1rem;
-      margin-bottom: 2rem;
-      padding-bottom: 0.3rem;
+      margin-bottom: 1.5rem;
+      padding-bottom: 1rem;
+      position: relative;
       text-align: center;
+
+      &::before {
+        background-image: -webkit-gradient(linear, left top, right top, from($color_navy), to($color_green));
+        background-image: -webkit-linear-gradient(left, $color_navy 0%, $color_green 100%);
+        background-image: linear-gradient(to right, $color_navy 0%, $color_green 100%);
+        bottom: 0;
+        content: '';
+        height: 5px;
+        left: 0;
+        position: absolute;
+        width: 100%;
+      }
     }
   }
 
