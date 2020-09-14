@@ -105,8 +105,8 @@ export default {
     analyze: false,
   },
   server: {
-    port: 3000,
-    host: 'localhost',
+    host: '0.0.0.0',
+    port: '3000',
     https: process.env.NODE_ENV === 'production' ? {} : {
       key: fs.readFileSync(path.resolve(__dirname, 'localhost-key.pem')),
       cert: fs.readFileSync(path.resolve(__dirname, 'localhost.pem')),
