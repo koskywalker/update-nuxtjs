@@ -102,7 +102,7 @@ export default {
         config.devtool = ctx.isClient ? 'source-map' : 'inline-source-map'
       }
     },
-    analyze: true,
+    analyze: false,
   },
   server: {
     port: 3000,
