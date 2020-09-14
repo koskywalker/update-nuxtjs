@@ -125,11 +125,10 @@ export default {
 
     &Item {
       background-color: $color_navy;
-      border-radius: 10px;
       color: $color_white;
       display: inline-block;
       margin: 0 5px 8px 0;
-      padding: 0.3rem 0.5rem;
+      padding: 0.4rem 0.5rem;
     }
   }
 }

@@ -10,6 +10,7 @@
           :href="item.url"
           :class="item.class"
           target="_blank"
+          rel="noopener"
           class="followInner__itemLink"
         >
           <fa

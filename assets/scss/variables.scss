@@ -1,19 +1,4 @@
 /*
-** Media Queries
-*/
-$mq_sp_wide: 480px;
-$mq_tablet: 768px;
-$mq_pc: 1024px;
-$mq_wide: 1240px;
-
-/*
-** Width
-*/
-$width_base: 92%;
-$width_max: 1180px;
-$width_single_column: 680px;
-
-/*
 ** Fonts
 */
 // font-family
@@ -40,6 +25,21 @@ $fontSize_xl: 1.8rem;
 $fontSize_2l: 2rem;
 $fontSize_3l: 2.5rem;
 $fontSize_4l: 3rem;
+
+/*
+** Media Queries
+*/
+$mq_sp_wide: 480px;
+$mq_tablet: 768px;
+$mq_pc: 1024px;
+$mq_wide: 1240px;
+
+/*
+** Width
+*/
+$width_base: 92%;
+$width_max: 1180px;
+$width_single_column: 680px;
 
 /*
 ** Colors

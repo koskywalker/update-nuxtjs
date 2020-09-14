@@ -68,6 +68,7 @@
             :href="item.url"
             :class="item.class"
             target="_blank"
+            rel="noopener"
             class="sideProfile__snsListItem"
           >
             <fa

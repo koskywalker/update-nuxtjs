@@ -48,6 +48,7 @@
             />
           </div>
         </div>
+        <share-buttons-article />
       </article>
       <div class="postFooter">
         <div class="postFooterInner">

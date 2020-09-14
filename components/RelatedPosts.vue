@@ -66,6 +66,10 @@ export default {
   margin-bottom: 1.5rem;
   overflow: hidden;
 
+  &__title {
+    margin: 3rem 0 2rem;
+  }
+
   &__postList {
     display: flex;
     flex-wrap: wrap;
