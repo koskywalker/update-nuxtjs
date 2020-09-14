@@ -48,7 +48,7 @@
             @click="windowOpen(pocketShareUrl)"
           >
             <fa
-              :icon="faGetPocket"
+              :icon="faLine"
               class="shareInner__itemIcon"
             />
             <span class="shareInner__itemText">LINE</span>
@@ -60,7 +60,7 @@
             @click="windowOpen(lineShareUrl)"
           >
             <fa
-              :icon="faLine"
+              :icon="faGetPocket"
               class="shareInner__itemIcon"
             />
             <span class="shareInner__itemText">Pocket</span>
