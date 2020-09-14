@@ -44,26 +44,26 @@
         </li>
         <li class="shareInner__item">
           <button
-            class="shareInner__itemLink shareInner__item--line"
-            @click="windowOpen(pocketShareUrl)"
-          >
-            <fa
-              :icon="faLine"
-              class="shareInner__itemIcon"
-            />
-            <span class="shareInner__itemText">LINE</span>
-          </button>
-        </li>
-        <li class="shareInner__item">
-          <button
             class="shareInner__itemLink shareInner__item--pocket"
-            @click="windowOpen(lineShareUrl)"
+            @click="windowOpen(pocketShareUrl)"
           >
             <fa
               :icon="faGetPocket"
               class="shareInner__itemIcon"
             />
             <span class="shareInner__itemText">Pocket</span>
+          </button>
+        </li>
+        <li class="shareInner__item">
+          <button
+            class="shareInner__itemLink shareInner__item--line"
+            @click="windowOpen(lineShareUrl)"
+          >
+            <fa
+              :icon="faLine"
+              class="shareInner__itemIcon"
+            />
+            <span class="shareInner__itemText">LINE</span>
           </button>
         </li>
       </ul>
