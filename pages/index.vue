@@ -37,7 +37,6 @@ export default {
   },
   head () {
     const hid = `jsonld-${this._uid}`
-
     return {
       __dangerouslyDisableSanitizers: ['script'],
       script: [{
@@ -53,7 +52,7 @@ export default {
             "logo": {
               "@type": "ImageObject",
               "url": "${process.env.BASE_URL}/favicon.svg",
-            },
+            }
           },
           "copyrightYear": "2020-09-16T01:00:00+0900",
           "headline": "${CONSTANTS.BLOG_INFO.BLOG_TITLE}",
