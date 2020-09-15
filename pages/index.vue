@@ -34,26 +34,6 @@ export default {
     isPaginationShow () {
       return this.posts.length > this.postsNumberPerPage
     },
-    jsonld () {
-      return {
-        '@context': 'http://schema.org',
-        '@type': 'website',
-        name: CONSTANTS.BLOG_INFO.BLOG_NAME,
-        inLanguage: 'jp',
-        publisher: {
-          '@type': 'Organization',
-          name: CONSTANTS.MY_INFO.NAME,
-          logo: {
-            '@type': 'ImageObject',
-            url: 'https://updworld.netlify.app/favicon.svg',
-          },
-        },
-        copyrightYear: '2020-09-16T01:00:00+0900',
-        headline: CONSTANTS.BLOG_INFO.BLOG_TITLE,
-        description: CONSTANTS.BLOG_INFO.BASE_DESCRIPTION,
-        url: 'https://updworld.netlify.app',
-      }
-    },
   },
   head () {
     const hid = `jsonld-${this._uid}`
@@ -72,13 +52,13 @@ export default {
             "name": "${CONSTANTS.MY_INFO.NAME}",
             "logo": {
               "@type": "ImageObject",
-              "url": "https://updworld.netlify.app/favicon.svg",
+              "url": "${process.env.BASE_URL}/favicon.svg",
             },
           },
           "copyrightYear": "2020-09-16T01:00:00+0900",
           "headline": "${CONSTANTS.BLOG_INFO.BLOG_TITLE}",
           "description": "${CONSTANTS.BLOG_INFO.BASE_DESCRIPTION}",
-          "url": "https://updworld.netlify.app",
+          "url": "${process.env.BASE_URL}",
         }`,
         type: 'application/ld+json',
       }],
