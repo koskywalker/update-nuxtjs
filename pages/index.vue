@@ -38,19 +38,19 @@ export default {
       return {
         '@context': 'http://schema.org',
         '@type': 'website',
-        name: this.CONSTANTS.BLOG_INFO.BLOG_NAME,
+        name: CONSTANTS.BLOG_INFO.BLOG_NAME,
         inLanguage: 'jp',
         publisher: {
           '@type': 'Organization',
-          name: this.CONSTANTS.MY_INFO.NAME,
+          name: CONSTANTS.MY_INFO.NAME,
           logo: {
             '@type': 'ImageObject',
             url: 'https://updworld.netlify.app/favicon.svg',
           },
         },
         copyrightYear: '2020-09-16T01:00:00+0900',
-        headline: this.CONSTANTS.BLOG_INFO.BLOG_TITLE,
-        description: this.CONSTANTS.BLOG_INFO.BASE_DESCRIPTION,
+        headline: CONSTANTS.BLOG_INFO.BLOG_TITLE,
+        description: CONSTANTS.BLOG_INFO.BASE_DESCRIPTION,
         url: 'https://updworld.netlify.app',
       }
     },
