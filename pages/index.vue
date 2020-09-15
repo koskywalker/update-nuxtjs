@@ -55,7 +55,7 @@ export default {
             }
           },
           "copyrightYear": "2020-09-16T01:00:00+0900",
-          "headline": "${CONSTANTS.BLOG_INFO.BLOG_TITLE}",
+          "headline": "${CONSTANTS.BLOG_INFO.BASE_TITLE}",
           "description": "${CONSTANTS.BLOG_INFO.BASE_DESCRIPTION}",
           "url": "${process.env.BASE_URL}"
         }`,
