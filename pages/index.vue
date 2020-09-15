@@ -34,6 +34,42 @@ export default {
     isPaginationShow () {
       return this.posts.length > this.postsNumberPerPage
     },
+    jsonld () {
+      return {
+        '@context': 'http://schema.org',
+        '@type': 'website',
+        name: this.CONSTANTS.BLOG_INFO.BLOG_NAME,
+        inLanguage: 'jp',
+        publisher: {
+          '@type': 'Organization',
+          name: this.CONSTANTS.MY_INFO.NAME,
+          logo: {
+            '@type': 'ImageObject',
+            url: 'https://updworld.netlify.app/favicon.svg',
+          },
+        },
+        copyrightYear: '2020-09-16T01:00:00+0900',
+        headline: this.CONSTANTS.BLOG_INFO.BLOG_TITLE,
+        description: this.CONSTANTS.BLOG_INFO.BASE_DESCRIPTION,
+        url: 'https://updworld.netlify.app',
+      }
+    },
+  },
+  head () {
+    const hid = `jsonld-${this._uid}`
+
+    return {
+      script: [
+        {
+          hid,
+          type: 'application/ld+json',
+          innerHTML: JSON.stringify(this.jsonld, null, 2),
+        },
+      ],
+      __dangerouslyDisableSanitizersByTagID: {
+        [hid]: 'innerHTML',
+      },
+    }
   },
 }
 </script>
