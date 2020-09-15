@@ -232,6 +232,7 @@ export default {
   padding-bottom: env(safe-area-inset-bottom);
   position: fixed;
   width: 100%;
+  z-index: 100;
 
   &Inner {
     background-color: $color_white;
