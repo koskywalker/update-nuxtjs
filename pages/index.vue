@@ -46,14 +46,6 @@ export default {
           "@type": "website",
           "name": "${CONSTANTS.BLOG_INFO.BLOG_NAME}",
           "inLanguage": "jp",
-          "publisher": {
-            "@type": "Organization",
-            "name": "${CONSTANTS.MY_INFO.NAME}",
-            "logo": {
-              "@type": "ImageObject",
-              "url": "${process.env.BASE_URL}/favicon.svg",
-            }
-          },
           "copyrightYear": "2020-09-16T01:00:00+0900",
           "headline": "${CONSTANTS.BLOG_INFO.BASE_TITLE}",
           "description": "${CONSTANTS.BLOG_INFO.BASE_DESCRIPTION}",
