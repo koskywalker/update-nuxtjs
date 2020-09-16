@@ -44,12 +44,20 @@ export default {
         innerHTML: `{
           "@context": "http://schema.org",
           "@type": "website",
-          "name": "${CONSTANTS.BLOG_INFO.BLOG_NAME}",
+          "name": "UPDATE",
           "inLanguage": "jp",
+          "publisher": {
+            "@type": "Organization",
+            "name": "Kosuke Muraka",
+            "logo": {
+              "@type": "ImageObject",
+              "url": "https://deploy-preview-132--updworld.netlify.app/favicon.svg"
+            }
+          },
           "copyrightYear": "2020-09-16T01:00:00+0900",
-          "headline": "${CONSTANTS.BLOG_INFO.BASE_TITLE}",
-          "description": "${CONSTANTS.BLOG_INFO.BASE_DESCRIPTION}",
-          "url": "${process.env.BASE_URL}"
+          "headline": "世界をアップデートするクリエイターこうすけのブログ",
+          "description": "UPDATE は, エンジニア x デザイナー x ブロガーとして活動するこうすけのクリエイターブログです. 主にプログラミング, デザイン, SEO, 普段の活動などについて発信しています. 世界観を言語化し, 表現しよう！",
+          "url": "https://deploy-preview-132--updworld.netlify.app"
         }`,
         type: 'application/ld+json',
       }],
