@@ -62,6 +62,7 @@
 </template>
 
 <script>
+import { CONSTANTS } from '@/assets/js/constants'
 import { mapGetters } from 'vuex'
 import Prism from 'prismjs'
 import 'prismjs/themes/prism-okaidia.css'
@@ -84,6 +85,7 @@ export default {
     Prism.highlightAll()
   },
   head () {
+    const hid = `jsonld-${this._uid}`
     return {
       title: this.currentPost.fields.title,
       meta: [
@@ -94,6 +96,38 @@ export default {
         { hid: 'og:description', property: 'og:description', content: this.currentPost.fields.description },
         { hid: 'og:image', property: 'og:image', content: this.currentPost.fields.heroImage.fields.file.url },
       ],
+      __dangerouslyDisableSanitizers: ['script'],
+      script: [{
+        hid,
+        innerHTML: `{
+          "@context": "http://schema.org",
+          "@type": "Article",
+          "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "${process.env.BASE_URL + this.$route.path}"
+          },
+          "headline": "${this.currentPost.fields.title}",
+          "description": "${this.currentPost.fields.description}",
+          "image": [
+            "${this.currentPost.fields.heroImage.fields.file.url}"
+          ],
+          "datePublished": "${this.currentPost.fields.publishDate}",
+          "dateModified": "${this.currentPost.sys.updatedAt}",
+          "publisher": {
+            "@type": "Organization",
+            "name": "${CONSTANTS.BLOG_INFO.BLOG_NAME}",
+            "logo": {
+              "@type": "ImageObject",
+              "url": "${process.env.BASE_URL}/favicon.svg"
+            }
+          },
+          "author": {
+            "@type": "Person",
+            "name": "${CONSTANTS.MY_INFO.NAME}"
+          }
+        }`,
+        type: 'application/ld+json',
+      }],
     }
   },
 }
