@@ -51,7 +51,7 @@ export default {
             "name": "${CONSTANTS.MY_INFO.NAME}",
             "logo": {
               "@type": "ImageObject",
-              "url": "${process.env.BASE_URL}/favicon.svg"
+              "url": "${process.env.BASE_URL}/icon.png"
             }
           },
           "headline": "${CONSTANTS.BLOG_INFO.BASE_TITLE}",

@@ -118,7 +118,7 @@ export default {
             "name": "${CONSTANTS.BLOG_INFO.BLOG_NAME}",
             "logo": {
               "@type": "ImageObject",
-              "url": "${process.env.BASE_URL}/favicon.svg"
+              "url": "${process.env.BASE_URL}/icon.png"
             }
           },
           "author": {
