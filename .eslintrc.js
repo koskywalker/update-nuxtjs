@@ -25,5 +25,6 @@ module.exports = {
     }],
     'vue/no-v-html': 'off',
     'comma-dangle': ['error', 'always-multiline'],
+    'nuxt/no-cjs-in-config': 'off',
   },
 }

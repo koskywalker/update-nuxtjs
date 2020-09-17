@@ -1,6 +1,14 @@
 import path from 'path'
 import fs from 'fs'
 import { CONSTANTS } from './assets/js/constants'
+const contentful = require('contentful')
+
+const config = {
+  space: process.env.CTF_SPACE_ID,
+  accessToken: process.env.CTF_CDA_ACCESS_TOKEN,
+}
+
+const client = contentful.createClient(config)
 
 require('dotenv').config()
 
@@ -80,6 +88,7 @@ export default {
     '@nuxtjs/dotenv',
     '@nuxtjs/style-resources',
     ['@nuxtjs/google-tag-manager', { id: 'GTM-5Q8M5KF' }],
+    '@nuxtjs/sitemap',
     'nuxt-fontawesome',
     '~/modules/hook',
   ],
@@ -89,6 +98,42 @@ export default {
   */
   fontawesome: {
     component: 'fa',
+  },
+  sitemap: {
+    path: '/sitemap.xml',
+    hostname: process.env.BASE_URL,
+    exclude: [],
+    routes () {
+      return Promise.all([
+        client.getEntries({
+          content_type: process.env.CTF_BLOG_POST_TYPE_ID,
+        }),
+        client.getEntries({
+          content_type: 'tag',
+        }),
+      ]).then(([posts, tags]) => {
+        const postsNumberPerPage = 10
+        const tagPathList = tags.items.map((tag) => {
+          const tagPosts = posts.items.filter(post => post.fields.tags.some(postTag => postTag.sys.id === tag.sys.id))
+          const tagPostsNumber = tagPosts.length
+          return Array(Math.floor(tagPostsNumber / postsNumberPerPage)).fill(null).map((_, i) => {
+            return { route: `tags/${tag.fields.slug}/${i + 1}`, payload: tag }
+          })
+        })
+        return [
+          ...posts.items.map((post) => {
+            return { route: post.fields.slug, payload: post }
+          }),
+          ...Array(Math.floor(posts.items.length / postsNumberPerPage)).fill(null).map((_, i) => {
+            return { route: `page/${i + 1}` }
+          }),
+          ...tags.items.map((tag) => {
+            return { route: `tags/${tag.fields.slug}`, payload: tag }
+          }),
+          ...[].concat(...tagPathList),
+        ]
+      })
+    },
   },
   /*
   ** Build configuration
