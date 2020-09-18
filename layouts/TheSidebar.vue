@@ -5,11 +5,9 @@
         ref="profileTitle"
         class="sideItem__title"
       >
-        <fa
-          :icon="faUser"
-          class="followInner__itemIcon"
-        />
-        Profile
+        <span class="sideItem__titleText">
+          Profile
+        </span>
       </h3>
       <div
         class="sideProfile__image"
@@ -71,9 +69,12 @@
             rel="noopener"
             class="sideProfile__snsListItem"
           >
-            <fa
-              :icon="item.icon"
-            />
+            <img
+              :src="item.src"
+              :alt="item.name"
+              width="24"
+              height="24"
+            >
           </a>
           </li>
         </div>
@@ -85,33 +86,34 @@
 
 <script>
 import { CONSTANTS } from '@/assets/js/constants'
-import { faUser, faRss } from '@fortawesome/free-solid-svg-icons'
-import { faTwitter, faInstagram, faGithub } from '@fortawesome/free-brands-svg-icons'
 
 export default {
   data () {
     return {
-      faUser,
       myInfo: CONSTANTS.MY_INFO,
       items: [
         {
+          name: 'Twitter',
           url: CONSTANTS.MY_INFO.SNS.TWITTER.URL,
-          icon: faTwitter,
+          src: require('@/assets/icon/icon_twitter.svg'),
           class: 'sideProfile__snsListItem--twitter',
         },
         {
+          name: 'Instagram',
           url: CONSTANTS.MY_INFO.SNS.INSTAGRAM.URL,
-          icon: faInstagram,
+          src: require('@/assets/icon/icon_instagram.svg'),
           class: 'sideProfile__snsListItem--instagram',
         },
         {
+          name: 'GitHub',
           url: CONSTANTS.MY_INFO.SNS.GITHUB.URL,
-          icon: faGithub,
+          src: require('@/assets/icon/icon_github.svg'),
           class: 'sideProfile__snsListItem--github',
         },
         {
+          name: 'Feedly',
           url: CONSTANTS.MY_INFO.SNS.FEEDLY.URL,
-          icon: faRss,
+          src: require('@/assets/icon/icon_feedly.svg'),
           class: 'sideProfile__snsListItem--feedly',
         },
       ],
@@ -198,6 +200,19 @@ export default {
         left: 0;
         position: absolute;
         width: 100%;
+      }
+
+      &Text::before {
+        background-image: url(~assets/icon/icon_human.svg);
+        background-repeat: no-repeat;
+        background-size: contain;
+        content: '';
+        display: inline-block;
+        height: $fontSize_l;
+        line-height: 1.8;
+        margin-bottom: 0.3rem;
+        vertical-align: middle;
+        width: $fontSize_l;
       }
     }
   }

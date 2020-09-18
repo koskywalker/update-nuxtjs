@@ -188,7 +188,7 @@ export default {
 
   h4 {
     &::before {
-      background-image: url(~assets/icon/star.svg);
+      background-image: url(~assets/icon/icon_star.svg);
       background-size: contain;
       content: '';
       display: inline-block;
@@ -361,7 +361,7 @@ export default {
     }
 
     &::after {
-      background-image: url(~assets/icon/arrow-right.svg);
+      background-image: url(~assets/icon/icon_arrow_right.svg);
       background-size: contain;
       content: '';
       display: inline-block;
@@ -461,7 +461,7 @@ export default {
     width: 70px;
 
     &::before {
-      background-image: url(~assets/icon/bookmark.svg);
+      background-image: url(~assets/icon/icon_bookmark.svg);
       background-size: contain;
       content: '';
       display: block;

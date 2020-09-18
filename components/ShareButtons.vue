@@ -6,10 +6,12 @@
           class="shareInner__itemLink"
           @click="windowOpen(twitterShareUrl)"
         >
-          <fa
-            :icon="faTwitter"
-            class="shareInner__itemIcon shareInner__itemIcon--twitter"
-          />
+          <img
+            src="@/assets/icon/icon_twitter_color_original.svg"
+            alt="twitter icon"
+            width="32"
+            height="32"
+          >
         </button>
       </li>
       <li class="shareInner__item">
@@ -17,10 +19,12 @@
           class="shareInner__itemLink"
           @click="windowOpen(facebookShareUrl)"
         >
-          <fa
-            :icon="faFacebookF"
-            class="shareInner__itemIcon shareInner__itemIcon--facebook"
-          />
+          <img
+            src="@/assets/icon/icon_facebook.svg"
+            alt="facebook icon"
+            width="24"
+            height="24"
+          >
         </button>
       </li>
       <li class="shareInner__item">
@@ -40,10 +44,12 @@
           class="shareInner__itemLink"
           @click="windowOpen(pocketShareUrl)"
         >
-          <fa
-            :icon="faGetPocket"
-            class="shareInner__itemIcon shareInner__itemIcon--pocket"
-          />
+          <img
+            src="@/assets/icon/icon_pocket.svg"
+            alt="pocket icon"
+            width="24"
+            height="24"
+          >
         </button>
       </li>
       <li class="shareInner__item">
@@ -51,10 +57,12 @@
           class="shareInner__itemLink"
           @click="windowOpen(lineShareUrl)"
         >
-          <fa
-            :icon="faLine"
-            class="shareInner__itemIcon shareInner__itemIcon--line"
-          />
+          <img
+            src="@/assets/icon/icon_line.svg"
+            alt="line icon"
+            width="24"
+            height="24"
+          >
         </button>
       </li>
     </ul>
@@ -63,7 +71,6 @@
 
 <script>
 import { CONSTANTS } from '@/assets/js/constants'
-import { faTwitter, faFacebookF, faGetPocket, faLine } from '@fortawesome/free-brands-svg-icons'
 
 export default {
   name: 'ShareButtons',
@@ -80,10 +87,6 @@ export default {
       hatebuUrl: 'https://b.hatena.ne.jp/add?mode=confirm&amp;url={0}&amp;title={1}',
       pocketUrl: 'https://getpocket.com/edit?url={0}',
       lineUrl: 'https://timeline.line.me/social-plugin/share?url={0}',
-      faTwitter,
-      faFacebookF,
-      faGetPocket,
-      faLine,
     }
   },
   computed: {
@@ -164,24 +167,8 @@ export default {
       &Icon {
         font-size: $fontSize_l;
 
-        &--twitter {
-          color: $color_twitter;
-        }
-
-        &--facebook {
-          color: $color_facebook;
-        }
-
         &--hatebu {
           color: $color_hatebu;
-        }
-
-        &--pocket {
-          color: $color_pocket;
-        }
-
-        &--line {
-          color: $color_line;
         }
       }
     }
