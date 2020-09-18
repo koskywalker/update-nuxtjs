@@ -15,10 +15,6 @@
     "analyze": "nuxt build --analyze"
   },
   "dependencies": {
-    "@fortawesome/fontawesome-svg-core": "^1.2.30",
-    "@fortawesome/free-brands-svg-icons": "^5.14.0",
-    "@fortawesome/free-solid-svg-icons": "^5.14.0",
-    "@fortawesome/vue-fontawesome": "^2.0.0",
     "@nuxtjs/dotenv": "^1.4.1",
     "@nuxtjs/google-tag-manager": "^2.3.2",
     "@nuxtjs/pwa": "^3.0.2",
@@ -30,7 +26,6 @@
     "markdown-it-table-of-contents": "^0.4.4",
     "npm-check-updates": "^8.1.1",
     "nuxt": "^2.14.4",
-    "nuxt-fontawesome": "^0.4.0",
     "particles.js": "^2.0.0",
     "prismjs": "^1.21.0",
     "vue-typed-js": "^0.1.2",

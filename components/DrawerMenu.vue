@@ -7,10 +7,12 @@
           class="drawerInner__titleClose"
           @click="closeDrawer()"
         >
-          <fa
-            :icon="faTimes"
-            class="drawerInner__titleCloseIcon"
-          />
+          <img
+            src="@/assets/icon/icon_close.svg"
+            width="24"
+            height="24"
+            alt="close icon"
+          >
         </button>
       </h3>
       <div class="drawerInner__search">
@@ -20,7 +22,12 @@
             class="search__input"
           >
           <button class="search__button">
-            <fa :icon="faSearch" />
+            <img
+              src="@/assets/icon/icon_search.svg"
+              width="20"
+              height="20"
+              alt="close icon"
+            >
           </button>
         </div>
       </div>
@@ -45,15 +52,8 @@
 
 <script>
 import { mapState } from 'vuex'
-import { faTimes, faSearch } from '@fortawesome/free-solid-svg-icons'
 
 export default {
-  data () {
-    return {
-      faTimes,
-      faSearch,
-    }
-  },
   computed: {
     ...mapState('posts', ['posts']),
     displayPosts () {
@@ -88,15 +88,10 @@ export default {
 
       &Close {
         background-color: $color_navy;
-        height: 2.5rem;
+        height: 2.4rem;
         position: absolute;
         right: 0;
-        width: 2.5rem;
-
-        &Icon {
-          color: $color_white;
-          height: 2.5rem;
-        }
+        width: 2.4rem;
       }
     }
 
@@ -108,16 +103,21 @@ export default {
 
 .search {
   display: flex;
+  height: 2rem;
   justify-content: center;
 
   &__input {
     background-color: $color_gray_light;
+    padding: 0.3rem;
     width: 70%;
   }
 
   &__button {
+    align-items: center;
     background-color: $color_navy;
     color: $color_white;
+    display: flex;
+    justify-content: center;
     width: 15%;
   }
 }

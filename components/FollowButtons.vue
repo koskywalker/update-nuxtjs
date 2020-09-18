@@ -13,10 +13,12 @@
           rel="noopener"
           class="followInner__itemLink"
         >
-          <fa
-            :icon="item.icon"
-            class="followInner__itemIcon"
-          />
+          <img
+            :src="item.src"
+            :alt="item.name"
+            width="24"
+            height="24"
+          >
           <span class="followInner__itemName">{{ item.name }}</span>
         </a>
       </li>
@@ -26,8 +28,6 @@
 
 <script>
 import { CONSTANTS } from '@/assets/js/constants'
-import { faRss } from '@fortawesome/free-solid-svg-icons'
-import { faTwitter, faGithub } from '@fortawesome/free-brands-svg-icons'
 
 export default {
   data () {
@@ -36,19 +36,19 @@ export default {
         {
           name: CONSTANTS.MY_INFO.SNS.TWITTER.NAME,
           url: CONSTANTS.MY_INFO.SNS.TWITTER.URL,
-          icon: faTwitter,
+          src: require('@/assets/icon/icon_twitter.svg'),
           class: 'followInner__itemLink--twitter',
         },
         {
           name: CONSTANTS.MY_INFO.SNS.GITHUB.NAME,
           url: CONSTANTS.MY_INFO.SNS.GITHUB.URL,
-          icon: faGithub,
+          src: require('@/assets/icon/icon_github.svg'),
           class: 'followInner__itemLink--github',
         },
         {
           name: CONSTANTS.MY_INFO.SNS.FEEDLY.NAME,
           url: CONSTANTS.MY_INFO.SNS.FEEDLY.URL,
-          icon: faRss,
+          src: require('@/assets/icon/icon_feedly.svg'),
           class: 'followInner__itemLink--feedly',
         },
       ],

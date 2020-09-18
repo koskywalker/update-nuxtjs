@@ -10,10 +10,12 @@
             class="shareInner__itemLink shareInner__item--twitter"
             @click="windowOpen(twitterShareUrl)"
           >
-            <fa
-              :icon="faTwitter"
-              class="shareInner__itemIcon"
-            />
+            <img
+              src="@/assets/icon/icon_twitter_color_original.svg"
+              alt="twitter icon"
+              width="32"
+              height="32"
+            >
             <span class="shareInner__itemText">ツイート</span>
           </button>
         </li>
@@ -22,10 +24,12 @@
             class="shareInner__itemLink shareInner__item--facebook"
             @click="windowOpen(facebookShareUrl)"
           >
-            <fa
-              :icon="faFacebookF"
-              class="shareInner__itemIcon"
-            />
+            <img
+              src="@/assets/icon/icon_facebook.svg"
+              alt="facebook icon"
+              width="24"
+              height="24"
+            >
             <span class="shareInner__itemText">シェア</span>
           </button>
         </li>
@@ -47,10 +51,12 @@
             class="shareInner__itemLink shareInner__item--pocket"
             @click="windowOpen(pocketShareUrl)"
           >
-            <fa
-              :icon="faGetPocket"
-              class="shareInner__itemIcon"
-            />
+            <img
+              src="@/assets/icon/icon_pocket.svg"
+              alt="pocket icon"
+              width="24"
+              height="24"
+            >
             <span class="shareInner__itemText">Pocket</span>
           </button>
         </li>
@@ -59,10 +65,12 @@
             class="shareInner__itemLink shareInner__item--line"
             @click="windowOpen(lineShareUrl)"
           >
-            <fa
-              :icon="faLine"
-              class="shareInner__itemIcon"
-            />
+            <img
+              src="@/assets/icon/icon_line.svg"
+              alt="line icon"
+              width="24"
+              height="24"
+            >
             <span class="shareInner__itemText">LINE</span>
           </button>
         </li>
@@ -73,7 +81,6 @@
 
 <script>
 import { CONSTANTS } from '@/assets/js/constants'
-import { faTwitter, faFacebookF, faGetPocket, faLine } from '@fortawesome/free-brands-svg-icons'
 
 export default {
   name: 'ShareButtons',
@@ -90,10 +97,6 @@ export default {
       hatebuUrl: 'https://b.hatena.ne.jp/add?mode=confirm&amp;url={0}&amp;title={1}',
       pocketUrl: 'https://getpocket.com/edit?url={0}',
       lineUrl: 'https://timeline.line.me/social-plugin/share?url={0}',
-      faTwitter,
-      faFacebookF,
-      faGetPocket,
-      faLine,
     }
   },
   computed: {

@@ -89,16 +89,12 @@ export default {
     '@nuxtjs/style-resources',
     ['@nuxtjs/google-tag-manager', { id: 'GTM-5Q8M5KF' }],
     '@nuxtjs/sitemap',
-    'nuxt-fontawesome',
     '~/modules/hook',
   ],
   publicRuntimeConfig: {},
   /*
-  ** FontAwesome
+  ** Sitemap
   */
-  fontawesome: {
-    component: 'fa',
-  },
   sitemap: {
     path: '/sitemap.xml',
     hostname: process.env.BASE_URL,

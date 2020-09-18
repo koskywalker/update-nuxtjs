@@ -37,11 +37,13 @@
             class="menuList__itemLink js-button"
             @click="buttonAction"
           >
-            <fa
-              :icon="item.ICON"
-              class="menuList__itemIcon"
-            />
-            <span class="menuList__itemName">{{ item.NAME }}</span>
+            <img
+              :src="item.src"
+              :alt="item.name"
+              width="20"
+              height="20"
+            >
+            <span class="menuList__itemName">{{ item.name }}</span>
           </button>
         </li>
       </ul>
@@ -50,36 +52,34 @@
 </template>
 
 <script>
-import { faHome, faShareAlt, faUserPlus, faList, faLevelUpAlt } from '@fortawesome/free-solid-svg-icons'
-
 export default {
   name: 'TheFooterMenuFixed',
   data () {
     return {
       items: [
         {
-          NAME: 'ホーム',
-          ICON: faHome,
+          name: 'ホーム',
+          src: require('@/assets/icon/icon_home.svg'),
           CLASS: 'menuList__itemLink--home js-buttonHome',
         },
         {
-          NAME: 'シェア',
-          ICON: faShareAlt,
+          name: 'シェア',
+          src: require('@/assets/icon/icon_share.svg'),
           CLASS: 'menuList__itemLink--share js-buttonShare',
         },
         {
-          NAME: 'フォロー',
-          ICON: faUserPlus,
+          name: 'フォロー',
+          src: require('@/assets/icon/icon_human_gray.svg'),
           CLASS: 'menuList__itemLink--follow js-buttonFollow',
         },
         {
-          NAME: 'メニュー',
-          ICON: faList,
+          name: 'メニュー',
+          src: require('@/assets/icon/icon_list_gray.svg'),
           CLASS: 'menuList__itemLink--menu js-buttonMenu',
         },
         {
-          NAME: 'トップ',
-          ICON: faLevelUpAlt,
+          name: 'トップ',
+          src: require('@/assets/icon/icon_arrow_top.svg'),
           CLASS: 'menuList__itemLink--top js-buttonTop',
         },
       ],
@@ -273,36 +273,12 @@ export default {
         &.active {
           background-color: $color_gray_light;
         }
-
-        &--home.active {
-          color: $color_black;
-        }
-
-        &--share.active {
-          color: $color_red;
-        }
-
-        &--follow.active {
-          color: $color_pink;
-        }
-
-        &--menu.active {
-          color: $color_green;
-        }
-
-        &--top.active {
-          color: $color_blue;
-        }
-      }
-
-      &Icon {
-        margin-bottom: 7px;
-        pointer-events: none;
       }
 
       &Name {
         font-size: $fontSize_xs;
         font-weight: bold;
+        margin-top: 0.3rem;
         pointer-events: none;
       }
     }
