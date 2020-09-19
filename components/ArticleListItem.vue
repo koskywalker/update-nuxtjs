@@ -23,9 +23,9 @@
             {{ (new Date(post.sys.updatedAt)).toLocaleDateString() }}
           </span>
         </p>
-        <h3 class="articleMainBody__title">
+        <h2 class="articleMainBody__title">
           {{ post.fields.title }}
-        </h3>
+        </h2>
       </div>
     </nuxt-link>
     <div class="articleTagList">
