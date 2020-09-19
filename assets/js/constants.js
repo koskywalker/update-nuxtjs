@@ -70,7 +70,7 @@ export const CONSTANTS = {
     INTRODUCTION: {
       FIRST: 'フリーランスのフロントエンドエンジニア. バックエンドも少々.',
       HISTORY: '',
-      STRONG_POINTS: 'マークアップ / JavaScript / TypeScript / React / Angular / Vue.js / Nuxt.js / WordPress / SEO が得意. UI / UX / Web デザイン / WebGL 習得中. ',
+      STRONG_POINTS: 'マークアップ / JavaScript / TypeScript / React / Angular / Vue.js / GatsbyJS / Nuxt.js / WordPress / SEO が得意. UI / UX / Web デザイン / WebGL 習得中. ',
       OTHER: '当ブログでは, 主にフロントエンドに関するプログラミング情報について楽しく発信します！',
     },
     SNS: {
