@@ -4,6 +4,7 @@
       <h3 class="drawerInner__title">
         MENU
         <button
+          type="button"
           class="drawerInner__titleClose"
           @click="closeDrawer()"
         >
@@ -15,13 +16,16 @@
           >
         </button>
       </h3>
-      <div class="drawerInner__search">
+      <!-- <div class="drawerInner__search">
         <div class="search">
           <input
             type="text"
             class="search__input"
           >
-          <button class="search__button">
+          <button
+            type="button"
+            class="search__button"
+          >
             <img
               src="@/assets/icon/icon_search.svg"
               width="20"
@@ -30,7 +34,7 @@
             >
           </button>
         </div>
-      </div>
+      </div> -->
       <div class="drawerInner__item">
         <div class="item">
           <h4 class="item__title">

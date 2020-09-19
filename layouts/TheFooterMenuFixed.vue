@@ -33,6 +33,7 @@
           class="menuList__item"
         >
           <button
+            type="button"
             :class="item.CLASS"
             class="menuList__itemLink js-button"
             @click="buttonAction"
@@ -40,6 +41,7 @@
             <img
               :src="item.src"
               :alt="item.name"
+              class="menuList__itemImage"
               width="20"
               height="20"
             >
@@ -273,6 +275,10 @@ export default {
         &.active {
           background-color: $color_gray_light;
         }
+      }
+
+      &Image {
+        pointer-events: none;
       }
 
       &Name {

@@ -3,6 +3,7 @@
     <ul class="shareInner">
       <li class="shareInner__item">
         <button
+          type="button"
           class="shareInner__itemLink"
           @click="windowOpen(twitterShareUrl)"
         >
@@ -16,6 +17,7 @@
       </li>
       <li class="shareInner__item">
         <button
+          type="button"
           class="shareInner__itemLink"
           @click="windowOpen(facebookShareUrl)"
         >
@@ -29,6 +31,7 @@
       </li>
       <li class="shareInner__item">
         <button
+          type="button"
           class="shareInner__itemLink"
           @click="windowOpen(hatebuShareUrl)"
         >
@@ -41,6 +44,7 @@
       </li>
       <li class="shareInner__item">
         <button
+          type="button"
           class="shareInner__itemLink"
           @click="windowOpen(pocketShareUrl)"
         >
@@ -54,6 +58,7 @@
       </li>
       <li class="shareInner__item">
         <button
+          type="button"
           class="shareInner__itemLink"
           @click="windowOpen(lineShareUrl)"
         >
