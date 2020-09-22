@@ -1,14 +1,7 @@
 import path from 'path'
 import fs from 'fs'
+import { client } from './plugins/contentful'
 import { CONSTANTS } from './assets/js/constants'
-const contentful = require('contentful')
-
-const config = {
-  space: process.env.CTF_SPACE_ID,
-  accessToken: process.env.CTF_CDA_ACCESS_TOKEN,
-}
-
-const client = contentful.createClient(config)
 
 require('dotenv').config()
 
@@ -60,6 +53,7 @@ export default {
   plugins: [
     { src: '~plugins/ga.js', mode: 'client' },
     { src: '~plugins/router-option.js' },
+    { src: '~plugins/contentful.js' },
     { src: '~plugins/markdown-it.js' },
   ],
   components: true,
@@ -145,7 +139,7 @@ export default {
     analyze: false,
   },
   server: {
-    host: '0.0.0.0',
+    host: 'localhost',
     port: '3000',
     https: process.env.NODE_ENV === 'production' ? {} : {
       key: fs.readFileSync(path.resolve(__dirname, 'localhost-key.pem')),
