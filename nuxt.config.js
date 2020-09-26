@@ -7,6 +7,7 @@ require('dotenv').config()
 
 export default {
   target: 'static',
+  modern: true,
   /*
   ** Headers of the page
   */
