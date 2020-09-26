@@ -36,9 +36,9 @@ export const CONSTANTS = {
   ],
   BLOG_INFO: {
     BLOG_NAME: 'UPDATE',
-    BASE_TITLE: '世界をアップデートするクリエイターこうすけのブログ',
-    BASE_DESCRIPTION: 'UPDATE は, エンジニア x デザイナー x ブロガーとして活動するこうすけのクリエイターブログです. 主にプログラミング, デザイン, SEO, 普段の活動などについて発信しています. 世界観を言語化し, 表現しよう！',
-    ABOUT_BLOG_TECHNOLOGY: '当ブログは, Nuxt.js x Contentful x Netlify で構築した JAMstack ブログです.',
+    BASE_TITLE: 'フロントエンドエンジニアこうすけのクリエイターブログ',
+    BASE_DESCRIPTION: 'UPDATE は, フロントエンドエンジニアとして活動するこうすけのクリエイターブログです. 主にプログラミング, デザイン, SEO, 普段の活動などについて発信しています. ',
+    ABOUT_BLOG_TECHNOLOGY: '当ブログは, Nuxt.js x Contentful x Netlify で構築した Jamstack ブログです.',
     BASE_OGP_IMAGE: '/static/icon.svg',
   },
   MY_INFO: {
