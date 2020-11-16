@@ -2,13 +2,16 @@
   <div>
     <the-particles />
     <the-header />
-    <main-visual v-if="$route.path === '/'" />
+    <main-visual v-if="isShowMianVisual" />
     <div class="container">
       <div class="containerInner">
         <main class="main">
           <nuxt />
         </main>
-        <the-sidebar class="sidebar" />
+        <the-sidebar
+          v-if="isShowSidebar"
+          class="sidebar"
+        />
       </div>
     </div>
     <the-footer />
@@ -30,6 +33,21 @@ export default {
     TheSidebar,
     TheFooter,
     TheFooterMenuFixed,
+  },
+  computed: {
+    isShowMianVisual () {
+      const isShowPathList = [
+        '/',
+        '/portfolio',
+      ]
+      return isShowPathList.includes(this.$route.path)
+    },
+    isShowSidebar () {
+      const isHiddenPathList = [
+        '/portfolio',
+      ]
+      return !isHiddenPathList.includes(this.$route.path)
+    },
   },
 }
 </script>
@@ -56,7 +74,8 @@ export default {
   width: 100%;
 
   @include mq($mq_pc) {
-    width: 65%;
+    flex: 1;
+    width: auto;
   }
 }
 
@@ -65,6 +84,7 @@ export default {
   width: 100%;
 
   @include mq($mq_pc) {
+    margin-left: 5%;
     width: 30%;
   }
 }
