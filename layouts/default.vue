@@ -74,7 +74,8 @@ export default {
   width: 100%;
 
   @include mq($mq_pc) {
-    width: 65%;
+    flex: 1;
+    width: auto;
   }
 }
 
@@ -83,6 +84,7 @@ export default {
   width: 100%;
 
   @include mq($mq_pc) {
+    margin-left: 5%;
     width: 30%;
   }
 }
