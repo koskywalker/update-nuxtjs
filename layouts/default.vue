@@ -14,7 +14,7 @@
         />
       </div>
     </div>
-    <the-footer />
+    <!-- <the-footer /> -->
     <the-footer-menu-fixed />
   </div>
 </template>
@@ -23,7 +23,7 @@
 import TheParticles from '@/layouts/TheParticles'
 import TheHeader from '@/layouts/TheHeader'
 import TheSidebar from '@/layouts/TheSidebar'
-import TheFooter from '@/layouts/TheFooter'
+// import TheFooter from '@/layouts/TheFooter'
 import TheFooterMenuFixed from '@/layouts/TheFooterMenuFixed'
 
 export default {
@@ -31,7 +31,7 @@ export default {
     TheParticles,
     TheHeader,
     TheSidebar,
-    TheFooter,
+    // TheFooter,
     TheFooterMenuFixed,
   },
   computed: {
@@ -54,7 +54,7 @@ export default {
 
 <style lang="scss" scoped>
 .container {
-  padding-bottom: 3rem;
+  padding-bottom: 8rem;
   width: 100%;
 
   &Inner {
