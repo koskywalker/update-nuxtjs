@@ -2,14 +2,14 @@
   <div>
     <the-particles />
     <the-header />
-    <main-visual v-if="$route.path === '/' || $route.path === '/portfolio'" />
+    <main-visual v-show="isShowMianVisual" />
     <div class="container">
       <div class="containerInner">
         <main class="main">
           <nuxt />
         </main>
         <the-sidebar
-          v-if="$route.path === '/portfolio'"
+          v-show="isShowSidebar"
           class="sidebar"
         />
       </div>
