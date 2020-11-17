@@ -227,9 +227,10 @@ export default {
 .menu {
   background-color: $color_white;
   bottom: 0;
-  height: 64px;
+  height: calc(64px + env(safe-area-inset-bottom));
   line-height: 1;
   margin: 0 auto;
+  padding-bottom: env(safe-area-inset-bottom);
   position: fixed;
   width: 100%;
   z-index: 100;
@@ -245,8 +246,6 @@ export default {
     display: flex;
     height: 100%;
     justify-content: center;
-    padding-bottom: constant(safe-area-inset-bottom);
-    padding-bottom: env(safe-area-inset-bottom);
 
     &__item {
       max-width: calc(1180px / 5);
