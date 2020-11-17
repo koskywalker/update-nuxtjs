@@ -2,14 +2,14 @@
   <div>
     <the-particles />
     <the-header />
-    <main-visual v-if="isShowMianVisual" />
+    <main-visual v-show="isShowMianVisual" />
     <div class="container">
       <div class="containerInner">
         <main class="main">
           <nuxt />
         </main>
         <the-sidebar
-          v-if="isShowSidebar"
+          v-show="isShowSidebar"
           class="sidebar"
         />
       </div>
@@ -36,17 +36,17 @@ export default {
   },
   computed: {
     isShowMianVisual () {
-      const isShowPathList = [
-        '/',
-        '/portfolio',
+      const isShowRouteList = [
+        'index',
+        'portfolio',
       ]
-      return isShowPathList.includes(this.$route.path)
+      return isShowRouteList.includes(this.$route.name)
     },
     isShowSidebar () {
-      const isHiddenPathList = [
-        '/portfolio',
+      const isHiddenRouteList = [
+        'portfolio',
       ]
-      return !isHiddenPathList.includes(this.$route.path)
+      return !isHiddenRouteList.includes(this.$route.name)
     },
   },
 }
