@@ -292,7 +292,7 @@ export default {
 
 .shareButtons,
 .followButtons {
-  bottom: 64px;
+  bottom: calc(64px + env(safe-area-inset-bottom));
   position: absolute;
 }
 
