@@ -67,12 +67,12 @@ export const CONSTANTS = {
       'SEO',
       'Web デザイン',
     ],
-    INTRODUCTION: {
-      FIRST: 'フリーランスのフロントエンドエンジニア. バックエンドも少々.',
-      HISTORY: '',
-      STRONG_POINTS: 'マークアップ / JavaScript / TypeScript / React / Angular / Vue.js / GatsbyJS / Nuxt.js / WordPress / SEO が得意. UI / UX / Web デザイン / WebGL 習得中. ',
-      OTHER: '当ブログでは, 主にフロントエンドに関するプログラミング情報について楽しく発信します！',
-    },
+    INTRODUCTION: [
+      'フリーランスのフロントエンドエンジニア. バックエンドも少々.',
+      'Web 開発, Web 制作, ブログ運営, SEO コンサルティングなどをおこなっています.',
+      '得意技術は, マークアップ, JavaScript, TypeScript, React, Vue.js, Angular, Next.js, Gatsby, Nuxt.js, PHP, Java, WordPress, SEO, UI / UX, コピーライティング',
+      '当ブログでは, 主にフロントエンドに関するプログラミング情報について楽しく発信します！',
+    ],
     SNS: {
       HP: {
         NAME: 'HP',
