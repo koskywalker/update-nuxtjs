@@ -36,17 +36,17 @@ export default {
   },
   computed: {
     isShowMianVisual () {
-      const isShowPathList = [
-        '/',
-        '/portfolio',
+      const isShowRouteList = [
+        'index',
+        'portfolio',
       ]
-      return isShowPathList.includes(this.$route.path)
+      return isShowRouteList.includes(this.$route.name)
     },
     isShowSidebar () {
-      const isHiddenPathList = [
-        '/portfolio',
+      const isHiddenRouteList = [
+        'portfolio',
       ]
-      return !isHiddenPathList.includes(this.$route.path)
+      return !isHiddenRouteList.includes(this.$route.name)
     },
   },
 }
