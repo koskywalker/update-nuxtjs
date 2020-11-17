@@ -115,7 +115,7 @@ export default {
   display: flex;
   -webkit-overflow-scrolling: touch;
   overflow-x: auto;
-  padding-bottom: 7px;
+  padding: 8px 0;
   white-space: nowrap;
   width: 100%;
 
@@ -160,7 +160,6 @@ export default {
     }
 
     &Name {
-      border-radius: 10px;
       color: $color_white;
       display: block;
       font-size: $fontSize_xs;
