@@ -79,7 +79,6 @@ export default {
       margin: 0 0.3rem;
 
       &Link {
-        border-radius: 50%;
         color: $color_navy;
         display: block;
         height: 2rem;
