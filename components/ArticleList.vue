@@ -24,9 +24,12 @@ export default {
 
 <style lang="scss" scoped>
 .articleList {
+  padding: 0 1rem;
+
   @include mq($mq_sp_wide) {
     display: flex;
     flex-wrap: wrap;
+    padding: 0;
   }
 
   &Item {
