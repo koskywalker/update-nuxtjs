@@ -227,10 +227,9 @@ export default {
 .menu {
   background-color: $color_white;
   bottom: 0;
-  height: 64px;
+  height: calc(64px + env(safe-area-inset-bottom));
   line-height: 1;
   margin: 0 auto;
-  padding-bottom: constant(safe-area-inset-bottom);
   padding-bottom: env(safe-area-inset-bottom);
   position: fixed;
   width: 100%;
@@ -293,7 +292,7 @@ export default {
 
 .shareButtons,
 .followButtons {
-  bottom: 64px;
+  bottom: calc(64px + env(safe-area-inset-bottom));
   position: absolute;
 }
 

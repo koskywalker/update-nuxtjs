@@ -45,14 +45,12 @@
         @clickButtonColorful="easterEggLightSaber"
       />
       <div class="sideProfile__text">
-        <p class="sideProfile__textSentence">
-          {{ myInfo.INTRODUCTION.FIRST }}
-        </p>
-        <p class="sideProfile__textSentence">
-          {{ myInfo.INTRODUCTION.STRONG_POINTS }}
-        </p>
-        <p class="sideProfile__textSentence">
-          {{ myInfo.INTRODUCTION.OTHER }}
+        <p
+          v-for="(sentence, index) in myInfo.INTRODUCTION"
+          :key="index"
+          class="sideProfile__textSentence"
+        >
+          {{ sentence }}
         </p>
       </div>
       <div class="sideProfile__sns">

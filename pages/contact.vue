@@ -3,9 +3,6 @@
     <div class="contactBackground" />
     <div class="contactInner">
       <h1 class="contactTitle">
-        <font-awesome-icon
-          icon="paper-plane"
-        />
         {{ title }}
       </h1>
       <client-only>
