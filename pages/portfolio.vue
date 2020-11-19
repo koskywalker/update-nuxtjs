@@ -137,6 +137,12 @@ export default {
   margin-top: 3rem;
 }
 
+.product__label {
+  color: $color_gray;
+  font-weight: 700;
+  margin-bottom: 2rem;
+}
+
 .product__body {
   @include mq($mq_pc) {
     display: flex;
@@ -145,11 +151,11 @@ export default {
 }
 
 .product__image {
-  margin-bottom: 1rem;
+  margin-bottom: 2rem;
 
   @include mq($mq_pc) {
-    margin-right: 3%;
-    width: 47%;
+    order: 2;
+    width: 50%;
   }
 
   img {
@@ -159,12 +165,14 @@ export default {
 
 .product__text {
   @include mq($mq_pc) {
-    width: 50%;
+    margin-right: 3%;
+    order: 1;
+    width: 47%;
   }
 }
 
 .product__meta {
   list-style-type: disc !important;
-  margin: 0 1rem 1rem !important;
+  margin: 0 1rem 2rem !important;
 }
 </style>
