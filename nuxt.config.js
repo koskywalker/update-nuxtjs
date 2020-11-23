@@ -5,11 +5,11 @@ import { CONSTANTS } from './assets/js/constants'
 
 require('dotenv').config()
 
+const Sass = require('sass')
+const Fiber = require('fibers')
+
 export default {
   target: 'static',
-  /*
-  ** Headers of the page
-  */
   head: {
     titleTemplate: '%s - ' + CONSTANTS.BLOG_INFO.BLOG_NAME,
     title: CONSTANTS.BLOG_INFO.BASE_TITLE,
@@ -35,9 +35,6 @@ export default {
       { rel: 'icon', type: 'image/svg+xml', href: '/favicon.svg' },
     ],
   },
-  /*
-  ** Global CSS
-  */
   styleResources: {
     scss: [
       '@/assets/scss/reset.scss',
@@ -47,9 +44,6 @@ export default {
       '@/assets/scss/util.scss',
     ],
   },
-  /*
-  ** Plugins to load before mounting the App
-  */
   plugins: [
     { src: '~plugins/ga.js', mode: 'client' },
     { src: '~plugins/router-option.js' },
@@ -57,24 +51,15 @@ export default {
     { src: '~plugins/markdown-it.js' },
   ],
   components: true,
-  /*
-  ** Middleware
-  */
   router: {
     middleware: [
       'redirect',
       'getContentful',
     ],
   },
-  /*
-  ** Nuxt.js dev-modules
-  */
   buildModules: [
     '@nuxtjs/stylelint-module',
   ],
-  /*
-  ** Nuxt.js modules
-  */
   modules: [
     '@nuxtjs/pwa',
     '@nuxtjs/dotenv',
@@ -84,9 +69,6 @@ export default {
     '~/modules/hook',
   ],
   publicRuntimeConfig: {},
-  /*
-  ** Sitemap
-  */
   sitemap: {
     path: '/sitemap.xml',
     hostname: process.env.BASE_URL,
@@ -123,30 +105,27 @@ export default {
       })
     },
   },
-  /*
-  ** Build configuration
-  */
   build: {
-    /*
-     ** Run ESLint on save
-     */
     extend(config, { isDev, isClient }) {
       if (isDev && isClient) {
         config.module.rules.push({
           enforce: "pre",
           test: /\.(js|vue)$/,
           loader: "eslint-loader",
-          exclude: /(node_modules)/
+          exclude: /(node_modules)/,
         })
       }
-    },
-    /*
-    ** You can extend webpack config here
-    */
-    extend (config, ctx) {
-      if (ctx.isDev) {
-        config.devtool = ctx.isClient ? 'source-map' : 'inline-source-map'
+      if (isDev) {
+        config.devtool = isClient ? 'source-map' : 'inline-source-map'
       }
+    },
+    loaders: {
+      scss: {
+        implementation: Sass,
+        sassOptions: {
+          fiber: Fiber,
+        },
+      },
     },
     analyze: false,
   },
