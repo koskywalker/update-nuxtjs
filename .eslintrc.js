@@ -17,12 +17,12 @@ module.exports = {
   rules: {
     'comma-dangle': ['error', 'always-multiline'],
     'semi': [2, 'never'],
-    'vue/max-attributes-per-line': ['error', {
-      singleline: 1,
-      multiline: {
-        max: 1,
-        allowFirstLine: false,
-      },
-    }],
+    // 'vue/max-attributes-per-line': ['error', {
+    //   singleline: 1,
+    //   multiline: {
+    //     max: 1,
+    //     allowFirstLine: false,
+    //   },
+    // }],
   },
 }
