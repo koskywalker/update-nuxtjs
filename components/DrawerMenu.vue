@@ -66,7 +66,7 @@ export default {
   },
   methods: {
     closeDrawer () {
-      this.$emit('closeDrawer')
+      this.$emit('close-drawer')
     },
   },
 }

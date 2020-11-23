@@ -42,7 +42,7 @@
       <button-colorful
         :disabled="isDisabledLightSaber"
         class="sideProfile__button"
-        @clickButtonColorful="easterEggLightSaber"
+        @click-button-colorful="easterEggLightSaber"
       />
       <div class="sideProfile__text">
         <p
@@ -74,7 +74,6 @@
               height="24"
             >
           </a>
-          </li>
         </div>
       </div>
     </div>

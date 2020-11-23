@@ -1,6 +1,5 @@
 <template>
   <div class="contact">
-    <div class="contactBackground" />
     <div class="contactInner">
       <h1 class="contactTitle">
         {{ title }}
@@ -19,93 +18,105 @@
             name="form-name"
             value="contact"
           >
-          <p>
-            <label class="contactForm__label">
+          <div class="contactForm__item">
+            <label
+              for="name"
+              class="contactForm__label"
+            >
               {{ name.label }}
-              <ul
-                v-show="name.errors"
-                class="contactForm__errorList"
-              >
-                <li
-                  v-for="(error, index) in name.errors"
-                  :key="index"
-                  class="contactForm__errorListItem"
-                >
-                  {{ error }}
-                </li>
-              </ul>
-              <input
-                v-model="name.inputText"
-                class="contactForm__input"
-                type="text"
-                name="name"
-                autocomplete="name"
-                placeholder="例) 山田太郎"
-                @input="validateItem(name, arguments[0])"
-                @change="validateItem(name, arguments[0])"
-                @focusout="validateItem(name, arguments[0])"
-              >
             </label>
-          </p>
-          <p>
-            <label class="contactForm__label">
+            <ul
+              v-show="name.errors"
+              :class="{ contactForm__errorList: name.errors.length }"
+            >
+              <li
+                v-for="(error, index) in name.errors"
+                :key="index"
+                class="contactForm__errorListItem"
+              >
+                {{ error }}
+              </li>
+            </ul>
+            <input
+              id="name"
+              v-model="name.inputText"
+              class="contactForm__input"
+              type="text"
+              name="name"
+              autocomplete="name"
+              placeholder="例) 山田太郎"
+              @input="validateItem(name, arguments[0])"
+              @change="validateItem(name, arguments[0])"
+              @focusout="validateItem(name, arguments[0])"
+            >
+          </div>
+          <div class="contactForm__item">
+            <label
+              for="email"
+              class="contactForm__label"
+            >
               {{ email.label }}
-              <ul
-                v-show="email.errors"
-                class="contactForm__errorList"
-              >
-                <li
-                  v-for="(error, index) in email.errors"
-                  :key="index"
-                  class="contactForm__errorListItem"
-                >
-                  {{ error }}
-                </li>
-              </ul>
-              <input
-                v-model="email.inputText"
-                class="contactForm__input"
-                type="email"
-                name="email"
-                autocomplete="email"
-                placeholder="例) info@example.com"
-                @input="validateItem(email, arguments[0])"
-                @change="validateItem(email, arguments[0])"
-                @focusout="validateItem(email, arguments[0])"
-              >
             </label>
-          </p>
-          <p>
-            <label class="contactForm__label">
+            <ul
+              v-show="email.errors"
+              :class="{ contactForm__errorList: email.errors.length }"
+            >
+              <li
+                v-for="(error, index) in email.errors"
+                :key="index"
+                class="contactForm__errorListItem"
+              >
+                {{ error }}
+              </li>
+            </ul>
+            <input
+              id="email"
+              v-model="email.inputText"
+              class="contactForm__input"
+              type="email"
+              name="email"
+              autocomplete="email"
+              placeholder="例) info@example.com"
+              @input="validateItem(email, arguments[0])"
+              @change="validateItem(email, arguments[0])"
+              @focusout="validateItem(email, arguments[0])"
+            >
+          </div>
+          <div class="contactForm__item">
+            <label
+              for="message"
+              class="contactForm__label"
+            >
               {{ message.label }}
-              <ul
-                v-show="message.errors"
-                class="contactForm__errorList"
-              >
-                <li
-                  v-for="(error, index) in message.errors"
-                  :key="index"
-                >
-                  {{ error }}
-                </li>
-              </ul>
-              <textarea
-                v-model="message.inputText"
-                class="contactForm__input"
-                name="message"
-                rows="6"
-                @input="validateItem(message, arguments[0])"
-                @change="validateItem(message, arguments[0])"
-                @focusout="validateItem(message, arguments[0])"
-              />
             </label>
-          </p>
+            <ul
+              v-show="message.errors"
+              :class="{ contactForm__errorList: message.errors.length }"
+            >
+              <li
+                v-for="(error, index) in message.errors"
+                :key="index"
+              >
+                {{ error }}
+              </li>
+            </ul>
+            <textarea
+              id="message"
+              v-model="message.inputText"
+              class="contactForm__input"
+              name="message"
+              rows="6"
+              @input="validateItem(message, arguments[0])"
+              @change="validateItem(message, arguments[0])"
+              @focusout="validateItem(message, arguments[0])"
+            />
+          </div>
           <div data-netlify-recaptcha="true" />
-          <p>
+          <div>
             <button class="contactForm__button">
               送信
             </button>
-          </p>
+          </div>
         </form>
       </client-only>
     </div>
@@ -275,96 +286,107 @@ export default {
 
 <style lang="scss" scoped>
 .contact {
-  padding: 2rem 0 4rem;
+  @extend %shadow_base;
+
+  background-color: $color_white;
+  margin-bottom: 2rem;
+  padding: 2rem 0;
+
+  @include mq($mq_pc) {
+    padding: 3rem 0;
+  }
+}
+
+.contactInner {
+  margin: 0 1rem;
+
+  @include mq($mq_tablet) {
+    margin: 0 2rem;
+  }
+
+  @include mq($mq_pc) {
+    margin: 0 3rem;
+  }
+}
+
+.contactTitle {
+  font-size: $fontSize_xl;
+  text-align: center;
+
+  &::after {
+    background-image: linear-gradient(to right, #4e5cc4 0%, #40ce9a 100%);
+    content: '';
+    display: block;
+    height: 3px;
+    margin: 1rem auto;
+    width: 8rem;
+  }
+}
+
+.contactForm {
+  margin-top: 3rem;
+}
+
+.contactForm__item {
+  margin-bottom: 1.5rem;
+}
+
+.contactForm__label {
+  display: block;
+  font-weight: 700;
+}
+
+ul.contactForm__errorList {
+  color: $color_red_dark;
+}
+
+.contactForm__input {
+  border: 1px solid $color_gray_middle;
+  display: block;
+  margin-top: 0.5rem;
+  padding: 0.5rem;
+  width: 100%;
+}
+
+.contactForm__button {
+  align-items: center;
+  background-color: $color_navy;
+  box-shadow: 0 5px 0 $color_gray, 0 10px 0 rgba(0, 0, 0, 0.2);
+  box-shadow: 0 5px 0 $color_navy_dark, 0 10px 0 rgba(0, 0, 0, 0.2);
+  color: $color_white;
+  display: flex;
+  font-weight: 700;
+  justify-content: center;
+  margin: 2rem 0;
+  padding: 0.5rem 1rem;
   position: relative;
+  transition: 0.1s;
+  width: 100%;
 
-  &Title {
-    margin-bottom: 1rem;
-    text-align: center;
+  @include mq($mq_tablet) {
+    width: 200px;
   }
 
-  &Background {
-    background: linear-gradient($color_white, $color_background_base_dark 10%);
-    height: 100%;
+  &:hover {
+    box-shadow: 0 3px 0 $color_navy_dark, 0 6px 0 rgba(0, 0, 0, 0.2);
+    transform: translateY(3px);
+  }
+
+  &:active {
+    box-shadow: none;
+    transform: translateY(5px);
+  }
+
+  &::after {
+    background-image: url(~assets/icon/icon_arrow_right.svg);
+    background-size: contain;
+    content: '';
+    display: inline-block;
+    height: 1rem;
+    margin-left: 5px;
     position: absolute;
-    top: 0;
-    width: 100%;
-    z-index: -2;
-  }
-
-  &Inner {
-    background: $color_background_base_dark;
-    border-radius: 2rem;
-    box-shadow:
-      -2px -2px 5px rgba(255, 255, 255, 1),
-      3px 3px 5px rgba(0, 0, 0, 0.1);
-    margin: 0 auto 0;
-    max-width: $width_single_column;
-    padding: 2rem 1rem;
-    width: $width_base;
-
-    @include mq($mq_tablet) {
-      padding: 2rem;
-    }
-  }
-
-  &Form {
-    &__label {
-      display: block;
-      font-weight: bold;
-      margin-bottom: 2rem;
-      position: relative;
-      width: 100%;
-    }
-
-    &__errorList {
-      color: $color_red_dark;
-      font-size: $fontSize_s;
-      margin-bottom: 0.5rem !important;
-      padding-left: 1rem;
-    }
-
-    &__input,
-    &__button {
-      background-color: $color_background_base_dark;
-      border: 0;
-      border-radius: 2rem;
-      outline: 0;
-      padding: 0.5rem 1.5rem;
-      text-shadow: 1px 1px 0 $color_white;
-    }
-
-    &__input {
-      -webkit-appearance: none;
-      appearance: none;
-      box-shadow: inset 2px 2px 5px $color_shadow_light, inset -5px -5px 10px $color_white;
-      box-sizing: border-box;
-      margin-right: 0.5rem;
-      transition: all 0.2s ease-in-out;
-      width: 100%;
-
-      &:focus {
-        box-shadow: inset 1px 1px 2px $color_shadow_light, inset -1px -1px 2px $color_white;
-      }
-    }
-
-    &__button {
-      box-shadow: -4px -4px 10px $color_white, 4px 4px 10px $color_shadow_light;
-      display: block;
-      font-weight: bold;
-      margin: 0 auto;
-      transition: all 0.2s ease-in-out;
-      width: 100%;
-
-      &:hover,
-      &:focus {
-        box-shadow: -2px -2px 5px $color_white, 2px 2px 5px $color_shadow_light;
-      }
-
-      &:active {
-        box-shadow: inset 1px 1px 2px $color_shadow_light, inset -1px -1px 2px $color_white;
-      }
-    }
+    right: 1rem;
+    width: 1rem;
   }
 }
 </style>
