@@ -8,14 +8,16 @@ module.exports = {
     parser: 'babel-eslint',
   },
   extends: [
-    '@nuxtjs',
-    'plugin:nuxt/recommended',
+    'plugin:vue/essential',
+    'prettier',
   ],
-  // add your custom rules here
+  plugins: [
+    'vue',
+  ],
   rules: {
-    'no-console': 'off',
-    'no-new': 'off',
-    'no-useless-return': 'off',
+    'comma-dangle': ['error', 'always-multiline'],
+    'no-console': 'warn',
+    'semi': [2, 'never'],
     'vue/max-attributes-per-line': ['error', {
       singleline: 1,
       multiline: {
@@ -23,8 +25,5 @@ module.exports = {
         allowFirstLine: false,
       },
     }],
-    'vue/no-v-html': 'off',
-    'comma-dangle': ['error', 'always-multiline'],
-    'nuxt/no-cjs-in-config': 'off',
   },
 }

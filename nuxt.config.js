@@ -70,7 +70,6 @@ export default {
   ** Nuxt.js dev-modules
   */
   buildModules: [
-    '@nuxtjs/eslint-module',
     '@nuxtjs/stylelint-module',
   ],
   /*
@@ -128,6 +127,19 @@ export default {
   ** Build configuration
   */
   build: {
+    /*
+     ** Run ESLint on save
+     */
+    extend(config, { isDev, isClient }) {
+      if (isDev && isClient) {
+        config.module.rules.push({
+          enforce: "pre",
+          test: /\.(js|vue)$/,
+          loader: "eslint-loader",
+          exclude: /(node_modules)/
+        })
+      }
+    },
     /*
     ** You can extend webpack config here
     */

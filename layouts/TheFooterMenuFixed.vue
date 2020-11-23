@@ -22,7 +22,7 @@
       <drawer-menu
         v-if="showDrawerMenu"
         class="drawerMenu"
-        @closeDrawer="closeDrawer"
+        @close-drawer="closeDrawer"
       />
     </transition>
     <nav class="menuInner">

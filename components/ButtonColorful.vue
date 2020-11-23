@@ -16,7 +16,7 @@
 export default {
   methods: {
     click () {
-      this.$emit('clickButtonColorful')
+      this.$emit('click-button-colorful')
     },
   },
 }
