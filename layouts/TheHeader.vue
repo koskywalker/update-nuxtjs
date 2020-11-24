@@ -30,7 +30,7 @@
           class="contactButton"
           to="/contact"
         >
-          <span class="contactButton__text">お問い合わせ</span>
+          お問い合わせ
         </nuxt-link>
       </div>
       <nav class="globalNav">
@@ -100,7 +100,7 @@ export default {
     @extend %font_accent;
 
     display: inline-block;
-    font-size: $fontSize_4l;
+    font-size: $fontSize_3l;
     font-weight: normal;
     line-height: 1;
     width: 100%;
@@ -133,12 +133,17 @@ export default {
   box-shadow: 0 5px 0 $color_navy_dark, 0 10px 0 rgba(0, 0, 0, 0.2);
   color: $color_white;
   display: flex;
+  font-size: $fontSize_xs;
   font-weight: 700;
   justify-content: center;
   margin-bottom: 5px;
   padding: 0.5rem 1rem;
   position: relative;
   transition: 0.1s;
+
+  @include mq($mq_tablet) {
+    font-size: $fontSize_base;
+  }
 
   &:hover {
     box-shadow: 0 3px 0 $color_navy_dark, 0 6px 0 rgba(0, 0, 0, 0.2);
@@ -154,23 +159,15 @@ export default {
     background-image: url(~assets/icon/icon_mail.svg);
     background-size: contain;
     content: '';
-    display: inline-block;
+    display: block;
     height: 1rem;
+    margin-right: 0.5rem;
     width: 1rem;
 
     @include mq($mq_pc) {
       height: 1.5rem;
       width: 1.5rem;
     }
-  }
-}
-
-.contactButton__text {
-  font-size: $fontSize_xs;
-  margin-left: 0.5rem;
-
-  @include mq($mq_tablet) {
-    font-size: $fontSize_base;
   }
 }
 
