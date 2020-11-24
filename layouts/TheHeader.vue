@@ -81,24 +81,22 @@ export default {
     align-content: center;
     display: flex;
     flex-wrap: wrap;
+    margin: 0 auto;
     text-align: center;
+    width: 92%;
 
     @include mq($mq_pc) {
       margin: 0 auto;
       max-width: 1180px;
-      width: 92%;
     }
   }
 }
 
 .logo {
-  margin: 0 auto;
   padding: 0.5rem 0;
 
   @include mq($mq_pc) {
-    margin: 0;
     order: 1;
-    padding: 0 1rem;
   }
 
   &Text {
@@ -110,7 +108,7 @@ export default {
     line-height: 1;
     width: 100%;
 
-    @include mq($mq_pc) {
+    @include mq($mq_tablet) {
       font-size: $fontSize_4l;
     }
   }
@@ -124,10 +122,10 @@ export default {
 .cta {
   align-items: center;
   display: flex;
-  margin: 0 auto;
+  margin-left: auto;
 
   @include mq($mq_pc) {
-    margin: 0 0 0 1rem;
+    margin-left: 1rem;
     order: 3;
   }
 }
