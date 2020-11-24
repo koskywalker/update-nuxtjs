@@ -30,10 +30,7 @@
           class="contactButton"
           to="/contact"
         >
-          <p class="contactButton__text">
-            <span class="contactButton__name">お問い合わせ</span>
-            <span class="contactButton__label">CONTACT</span>
-          </p>
+          <span class="contactButton__text">お問い合わせ</span>
         </nuxt-link>
       </div>
       <nav class="globalNav">
@@ -81,36 +78,34 @@ export default {
     align-content: center;
     display: flex;
     flex-wrap: wrap;
+    margin: 0 auto;
     text-align: center;
+    width: 92%;
 
     @include mq($mq_pc) {
       margin: 0 auto;
       max-width: 1180px;
-      width: 92%;
     }
   }
 }
 
 .logo {
-  margin: 0 auto;
   padding: 0.5rem 0;
 
   @include mq($mq_pc) {
-    margin: 0;
     order: 1;
-    padding: 0 1rem;
   }
 
   &Text {
     @extend %font_accent;
 
     display: inline-block;
-    font-size: $fontSize_3l;
+    font-size: $fontSize_4l;
     font-weight: normal;
     line-height: 1;
     width: 100%;
 
-    @include mq($mq_pc) {
+    @include mq($mq_tablet) {
       font-size: $fontSize_4l;
     }
   }
@@ -124,10 +119,10 @@ export default {
 .cta {
   align-items: center;
   display: flex;
-  margin: 0 auto;
+  margin-left: auto;
 
   @include mq($mq_pc) {
-    margin: 0 0 0 1rem;
+    margin-left: 1rem;
     order: 3;
   }
 }
@@ -141,13 +136,9 @@ export default {
   font-weight: 700;
   justify-content: center;
   margin-bottom: 5px;
-  padding: 0.5rem;
+  padding: 0.5rem 1rem;
   position: relative;
   transition: 0.1s;
-
-  @include mq($mq_tablet) {
-    padding: 0.5rem 1rem;
-  }
 
   &:hover {
     box-shadow: 0 3px 0 $color_navy_dark, 0 6px 0 rgba(0, 0, 0, 0.2);
@@ -168,35 +159,18 @@ export default {
     width: 1rem;
 
     @include mq($mq_pc) {
-      height: 2rem;
-      width: 2rem;
+      height: 1.5rem;
+      width: 1.5rem;
     }
   }
 }
 
 .contactButton__text {
   font-size: $fontSize_xs;
-  margin: 0;
+  margin-left: 0.5rem;
 
-  @include mq($mq_pc) {
-    margin-left: 0.5rem;
-  }
-}
-
-.contactButton__name {
-  display: block;
-  line-height: 1.5;
-  padding: 0 5px;
-}
-
-.contactButton__label {
-  @extend %font_accent;
-
-  display: none;
-  line-height: 1;
-
-  @include mq($mq_pc) {
-    display: block;
+  @include mq($mq_tablet) {
+    font-size: $fontSize_base;
   }
 }
 
