@@ -1,11 +1,7 @@
 <template>
   <div class="thanks">
-    <div class="thanksBackground" />
     <div class="thanksInner">
       <h1 class="thanksTitle">
-        <font-awesome-icon
-          icon="paper-plane"
-        />
         お問い合わせ<br class="br_sp">ありがとうございます
       </h1>
       <div class="thanksBody">
@@ -16,9 +12,6 @@
             to="/"
             class="thanksButton"
           >
-            <font-awesome-icon
-              icon="home"
-            />
             HOMEへ
           </nuxt-link>
         </p>
@@ -34,58 +27,86 @@ export default {
 
 <style lang="scss" scoped>
 .thanks {
-  padding: 2rem 0 4rem;
-  position: relative;
+  @extend %shadow_base;
 
-  &Title {
-    margin-bottom: 1rem;
-    text-align: center;
+  background-color: $color_white;
+  margin-bottom: 2rem;
+  padding: 2rem 0;
+
+  @include mq($mq_pc) {
+    padding: 3rem 0;
+  }
+}
+
+.thanksInner {
+  margin: 0 1rem;
+
+  @include mq($mq_tablet) {
+    margin: 0 2rem;
   }
 
-  &Background {
-    background: linear-gradient($color_white, $color_background_base_dark 10%);
-    height: 100%;
-    position: absolute;
-    top: 0;
-    width: 100%;
-    z-index: -2;
+  @include mq($mq_pc) {
+    margin: 0 3rem;
   }
+}
 
-  &Inner {
-    background: $color_background_base_dark;
-    border-radius: 1rem;
-    box-shadow:
-      -2px -2px 5px rgba(255, 255, 255, 1),
-      3px 3px 5px rgba(0, 0, 0, 0.1);
-    margin: 0 auto 0;
-    max-width: $width_single_column;
-    padding: 2rem;
-    width: $width_base;
-  }
+.thanksTitle {
+  font-size: $fontSize_xl;
+  text-align: center;
 
-  &Button {
-    background-color: $color_background_base_dark;
-    border-radius: 2rem;
-    box-shadow: -4px -4px 10px $color_white, 4px 4px 10px $color_shadow_light;
-    color: $color_black;
+  &::after {
+    background-image: linear-gradient(to right, #4e5cc4 0%, #40ce9a 100%);
+    content: '';
     display: block;
-    font-weight: bold;
-    margin: 0 auto;
-    outline: 0;
-    padding: 0.5rem 1.5rem;
-    text-align: center;
-    text-shadow: 1px 1px 0 $color_white;
-    transition: all 0.2s ease-in-out;
-    width: 100%;
+    height: 3px;
+    margin: 1rem auto;
+    width: 8rem;
+  }
+}
 
-    &:hover,
-    &:focus {
-      box-shadow: -2px -2px 5px $color_white, 2px 2px 5px $color_shadow_light;
-    }
+.thanksBody {
+  margin-top: 3rem;
+}
 
-    &:active {
-      box-shadow: inset 1px 1px 2px $color_shadow_light, inset -1px -1px 2px $color_white;
-    }
+.thanksButton {
+  align-items: center;
+  background-color: $color_navy;
+  box-shadow: 0 5px 0 $color_gray, 0 10px 0 rgba(0, 0, 0, 0.2);
+  box-shadow: 0 5px 0 $color_navy_dark, 0 10px 0 rgba(0, 0, 0, 0.2);
+  color: $color_white;
+  display: flex;
+  font-weight: 700;
+  justify-content: center;
+  margin: 2rem auto 0;
+  padding: 0.5rem 1rem;
+  position: relative;
+  transition: 0.1s;
+  width: 100%;
+
+  @include mq($mq_tablet) {
+    width: 200px;
+  }
+
+  &:hover {
+    box-shadow: 0 3px 0 $color_navy_dark, 0 6px 0 rgba(0, 0, 0, 0.2);
+    transform: translateY(3px);
+  }
+
+  &:active {
+    box-shadow: none;
+    transform: translateY(5px);
+  }
+
+  &::after {
+    background-image: url(~assets/icon/icon_arrow_right.svg);
+    background-size: contain;
+    content: '';
+    display: inline-block;
+    height: 1rem;
+    margin-left: 5px;
+    position: absolute;
+    right: 1rem;
+    width: 1rem;
   }
 }
 </style>
