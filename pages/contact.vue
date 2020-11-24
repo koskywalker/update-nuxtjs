@@ -351,7 +351,6 @@ ul.contactForm__errorList {
 .contactForm__button {
   align-items: center;
   background-color: $color_navy;
-  box-shadow: 0 5px 0 $color_gray, 0 10px 0 rgba(0, 0, 0, 0.2);
   box-shadow: 0 5px 0 $color_navy_dark, 0 10px 0 rgba(0, 0, 0, 0.2);
   color: $color_white;
   display: flex;

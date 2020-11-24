@@ -25,6 +25,17 @@
           </nuxt-link>
         </div>
       </div>
+      <div class="cta">
+        <nuxt-link
+          class="contactButton"
+          to="/contact"
+        >
+          <p class="contactButton__text">
+            <span class="contactButton__name">お問い合わせ</span>
+            <span class="contactButton__label">CONTACT</span>
+          </p>
+        </nuxt-link>
+      </div>
       <nav class="globalNav">
         <nuxt-link
           v-for="(item, index) in globalNav"
@@ -73,7 +84,6 @@ export default {
     text-align: center;
 
     @include mq($mq_pc) {
-      justify-content: space-between;
       margin: 0 auto;
       max-width: 1180px;
       width: 92%;
@@ -87,6 +97,7 @@ export default {
 
   @include mq($mq_pc) {
     margin: 0;
+    order: 1;
     padding: 0 1rem;
   }
 
@@ -110,28 +121,101 @@ export default {
   }
 }
 
+.cta {
+  align-items: center;
+  display: flex;
+  margin: 0 auto;
+
+  @include mq($mq_pc) {
+    margin: 0 0 0 1rem;
+    order: 3;
+  }
+}
+
+.contactButton {
+  align-items: center;
+  background-color: $color_navy;
+  box-shadow: 0 5px 0 $color_navy_dark, 0 10px 0 rgba(0, 0, 0, 0.2);
+  color: $color_white;
+  display: flex;
+  font-weight: 700;
+  justify-content: center;
+  margin-bottom: 5px;
+  padding: 0.5rem;
+  position: relative;
+  transition: 0.1s;
+
+  @include mq($mq_tablet) {
+    padding: 0.5rem 1rem;
+  }
+
+  &:hover {
+    box-shadow: 0 3px 0 $color_navy_dark, 0 6px 0 rgba(0, 0, 0, 0.2);
+    transform: translateY(3px);
+  }
+
+  &:active {
+    box-shadow: none;
+    transform: translateY(5px);
+  }
+
+  &::before {
+    background-image: url(~assets/icon/icon_mail.svg);
+    background-size: contain;
+    content: '';
+    display: inline-block;
+    height: 1rem;
+    width: 1rem;
+
+    @include mq($mq_pc) {
+      height: 2rem;
+      width: 2rem;
+    }
+  }
+}
+
+.contactButton__text {
+  font-size: $fontSize_xs;
+  margin: 0;
+
+  @include mq($mq_pc) {
+    margin-left: 0.5rem;
+  }
+}
+
+.contactButton__name {
+  display: block;
+  line-height: 1.5;
+  padding: 0 5px;
+}
+
+.contactButton__label {
+  @extend %font_accent;
+
+  display: none;
+  line-height: 1;
+
+  @include mq($mq_pc) {
+    display: block;
+  }
+}
+
 .globalNav {
   align-items: center;
   display: flex;
-  -webkit-overflow-scrolling: touch;
-  overflow-x: auto;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin: 0 auto;
   padding: 8px 0;
-  white-space: nowrap;
-  width: 100%;
-
-  @include mq($mq_tablet) {
-    justify-content: center;
-    overflow-x: inherit;
-    white-space: normal;
-  }
 
   @include mq($mq_pc) {
-    width: auto;
+    margin: 0 0 0 auto;
+    order: 2;
   }
 
   &__item {
     line-height: 1.5;
-    margin: 0 5px;
+    margin: 0 5px 5px;
     position: relative;
 
     &:first-child {
