@@ -28,11 +28,6 @@ export const CONSTANTS = {
       LABEL: 'PORTFOLIO',
       URL: '/portfolio',
     },
-    {
-      NAME: 'お問い合わせ',
-      LABEL: 'CONTACT',
-      URL: '/contact',
-    },
   ],
   BLOG_INFO: {
     BLOG_NAME: 'UPDATE',
