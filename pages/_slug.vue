@@ -323,6 +323,7 @@ export default {
   }
 
   .screenshot-mobile-double {
+    align-items: flex-start;
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
