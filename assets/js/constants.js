@@ -2,12 +2,7 @@ export const CONSTANTS = {
   BASE_SETTINGS: {
     POSTS_NUMBER_PER_PAGE: 10,
   },
-  HEADER_MENU: [
-    {
-      NAME: 'ホーム',
-      LABEL: 'HOME',
-      URL: '/',
-    },
+  MAIN_MENU: [
     {
       NAME: 'プログラミング',
       LABEL: 'PROGRAMMING',
@@ -31,9 +26,8 @@ export const CONSTANTS = {
   ],
   BLOG_INFO: {
     BLOG_NAME: 'UPDATE',
-    BASE_TITLE: 'フロントエンドエンジニアこうすけのクリエイターブログ',
+    BASE_TITLE: 'フロントエンドエンジニアこうすけのブログ',
     BASE_DESCRIPTION: 'UPDATE は, フロントエンドエンジニアとして活動するこうすけのクリエイターブログです. 主にプログラミング, デザイン, SEO, 普段の活動などについて発信しています. ',
-    ABOUT_BLOG_TECHNOLOGY: '当ブログは, Nuxt.js x Contentful x Netlify で構築した Jamstack ブログです.',
     BASE_OGP_IMAGE: '/static/icon.svg',
   },
   MY_INFO: {

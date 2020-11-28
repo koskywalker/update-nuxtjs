@@ -55,7 +55,7 @@ export default {
   data () {
     return {
       blogName: CONSTANTS.BLOG_INFO.BLOG_NAME,
-      globalNav: CONSTANTS.HEADER_MENU,
+      globalNav: CONSTANTS.MAIN_MENU,
     }
   },
   computed: {
@@ -188,14 +188,6 @@ export default {
     line-height: 1.5;
     margin: 0 5px 5px;
     position: relative;
-
-    &:first-child {
-      display: none;
-
-      @include mq($mq_tablet) {
-        display: block;
-      }
-    }
 
     &::before {
       background-color: $color_gray;

@@ -1,10 +1,6 @@
 <template>
   <div>
     <h1 class="tagTitle">
-      <font-awesome-icon
-        :icon="'list'"
-        class="followInner__itemIcon"
-      />
       {{ title }}
     </h1>
     <article-list
