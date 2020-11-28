@@ -33,11 +33,19 @@ export default {
   }
 
   &Item {
-    margin-bottom: 2rem;
+    margin-top: 2rem;
+
+    &:nth-of-type(1) {
+      margin-top: 0;
+    }
 
     @include mq($mq_sp_wide) {
       margin-right: 4%;
       width: 48%;
+
+      &:nth-of-type(2) {
+        margin-top: 0;
+      }
     }
 
     @include mq($mq_pc) {

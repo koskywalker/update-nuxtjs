@@ -1,83 +1,78 @@
 <template>
   <aside class="side">
-    <div class="sideItem sideProfile">
-      <h3
-        ref="profileTitle"
-        class="sideItem__title"
-      >
-        <span class="sideItem__titleText">
-          Profile
-        </span>
-      </h3>
-      <div
-        class="sideProfile__image"
-      >
-        <div
-          class="sideProfile__imageInner"
-        >
-          <img
-            src="https://images.ctfassets.net/cehw3wy3j8jc/4CzR18vKdFrmnNI8ihxevU/380ec9d71bac06a22dd2d4bdab248d6e/profile3.jpg?h=250"
-            alt="プロフィール写真"
-            height="250"
-            width="250"
-            loading="lazy"
+    <div class="sideInner">
+      <div class="sideItem sideProfile">
+        <div class="sideItemInner sideProfileInner">
+          <div
+            class="sideProfile__image"
           >
-        </div>
-        <transition name="fade">
-          <light-saber
-            v-show="isLightSaberShow"
-            :switch-status="switchStatus"
-            class="sideProfile__imageLightSaber"
-          />
-        </transition>
-      </div>
-      <div class="sideProfile__name">
-        <p class="sideProfile__nameText">
-          {{ myInfo.NICKNAME }} ({{ myInfo.NAME }})
-        </p>
-        <p class="sideProfile__nameLabel">
-          {{ myInfo.LABEL_MAIN }}
-        </p>
-      </div>
-      <button-colorful
-        :disabled="isDisabledLightSaber"
-        class="sideProfile__button"
-        @click-button-colorful="easterEggLightSaber"
-      />
-      <div class="sideProfile__text">
-        <p
-          v-for="(sentence, index) in myInfo.INTRODUCTION"
-          :key="index"
-          class="sideProfile__textSentence"
-        >
-          {{ sentence }}
-        </p>
-      </div>
-      <div class="sideProfile__sns">
-        <p class="sideProfile__snsTitle">
-          ＼ Follow Me !! ／
-        </p>
-        <div class="sideProfile__snsList">
-          <a
-            v-for="(item, index) in items"
-            :key="index"
-            :href="item.url"
-            :class="item.class"
-            target="_blank"
-            rel="noopener"
-            class="sideProfile__snsListItem"
-          >
-            <img
-              :src="item.src"
-              :alt="item.name"
-              width="24"
-              height="24"
+            <div
+              class="sideProfile__imageInner"
             >
-          </a>
+              <img
+                src="https://images.ctfassets.net/cehw3wy3j8jc/4CzR18vKdFrmnNI8ihxevU/380ec9d71bac06a22dd2d4bdab248d6e/profile3.jpg?h=250"
+                alt="プロフィール写真"
+                height="250"
+                width="250"
+                loading="lazy"
+              >
+            </div>
+            <transition name="fade">
+              <light-saber
+                v-show="isLightSaberShow"
+                :switch-status="switchStatus"
+                class="sideProfile__imageLightSaber"
+              />
+            </transition>
+          </div>
+          <div class="sideProfile__name">
+            <p class="sideProfile__nameText">
+              {{ myInfo.NICKNAME }} ({{ myInfo.NAME }})
+            </p>
+            <p class="sideProfile__nameLabel">
+              {{ myInfo.LABEL_MAIN }}
+            </p>
+          </div>
+          <button-colorful
+            :disabled="isDisabledLightSaber"
+            class="sideProfile__button"
+            @click-button-colorful="easterEggLightSaber"
+          />
+          <div class="sideProfile__text">
+            <p
+              v-for="(sentence, index) in myInfo.INTRODUCTION"
+              :key="index"
+              class="sideProfile__textSentence"
+            >
+              {{ sentence }}
+            </p>
+          </div>
+          <div class="sideProfile__sns">
+            <p class="sideProfile__snsTitle">
+              ＼ Follow Me !! ／
+            </p>
+            <div class="sideProfile__snsList">
+              <a
+                v-for="(item, index) in items"
+                :key="index"
+                :href="item.url"
+                :class="item.class"
+                target="_blank"
+                rel="noopener"
+                class="sideProfile__snsListItem"
+              >
+                <img
+                  :src="item.src"
+                  :alt="item.name"
+                  width="24"
+                  height="24"
+                >
+              </a>
+            </div>
+          </div>
         </div>
       </div>
     </div>
-    <recent-posts class="sideItem" />
   </aside>
 </template>
 
@@ -167,142 +162,122 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.side {
-  &Item {
-    @extend %shadow_base;
-
-    background-color: $color_white;
-    border-radius: 3px;
-    margin-bottom: 2rem;
-    overflow: hidden;
-    padding: 1rem 1rem 2rem;
-
-    &__title {
-      @extend %font_accent;
-
-      font-size: $fontSize_l;
-      letter-spacing: 0.1rem;
-      margin-bottom: 1.5rem;
-      padding-bottom: 1rem;
-      position: relative;
-      text-align: center;
-
-      &::before {
-        background-image: -webkit-gradient(linear, left top, right top, from($color_navy), to($color_green));
-        background-image: -webkit-linear-gradient(left, $color_navy 0%, $color_green 100%);
-        background-image: linear-gradient(to right, $color_navy 0%, $color_green 100%);
-        bottom: 0;
-        content: '';
-        height: 5px;
-        left: 0;
-        position: absolute;
-        width: 100%;
-      }
-
-      &Text::before {
-        background-image: url(~assets/icon/icon_human.svg);
-        background-repeat: no-repeat;
-        background-size: contain;
-        content: '';
-        display: inline-block;
-        height: $fontSize_l;
-        line-height: 1.8;
-        margin-bottom: 0.3rem;
-        vertical-align: middle;
-        width: $fontSize_l;
-      }
-    }
+.sideInner {
+  @include mq($mq_pc) {
+    position: sticky;
+    top: 2rem;
   }
+}
 
-  &Profile {
-    &__image {
-      border-radius: 10px;
-      margin: 0 auto 1rem;
-      position: relative;
-      width: 150px;
+.sideItem {
+  @extend %shadow_base;
 
-      &Inner {
-        @extend %shadow_base;
+  background-color: $color_white;
+  border-radius: 3px;
+  overflow: hidden;
+}
 
-        border-radius: 10px;
-        overflow: hidden;
-      }
+.sideItemInner {
+  margin: 0 1rem 2rem;
+}
 
-      &LightSaber {
-        left: 65%;
-        position: absolute;
-        top: 50px;
-      }
-    }
-
-    &__name {
-      font-weight: bold;
-      text-align: center;
-
-      &Text {
-        margin: 0;
-      }
-
-      &Label {
-        color: $color_gray;
-      }
-    }
-
-    &__button {
-      margin-bottom: 2rem;
-    }
-
-    &__textSentence {
-      font-size: $fontSize_s;
-    }
-
-    &__sns {
-      font-weight: bold;
-      text-align: center;
-
-      &Title {
-        @extend %font_accent;
-
-        margin-bottom: 0.5rem;
-      }
-
-      &List {
-        display: flex;
-        justify-content: center;
-
-        &Item {
-          @extend %shadow_base;
-
-          border-radius: 15%;
-          color: $color_white;
-          font-size: $fontSize_l;
-          line-height: 1;
-          margin: 0 0.5rem;
-          padding: 0.5rem;
-
-          &:hover {
-            @extend %shadow_base_hover;
-          }
-
-          &--twitter {
-            background-color: $color_twitter;
-          }
-
-          &--instagram {
-            background: $color_instagram;
-          }
-
-          &--github {
-            background-color: $color_github;
-          }
-
-          &--feedly {
-            background-color: $color_feedly;
-          }
-        }
-      }
-    }
+.sideProfileInner {
+  &::before {
+    background-color: $color_navy;
+    content: '';
+    display: block;
+    height: 10rem;
+    margin: 0 -1rem;
+    width: calc(100% + 2rem);
   }
+}
+
+.sideProfile__image {
+  border-radius: 50%;
+  margin: -100px auto 1rem;
+  position: relative;
+  width: 150px;
+}
+
+.sideProfile__imageInner {
+  @extend %shadow_base;
+
+  border-radius: 50%;
+  overflow: hidden;
+}
+
+.sideProfile__imageLightSaber {
+  left: 65%;
+  position: absolute;
+  top: 50px;
+}
+
+.sideProfile__name {
+  font-weight: bold;
+  text-align: center;
+}
+
+.sideProfile__nameText {
+  margin: 0;
+}
+
+.sideProfile__nameLabel {
+  color: $color_gray;
+}
+
+.sideProfile__button {
+  margin-bottom: 2rem;
+}
+
+.sideProfile__textSentence {
+  font-size: $fontSize_s;
+}
+
+.sideProfile__sns {
+  font-weight: bold;
+  text-align: center;
+}
+
+.sideProfile__snsTitle {
+  @extend %font_accent;
+
+  margin-bottom: 0.5rem;
+}
+
+.sideProfile__snsList {
+  display: flex;
+  justify-content: center;
+}
+
+.sideProfile__snsListItem {
+  @extend %shadow_base;
+
+  border-radius: 15%;
+  color: $color_white;
+  font-size: $fontSize_l;
+  line-height: 1;
+  margin: 0 0.5rem;
+  padding: 0.5rem;
+
+  &:hover {
+    @extend %shadow_base_hover;
+  }
+}
+
+.sideProfile__snsListItem--twitter {
+  background-color: $color_twitter;
+}
+
+.sideProfile__snsListItem--instagram {
+  background: $color_instagram;
+}
+
+.sideProfile__snsListItem--github {
+  background-color: $color_github;
+}
+
+.sideProfile__snsListItem--feedly {
+  background-color: $color_feedly;
 }
 
 .fade {

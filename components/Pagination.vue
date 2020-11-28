@@ -68,7 +68,7 @@ export default {
 
 <style lang="scss">
 .pagination {
-  margin: 3rem 0 5rem;
+  padding: 3rem 0;
 
   &List {
     align-items: center;
