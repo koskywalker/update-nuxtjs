@@ -54,14 +54,13 @@ export default {
 
 <style lang="scss" scoped>
 .container {
-  padding-bottom: 8rem;
   width: 100%;
 
   &Inner {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
-    margin: 0 auto;
+    margin: 0 auto 5rem;
     max-width: $width_max;
 
     @include mq($mq_tablet) {
@@ -80,11 +79,15 @@ export default {
 }
 
 .sidebar {
-  margin-bottom: 2rem;
-  width: 100%;
+  margin: 0 auto;
+  width: $width_base;
+
+  @include mq($mq_tablet) {
+    width: 100%;
+  }
 
   @include mq($mq_pc) {
-    margin-left: 5%;
+    margin: 0 0 0 5%;
     width: 30%;
   }
 }

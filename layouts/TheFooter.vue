@@ -1,56 +1,63 @@
 <template>
   <footer class="footer">
     <div class="wrapper">
-      <div class="footer-header">
-        <h2 class="footer-logo">
-          <nuxt-link class="footer-logoLink" to="/">
-            {{ constants.BLOG_INFO.BLOG_NAME }}
-          </nuxt-link>
-        </h2>
-        <p>
-          {{ constants.BLOG_INFO.BASE_TITLE }}
-        </p>
-        <div class="footer-contact">
-          <nuxt-link
-            class="footer-contactButton"
-            to="/contact"
+      <div class="footer-main">
+        <div class="footer-header">
+          <h2 class="footer-logo">
+            <nuxt-link class="footer-logoLink" to="/">
+              {{ constants.BLOG_INFO.BLOG_NAME }}
+            </nuxt-link>
+          </h2>
+          <p>
+            {{ constants.BLOG_INFO.BASE_TITLE }}
+          </p>
+          <div class="footer-contact">
+            <nuxt-link
+              class="footer-contactButton"
+              to="/contact"
+            >
+              お問い合わせ
+            </nuxt-link>
+          </div>
+        </div>
+        <div class="footer-body">
+          <div
+            v-for="menu in menuList"
+            :key="menu.title"
+            class="footer-menu"
           >
-            お問い合わせ
-          </nuxt-link>
+            <h3 class="footer-menuTitle">{{ menu.title}}</h3>
+            <ul class="footer-menuBody">
+              <li
+                class="footer-item"
+                v-for="(item, index) in menu.body"
+                :key="index"
+              >
+                <a
+                  v-if="isInternalLink(item.url)"
+                  class="footer-itemLink"
+                  :href="item.url"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  {{ item.name }}
+                </a>
+                <nuxt-link
+                  v-else
+                  class="footer-itemLink"
+                  :to="item.url"
+                >
+                  {{ item.name }}
+                </nuxt-link>
+              </li>
+            </ul>
+          </div>
         </div>
       </div>
-      <div class="footer-body">
-        <div
-          v-for="menu in menuList"
-          :key="menu.title"
-          class="footer-menu"
-        >
-          <h3 class="footer-menuTitle">{{ menu.title}}</h3>
-          <ul>
-            <li
-              class="footer-item"
-              v-for="(item, index) in menu.body"
-              :key="index"
-            >
-              <a
-                v-if="isInternalLink(item.url)"
-                class="footer-itemLink"
-                :href="item.url"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                {{ item.name }}
-              </a>
-              <nuxt-link
-                v-else
-                class="footer-itemLink"
-                :to="item.url"
-              >
-                {{ item.name }}
-              </nuxt-link>
-            </li>
-          </ul>
-        </div>
+      <div class="footer-copy">
+        <p class="footer-copyText">
+          &copy; 2018 Kosuke Muraka
+        </p>
       </div>
     </div>
   </footer>
@@ -104,13 +111,16 @@ export default {
 .footer {
   background-color: $color_black;
   color: $color_white;
-  margin-bottom: 64px;
-  padding: 3rem 0 4rem;
+  margin-bottom: calc(64px + env(safe-area-inset-bottom));
 }
 
 .wrapper {
   margin: 0 auto;
   width: min(92%, 1180px);
+}
+
+.footer-main {
+  padding: 3rem 0 4rem;
 
   @include mq($mq_pc) {
     display: flex;
@@ -130,18 +140,6 @@ export default {
 
   @include mq($mq_pc) {
     flex: 1;
-  }
-}
-
-.footer-menu {
-  margin-top: 2rem;
-
-  @include mq($mq_tablet) {
-    width: 50%;
-  }
-
-  @include mq($mq_pc) {
-    margin-top: 1rem;
   }
 }
 
@@ -194,10 +192,26 @@ export default {
   }
 }
 
+.footer-menu {
+  margin-top: 2rem;
+
+  @include mq($mq_tablet) {
+    width: 50%;
+  }
+
+  @include mq($mq_pc) {
+    margin-top: 1rem;
+  }
+}
+
 .footer-menuTitle {
   @extend %font_accent;
 
   font-weight: normal;
+}
+
+ul.footer-menuBody {
+  margin-top: 1rem;
 }
 
 .footer-item {
@@ -235,5 +249,16 @@ export default {
 
 .footer-itemLink {
   color: $color_gray_middle;
+}
+
+.footer-copy {
+  border-top: 1px solid $color_gray_middle;
+  display: flex;
+  justify-content: center;
+  padding: 2rem 0;
+}
+
+.footer-copyText {
+  margin: 0;
 }
 </style>
