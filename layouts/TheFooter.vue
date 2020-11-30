@@ -216,6 +216,10 @@ ul.footer-menuBody {
 
 .footer-item {
   overflow: hidden;
+}
+
+.footer-itemLink {
+  color: $color_gray_middle;
   position: relative;
   transition: all 0.3s ease-out;
 
@@ -231,12 +235,6 @@ ul.footer-menuBody {
     width: 6px;
   }
 
-  @for $index from 1 through length($colors) {
-    &:nth-of-type(#{$index})::before {
-      background-color: #{nth($colors, $index)};
-    }
-  }
-
   &:hover,
   &:active {
     padding-left: 12px;
@@ -247,8 +245,10 @@ ul.footer-menuBody {
   }
 }
 
-.footer-itemLink {
-  color: $color_gray_middle;
+@for $index from 1 through length($colors) {
+  .footer-item:nth-of-type(#{$index}) .footer-itemLink::before {
+    background-color: #{nth($colors, $index)};
+  }
 }
 
 .footer-copy {
