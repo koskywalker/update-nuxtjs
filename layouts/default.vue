@@ -74,7 +74,7 @@ export default {
 
   @include mq($mq_pc) {
     flex: 1;
-    width: auto;
+    width: 65%;
   }
 }
 
