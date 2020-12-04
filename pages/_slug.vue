@@ -96,7 +96,7 @@ export default {
         { hid: 'og:title', property: 'og:title', content: this.currentPost.fields.title },
         { hid: 'og:type', property: 'og:type', content: 'article' },
         { hid: 'og:description', property: 'og:description', content: this.currentPost.fields.description },
-        { hid: 'og:image', property: 'og:image', content: this.currentPost.fields.heroImage.fields.file.url },
+        { hid: 'og:image', property: 'og:image', content: `https:${this.currentPost.fields.heroImage.fields.file.url}` },
       ],
       __dangerouslyDisableSanitizers: ['script'],
       script: [{

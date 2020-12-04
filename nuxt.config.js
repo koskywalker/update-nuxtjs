@@ -26,9 +26,9 @@ export default {
       { hid: 'og:locale', property: 'og:locale', content: 'ja_JP' },
       { hid: 'og:type', property: 'og:type', content: 'website' },
       { hid: 'og:description', property: 'og:description', content: CONSTANTS.BLOG_INFO.BASE_DESCRIPTION },
-      { hid: 'og:image', property: 'og:image', content: CONSTANTS.BLOG_INFO.BASE_OGP_IMAGE },
-      { name: 'twitter:card', content: 'summary_large_image' },
-      { name: 'twitter:site', content: '@kosuke_upd' },
+      { hid: 'og:image', property: 'og:image', content: process.env.BASE_URL + CONSTANTS.BLOG_INFO.BASE_OGP_IMAGE },
+      { hid: 'twitter:card', name: 'twitter:card', content: 'summary_large_image' },
+      { hid: 'twitter:site', name: 'twitter:site', content: `@${CONSTANTS.MY_INFO.SNS.TWITTER.USER}` },
       { property: 'fb:app_id', content: process.env.FACEBOOK_APP_ID },
     ],
     link: [
