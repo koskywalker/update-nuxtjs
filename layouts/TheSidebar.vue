@@ -112,7 +112,6 @@ export default {
       isDisabledLightSaber: false,
       isLightSaberShow: false,
       switchStatus: false,
-      tempProfileTitleInnerElement: '',
     }
   },
   methods: {
@@ -128,32 +127,17 @@ export default {
      */
     async easterEggLightSaber () {
       if (this.isLightSaberShow) {
-        // ライトセーバーを出している場合, 元に戻してにしてプロフィール見出しを復元
         this.isDisabledLightSaber = !this.isDisabledLightSaber
         this.isLightSaberShow = false
         this.switchStatus = false
         await this.wait(500)
-        this.$refs.profileTitle.innerHTML = this.tempProfileTitleInnerElement
         this.isDisabledLightSaber = !this.isDisabledLightSaber
       } else {
-        // ライトセーバーを出していない場合,
-        // ライトセーバーを出現させてプロフィール見出しを破壊
         this.isDisabledLightSaber = !this.isDisabledLightSaber
-        this.tempProfileTitleInnerElement = this.$refs.profileTitle.innerHTML
         this.isLightSaberShow = !this.isLightSaberShow
         await this.wait(1000)
         this.switchStatus = !this.switchStatus
         await this.wait(300)
-
-        for (let i = 0; i < 10; i++) {
-          this.$refs.profileTitle.innerHTML = '　'
-          await this.wait(100)
-          this.$refs.profileTitle.innerHTML = this.tempProfileTitleInnerElement
-          await this.wait(100)
-        }
-
-        await this.wait(500)
-        this.$refs.profileTitle.innerHTML = '　'
         this.isDisabledLightSaber = !this.isDisabledLightSaber
       }
     },
@@ -196,12 +180,11 @@ export default {
   border-radius: 50%;
   margin: -100px auto 1rem;
   position: relative;
-  width: 150px;
+  width: 160px;
 }
 
 .sideProfile__imageInner {
-  @extend %shadow_base;
-
+  border: 5px solid $color_white;
   border-radius: 50%;
   overflow: hidden;
 }

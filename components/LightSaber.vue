@@ -25,7 +25,9 @@ export default {
 </script>
 
 <style>
-.lightsaber { position: relative; }
+.lightsaber {
+  position: relative;
+}
 
 .lightsaber label {
   background: linear-gradient(to right, rgba(226, 226, 226, 1) 0%, rgba(219, 219, 219, 1) 50%, rgba(209, 209, 209, 1) 51%, rgba(254, 254, 254, 1) 100%);
@@ -38,7 +40,7 @@ export default {
   left: 0;
   position: absolute;
   text-indent: -9999px;
-  width: 7px;
+  width: 6px;
   z-index: 88;
 }
 
@@ -71,11 +73,11 @@ export default {
   left: 0;
   position: absolute;
   transition: height 300ms,;
-  width: 7px;
+  width: 6px;
 }
 
 .lightsaber input[type=checkbox]:checked ~ div.plasma {
-  height: 111px;
+  height: 80px;
 }
 
 .lightsaber input[type=checkbox]:hover ~ div.switch {

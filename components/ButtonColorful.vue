@@ -6,7 +6,7 @@
         class="button-colorful__button"
         @click="click"
       >
-        <span class="button-colorful__button-text">？？？</span>
+        <span class="button-colorful__button-text">ライトセーバー</span>
       </button>
     </div>
   </div>
