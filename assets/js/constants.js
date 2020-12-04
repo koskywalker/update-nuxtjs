@@ -28,7 +28,7 @@ export const CONSTANTS = {
     BLOG_NAME: 'UPDATE',
     BASE_TITLE: 'フロントエンドエンジニアこうすけのブログ',
     BASE_DESCRIPTION: 'UPDATE は, フロントエンドエンジニアとして活動するこうすけのクリエイターブログです. 主にプログラミング, デザイン, SEO, 普段の活動などについて発信しています. ',
-    BASE_OGP_IMAGE: '/icon.svg',
+    BASE_OGP_IMAGE: '/icon.png',
   },
   MY_INFO: {
     NICKNAME: 'こうすけ',
