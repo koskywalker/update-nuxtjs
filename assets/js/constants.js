@@ -58,8 +58,8 @@ export const CONSTANTS = {
     ],
     INTRODUCTION: [
       'フリーランスのフロントエンドエンジニア. バックエンドも少々.',
-      'Web 開発, Web 制作, ブログ運営, SEO コンサルティングなどをおこなっています.',
-      '得意技術は, マークアップ, JavaScript, TypeScript, React, Vue.js, Angular, Next.js, Gatsby, Nuxt.js, PHP, Java, WordPress, SEO, UI / UX, コピーライティング',
+      'Web 開発, Web 制作, ブログ運営などをメインに活動しています.',
+      '得意技術は, HTML, CSS, Sass, JavaScript, TypeScript, React, Vue.js, Angular, Next.js, Gatsby, Nuxt.js, PHP, Java, WordPress, SEO, UI / UX, コピーライティング',
       '当ブログでは, 主にフロントエンドに関するプログラミング情報について楽しく発信します！',
     ],
     SNS: {
