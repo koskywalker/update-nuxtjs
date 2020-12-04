@@ -90,6 +90,8 @@ export default {
       title: this.currentPost.fields.title,
       meta: [
         { hid: 'description', name: 'description', content: this.currentPost.fields.description },
+        { hid: 'twitter:card', name: 'twitter:card', content: 'summary_large_image' },
+        { hid: 'twitter:site', name: 'twitter:site', content: `@${CONSTANTS.MY_INFO.SNS.TWITTER.USER}` },
         { hid: 'og:url', property: 'og:url', content: process.env.BASE_URL + this.$route.path },
         { hid: 'og:title', property: 'og:title', content: this.currentPost.fields.title },
         { hid: 'og:type', property: 'og:type', content: 'article' },

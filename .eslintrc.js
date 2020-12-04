@@ -8,21 +8,25 @@ module.exports = {
     parser: 'babel-eslint',
   },
   extends: [
-    'plugin:vue/essential',
-    'prettier',
+    'eslint:recommended',
+    'plugin:vue/recommended',
+    'plugin:prettier/recommended',
   ],
   plugins: [
     'vue',
   ],
   rules: {
-    'comma-dangle': ['error', 'always-multiline'],
-    'semi': [2, 'never'],
-    // 'vue/max-attributes-per-line': ['error', {
-    //   singleline: 1,
-    //   multiline: {
-    //     max: 1,
-    //     allowFirstLine: false,
-    //   },
-    // }],
+    semi: [2, 'never'],
+    'vue/html-indent': ['error', 2],
+    'no-console': 'off',
+    'no-unused-vars': 'off',
+    'vue/html-self-closing': 'off',
+    'vue/max-attributes-per-line': 'off',
+    'prettier/prettier': [
+      'error',
+      {
+        htmlWhitespaceSensitivity: 'ignore',
+      },
+    ],
   },
 }
