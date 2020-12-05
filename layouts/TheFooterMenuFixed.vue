@@ -303,7 +303,7 @@ export default {
 }
 
 .drawerBackground {
-  background-color: $color_gray_transparent;
+  background-color: $color_black_transparent;
   height: 100vh;
   position: fixed;
   top: 0;

@@ -140,7 +140,7 @@ export default {
 
 <style lang="scss" scoped>
 .share {
-  background-color: $color_gray_transparent;
+  background-color: $color_black_transparent;
   height: 70px;
   width: 100%;
 
