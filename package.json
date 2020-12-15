@@ -17,7 +17,7 @@
   "dependencies": {
     "@nuxtjs/dotenv": "1.4.1",
     "@nuxtjs/google-tag-manager": "2.3.2",
-    "@nuxtjs/pwa": "3.2.2",
+    "@nuxtjs/pwa": "3.3.2",
     "@nuxtjs/sitemap": "2.4.0",
     "markdown-it": "12.0.2",
     "markdown-it-anchor": "6.0.1",
